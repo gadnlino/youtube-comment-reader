@@ -1,0 +1,36 @@
+{
+  "name": "flutter-app",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "sst dev --stage dev",
+    "local": "sst dev --stage local",
+    "remove-local": "sst remove --stage local",
+    "build": "sst build",
+    "deploy-dev": "sst deploy --stage dev --verbose",
+    "remove-dev": "sst remove --stage dev",
+    "console": "sst console",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@tsconfig/node18": "^18.2.2",
+    "@types/uuid": "^9.0.8",
+    "aws-cdk-lib": "2.101.1",
+    "constructs": "10.2.69",
+    "sst": "^2.36.1",
+    "typescript": "^5.2.2"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.726.1",
+    "@aws-sdk/lib-dynamodb": "^3.734.0",
+    "@aws-sdk/util-dynamodb": "^3.734.0",
+    "aws-sdk": "^2.1692.0",
+    "axios": "^1.7.7",
+    "node-gyp": "^10.0.1",
+    "uuid": "^9.0.1"
+  }
+}

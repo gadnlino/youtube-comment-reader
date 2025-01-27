@@ -1,0 +1,12 @@
+enum TipoMidiaEnum {
+  _,
+  WEBSITE,
+  INSTAGRAM,
+  FACEBOOK,
+  TIKTOK,
+  TWITTER,
+  YOUTUBE,
+  WHATSAPP,
+  TELEGRAM,
+  ARQUIVO
+}
