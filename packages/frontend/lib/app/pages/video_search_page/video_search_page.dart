@@ -86,6 +86,19 @@ class VideoSearchPageController extends GetxController {
       }
     }
   }
+
+  customSearch() async {
+    if (!reloading.value) {
+      videoSearchList = RxList<YouTubeSearchItem>();
+
+      try {
+        reloading.value = true;
+        await loadMoreVideos();
+      } finally {
+        reloading.value = false;
+      }
+    }
+  }
 }
 
 class VideoSearchPage extends GetView<VideoSearchPageController> {
@@ -203,8 +216,45 @@ class VideoSearchPage extends GetView<VideoSearchPageController> {
                 horizontal: 3,
               ),
               child: IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.search),
+                onPressed: () {
+                  Get.defaultDialog(
+                      title: "Pesquisar videos",
+                      backgroundColor: Colors.white,
+                      radius: 5,
+                      content: Column(
+                        children: [
+                          Obx(() => TextFormField(
+                                initialValue: controller.searchParams.value?.q,
+                                onChanged: (value) =>
+                                    controller.searchParams.value!.q = value,
+                                decoration: const InputDecoration(
+                                  // border: UnderlineInputBorder(),
+                                  labelText: 'Nome ou termos do video',
+                                ),
+                              )),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: TextButton(
+                                onPressed: () {
+                                  Navigation.goBack();
+                                  controller.reload();
+                                },
+                                child: const Text(
+                                  "Limpar filtros",
+                                  style: TextStyle(fontSize: 12),
+                                )),
+                          )
+                        ],
+                      ),
+                      textConfirm: "Pesquisar",
+                      textCancel: "Cancelar",
+                      confirmTextColor: Colors.white,
+                      onConfirm: () async {
+                        Navigation.goBack();
+                        controller.customSearch();
+                      });
+                },
+                icon: const Icon(Icons.filter_alt),
                 color: Colors.white,
               ),
             )
