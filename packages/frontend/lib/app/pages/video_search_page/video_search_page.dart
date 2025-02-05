@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:frontend/app/common/api/bjj_api.dart';
@@ -12,6 +14,7 @@ import 'package:frontend/app/common/controllers/access_control_controller.dart';
 import 'package:frontend/app/common/models/dto/pessoa_graduacao_dto.dart';
 import 'package:frontend/app/common/models/enums/graduacao_enum.dart';
 import 'package:frontend/app/common/models/models.dart';
+import 'package:frontend/app/common/packages/cache_package.dart';
 
 import 'package:frontend/app/common/utils/navigation.dart';
 import 'package:frontend/app/common/utils/utils.dart';
@@ -34,19 +37,22 @@ class VideoSearchPageBinding implements Bindings {
 class VideoSearchPageController extends GetxController {
   final _ycvApi = YoutubeCommentViewerApi();
   final _defaultSearchParams = YouTubeSearchParams(maxResults: 10);
+  final _cachePackage = CachePackage();
 
   Rx<bool> loadingMoreVideos = Rx(false);
   Rx<bool> reloading = Rx(false);
   Rxn<YouTubeSearchResponse> videoSearchLastResponse = Rxn(null);
-
   Rxn<YouTubeSearchParams> searchParams = Rxn();
   RxList<YouTubeSearchItem> videoSearchList = RxList();
+
+  Rxn<Favorites> favorites = Rxn();
 
   @override
   void onInit() {
     searchParams.value = _defaultSearchParams;
     (() async {
       loadMoreVideos();
+      loadFavorites();
     })();
 
     super.onInit();
@@ -98,6 +104,24 @@ class VideoSearchPageController extends GetxController {
         reloading.value = false;
       }
     }
+  }
+
+  loadFavorites() async {
+    String? favoritesStr = await _cachePackage.getString('favorites');
+
+    if (favoritesStr != null && favoritesStr!.isNotEmpty) {
+      Favorites favs = Favorites.fromJson(jsonDecode(favoritesStr));
+
+      favorites.value = favs;
+    }
+  }
+
+  addFavorite(YouTubeSearchItem video) async {
+    favorites.value ??= Favorites();
+
+    favorites.value!.videos!.add(video);
+
+    _cachePackage.putString('favorites', favorites.toJson());
   }
 }
 
@@ -177,15 +201,21 @@ class VideoSearchPage extends GetView<VideoSearchPageController> {
                     ],
                   ),
                 ),
-                IconButton(
-                  icon: const Icon(
-                    Icons.more_vert,
-                    color: Colors.white,
-                  ),
-                  onPressed: () {
-                    // Handle more options
-                  },
-                ),
+                Obx(() => Center(
+                      child: IconButton(
+                        icon: Icon(
+                          Icons.star,
+                          color: controller.favorites.value != null &&
+                                  controller.favorites.value!.videos!
+                                      .any((element) => element.id == item.id)
+                              ? Colors.yellow
+                              : Colors.white,
+                        ),
+                        onPressed: () {
+                          controller.addFavorite(item);
+                        },
+                      ),
+                    )),
               ],
             ),
           ],

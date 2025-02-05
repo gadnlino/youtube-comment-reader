@@ -41,8 +41,8 @@ class VideoCommentsPageController extends GetxController {
   Rxn<String> videoDescription = Rxn();
   Rxn<String> videoThumbnailUrl = Rxn();
   Rxn<YouTubeCommentThreadsResponse> videoCommentsLastResponse = Rxn(null);
-  RxList<YouTubeCommentThread> commentsThreadList = RxList();
   Rxn<YouTubeCommentThreadsParams> searchParams = Rxn(null);
+  RxList<YouTubeCommentThread> commentsThreadList = RxList();
   Rx<bool> commentsDisabledForVideo = Rx(false);
 
   @override
@@ -350,7 +350,7 @@ class CommentWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-          left: level * 16.0 + 10, top: 8.0, bottom: 8.0, right: 8.0),
+          left: level * 12.0 + 10, top: 8.0, bottom: 8.0, right: 8.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

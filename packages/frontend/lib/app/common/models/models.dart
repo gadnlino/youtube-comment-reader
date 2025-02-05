@@ -723,3 +723,39 @@ class CommentSnippet {
     };
   }
 }
+
+class Favorites {
+  late List<YouTubeSearchItem>? videos;
+  late List<({YouTubeComment comment, List<YouTubeComment> replies})>? comments;
+
+  Favorites({this.videos, this.comments}) {
+    videos = <YouTubeSearchItem>[];
+    comments = <({YouTubeComment comment, List<YouTubeComment> replies})>[];
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'videos': videos?.map((e) => e.toJson()),
+      'comments': comments?.map((e) => {
+            'comment': e.comment.toJson(),
+            'replies': e.replies.map((r) => r.toJson())
+          })
+    };
+  }
+
+  factory Favorites.fromJson(Map<String, dynamic> json) {
+    return Favorites(
+      videos: (json['videos'] as List)
+          .map((item) => YouTubeSearchItem.fromJson(item))
+          .toList(),
+      comments: (json['comments'] as List)
+          .map((item) => (
+                comment: YouTubeComment.fromJson(item['comment']),
+                replies: (item['replies'] as List)
+                    .map((e) => YouTubeComment.fromJson(e))
+                    .toList()
+              ))
+          .toList(),
+    );
+  }
+}
