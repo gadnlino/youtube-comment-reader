@@ -15,6 +15,7 @@ import 'package:frontend/app/common/models/dto/pessoa_graduacao_dto.dart';
 import 'package:frontend/app/common/models/enums/graduacao_enum.dart';
 import 'package:frontend/app/common/models/models.dart';
 import 'package:frontend/app/common/packages/cache_package.dart';
+import 'package:frontend/app/common/utils/favorite_manager.dart';
 
 import 'package:frontend/app/common/utils/navigation.dart';
 import 'package:frontend/app/common/utils/utils.dart';
@@ -37,7 +38,7 @@ class VideoSearchPageBinding implements Bindings {
 class VideoSearchPageController extends GetxController {
   final _ycvApi = YoutubeCommentViewerApi();
   final _defaultSearchParams = YouTubeSearchParams(maxResults: 10);
-  final _cachePackage = CachePackage();
+  final FavoriteManager _favoriteManager = FavoriteManager();
 
   Rx<bool> loadingMoreVideos = Rx(false);
   Rx<bool> reloading = Rx(false);
@@ -45,7 +46,8 @@ class VideoSearchPageController extends GetxController {
   Rxn<YouTubeSearchParams> searchParams = Rxn();
   RxList<YouTubeSearchItem> videoSearchList = RxList();
 
-  Rxn<Favorites> favorites = Rxn();
+  RxList<YouTubeSearchItem> videoFavorites = RxList();
+  RxList<YouTubeCommentThreadSnippet> commentFavorites = RxList();
 
   @override
   void onInit() {
@@ -107,21 +109,23 @@ class VideoSearchPageController extends GetxController {
   }
 
   loadFavorites() async {
-    String? favoritesStr = await _cachePackage.getString('favorites');
+    var favorites = await _favoriteManager.getVideoFavorites();
 
-    if (favoritesStr != null && favoritesStr!.isNotEmpty) {
-      Favorites favs = Favorites.fromJson(jsonDecode(favoritesStr));
-
-      favorites.value = favs;
+    if (favorites != null) {
+      videoFavorites.value = favorites;
     }
   }
 
-  addFavorite(YouTubeSearchItem video) async {
-    favorites.value ??= Favorites();
+  addVideoFavorite(YouTubeSearchItem video) async {
+    videoFavorites.add(video);
 
-    favorites.value!.videos!.add(video);
+    await _favoriteManager.addVideoFavorite(video);
+  }
 
-    _cachePackage.putString('favorites', favorites.toJson());
+  removeVideoFavorite(YouTubeSearchItem video) async {
+    videoFavorites.remove(video);
+
+    await _favoriteManager.removeVideoFavorite(video);
   }
 }
 
@@ -205,14 +209,18 @@ class VideoSearchPage extends GetView<VideoSearchPageController> {
                       child: IconButton(
                         icon: Icon(
                           Icons.star,
-                          color: controller.favorites.value != null &&
-                                  controller.favorites.value!.videos!
-                                      .any((element) => element.id == item.id)
+                          color: controller.videoFavorites
+                                  .any((element) => element.id == item.id)
                               ? Colors.yellow
                               : Colors.white,
                         ),
                         onPressed: () {
-                          controller.addFavorite(item);
+                          if (!controller.videoFavorites
+                              .any((element) => element.id == item.id)) {
+                            controller.addVideoFavorite(item);
+                          } else {
+                            controller.removeVideoFavorite(item);
+                          }
                         },
                       ),
                     )),

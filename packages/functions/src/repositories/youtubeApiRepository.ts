@@ -10,7 +10,7 @@ const youtubeApiRepository = {
 
         let searchVideoResults: any | null = null;
 
-        const cacheKey = `part=${parameters.part}&regionCode=${parameters.regionCode}&type=${parameters.type}&q=${parameters.q}&pageToken=${parameters.pageToken}`;
+        const cacheKey = `searchVideos:part=${parameters.part}&regionCode=${parameters.regionCode}&type=${parameters.type}&q=${parameters.q}&pageToken=${parameters.pageToken}`;
 
         let cacheItem = null;
 
@@ -52,7 +52,7 @@ const youtubeApiRepository = {
 
         let videoCommentResults: any | null = null;
 
-        const cacheKey = `part=${parameters.part}&videoId=${parameters.videoId}`;
+        const cacheKey = `fetchComments:part=${parameters.part}&videoId=${parameters.videoId}`;
 
         let cacheItem = null;
 

@@ -30,6 +30,9 @@ export function ApiStack({ stack }: StackContext) {
             },
             "GET /video/comments": {
                 function: {
+                    environment:{
+                        CACHE_ENABLED: "true"
+                    },
                     functionName: "lbd-ycv-fetch-video-comments-" + process.env.SST_STAGE,
                     handler: "packages/functions/src/fetchComments.main"
                 },

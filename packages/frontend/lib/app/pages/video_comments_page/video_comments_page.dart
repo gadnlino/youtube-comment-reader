@@ -126,7 +126,7 @@ class VideoCommentsPage extends GetView<VideoCommentsPageController> {
                         controller.videoTitle.value != null
                             ? controller.videoTitle.value!
                             : "",
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
                             color: Colors.white),
@@ -139,13 +139,13 @@ class VideoCommentsPage extends GetView<VideoCommentsPageController> {
                             controller.videoDescription.value != null
                                 ? controller.videoDescription.value!
                                 : "",
-                            style:
-                                TextStyle(fontSize: 12, color: Colors.white70),
+                            style: const TextStyle(
+                                fontSize: 12, color: Colors.white70),
                           )
                         ],
                       ),
                       ConstrainedBox(
-                        constraints: BoxConstraints(
+                        constraints: const BoxConstraints(
                           minHeight: 0,
                           minWidth: 0,
                         ),
@@ -209,22 +209,6 @@ class VideoCommentsPage extends GetView<VideoCommentsPageController> {
 
   @override
   Widget build(BuildContext context) {
-    // Dados de exemplo
-    const postTitle = "Título do Post";
-    //const postImage = "https://via.placeholder.com/400"; // URL de exemplo
-    const postImage =
-        "https://techhubdigital.com/wp-content/uploads/2020/06/YouTube-Thumbnail-Size-Pr.jpg"; // URL de exemplo
-    const postComment = "Este é o comentário do autor do post.";
-    final comments = List.generate(
-      20,
-      (index) => {
-        'author': 'User$index',
-        'content': 'Este é o comentário número $index.',
-        'commentsCount': index * 2,
-        'upvotes': index * 5,
-      },
-    );
-
     return Scaffold(
         appBar: AppBar(
           title: Text(pageTitle),
@@ -270,15 +254,18 @@ class VideoCommentsPage extends GetView<VideoCommentsPageController> {
                   fit: BoxFit.fitWidth,
                 ),
                 // Comentário do Autor
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Text(
-                    controller.videoDescription.value != null
-                        ? controller.videoDescription.value!
-                        : "",
-                    style: const TextStyle(fontSize: 16, color: Colors.white70),
+
+                if (controller.videoDescription.value != null)
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(
+                      controller.videoDescription.value != null
+                          ? controller.videoDescription.value!
+                          : "",
+                      style:
+                          const TextStyle(fontSize: 16, color: Colors.white70),
+                    ),
                   ),
-                ),
                 const Divider(),
                 // Lista Rolável de Comentários
                 Builder(builder: (ctx) {
