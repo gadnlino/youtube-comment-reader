@@ -759,3 +759,44 @@ class Favorites {
     );
   }
 }
+
+class CommentFavorite {
+  YouTubeComment? comment;
+  List<YouTubeComment>? replies;
+  String? videoId;
+  String? videoTitle;
+  String? videoDescription;
+  String? videoThumbnailUrl;
+
+  CommentFavorite(
+      {this.comment,
+      this.replies,
+      this.videoId,
+      this.videoTitle,
+      this.videoDescription,
+      this.videoThumbnailUrl});
+
+  factory CommentFavorite.fromJson(Map<String, dynamic> json) {
+    return CommentFavorite(
+      comment: YouTubeComment.fromJson(json['comment']),
+      replies: (json['replies'] as List)
+          .map((e) => YouTubeComment.fromJson(e))
+          .toList(),
+      videoId: json['videoId'],
+      videoTitle: json['videoTitle'],
+      videoDescription: json['videoDescription'],
+      videoThumbnailUrl: json['videoThumbnailUrl'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'comment': comment?.toJson(),
+      'replies': replies?.map((e) => e.toJson()).toList(),
+      'videoId': videoId,
+      'videoTitle': videoTitle,
+      'videoDescription': videoDescription,
+      'videoThumbnailUrl': videoThumbnailUrl,
+    };
+  }
+}

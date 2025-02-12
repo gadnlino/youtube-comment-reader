@@ -34,6 +34,8 @@ class FavoriteManager {
           .toList();
     }
 
+    result.add(video);
+
     await _cachePackage.putString(videoCacheKey, jsonEncode(result));
   }
 
@@ -45,24 +47,55 @@ class FavoriteManager {
     if (resultStr != null && resultStr.isNotEmpty) {
       result = (jsonDecode(resultStr) as List)
           .map((e) => YouTubeSearchItem.fromJson(e))
-          .where((element) => element.id != video.id)
+          .where((element) => element.id.videoId != video.id.videoId)
           .toList();
     }
 
     await _cachePackage.putString(videoCacheKey, jsonEncode(result));
   }
 
-  Future<List<YouTubeCommentThreadSnippet>?> getCommentFavorites() async {
+  Future<List<CommentFavorite>?> getCommentFavorites() async {
     String? resultStr = await _cachePackage.getString(commentsCacheKey);
 
-    List<YouTubeCommentThreadSnippet>? result;
+    List<CommentFavorite>? result;
 
     if (resultStr != null && resultStr.isNotEmpty) {
       result = (jsonDecode(resultStr) as List)
-          .map((e) => YouTubeCommentThreadSnippet.fromJson(e))
+          .map((e) => CommentFavorite.fromJson(e))
           .toList();
     }
 
     return result;
+  }
+
+  Future addCommentFavorite(CommentFavorite comment) async {
+    String? resultStr = await _cachePackage.getString(videoCacheKey);
+
+    List<CommentFavorite>? result = List.empty();
+
+    if (resultStr != null && resultStr.isNotEmpty) {
+      result = (jsonDecode(resultStr) as List)
+          .map((e) => CommentFavorite.fromJson(e))
+          .toList();
+    }
+
+    result.add(comment);
+
+    await _cachePackage.putString(videoCacheKey, jsonEncode(result));
+  }
+
+  Future removeCommentFavorite(CommentFavorite comment) async {
+    String? resultStr = await _cachePackage.getString(videoCacheKey);
+
+    List<CommentFavorite>? result = List.empty();
+
+    if (resultStr != null && resultStr.isNotEmpty) {
+      result = (jsonDecode(resultStr) as List)
+          .map((e) => CommentFavorite.fromJson(e))
+          .where((element) => element.comment?.id != comment.comment?.id)
+          .toList();
+    }
+
+    await _cachePackage.putString(videoCacheKey, jsonEncode(result));
   }
 }
