@@ -7,6 +7,7 @@ import 'package:frontend/app/common/controllers/bottom_navigation_bar_controller
 import 'package:frontend/app/common/controllers/federacao_controller.dart';
 import 'package:frontend/app/common/controllers/media_controller.dart';
 import 'package:frontend/app/common/themes/app_theme.dart';
+import 'package:frontend/app/pages/favorites_page/favorites_page.dart';
 import 'package:frontend/app/pages/video_comments_page/video_comments_page.dart';
 import 'package:frontend/app/pages/video_search_page/video_search_page.dart';
 import 'package:get/get.dart';
@@ -46,6 +47,11 @@ Future main() async {
         name: videoCommentsPageRoute,
         page: () => const VideoCommentsPage(),
         binding: VideoCommentsPageBinding(),
+      ),
+      GetPage(
+        name: favoritesPageRoute,
+        page: () => const FavoritesPage(),
+        binding: FavoritesPageBinding(),
       ),
     ],
   ));

@@ -9,6 +9,7 @@ import 'package:frontend/app/common/components/custom_button.dart';
 import 'package:frontend/app/common/components/custom_divider.dart';
 
 import 'package:frontend/app/common/components/ranking_card.dart';
+import 'package:frontend/app/common/components/video_widget.dart';
 import 'package:frontend/app/common/controllers/access_control_controller.dart';
 
 import 'package:frontend/app/common/models/dto/pessoa_graduacao_dto.dart';
@@ -318,10 +319,41 @@ class VideoSearchPage extends GetView<VideoSearchPageController> {
                         shrinkWrap: true,
                         scrollDirection: Axis.vertical,
                         itemBuilder: (BuildContext context, int index) {
+                          var video =
+                              controller.videoSearchList.elementAt(index);
                           return Column(
                             children: [
-                              _videoCard(
-                                  controller.videoSearchList.elementAt(index)),
+                              Obx(
+                                () => VideoWidget(
+                                  video: video,
+                                  favorited: controller.videoFavorites.any(
+                                      (element) =>
+                                          element.id.videoId ==
+                                          video.id.videoId),
+                                  onFavoriteTap: () {
+                                    if (!controller.videoFavorites.any(
+                                        (element) =>
+                                            element.id.videoId ==
+                                            video.id.videoId)) {
+                                      controller.addVideoFavorite(video);
+                                    } else {
+                                      controller.removeVideoFavorite(video);
+                                    }
+                                  },
+                                  onTap: () {
+                                    Navigation.popAndGoToPage(
+                                        pageRoute: videoCommentsPageRoute,
+                                        parameters: {
+                                          'videoId': video.id.videoId!,
+                                          'videoTitle': video.snippet.title,
+                                          'videoDescription':
+                                              video.snippet.description,
+                                          'thumbnailUrl':
+                                              video.snippet.thumbnails.high.url
+                                        });
+                                  },
+                                ),
+                              )
                             ],
                           );
                         }),

@@ -3,6 +3,7 @@ import 'package:frontend/app/common/controllers/access_control_controller.dart';
 import 'package:frontend/app/common/utils/navigation.dart';
 import 'package:frontend/app/pages/activities_page/activities_page.dart';
 import 'package:frontend/app/pages/events_page/events_page.dart';
+import 'package:frontend/app/pages/favorites_page/favorites_page.dart';
 import 'package:frontend/app/pages/feed_page/feed_page.dart';
 import 'package:frontend/app/pages/pendencies_page/pendencies_page.dart';
 import 'package:frontend/app/pages/profile_page/profile_page.dart';
@@ -21,7 +22,7 @@ class BottomNavigationBarController extends GetxController {
     {
       "label": "Favoritos",
       "icon": Icons.star,
-      "route": activitiesPageRoute,
+      "route": favoritesPageRoute,
       "visible": true
     },
   ];
