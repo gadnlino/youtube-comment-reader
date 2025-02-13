@@ -134,96 +134,6 @@ class VideoSearchPageController extends GetxController {
 class VideoSearchPage extends GetView<VideoSearchPageController> {
   const VideoSearchPage({super.key});
 
-  Widget _videoCard(YouTubeSearchItem item) {
-    return InkWell(
-      onTap: () {
-        Navigation.popAndGoToPage(
-            pageRoute: videoCommentsPageRoute,
-            parameters: {
-              'videoId': item.id.videoId!,
-              'videoTitle': item.snippet.title,
-              'videoDescription': item.snippet.description,
-              'thumbnailUrl': item.snippet.thumbnails.high.url
-            });
-      },
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
-              child: Image.network(
-                item.snippet.thumbnails.defaultThumbnail.url,
-                fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) => Stack(
-                  children: [
-                    Container(
-                        color: Colors.white,
-                        height: item.snippet.thumbnails.defaultThumbnail.height
-                            .toDouble(),
-                        width: item.snippet.thumbnails.defaultThumbnail.width
-                            .toDouble()),
-                    SizedBox(
-                      height: item.snippet.thumbnails.defaultThumbnail.height
-                          .toDouble(),
-                      width: item.snippet.thumbnails.defaultThumbnail.width
-                          .toDouble(),
-                      child: const Icon(
-                        Icons.question_mark_outlined,
-                        color: Colors.black,
-                        size: 30,
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ),
-            const SizedBox(width: 20),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    item.snippet.title,
-                    maxLines: 3,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    '${item.snippet.channelTitle} · ${Utils.formatDateOrNull(DateTime.parse(item.snippet.publishedAt), 'dd/MM/yyyy')}',
-                    style: TextStyle(fontSize: 12, color: Colors.grey[200]),
-                  ),
-                ],
-              ),
-            ),
-            Obx(() => IconButton(
-                  icon: Icon(
-                    Icons.star,
-                    color: controller.videoFavorites.any(
-                            (element) => element.id.videoId == item.id.videoId)
-                        ? Colors.yellow
-                        : Colors.white,
-                  ),
-                  onPressed: () {
-                    if (!controller.videoFavorites.any(
-                        (element) => element.id.videoId == item.id.videoId)) {
-                      controller.addVideoFavorite(item);
-                    } else {
-                      controller.removeVideoFavorite(item);
-                    }
-                  },
-                )),
-          ],
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     const pageTitle = "Youtube Comment Reader";
@@ -349,7 +259,11 @@ class VideoSearchPage extends GetView<VideoSearchPageController> {
                                           'videoDescription':
                                               video.snippet.description,
                                           'thumbnailUrl':
-                                              video.snippet.thumbnails.high.url
+                                              video.snippet.thumbnails.high.url,
+                                          'channelTitle':
+                                              video.snippet.channelTitle,
+                                          'publishedAt':
+                                              video.snippet.publishedAt,
                                         });
                                   },
                                 ),

@@ -42,6 +42,8 @@ class VideoCommentsPageController extends GetxController {
   Rxn<String> videoTitle = Rxn();
   Rxn<String> videoDescription = Rxn();
   Rxn<String> videoThumbnailUrl = Rxn();
+  Rxn<String> channelTitle = Rxn();
+  Rxn<String> videoPublishedAt = Rxn();
   Rxn<YouTubeCommentThreadsResponse> videoCommentsLastResponse = Rxn(null);
   Rxn<YouTubeCommentThreadsParams> searchParams = Rxn(null);
   RxList<YouTubeCommentThread> commentsThreadList = RxList();
@@ -59,6 +61,8 @@ class VideoCommentsPageController extends GetxController {
         videoTitle.value = Get.parameters['videoTitle'];
         videoDescription.value = Get.parameters['videoDescription'];
         videoThumbnailUrl.value = Get.parameters['thumbnailUrl'];
+        channelTitle.value = Get.parameters['channelTitle'];
+        videoPublishedAt.value = Get.parameters['publishedAt'];
 
         if (videoId.value != null && videoId.value!.isNotEmpty) {
           videoCommentsLastResponse.value = await _ycvApi.fetchComments(
@@ -118,7 +122,9 @@ class VideoCommentsPageController extends GetxController {
         videoId: videoId.value,
         videoDescription: videoDescription.value,
         videoThumbnailUrl: videoThumbnailUrl.value,
-        videoTitle: videoTitle.value);
+        videoTitle: videoTitle.value,
+        channelTitle: channelTitle.value,
+        videoPublishedAt: videoPublishedAt.value);
 
     commentFavorites.add(favorite);
 
@@ -137,112 +143,6 @@ class VideoCommentsPageController extends GetxController {
 class VideoCommentsPage extends GetView<VideoCommentsPageController> {
   final pageTitle = "Comments";
   const VideoCommentsPage({super.key});
-
-  Widget build2(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text(pageTitle),
-          leading: IconButton(
-              onPressed: () {
-                Navigation.popAndGoToPage(pageRoute: videoSearchPageRoute);
-              },
-              icon: const Icon(Icons.arrow_back)),
-        ),
-        body: Obx(
-          () {
-            return Column(
-              children: [
-                // Video Section
-                Container(
-                  padding: const EdgeInsets.all(8.0),
-                  color: Colors.black,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        controller.videoTitle.value != null
-                            ? controller.videoTitle.value!
-                            : "",
-                        style: const TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
-                      ),
-                      const SizedBox(height: 8),
-                      Wrap(
-                        alignment: WrapAlignment.center,
-                        children: [
-                          Text(
-                            controller.videoDescription.value != null
-                                ? controller.videoDescription.value!
-                                : "",
-                            style: const TextStyle(
-                                fontSize: 12, color: Colors.white70),
-                          )
-                        ],
-                      ),
-                      ConstrainedBox(
-                        constraints: const BoxConstraints(
-                          minHeight: 0,
-                          minWidth: 0,
-                        ),
-                        child: SingleChildScrollView(
-                          child: Text(
-                            controller.videoDescription.value != null
-                                ? controller.videoDescription.value!
-                                : "",
-                            style: const TextStyle(
-                                fontSize: 12, color: Colors.white70),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                // Comments Section
-                Column(
-                  children: [
-                    NotificationListener<ScrollNotification>(
-                      onNotification: (ScrollNotification scrollInfo) {
-                        if (scrollInfo.metrics.pixels ==
-                            scrollInfo.metrics.maxScrollExtent) {
-                          controller.loadMoreComments();
-                        }
-                        return true;
-                      },
-                      child: ListView.separated(
-                        separatorBuilder: (a, b) => const CustomDivider(),
-                        itemCount: controller.commentsThreadList.length +
-                            (controller.loadingComments.value ? 1 : 0),
-                        itemBuilder: (context, index) {
-                          if (index == controller.commentsThreadList.length) {
-                            return const Center(
-                              child: Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: CircularProgressIndicator(),
-                              ),
-                            );
-                          }
-                          final comment =
-                              controller.commentsThreadList.elementAt(index);
-                          return Column(
-                            children: [
-                              CommentWidget(
-                                comment: comment.snippet.topLevelComment,
-                                replies: comment.replies?.comments,
-                              ),
-                            ],
-                          );
-                        },
-                      ),
-                    )
-                  ],
-                ),
-              ],
-            );
-          },
-        ));
-  }
 
   @override
   Widget build(BuildContext context) {

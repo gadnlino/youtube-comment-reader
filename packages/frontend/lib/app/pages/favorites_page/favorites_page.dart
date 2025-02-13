@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:frontend/app/common/api/bjj_api.dart';
 import 'package:frontend/app/common/api/youtube_comment_viewer_api.dart';
+import 'package:frontend/app/common/components/comment_widget.dart';
 import 'package:frontend/app/common/components/custom_bottom_navigation_bar.dart';
 import 'package:frontend/app/common/components/custom_button.dart';
 import 'package:frontend/app/common/components/custom_divider.dart';
@@ -39,7 +40,7 @@ class FavoritesPageBinding implements Bindings {
 class FavoritesPageController extends GetxController {
   final FavoriteManager _favoriteManager = FavoriteManager();
 
-  Rx<bool> loadingMoreVideos = Rx(false);
+  Rx<bool> loading = Rx(false);
 
   RxList<YouTubeSearchItem> videoFavorites = RxList();
   RxList<CommentFavorite> commentFavorites = RxList();
@@ -47,8 +48,13 @@ class FavoritesPageController extends GetxController {
   @override
   void onInit() {
     (() async {
-      await loadVideoFavorites();
-      await loadCommentFavorites();
+      try {
+        loading.value = true;
+        await loadVideoFavorites();
+        await loadCommentFavorites();
+      } finally {
+        loading.value = false;
+      }
     })();
 
     super.onInit();
@@ -108,107 +114,201 @@ class FavoritesPageController extends GetxController {
 class FavoritesPage extends GetView<FavoritesPageController> {
   const FavoritesPage({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    const pageTitle = "Favorites";
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text(pageTitle),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 3,
+  Widget videoFavoritesView(BuildContext context) {
+    return Obx(
+      () {
+        if (controller.loading.value) {
+          return const Center(
+            child: CircularProgressIndicator(
+              color: Colors.white,
+            ),
+          );
+        }
+
+        if (controller.videoFavorites.isEmpty) {
+          return const Expanded(
+              child: Center(
+            child: Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                "No videos favorited:(",
+                style: TextStyle(fontSize: 25, color: Colors.white),
               ),
-              child: IconButton(
-                onPressed: () {
-                  Get.defaultDialog(
-                      title: "Pesquisar videos",
-                      backgroundColor: Colors.white,
-                      radius: 5,
-                      content: Container(),
-                      textConfirm: "Pesquisar",
-                      textCancel: "Cancelar",
-                      confirmTextColor: Colors.white,
-                      onConfirm: () async {
-                        Navigation.goBack();
-                        // controller.customSearch();
-                      });
-                },
-                icon: const Icon(Icons.filter_alt),
-                color: Colors.white,
+            ),
+          ));
+        }
+
+        return Column(
+          children: [
+            Expanded(
+              child: LazyLoadScrollView(
+                isLoading: controller.loading.value,
+                onEndOfPage: () {},
+                scrollOffset: (MediaQuery.of(context).size.height - 50).toInt(),
+                child: ListView.separated(
+                    separatorBuilder: (context, index) => const CustomDivider(),
+                    itemCount: controller.videoFavorites.length,
+                    physics: const ClampingScrollPhysics(),
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    itemBuilder: (BuildContext context, int index) {
+                      var video = controller.videoFavorites.elementAt(index);
+                      return Column(
+                        children: [
+                          VideoWidget(
+                            video: video,
+                            favorited: controller.videoFavorites.any(
+                                (element) =>
+                                    element.id.videoId == video.id.videoId),
+                            onFavoriteTap: () {
+                              if (!controller.videoFavorites.any((element) =>
+                                  element.id.videoId == video.id.videoId)) {
+                                controller.addVideoFavorite(video);
+                              } else {
+                                controller.removeVideoFavorite(video);
+                              }
+                            },
+                            onTap: () {
+                              Navigation.popAndGoToPage(
+                                  pageRoute: videoCommentsPageRoute,
+                                  parameters: {
+                                    'videoId': video.id.videoId!,
+                                    'videoTitle': video.snippet.title,
+                                    'videoDescription':
+                                        video.snippet.description,
+                                    'thumbnailUrl':
+                                        video.snippet.thumbnails.high.url
+                                  });
+                            },
+                          ),
+                        ],
+                      );
+                    }),
               ),
             )
           ],
-          centerTitle: true,
-        ),
-        bottomNavigationBar: const CustomBottomNavigationBar(),
-        body: Obx(
-          () {
-            if (controller.loadingMoreVideos.value) {
-              return const Center(
-                child: CircularProgressIndicator(
-                  color: Colors.white,
-                ),
-              );
-            }
+        );
+      },
+    );
+  }
 
-            return Column(
-              children: [
-                Expanded(
-                  child: LazyLoadScrollView(
-                    isLoading: controller.loadingMoreVideos.value,
-                    // onEndOfPage: controller.loadMoreVideos,
-                    onEndOfPage: () {},
-                    scrollOffset:
-                        (MediaQuery.of(context).size.height - 50).toInt(),
-                    child: ListView.separated(
-                        separatorBuilder: (context, index) =>
-                            const CustomDivider(),
-                        itemCount: controller.videoFavorites.length,
-                        physics: const ClampingScrollPhysics(),
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        itemBuilder: (BuildContext context, int index) {
-                          var video =
-                              controller.videoFavorites.elementAt(index);
-                          return Column(
-                            children: [
-                              VideoWidget(
-                                video: video,
-                                favorited: controller.videoFavorites.any(
-                                    (element) =>
-                                        element.id.videoId == video.id.videoId),
-                                onFavoriteTap: () {
-                                  if (!controller.videoFavorites.any(
-                                      (element) =>
-                                          element.id.videoId ==
-                                          video.id.videoId)) {
-                                    controller.addVideoFavorite(video);
-                                  } else {
-                                    controller.removeVideoFavorite(video);
-                                  }
-                                },
-                                onTap: () {
-                                  Navigation.popAndGoToPage(
-                                      pageRoute: videoCommentsPageRoute,
-                                      parameters: {
-                                        'videoId': video.id.videoId!,
-                                        'videoTitle': video.snippet.title,
-                                        'videoDescription':
-                                            video.snippet.description,
-                                        'thumbnailUrl':
-                                            video.snippet.thumbnails.high.url
-                                      });
-                                },
+  Widget commentFavoritesView(BuildContext context) {
+    return Obx(
+      () {
+        if (controller.loading.value) {
+          return const Center(
+            child: CircularProgressIndicator(
+              color: Colors.white,
+            ),
+          );
+        }
+
+        if (controller.commentFavorites.isEmpty) {
+          return const Expanded(
+              child: Center(
+            child: Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                "No comments favorited:(",
+                style: TextStyle(fontSize: 25, color: Colors.white),
+              ),
+            ),
+          ));
+        }
+
+        return Column(
+          children: [
+            Expanded(
+              child: LazyLoadScrollView(
+                isLoading: controller.loading.value,
+                // onEndOfPage: controller.loadMoreVideos,
+                onEndOfPage: () {},
+                scrollOffset: (MediaQuery.of(context).size.height - 50).toInt(),
+                child: ListView.separated(
+                    separatorBuilder: (context, index) => const CustomDivider(),
+                    itemCount: controller.commentFavorites.length,
+                    physics: const ClampingScrollPhysics(),
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    itemBuilder: (BuildContext context, int index) {
+                      var comment =
+                          controller.commentFavorites.elementAt(index);
+                      return Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 4.0),
+                            child: Text(
+                              comment.videoTitle!,
+                              style: const TextStyle(
+                                  color: Colors.white, fontSize: 15),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 2.0, horizontal: 6.0),
+                              child: Text(
+                                '${comment.channelTitle} · ${Utils.formatDateOrNull(DateTime.parse(comment.videoPublishedAt!), 'dd/MM/yyyy')}',
+                                style: TextStyle(
+                                    fontSize: 12, color: Colors.grey[200]),
                               ),
-                            ],
-                          );
-                        }),
-                  ),
-                )
+                            ),
+                          ),
+                          CommentWidget(
+                            comment: comment.comment!,
+                            replies: comment.replies,
+                            favorited: controller.commentFavorites.any(
+                                (element) =>
+                                    element.comment?.id == comment.comment?.id),
+                            onFavoriteTap: () {
+                              if (!controller.commentFavorites.any((element) =>
+                                  element.comment?.id == comment.comment?.id)) {
+                                controller.addCommentFavorite(
+                                    comment.comment!, comment.replies);
+                              } else {
+                                controller
+                                    .removeCommentFavorite(comment.comment!);
+                              }
+                            },
+                          ),
+                        ],
+                      );
+                    }),
+              ),
+            )
+          ],
+        );
+      },
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    const pageTitle = "Favorites";
+    return DefaultTabController(
+        length: 2,
+        child: Scaffold(
+            appBar: AppBar(
+              title: const Text(pageTitle),
+              centerTitle: true,
+              bottom: const TabBar(tabs: [
+                Tab(
+                  text: "Comments",
+                  icon: Icon(Icons.comment),
+                ),
+                Tab(
+                  text: "Videos",
+                  icon: Icon(Icons.video_library),
+                ),
+              ]),
+            ),
+            bottomNavigationBar: const CustomBottomNavigationBar(),
+            body: TabBarView(
+              children: [
+                commentFavoritesView(context),
+                videoFavoritesView(context),
               ],
-            );
-          },
-        ));
+            )));
   }
 }

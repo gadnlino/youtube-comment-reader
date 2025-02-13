@@ -767,6 +767,8 @@ class CommentFavorite {
   String? videoTitle;
   String? videoDescription;
   String? videoThumbnailUrl;
+  String? channelTitle;
+  String? videoPublishedAt;
 
   CommentFavorite(
       {this.comment,
@@ -774,7 +776,9 @@ class CommentFavorite {
       this.videoId,
       this.videoTitle,
       this.videoDescription,
-      this.videoThumbnailUrl});
+      this.videoThumbnailUrl,
+      this.channelTitle,
+      this.videoPublishedAt});
 
   factory CommentFavorite.fromJson(Map<String, dynamic> json) {
     return CommentFavorite(
@@ -788,6 +792,8 @@ class CommentFavorite {
       videoTitle: json['videoTitle'],
       videoDescription: json['videoDescription'],
       videoThumbnailUrl: json['videoThumbnailUrl'],
+      channelTitle: json['channelTitle'],
+      videoPublishedAt: json['videoPublishedAt'],
     );
   }
 
@@ -799,6 +805,8 @@ class CommentFavorite {
       'videoTitle': videoTitle,
       'videoDescription': videoDescription,
       'videoThumbnailUrl': videoThumbnailUrl,
+      'channelTitle': channelTitle,
+      'videoPublishedAt': videoPublishedAt,
     };
   }
 }
