@@ -13,6 +13,7 @@ import 'package:frontend/app/common/exceptions/CommentsDisabledException.dart';
 import 'package:frontend/app/common/models/dto/pessoa_graduacao_dto.dart';
 import 'package:frontend/app/common/models/enums/graduacao_enum.dart';
 import 'package:frontend/app/common/models/models.dart';
+import 'package:frontend/app/common/utils/favorite_manager.dart';
 
 import 'package:frontend/app/common/utils/navigation.dart';
 import 'package:frontend/app/common/utils/utils.dart';
@@ -33,6 +34,7 @@ class VideoCommentsPageBinding implements Bindings {
 
 class VideoCommentsPageController extends GetxController {
   final _ycvApi = YoutubeCommentViewerApi();
+  final FavoriteManager _favoriteManager = FavoriteManager();
 
   Rx<bool> loading = Rx(false);
   Rx<bool> loadingComments = Rx(false);
@@ -44,6 +46,8 @@ class VideoCommentsPageController extends GetxController {
   Rxn<YouTubeCommentThreadsParams> searchParams = Rxn(null);
   RxList<YouTubeCommentThread> commentsThreadList = RxList();
   Rx<bool> commentsDisabledForVideo = Rx(false);
+
+  RxList<CommentFavorite> commentFavorites = RxList();
 
   @override
   void onInit() {
@@ -65,6 +69,8 @@ class VideoCommentsPageController extends GetxController {
               videoCommentsLastResponse.value!.items.isNotEmpty) {
             commentsThreadList.value = videoCommentsLastResponse.value!.items;
           }
+
+          await loadCommentFavorites();
         }
       } on CommentsDisabledException {
         commentsDisabledForVideo.value = true;
@@ -94,6 +100,37 @@ class VideoCommentsPageController extends GetxController {
     } finally {
       loadingComments.value = false;
     }
+  }
+
+  loadCommentFavorites() async {
+    var favorites = await _favoriteManager.getCommentFavorites();
+
+    if (favorites != null) {
+      commentFavorites.value = favorites;
+    }
+  }
+
+  addCommentFavorite(
+      YouTubeComment comment, List<YouTubeComment>? replies) async {
+    CommentFavorite favorite = CommentFavorite(
+        comment: comment,
+        replies: replies,
+        videoId: videoId.value,
+        videoDescription: videoDescription.value,
+        videoThumbnailUrl: videoThumbnailUrl.value,
+        videoTitle: videoTitle.value);
+
+    commentFavorites.add(favorite);
+
+    await _favoriteManager.addCommentFavorite(favorite);
+  }
+
+  removeCommentFavorite(YouTubeComment comment) async {
+    commentFavorites.value = commentFavorites
+        .where((element) => element.comment?.id != comment.id)
+        .toList();
+
+    await _favoriteManager.removeCommentFavorite(comment);
   }
 }
 
@@ -322,11 +359,14 @@ class VideoCommentsPage extends GetView<VideoCommentsPageController> {
 }
 
 class CommentWidget extends StatelessWidget {
+  final VideoCommentsPageController controller =
+      Get.find<VideoCommentsPageController>();
+
   final YouTubeComment comment;
   final List<YouTubeComment>? replies;
   final int level; // Depth level for indentation
 
-  const CommentWidget({
+  CommentWidget({
     super.key,
     required this.comment,
     this.replies,
@@ -373,7 +413,7 @@ class CommentWidget extends StatelessWidget {
                 comment.snippet.likeCount.toString(),
                 style: const TextStyle(color: Colors.white),
               ),
-              const SizedBox(width: 16.0),
+              const SizedBox(width: 4.0),
               if (replies != null && replies!.isNotEmpty)
                 const Icon(Icons.comment, size: 16, color: Colors.grey),
               if (replies != null && replies!.isNotEmpty)
@@ -382,6 +422,20 @@ class CommentWidget extends StatelessWidget {
                 Text(
                     "${replies!.length} ${replies!.length == 1 ? 'reply' : 'replies'}",
                     style: const TextStyle(color: Colors.white)),
+              Obx(() => IconButton(
+                  onPressed: () {
+                    if (!controller.commentFavorites
+                        .any((element) => element.comment?.id == comment.id)) {
+                      controller.addCommentFavorite(comment, replies);
+                    } else {
+                      controller.removeCommentFavorite(comment);
+                    }
+                  },
+                  icon: Icon(Icons.star,
+                      color: controller.commentFavorites.any(
+                              (element) => element.comment?.id == comment.id)
+                          ? Colors.yellow
+                          : Colors.white)))
             ],
           ),
           const SizedBox(height: 4.0),

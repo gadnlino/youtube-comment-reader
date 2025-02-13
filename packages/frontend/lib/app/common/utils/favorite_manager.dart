@@ -26,7 +26,7 @@ class FavoriteManager {
   Future addVideoFavorite(YouTubeSearchItem video) async {
     String? resultStr = await _cachePackage.getString(videoCacheKey);
 
-    List<YouTubeSearchItem>? result = List.empty();
+    List<YouTubeSearchItem>? result = List.empty(growable: true);
 
     if (resultStr != null && resultStr.isNotEmpty) {
       result = (jsonDecode(resultStr) as List)
@@ -42,7 +42,7 @@ class FavoriteManager {
   Future removeVideoFavorite(YouTubeSearchItem video) async {
     String? resultStr = await _cachePackage.getString(videoCacheKey);
 
-    List<YouTubeSearchItem>? result = List.empty();
+    List<YouTubeSearchItem>? result = List.empty(growable: true);
 
     if (resultStr != null && resultStr.isNotEmpty) {
       result = (jsonDecode(resultStr) as List)
@@ -69,9 +69,9 @@ class FavoriteManager {
   }
 
   Future addCommentFavorite(CommentFavorite comment) async {
-    String? resultStr = await _cachePackage.getString(videoCacheKey);
+    String? resultStr = await _cachePackage.getString(commentsCacheKey);
 
-    List<CommentFavorite>? result = List.empty();
+    List<CommentFavorite>? result = List.empty(growable: true);
 
     if (resultStr != null && resultStr.isNotEmpty) {
       result = (jsonDecode(resultStr) as List)
@@ -81,21 +81,21 @@ class FavoriteManager {
 
     result.add(comment);
 
-    await _cachePackage.putString(videoCacheKey, jsonEncode(result));
+    await _cachePackage.putString(commentsCacheKey, jsonEncode(result));
   }
 
-  Future removeCommentFavorite(CommentFavorite comment) async {
-    String? resultStr = await _cachePackage.getString(videoCacheKey);
+  Future removeCommentFavorite(YouTubeComment comment) async {
+    String? resultStr = await _cachePackage.getString(commentsCacheKey);
 
-    List<CommentFavorite>? result = List.empty();
+    List<CommentFavorite>? result = List.empty(growable: true);
 
     if (resultStr != null && resultStr.isNotEmpty) {
       result = (jsonDecode(resultStr) as List)
           .map((e) => CommentFavorite.fromJson(e))
-          .where((element) => element.comment?.id != comment.comment?.id)
+          .where((element) => element.comment?.id != comment.id)
           .toList();
     }
 
-    await _cachePackage.putString(videoCacheKey, jsonEncode(result));
+    await _cachePackage.putString(commentsCacheKey, jsonEncode(result));
   }
 }

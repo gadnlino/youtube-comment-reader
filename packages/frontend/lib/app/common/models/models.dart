@@ -779,9 +779,11 @@ class CommentFavorite {
   factory CommentFavorite.fromJson(Map<String, dynamic> json) {
     return CommentFavorite(
       comment: YouTubeComment.fromJson(json['comment']),
-      replies: (json['replies'] as List)
-          .map((e) => YouTubeComment.fromJson(e))
-          .toList(),
+      replies: json.containsKey('replies') && json['replies'] != null
+          ? (json['replies'] as List)
+              .map((e) => YouTubeComment.fromJson(e))
+              .toList()
+          : null,
       videoId: json['videoId'],
       videoTitle: json['videoTitle'],
       videoDescription: json['videoDescription'],

@@ -47,7 +47,6 @@ class VideoSearchPageController extends GetxController {
   RxList<YouTubeSearchItem> videoSearchList = RxList();
 
   RxList<YouTubeSearchItem> videoFavorites = RxList();
-  RxList<YouTubeCommentThreadSnippet> commentFavorites = RxList();
 
   @override
   void onInit() {
@@ -201,24 +200,22 @@ class VideoSearchPage extends GetView<VideoSearchPageController> {
                 ],
               ),
             ),
-            Obx(() => Center(
-                  child: IconButton(
-                    icon: Icon(
-                      Icons.star,
-                      color: controller.videoFavorites.any((element) =>
-                              element.id.videoId == item.id.videoId)
-                          ? Colors.yellow
-                          : Colors.white,
-                    ),
-                    onPressed: () {
-                      if (!controller.videoFavorites.any(
-                          (element) => element.id.videoId == item.id.videoId)) {
-                        controller.addVideoFavorite(item);
-                      } else {
-                        controller.removeVideoFavorite(item);
-                      }
-                    },
+            Obx(() => IconButton(
+                  icon: Icon(
+                    Icons.star,
+                    color: controller.videoFavorites.any(
+                            (element) => element.id.videoId == item.id.videoId)
+                        ? Colors.yellow
+                        : Colors.white,
                   ),
+                  onPressed: () {
+                    if (!controller.videoFavorites.any(
+                        (element) => element.id.videoId == item.id.videoId)) {
+                      controller.addVideoFavorite(item);
+                    } else {
+                      controller.removeVideoFavorite(item);
+                    }
+                  },
                 )),
           ],
         ),
