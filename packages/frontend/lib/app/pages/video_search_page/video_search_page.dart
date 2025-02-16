@@ -1,28 +1,9 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:frontend/app/common/api/bjj_api.dart';
-import 'package:frontend/app/common/api/youtube_comment_viewer_api.dart';
 import 'package:frontend/app/common/components/custom_bottom_navigation_bar.dart';
-import 'package:frontend/app/common/components/custom_button.dart';
 import 'package:frontend/app/common/components/custom_divider.dart';
-
-import 'package:frontend/app/common/components/ranking_card.dart';
 import 'package:frontend/app/common/components/video_widget.dart';
-import 'package:frontend/app/common/controllers/access_control_controller.dart';
-
-import 'package:frontend/app/common/models/dto/pessoa_graduacao_dto.dart';
-import 'package:frontend/app/common/models/enums/graduacao_enum.dart';
-import 'package:frontend/app/common/models/models.dart';
-import 'package:frontend/app/common/packages/cache_package.dart';
-import 'package:frontend/app/common/utils/favorite_manager.dart';
-
+import 'package:frontend/app/common/controllers/video_search_page_controller.dart';
 import 'package:frontend/app/common/utils/navigation.dart';
-import 'package:frontend/app/common/utils/utils.dart';
-import 'package:frontend/app/pages/advance_ranking_page/advance_ranking_page.dart';
-import 'package:frontend/app/pages/profile_page/profile_page.dart';
-import 'package:frontend/app/pages/ranking_selection_page/ranking_selection_page.dart';
 import 'package:frontend/app/pages/video_comments_page/video_comments_page.dart';
 import 'package:get/get.dart';
 import 'package:lazy_load_scrollview/lazy_load_scrollview.dart';
@@ -33,101 +14,6 @@ class VideoSearchPageBinding implements Bindings {
   @override
   void dependencies() {
     Get.lazyPut(() => VideoSearchPageController());
-  }
-}
-
-class VideoSearchPageController extends GetxController {
-  final _ycvApi = YoutubeCommentViewerApi();
-  final _defaultSearchParams = YouTubeSearchParams(maxResults: 10);
-  final FavoriteManager _favoriteManager = FavoriteManager();
-
-  Rx<bool> loadingMoreVideos = Rx(false);
-  Rx<bool> reloading = Rx(false);
-  Rxn<YouTubeSearchResponse> videoSearchLastResponse = Rxn(null);
-  Rxn<YouTubeSearchParams> searchParams = Rxn();
-  RxList<YouTubeSearchItem> videoSearchList = RxList();
-
-  RxList<YouTubeSearchItem> videoFavorites = RxList();
-
-  @override
-  void onInit() {
-    searchParams.value = _defaultSearchParams;
-    (() async {
-      loadMoreVideos();
-      loadFavorites();
-    })();
-
-    super.onInit();
-  }
-
-  loadMoreVideos() async {
-    try {
-      loadingMoreVideos.value = true;
-
-      debugPrint("carregando mais videos");
-
-      var searchResponse = await _ycvApi.searchVideos(searchParams.value!);
-
-      if (searchResponse != null && searchResponse.items.isNotEmpty) {
-        for (var element in searchResponse.items) {
-          videoSearchList.add(element);
-        }
-      }
-
-      videoSearchLastResponse.value = searchResponse;
-      searchParams.value?.pageToken = searchResponse?.nextPageToken;
-    } finally {
-      loadingMoreVideos.value = false;
-    }
-  }
-
-  reload() async {
-    if (!reloading.value) {
-      searchParams.value = _defaultSearchParams;
-      videoSearchList = RxList<YouTubeSearchItem>();
-
-      try {
-        reloading.value = true;
-        await loadMoreVideos();
-      } finally {
-        reloading.value = false;
-      }
-    }
-  }
-
-  customSearch() async {
-    if (!reloading.value) {
-      videoSearchList = RxList<YouTubeSearchItem>();
-
-      try {
-        reloading.value = true;
-        await loadMoreVideos();
-      } finally {
-        reloading.value = false;
-      }
-    }
-  }
-
-  loadFavorites() async {
-    var favorites = await _favoriteManager.getVideoFavorites();
-
-    if (favorites != null) {
-      videoFavorites.value = favorites;
-    }
-  }
-
-  addVideoFavorite(YouTubeSearchItem video) async {
-    videoFavorites.add(video);
-
-    await _favoriteManager.addVideoFavorite(video);
-  }
-
-  removeVideoFavorite(YouTubeSearchItem video) async {
-    videoFavorites.value = videoFavorites
-        .where((element) => element.id.videoId != video.id.videoId)
-        .toList();
-
-    await _favoriteManager.removeVideoFavorite(video);
   }
 }
 

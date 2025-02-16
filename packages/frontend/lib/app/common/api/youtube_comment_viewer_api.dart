@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:frontend/app/common/exceptions/CommentsDisabledException.dart';
+import 'package:frontend/app/common/exceptions/comments_disabled_exception.dart';
 import 'package:frontend/app/common/models/academia.dart';
 import 'package:frontend/app/common/models/dto/pessoa_academia_dto.dart';
 import 'package:frontend/app/common/models/dto/pessoa_federacao_dto.dart';

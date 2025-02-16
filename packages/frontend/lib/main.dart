@@ -1,11 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:frontend/app/common/controllers/access_control_controller.dart';
-import 'package:flutter/material.dart';
-import 'package:frontend/app/common/controllers/academia_controller.dart';
 import 'package:frontend/app/common/controllers/bottom_navigation_bar_controller.dart';
-import 'package:frontend/app/common/controllers/federacao_controller.dart';
+import 'package:frontend/app/common/controllers/favorites_page_controller.dart';
 import 'package:frontend/app/common/controllers/media_controller.dart';
+import 'package:frontend/app/common/controllers/video_comments_page_controller.dart';
+import 'package:frontend/app/common/controllers/video_search_page_controller.dart';
 import 'package:frontend/app/common/themes/app_theme.dart';
 import 'package:frontend/app/pages/favorites_page/favorites_page.dart';
 import 'package:frontend/app/pages/video_comments_page/video_comments_page.dart';
@@ -30,14 +31,14 @@ Future main() async {
   Get.put(MediaController(), permanent: true);
   Get.put(AccessControlController(), permanent: true);
   Get.put(BottomNavigationBarController(), permanent: true);
-  Get.put(AcademiaController());
-  Get.put(FederacaoController());
+  Get.put(VideoSearchPageController(), permanent: true);
+  Get.put(VideoCommentsPageController(), permanent: true);
+  Get.put(FavoritesPageController(), permanent: true);
 
   runApp(GetMaterialApp(
     theme: appThemeData,
     initialRoute: '/',
     getPages: [
-      // GetPage(name: '/', page: () => LoginPage()),
       GetPage(
         name: '/',
         page: () => const VideoSearchPage(),
