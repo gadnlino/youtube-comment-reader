@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:frontend/app/common/api/youtube_comment_viewer_api.dart';
 import 'package:frontend/app/common/exceptions/comments_disabled_exception.dart';
 import 'package:frontend/app/common/models/models.dart';
@@ -10,17 +12,14 @@ class VideoCommentsPageController extends GetxController {
 
   Rx<bool> loading = Rx(false);
   Rx<bool> loadingComments = Rx(false);
-  Rxn<String> videoId = Rxn();
-  Rxn<String> videoTitle = Rxn();
-  Rxn<String> videoDescription = Rxn();
-  Rxn<String> videoThumbnailUrl = Rxn();
-  Rxn<String> channelTitle = Rxn();
-  Rxn<String> videoPublishedAt = Rxn();
-  Rxn<YouTubeCommentThreadsResponse> videoCommentsLastResponse = Rxn(null);
-  Rxn<YouTubeCommentThreadsParams> searchParams = Rxn(null);
+  Rxn<YouTubeSearchItem> selectedVideo = Rxn();
+
+  Rxn<YouTubeCommentThreadsResponse> videoCommentsLastResponse = Rxn();
+  Rxn<YouTubeCommentThreadsParams> searchParams = Rxn();
   RxList<YouTubeCommentThread> commentsThreadList = RxList();
   Rx<bool> commentsDisabledForVideo = Rx(false);
 
+  RxList<YouTubeSearchItem> videoFavorites = RxList();
   RxList<CommentFavorite> commentFavorites = RxList();
 
   @override
@@ -29,25 +28,25 @@ class VideoCommentsPageController extends GetxController {
       try {
         loading.value = true;
 
-        videoId.value = Get.parameters['videoId'];
-        videoTitle.value = Get.parameters['videoTitle'];
-        videoDescription.value = Get.parameters['videoDescription'];
-        videoThumbnailUrl.value = Get.parameters['thumbnailUrl'];
-        channelTitle.value = Get.parameters['channelTitle'];
-        videoPublishedAt.value = Get.parameters['publishedAt'];
+        selectedVideo.value =
+            YouTubeSearchItem.fromJson(jsonDecode(Get.parameters['video']!));
 
-        if (videoId.value != null && videoId.value!.isNotEmpty) {
+        if (selectedVideo.value != null &&
+            selectedVideo.value!.id.videoId != null &&
+            selectedVideo.value!.id.videoId!.isNotEmpty) {
           videoCommentsLastResponse.value = await _ycvApi.fetchComments(
               YouTubeCommentThreadsParams(
-                  videoId: videoId.value, part: 'snippet,replies'));
+                  videoId: selectedVideo.value!.id.videoId,
+                  part: 'snippet,replies'));
 
           if (videoCommentsLastResponse.value != null &&
               videoCommentsLastResponse.value!.items.isNotEmpty) {
             commentsThreadList.value = videoCommentsLastResponse.value!.items;
           }
-
-          await loadCommentFavorites();
         }
+
+        await loadCommentFavorites();
+        await loadVideoFavorites();
       } on CommentsDisabledException {
         commentsDisabledForVideo.value = true;
       } finally {
@@ -64,7 +63,7 @@ class VideoCommentsPageController extends GetxController {
 
       var searchResponse = await _ycvApi.fetchComments(
           YouTubeCommentThreadsParams(
-              videoId: videoId.value,
+              videoId: selectedVideo.value!.id.videoId,
               pageToken: videoCommentsLastResponse.value!.nextPageToken,
               part: 'snippet,replies'));
 
@@ -91,12 +90,12 @@ class VideoCommentsPageController extends GetxController {
     CommentFavorite favorite = CommentFavorite(
         comment: comment,
         replies: replies,
-        videoId: videoId.value,
-        videoDescription: videoDescription.value,
-        videoThumbnailUrl: videoThumbnailUrl.value,
-        videoTitle: videoTitle.value,
-        channelTitle: channelTitle.value,
-        videoPublishedAt: videoPublishedAt.value);
+        videoId: selectedVideo.value!.id.videoId,
+        videoDescription: selectedVideo.value!.snippet.description,
+        videoThumbnailUrl: selectedVideo.value!.snippet.thumbnails.high.url,
+        videoTitle: selectedVideo.value!.snippet.title,
+        channelTitle: selectedVideo.value!.snippet.channelTitle,
+        videoPublishedAt: selectedVideo.value!.snippet.publishedAt);
 
     commentFavorites.add(favorite);
 
@@ -109,5 +108,27 @@ class VideoCommentsPageController extends GetxController {
         .toList();
 
     await _favoriteManager.removeCommentFavorite(comment);
+  }
+
+  loadVideoFavorites() async {
+    var favorites = await _favoriteManager.getVideoFavorites();
+
+    if (favorites != null) {
+      videoFavorites.value = favorites;
+    }
+  }
+
+  addVideoFavorite(YouTubeSearchItem video) async {
+    videoFavorites.add(video);
+
+    await _favoriteManager.addVideoFavorite(video);
+  }
+
+  removeVideoFavorite(YouTubeSearchItem video) async {
+    videoFavorites.value = videoFavorites
+        .where((element) => element.id.videoId != video.id.videoId)
+        .toList();
+
+    await _favoriteManager.removeVideoFavorite(video);
   }
 }

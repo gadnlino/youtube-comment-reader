@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:frontend/app/common/components/custom_bottom_navigation_bar.dart';
 import 'package:frontend/app/common/components/custom_divider.dart';
@@ -140,16 +142,7 @@ class VideoSearchPage extends GetView<VideoSearchPageController> {
                                     Navigation.popAndGoToPage(
                                         pageRoute: videoCommentsPageRoute,
                                         parameters: {
-                                          'videoId': video.id.videoId!,
-                                          'videoTitle': video.snippet.title,
-                                          'videoDescription':
-                                              video.snippet.description,
-                                          'thumbnailUrl':
-                                              video.snippet.thumbnails.high.url,
-                                          'channelTitle':
-                                              video.snippet.channelTitle,
-                                          'publishedAt':
-                                              video.snippet.publishedAt,
+                                          'video': jsonEncode(video)
                                         });
                                   },
                                 ),

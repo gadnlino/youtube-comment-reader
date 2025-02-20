@@ -20,7 +20,7 @@ class BottomNavigationBarController extends GetxController {
       "visible": true
     },
     {
-      "label": "Favoritos",
+      "label": "Favorites",
       "icon": Icons.star,
       "route": favoritesPageRoute,
       "visible": true

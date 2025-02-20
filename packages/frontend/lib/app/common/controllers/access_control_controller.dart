@@ -19,7 +19,6 @@ class AccessControlController extends GetxController {
   final _cachePackage = CachePackage();
   final GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ["profile", "email"]);
   final BjjApi _bjjApi = BjjApi();
-  // final _pessoaController = Get.find<PessoaController>();
   final _mediaController = Get.find<MediaController>();
   Rxn<Pessoa> pessoaLogada = Rxn(null);
   Rxn<File> arquivoFotoPessoa = Rxn(null);

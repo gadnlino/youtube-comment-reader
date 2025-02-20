@@ -31,9 +31,6 @@ Future main() async {
   Get.put(MediaController(), permanent: true);
   Get.put(AccessControlController(), permanent: true);
   Get.put(BottomNavigationBarController(), permanent: true);
-  Get.put(VideoSearchPageController(), permanent: true);
-  Get.put(VideoCommentsPageController(), permanent: true);
-  Get.put(FavoritesPageController(), permanent: true);
 
   runApp(GetMaterialApp(
     theme: appThemeData,

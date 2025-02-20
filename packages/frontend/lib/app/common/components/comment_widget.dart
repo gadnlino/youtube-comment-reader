@@ -20,7 +20,7 @@ class CommentWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-          left: level * 12.0 + 10, top: 8.0, bottom: 8.0, right: 8.0),
+          left: level * 12.0 + 5.0, top: 8.0, bottom: 8.0, right: 8.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

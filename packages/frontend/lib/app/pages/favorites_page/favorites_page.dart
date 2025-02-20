@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:frontend/app/common/components/comment_widget.dart';
 import 'package:frontend/app/common/components/custom_bottom_navigation_bar.dart';
@@ -79,14 +81,7 @@ class FavoritesPage extends GetView<FavoritesPageController> {
                             onTap: () {
                               Navigation.popAndGoToPage(
                                   pageRoute: videoCommentsPageRoute,
-                                  parameters: {
-                                    'videoId': video.id.videoId!,
-                                    'videoTitle': video.snippet.title,
-                                    'videoDescription':
-                                        video.snippet.description,
-                                    'thumbnailUrl':
-                                        video.snippet.thumbnails.high.url
-                                  });
+                                  parameters: {'video': jsonEncode(video)});
                             },
                           ),
                         ],
