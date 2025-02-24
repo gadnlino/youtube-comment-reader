@@ -4,6 +4,7 @@ import 'package:frontend/app/common/utils/navigation.dart';
 import 'package:frontend/app/common/utils/utils.dart';
 import 'package:frontend/app/pages/favorites_page/favorites_page.dart';
 import 'package:get/get.dart';
+import 'package:html_unescape/html_unescape.dart';
 
 class VideoWidget extends StatelessWidget {
   final YouTubeSearchItem video;
@@ -55,13 +56,13 @@ class VideoWidget extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(width: 20),
+            const SizedBox(width: 10),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    video.snippet.title,
+                    HtmlUnescape().convert(video.snippet.title),
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(

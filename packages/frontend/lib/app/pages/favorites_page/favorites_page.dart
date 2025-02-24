@@ -10,6 +10,7 @@ import 'package:frontend/app/common/utils/navigation.dart';
 import 'package:frontend/app/common/utils/utils.dart';
 import 'package:frontend/app/pages/video_comments_page/video_comments_page.dart';
 import 'package:get/get.dart';
+import 'package:html_unescape/html_unescape.dart';
 import 'package:lazy_load_scrollview/lazy_load_scrollview.dart';
 
 const String favoritesPageRoute = "/favorites";
@@ -141,7 +142,7 @@ class FavoritesPage extends GetView<FavoritesPageController> {
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 4.0),
                             child: Text(
-                              comment.videoTitle!,
+                              HtmlUnescape().convert(comment.videoTitle!),
                               style: const TextStyle(
                                   color: Colors.white, fontSize: 15),
                             ),
@@ -195,16 +196,20 @@ class FavoritesPage extends GetView<FavoritesPageController> {
             appBar: AppBar(
               title: const Text(pageTitle),
               centerTitle: true,
-              bottom: const TabBar(tabs: [
-                Tab(
-                  text: "Comments",
-                  icon: Icon(Icons.comment),
-                ),
-                Tab(
-                  text: "Videos",
-                  icon: Icon(Icons.video_library),
-                ),
-              ]),
+              bottom: const TabBar(
+                  indicatorColor: Colors.yellow,
+                  labelColor: Colors.yellow,
+                  unselectedLabelColor: Colors.white,
+                  tabs: [
+                    Tab(
+                      text: "Comments",
+                      icon: Icon(Icons.comment),
+                    ),
+                    Tab(
+                      text: "Videos",
+                      icon: Icon(Icons.video_library),
+                    ),
+                  ]),
             ),
             bottomNavigationBar: const CustomBottomNavigationBar(),
             body: TabBarView(

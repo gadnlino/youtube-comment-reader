@@ -5,6 +5,7 @@ import 'package:frontend/app/common/controllers/video_comments_page_controller.d
 import 'package:frontend/app/common/utils/navigation.dart';
 import 'package:frontend/app/pages/video_search_page/video_search_page.dart';
 import 'package:get/get.dart';
+import 'package:html_unescape/html_unescape.dart';
 
 const String videoCommentsPageRoute = "/video-comments";
 
@@ -26,7 +27,6 @@ class VideoCommentsPage extends GetView<VideoCommentsPageController> {
           title: Text(pageTitle),
           leading: IconButton(
               onPressed: () {
-                //Navigation.popAndGoToPage(pageRoute: videoSearchPageRoute);
                 Navigation.goBack();
               },
               icon: const Icon(Icons.arrow_back)),
@@ -55,7 +55,8 @@ class VideoCommentsPage extends GetView<VideoCommentsPageController> {
                       Flexible(
                           child: Text(
                         controller.selectedVideo.value != null
-                            ? controller.selectedVideo.value!.snippet.title
+                            ? HtmlUnescape().convert(
+                                controller.selectedVideo.value!.snippet.title)
                             : "",
                         style: const TextStyle(
                           fontSize: 15,
@@ -86,7 +87,7 @@ class VideoCommentsPage extends GetView<VideoCommentsPageController> {
                       )
                     ],
                   ),
-                  const SizedBox(height: 2),
+                  const SizedBox(height: 10),
                   if (controller.selectedVideo.value != null &&
                       controller.selectedVideo.value!.snippet.thumbnails.high
                           .url.isNotEmpty)

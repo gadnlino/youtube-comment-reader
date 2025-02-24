@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/app/common/models/models.dart';
+import 'package:html_unescape/html_unescape.dart';
 
 class CommentWidget extends StatelessWidget {
   final YouTubeComment comment;
@@ -41,7 +42,7 @@ class CommentWidget extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 4.0),
-          Text(comment.snippet.textOriginal,
+          Text(HtmlUnescape().convert(comment.snippet.textOriginal),
               style: const TextStyle(color: Colors.white)),
           const SizedBox(height: 4.0),
           Row(
