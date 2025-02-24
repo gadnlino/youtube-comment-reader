@@ -79,7 +79,7 @@ class FavoritesPage extends GetView<FavoritesPageController> {
                               }
                             },
                             onTap: () {
-                              Navigation.popAndGoToPage(
+                              Navigation.goToPage(
                                   pageRoute: videoCommentsPageRoute,
                                   parameters: {'video': jsonEncode(video)});
                             },
@@ -124,7 +124,6 @@ class FavoritesPage extends GetView<FavoritesPageController> {
             Expanded(
               child: LazyLoadScrollView(
                 isLoading: controller.loading.value,
-                // onEndOfPage: controller.loadMoreVideos,
                 onEndOfPage: () {},
                 scrollOffset: (MediaQuery.of(context).size.height - 50).toInt(),
                 child: ListView.separated(

@@ -26,7 +26,8 @@ class VideoCommentsPage extends GetView<VideoCommentsPageController> {
           title: Text(pageTitle),
           leading: IconButton(
               onPressed: () {
-                Navigation.popAndGoToPage(pageRoute: videoSearchPageRoute);
+                //Navigation.popAndGoToPage(pageRoute: videoSearchPageRoute);
+                Navigation.goBack();
               },
               icon: const Icon(Icons.arrow_back)),
         ),

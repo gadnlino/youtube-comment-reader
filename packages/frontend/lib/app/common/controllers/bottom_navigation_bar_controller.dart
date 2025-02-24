@@ -38,7 +38,7 @@ class BottomNavigationBarController extends GetxController {
   void onInit() {
     ever(currentIndex, (value) {
       String route = getVisibleItems()[value]["route"];
-      Navigation.popAndGoToPage(pageRoute: route);
+      Navigation.goToPage(pageRoute: route);
     });
 
     ever(accessControlController.ehProfessor, (value) {

@@ -139,7 +139,7 @@ class VideoSearchPage extends GetView<VideoSearchPageController> {
                                     }
                                   },
                                   onTap: () {
-                                    Navigation.popAndGoToPage(
+                                    Navigation.goToPage(
                                         pageRoute: videoCommentsPageRoute,
                                         parameters: {
                                           'video': jsonEncode(video)

@@ -6,13 +6,13 @@ class Navigation {
   }
 
   static goToPage(
-      {required String pageRoute, Map<String, String>? parameters}) {
-    Get.to(pageRoute, arguments: parameters);
+      {required String pageRoute, Map<String, String>? parameters}) async {
+    await Get.toNamed(pageRoute, parameters: parameters);
   }
 
   static popAndGoToPage(
-      {required String pageRoute, Map<String, String>? parameters}) {
-    Get.offAllNamed(pageRoute, parameters: parameters);
+      {required String pageRoute, Map<String, String>? parameters}) async {
+    await Get.offAllNamed(pageRoute, parameters: parameters);
   }
 
   static goBack() {
