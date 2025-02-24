@@ -72,16 +72,36 @@ class CommentWidget extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 4.0),
-          if (replies != null && replies!.isNotEmpty)
-            ListView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: replies != null ? replies!.length : 0,
-              itemBuilder: (context, index) {
-                return CommentWidget(
-                    comment: replies![index], level: level + 1);
-              },
-            ),
+          Builder(
+            builder: (context) {
+              if (replies != null && replies!.isNotEmpty) {
+                return ListTileTheme(
+                    minVerticalPadding: 0,
+                    child: ExpansionTile(
+                      tilePadding: EdgeInsets.zero,
+                      iconColor: Colors.white,
+                      collapsedIconColor: Colors.white,
+                      title: const Center(
+                        child: Text("Show replies",
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 13)),
+                      ),
+                      children: [
+                        ListView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: replies != null ? replies!.length : 0,
+                          itemBuilder: (context, index) {
+                            return CommentWidget(
+                                comment: replies![index], level: level + 1);
+                          },
+                        )
+                      ],
+                    ));
+              }
+              return Container();
+            },
+          ),
         ],
       ),
     );

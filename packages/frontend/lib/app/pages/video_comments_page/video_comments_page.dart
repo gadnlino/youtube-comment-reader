@@ -45,6 +45,7 @@ class VideoCommentsPage extends GetView<VideoCommentsPageController> {
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Column(
                 children: [
+                  const SizedBox(height: 10),
                   // Cabeçalho do Post
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
