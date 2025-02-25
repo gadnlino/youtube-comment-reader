@@ -6,6 +6,7 @@ import { YouTubeSearchItem, YouTubeSearchResponse, YouTubeComment, YouTubeCommen
 
 // YouTube API endpoints
 const SEARCH_API_URL = 'https://www.googleapis.com/youtube/v3/search';
+const LIST_VIDEOS_API_URL = 'https://www.googleapis.com/youtube/v3/videos';
 const COMMENT_THREADS_API_URL = 'https://www.googleapis.com/youtube/v3/commentThreads';
 const COMMENTS_API_URL = 'https://www.googleapis.com/youtube/v3/comments';
 
