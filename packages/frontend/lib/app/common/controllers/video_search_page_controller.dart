@@ -91,9 +91,8 @@ class VideoSearchPageController extends GetxController {
   }
 
   removeVideoFavorite(YouTubeSearchItem video) async {
-    videoFavorites.value = videoFavorites
-        .where((element) => element.id.videoId != video.id.videoId)
-        .toList();
+    videoFavorites.value =
+        videoFavorites.where((element) => element.id != video.id).toList();
 
     await _favoriteManager.removeVideoFavorite(video);
   }

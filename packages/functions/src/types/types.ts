@@ -111,7 +111,7 @@ export interface YouTubeSearchParams {
      * Specifies which part of the resource to include in the response.
      * For `search.list`, the value must be `snippet`.
      */
-    part: 'snippet';
+    part: 'snippet' | 'id';
 
     /**
      * Restricts the results to a specific type of resource.

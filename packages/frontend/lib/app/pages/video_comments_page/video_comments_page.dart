@@ -3,7 +3,6 @@ import 'package:frontend/app/common/components/comment_widget.dart';
 import 'package:frontend/app/common/components/custom_divider.dart';
 import 'package:frontend/app/common/controllers/video_comments_page_controller.dart';
 import 'package:frontend/app/common/utils/navigation.dart';
-import 'package:frontend/app/pages/video_search_page/video_search_page.dart';
 import 'package:get/get.dart';
 import 'package:html_unescape/html_unescape.dart';
 
@@ -19,6 +18,58 @@ class VideoCommentsPageBinding implements Bindings {
 class VideoCommentsPage extends GetView<VideoCommentsPageController> {
   final pageTitle = "Comments";
   const VideoCommentsPage({super.key});
+
+  Widget _videoDescriptionSection(BuildContext context, String description) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // Animated Size for smooth expanding/collapsing
+        AnimatedSize(
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeInOut,
+          child: ConstrainedBox(
+            constraints: controller.videoDescriptionExpanded.value
+                ? BoxConstraints(
+                    maxHeight: MediaQuery.of(context).size.height *
+                        .2) // No constraints when expanded
+                : BoxConstraints(
+                    maxHeight: MediaQuery.of(context).size.height *
+                        .045), // Limit height when collapsed
+            child: SingleChildScrollView(
+              child: Text(
+                HtmlUnescape().convert(description),
+                overflow: TextOverflow.fade,
+                softWrap: true,
+                style: const TextStyle(fontSize: 14, color: Colors.white70),
+              ),
+            ),
+          ),
+        ),
+
+        // Show More / Show Less button
+        GestureDetector(
+          onTap: () {
+            controller.videoDescriptionExpanded.value =
+                !controller.videoDescriptionExpanded.value;
+          },
+          child: Padding(
+            padding: const EdgeInsets.only(top: 5),
+            child: Center(
+              child: Text(
+                controller.videoDescriptionExpanded.value
+                    ? "Show less"
+                    : "Show more",
+                style: const TextStyle(
+                  color: Colors.white60,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,15 +119,15 @@ class VideoCommentsPage extends GetView<VideoCommentsPageController> {
                         icon: Icon(
                           Icons.star,
                           color: controller.videoFavorites.any((element) =>
-                                  element.id.videoId ==
-                                  controller.selectedVideo.value!.id.videoId)
+                                  element.id ==
+                                  controller.selectedVideo.value!.id)
                               ? Colors.yellow
                               : Colors.white,
                         ),
                         onPressed: () {
                           if (!controller.videoFavorites.any((element) =>
-                              element.id.videoId ==
-                              controller.selectedVideo.value!.id.videoId)) {
+                              element.id ==
+                              controller.selectedVideo.value!.id)) {
                             controller.addVideoFavorite(
                                 controller.selectedVideo.value!);
                           } else {
@@ -104,14 +155,8 @@ class VideoCommentsPage extends GetView<VideoCommentsPageController> {
                   if (controller.selectedVideo.value != null &&
                       controller
                           .selectedVideo.value!.snippet.description.isNotEmpty)
-                    Text(
-                      controller.selectedVideo.value!.snippet.description
-                              .isNotEmpty
-                          ? controller.selectedVideo.value!.snippet.description
-                          : "",
-                      style:
-                          const TextStyle(fontSize: 16, color: Colors.white70),
-                    ),
+                    _videoDescriptionSection(context,
+                        controller.selectedVideo.value!.snippet.description),
                   if (controller.selectedVideo.value != null &&
                       controller
                           .selectedVideo.value!.snippet.description.isNotEmpty)

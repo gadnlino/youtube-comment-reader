@@ -23,6 +23,24 @@ export async function searchVideos(params: YouTubeSearchParams): Promise<AxiosRe
     return response;
 }
 
+export async function listVideos(part: string, videoIds: string[]): Promise<AxiosResponse<YouTubeSearchResponse, any>> {
+    const params = {
+        part,
+        id: videoIds.join(',')
+    };
+
+    console.info(`executando ${LIST_VIDEOS_API_URL}, parametros: ${JSON.stringify(params)}`);
+
+    const response = await axios.get<YouTubeSearchResponse>(LIST_VIDEOS_API_URL, {
+        params: {
+            ...params,
+            key: API_KEY
+        },
+    });
+
+    return response;
+}
+
 export async function fetchComments(params: YouTubeCommentThreadsParams): Promise<AxiosResponse<YouTubeCommentThreadsResponse, any>> {
     console.info(`executando ${COMMENT_THREADS_API_URL}, parametros: ${JSON.stringify(params)}`);
 

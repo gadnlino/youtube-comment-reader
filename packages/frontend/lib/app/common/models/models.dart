@@ -436,8 +436,9 @@ class YouTubeSearchResponse {
 class YouTubeSearchItem {
   final String kind; // Resource type, e.g., "youtube#searchResult"
   final String etag; // ETag for the item
-  final YouTubeSearchItemId
-      id; // Contains the ID of the video, channel, or playlist
+  // final YouTubeSearchItemId
+  //     id; // Contains the ID of the video, channel, or playlist
+  final String id; // Contains the ID of the video, channel, or playlist
   final YouTubeSearchItemSnippet
       snippet; // Contains video metadata (title, description, etc.)
 
@@ -452,7 +453,8 @@ class YouTubeSearchItem {
     return YouTubeSearchItem(
       kind: json['kind'],
       etag: json['etag'],
-      id: YouTubeSearchItemId.fromJson(json['id']),
+      //id: YouTubeSearchItemId.fromJson(json['id']),
+      id: json['id'],
       snippet: YouTubeSearchItemSnippet.fromJson(json['snippet']),
     );
   }
@@ -461,7 +463,8 @@ class YouTubeSearchItem {
     return {
       'kind': kind,
       'etag': etag,
-      'id': id.toJson(),
+      //'id': id.toJson(),
+      'id': id,
       'snippet': snippet.toJson(),
     };
   }

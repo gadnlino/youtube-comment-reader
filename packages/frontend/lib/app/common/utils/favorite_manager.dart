@@ -47,7 +47,7 @@ class FavoriteManager {
     if (resultStr != null && resultStr.isNotEmpty) {
       result = (jsonDecode(resultStr) as List)
           .map((e) => YouTubeSearchItem.fromJson(e))
-          .where((element) => element.id.videoId != video.id.videoId)
+          .where((element) => element.id != video.id)
           .toList();
     }
 

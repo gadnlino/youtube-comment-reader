@@ -65,6 +65,7 @@ class VideoSearchPage extends GetView<VideoSearchPageController> {
     const pageTitle = "Youtube Comment Reader";
     return Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: const Text(pageTitle),
           actions: [
             Padding(
@@ -126,15 +127,11 @@ class VideoSearchPage extends GetView<VideoSearchPageController> {
                               Obx(
                                 () => VideoWidget(
                                   video: video,
-                                  favorited: controller.videoFavorites.any(
-                                      (element) =>
-                                          element.id.videoId ==
-                                          video.id.videoId),
+                                  favorited: controller.videoFavorites
+                                      .any((element) => element.id == video.id),
                                   onFavoriteTap: () {
                                     if (!controller.videoFavorites.any(
-                                        (element) =>
-                                            element.id.videoId ==
-                                            video.id.videoId)) {
+                                        (element) => element.id == video.id)) {
                                       controller.addVideoFavorite(video);
                                     } else {
                                       controller.removeVideoFavorite(video);

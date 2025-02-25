@@ -22,9 +22,16 @@ export async function main(event: any, context: any) {
   }
 
   try {
-    let [statusCode, searchVideoResults] = await youtubeApiRepository.searchVideos(parameters);
+    let [statusCode1, videoIdsResponse] = await youtubeApiRepository.searchVideos({
+      ...parameters,
+      part: 'id'
+    });
 
-    return OK(searchVideoResults, true);
+    let videoIds = videoIdsResponse.items.map((x: any)=>x.id.videoId).filter((x: any)=>![null, undefined].includes(x));
+
+    let [statusCode2, listVideoResuls] = await youtubeApiRepository.listVideos('snippet', videoIds);
+
+    return OK(listVideoResuls, true);
   }
   catch (e) {
     console.error(e);

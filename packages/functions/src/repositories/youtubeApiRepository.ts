@@ -1,10 +1,53 @@
 import { YouTubeCommentThreadsParams, YouTubeSearchParams } from "src/types/types";
 import cache from "src/utils/cache";
-import { fetchComments, searchVideos } from "src/utils/youtubeApi";
+import { fetchComments, listVideos, searchVideos } from "src/utils/youtubeApi";
 
 const cacheEnabled = process.env.CACHE_ENABLED === "true";
 
 const youtubeApiRepository = {
+    listVideos: async (part: string, videoIds: string[]) => {
+        
+        videoIds.sort();
+
+        let searchVideoResults: any | null = null;
+
+        const cacheKey = `listVideos:part=${part}&videoIds=${videoIds.join(',')}`;
+
+        let cacheItem = null;
+
+        if (cacheEnabled) {
+            console.log('cacheKey', cacheKey);
+
+            cacheItem = await cache.getItem(cacheKey);
+        }
+
+        if (cacheItem) {
+            console.log('item encontrado no cache');
+
+            console.log(cacheItem);
+
+            searchVideoResults = JSON.parse(cacheItem.data);
+
+            return [200, searchVideoResults];
+        }
+        else {
+            console.log('NAO foi possivel encontrar nenhum item para essa busca no cache');
+        }
+
+        const response = await listVideos(part, videoIds);
+
+        if (response.status < 200 || response.status > 299)
+            return [response.status, response.data];
+
+        searchVideoResults = response.data;
+
+        if (cacheEnabled) {
+            await cache.putItem(cacheKey, JSON.stringify(searchVideoResults));
+        }
+
+        return [200, searchVideoResults];
+    },
+
     searchVideos: async (parameters: YouTubeSearchParams) => {
         parameters.maxResults = Number(process.env.MAX_RESULTS);
 

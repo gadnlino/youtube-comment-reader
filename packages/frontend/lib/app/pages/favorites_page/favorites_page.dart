@@ -68,12 +68,11 @@ class FavoritesPage extends GetView<FavoritesPageController> {
                         children: [
                           VideoWidget(
                             video: video,
-                            favorited: controller.videoFavorites.any(
-                                (element) =>
-                                    element.id.videoId == video.id.videoId),
+                            favorited: controller.videoFavorites
+                                .any((element) => element.id == video.id),
                             onFavoriteTap: () {
-                              if (!controller.videoFavorites.any((element) =>
-                                  element.id.videoId == video.id.videoId)) {
+                              if (!controller.videoFavorites
+                                  .any((element) => element.id == video.id)) {
                                 controller.addVideoFavorite(video);
                               } else {
                                 controller.removeVideoFavorite(video);
@@ -194,6 +193,7 @@ class FavoritesPage extends GetView<FavoritesPageController> {
         length: 2,
         child: Scaffold(
             appBar: AppBar(
+              automaticallyImplyLeading: false,
               title: const Text(pageTitle),
               centerTitle: true,
               bottom: const TabBar(
