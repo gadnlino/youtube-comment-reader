@@ -7,12 +7,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:frontend/app/pages/login_page/login_page.dart';
+import 'package:frontend/app/pages/video_search_page/video_search_page.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(LoginPage());
+    await tester.pumpWidget(const VideoSearchPage());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);
