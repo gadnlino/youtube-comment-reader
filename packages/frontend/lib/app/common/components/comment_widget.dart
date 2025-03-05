@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:frontend/app/common/models/models.dart';
+import 'package:frontend/app/common/utils/utils.dart';
 import 'package:html_unescape/html_unescape.dart';
 
 class CommentWidget extends StatelessWidget {
@@ -31,14 +33,22 @@ class CommentWidget extends StatelessWidget {
                 backgroundImage:
                     NetworkImage(comment.snippet.authorProfileImageUrl),
               ),
-              const SizedBox(width: 8.0),
-              Expanded(
-                child: Text(
-                  comment.snippet.authorDisplayName,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.white),
-                ),
+              Text(
+                "${comment.snippet.authorDisplayName} ",
+                style: const TextStyle(
+                    fontWeight: FontWeight.w500, color: Colors.white),
               ),
+              Expanded(
+                  child: Align(
+                alignment: Alignment.centerRight,
+                child: Text(
+                  Utils.formatDateOrNull(
+                          DateTime.parse(comment.snippet.publishedAt),
+                          "dd/MM/yyyy HH:mm") ??
+                      "",
+                  style: const TextStyle(color: Colors.white, fontSize: 10),
+                ),
+              ))
             ],
           ),
           const SizedBox(height: 4.0),
