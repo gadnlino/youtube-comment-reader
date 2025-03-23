@@ -14,7 +14,8 @@ export function ApiStack({ stack }: StackContext) {
                 environment: {
                     "MAX_RESULTS": "500",
                     "EXPIRATION_TIME_MINUTES": "5"
-                }
+                },
+                tracing: "active"
             },
         },
         routes: {
@@ -41,7 +42,7 @@ export function ApiStack({ stack }: StackContext) {
             "GET /video/comment/replies": {
                 function: {
                     functionName: "lbd-ycv-fetch-video-comment-replies-" + process.env.SST_STAGE,
-                    handler: "packages/functions/src/fetchCommentReplies.main"
+                    handler: "packages/functions/src/fetchCommentReplies.main",
                 },
             },
         },
