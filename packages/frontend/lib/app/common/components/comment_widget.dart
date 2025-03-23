@@ -33,6 +33,9 @@ class CommentWidget extends StatelessWidget {
                 backgroundImage:
                     NetworkImage(comment.snippet.authorProfileImageUrl),
               ),
+              const SizedBox(
+                width: 2.5,
+              ),
               Text(
                 "${comment.snippet.authorDisplayName} ",
                 style: const TextStyle(

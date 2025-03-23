@@ -5,6 +5,7 @@ import 'package:frontend/app/common/components/custom_bottom_navigation_bar.dart
 import 'package:frontend/app/common/components/custom_divider.dart';
 import 'package:frontend/app/common/components/video_widget.dart';
 import 'package:frontend/app/common/controllers/video_search_page_controller.dart';
+import 'package:frontend/app/common/models/models.dart';
 import 'package:frontend/app/common/utils/navigation.dart';
 import 'package:frontend/app/pages/video_comments_page/video_comments_page.dart';
 import 'package:get/get.dart';
@@ -24,35 +25,60 @@ class VideoSearchPage extends GetView<VideoSearchPageController> {
 
   void _showVideoSearchDialog() {
     Get.defaultDialog(
-        title: "Pesquisar videos",
+        title: "Search videos",
         backgroundColor: Colors.white,
         radius: 5,
         content: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Obx(() => TextFormField(
                   initialValue: controller.searchParams.value?.q,
                   onChanged: (value) =>
                       controller.searchParams.value!.q = value,
                   decoration: const InputDecoration(
-                    labelText: 'Nome ou termos do video',
+                    labelText: 'video title or keywords',
                   ),
                 )),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: TextButton(
-                  onPressed: () {
-                    Navigation.goBack();
-                    controller.reloadVideos();
+            const SizedBox(
+              height: 10,
+            ),
+            Obx(() => SegmentedButton(
+                  selectedIcon: Container(),
+                  segments: const [
+                    ButtonSegment(
+                      value: "relevance",
+                      label: Text('Most relevant'),
+                    ),
+                    ButtonSegment(
+                      value: "date",
+                      label: Text('Most recent'),
+                    ),
+                  ],
+                  selected: {
+                    controller.searchParams.value?.order ?? "relevance"
                   },
-                  child: const Text(
-                    "Limpar filtros",
-                    style: TextStyle(fontSize: 12),
-                  )),
-            )
+                  onSelectionChanged: (Set newSelection) {
+                    var newSearchParams = YouTubeSearchParams.fromJson(json
+                        .decode(json.encode(controller.searchParams.value)));
+
+                    newSearchParams.order = newSelection.first as String;
+
+                    controller.searchParams.value = newSearchParams;
+                  },
+                )),
+            TextButton(
+                onPressed: () {
+                  Navigation.goBack();
+                  controller.reloadVideos();
+                },
+                child: const Text(
+                  "Clear selection",
+                  style: TextStyle(fontSize: 12),
+                ))
           ],
         ),
-        textConfirm: "Pesquisar",
-        textCancel: "Cancelar",
+        textConfirm: "Search",
+        textCancel: "Cancel",
         confirmTextColor: Colors.white,
         onConfirm: () async {
           Navigation.goBack();

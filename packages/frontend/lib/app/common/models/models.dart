@@ -258,7 +258,7 @@ class YouTubeSearchParams {
   YouTubeSearchParams({
     this.part = 'snippet',
     this.type = 'video',
-    this.order,
+    this.order = 'relevance',
     this.maxResults = 500,
     this.regionCode = 'BR',
     this.q,
