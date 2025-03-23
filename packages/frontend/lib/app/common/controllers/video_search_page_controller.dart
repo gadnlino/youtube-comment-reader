@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:frontend/app/common/api/youtube_comment_viewer_api.dart';
 import 'package:frontend/app/common/models/models.dart';
@@ -19,7 +21,7 @@ class VideoSearchPageController extends GetxController {
 
   @override
   void onInit() {
-    searchParams.value = _defaultSearchParams;
+    searchParams.value = __getDefaultSearchParams();
     (() async {
       loadMoreVideos();
       loadFavorites();
@@ -49,9 +51,9 @@ class VideoSearchPageController extends GetxController {
     }
   }
 
-  reload() async {
+  reloadVideos() async {
     if (!reloading.value) {
-      searchParams.value = _defaultSearchParams;
+      searchParams.value = __getDefaultSearchParams();
       videoSearchList = RxList<YouTubeSearchItem>();
 
       try {
@@ -96,4 +98,7 @@ class VideoSearchPageController extends GetxController {
 
     await _favoriteManager.removeVideoFavorite(video);
   }
+
+  __getDefaultSearchParams() => YouTubeSearchParams.fromJson(
+      json.decode(json.encode(_defaultSearchParams)));
 }

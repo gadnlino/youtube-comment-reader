@@ -42,7 +42,7 @@ class VideoSearchPage extends GetView<VideoSearchPageController> {
               child: TextButton(
                   onPressed: () {
                     Navigation.goBack();
-                    controller.reload();
+                    controller.reloadVideos();
                   },
                   child: const Text(
                     "Limpar filtros",
@@ -73,7 +73,7 @@ class VideoSearchPage extends GetView<VideoSearchPageController> {
                 horizontal: 3,
               ),
               child: IconButton(
-                onPressed: controller.reload,
+                onPressed: controller.reloadVideos,
                 icon: const Icon(Icons.refresh_sharp),
                 color: Colors.white,
               ),

@@ -275,8 +275,12 @@ class YouTubeSearchParams {
       maxResults: json['maxResults'],
       regionCode: json['regionCode'],
       q: json['q'],
-      publishedAfter: DateTime.tryParse(json['publishedAfter']),
-      publishedBefore: DateTime.tryParse(json['publishedBefore']),
+      publishedAfter: json.containsKey('publishedAfter')
+          ? DateTime.tryParse(json['publishedAfter'])
+          : null,
+      publishedBefore: json.containsKey('publishedBefore')
+          ? DateTime.tryParse(json['publishedBefore'])
+          : null,
       pageToken: json['pageToken'],
     );
   }

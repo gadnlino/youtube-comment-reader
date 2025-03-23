@@ -6,8 +6,8 @@ const Color appBackgroungColorDarkTheme = Color(0xff062029);
 //https://docs.flutter.dev/cookbook/design/themes
 ThemeData appThemeData = ThemeData(
     colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.orange),
-    textTheme:
-        GoogleFonts.poppinsTextTheme().copyWith(displayMedium: TextStyle()),
+    textTheme: GoogleFonts.poppinsTextTheme()
+        .copyWith(displayMedium: const TextStyle()),
     scaffoldBackgroundColor: appBackgroungColorDarkTheme,
     appBarTheme: const AppBarTheme(
         backgroundColor: appBackgroungColorDarkTheme,
