@@ -81,7 +81,7 @@ class CommentWidget extends StatelessWidget {
                     style: const TextStyle(color: Colors.white)),
               IconButton(
                   onPressed: onFavoriteTap,
-                  icon: Icon(Icons.star,
+                  icon: Icon(favorited ? Icons.star : Icons.star_border,
                       color: favorited ? Colors.yellow : Colors.white))
             ],
           ),

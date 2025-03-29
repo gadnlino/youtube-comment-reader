@@ -80,7 +80,7 @@ class VideoWidget extends StatelessWidget {
             ),
             IconButton(
               icon: Icon(
-                Icons.star,
+                favorited ? Icons.star : Icons.star_border,
                 color: favorited ? Colors.yellow : Colors.white,
               ),
               onPressed: onFavoriteTap,

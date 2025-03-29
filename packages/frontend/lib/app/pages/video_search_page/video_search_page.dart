@@ -98,6 +98,7 @@ class VideoSearchPage extends GetView<VideoSearchPageController> {
     return Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
+          centerTitle: true,
           title: const Text(pageTitle),
           actions: [
             Padding(
@@ -116,12 +117,11 @@ class VideoSearchPage extends GetView<VideoSearchPageController> {
               ),
               child: IconButton(
                 onPressed: _showVideoSearchDialog,
-                icon: const Icon(Icons.filter_alt),
+                icon: const Icon(Icons.tune_rounded),
                 color: Colors.white,
               ),
             )
           ],
-          centerTitle: true,
         ),
         bottomNavigationBar: const CustomBottomNavigationBar(),
         body: Obx(

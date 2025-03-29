@@ -82,11 +82,34 @@ class VideoCommentsPage extends GetView<VideoCommentsPageController> {
     return Scaffold(
         appBar: AppBar(
           title: Text(pageTitle),
+          centerTitle: true,
           leading: IconButton(
               onPressed: () {
                 Navigation.goBack();
               },
               icon: const Icon(Icons.arrow_back)),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 3,
+              ),
+              child: IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.refresh_sharp),
+                color: Colors.white,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 3,
+              ),
+              child: IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.tune_rounded),
+                color: Colors.white,
+              ),
+            )
+          ],
         ),
         body: Obx(
           () {
@@ -98,6 +121,9 @@ class VideoCommentsPage extends GetView<VideoCommentsPageController> {
                 ),
               );
             }
+
+            bool videoFavorited = _favoritesController
+                .existVideoFavorite(controller.selectedVideo.value!.id);
 
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -123,15 +149,11 @@ class VideoCommentsPage extends GetView<VideoCommentsPageController> {
                       )),
                       IconButton(
                         icon: Icon(
-                          Icons.star,
-                          color: _favoritesController.existVideoFavorite(
-                                  controller.selectedVideo.value!.id)
-                              ? Colors.yellow
-                              : Colors.white,
+                          videoFavorited ? Icons.star : Icons.star_border,
+                          color: videoFavorited ? Colors.yellow : Colors.white,
                         ),
                         onPressed: () {
-                          if (!_favoritesController.existVideoFavorite(
-                              controller.selectedVideo.value!.id)) {
+                          if (!videoFavorited) {
                             _favoritesController.addVideoFavorite(
                                 controller.selectedVideo.value!);
                           } else {
@@ -208,40 +230,42 @@ class VideoCommentsPage extends GetView<VideoCommentsPageController> {
                           return Column(
                             children: [
                               Obx(
-                                () => CommentWidget(
-                                  comment: comment.snippet.topLevelComment,
-                                  replies: comment.replies?.comments,
-                                  favorited: _favoritesController
-                                      .existCommentFavorite(comment.id),
-                                  onFavoriteTap: () {
-                                    if (!_favoritesController
-                                        .existCommentFavorite(comment.id)) {
-                                      _favoritesController.addCommentFavorite(
-                                          comment.snippet.topLevelComment,
-                                          comment.replies?.comments,
-                                          controller.selectedVideo.value!.id,
-                                          controller.selectedVideo.value
-                                              ?.snippet.description,
-                                          controller
-                                              .selectedVideo
-                                              .value
-                                              ?.snippet
-                                              .thumbnails
-                                              .defaultThumbnail
-                                              .url,
-                                          controller.selectedVideo.value
-                                              ?.snippet.title,
-                                          controller.selectedVideo.value
-                                              ?.snippet.channelTitle,
-                                          controller.selectedVideo.value
-                                              ?.snippet.publishedAt);
-                                    } else {
-                                      _favoritesController
-                                          .removeCommentFavorite(
-                                              comment.snippet.topLevelComment);
-                                    }
-                                  },
-                                ),
+                                () {
+                                  bool commentFavorited = _favoritesController
+                                      .existCommentFavorite(comment.id);
+                                  return CommentWidget(
+                                    comment: comment.snippet.topLevelComment,
+                                    replies: comment.replies?.comments,
+                                    favorited: commentFavorited,
+                                    onFavoriteTap: () {
+                                      if (!commentFavorited) {
+                                        _favoritesController.addCommentFavorite(
+                                            comment.snippet.topLevelComment,
+                                            comment.replies?.comments,
+                                            controller.selectedVideo.value!.id,
+                                            controller.selectedVideo.value
+                                                ?.snippet.description,
+                                            controller
+                                                .selectedVideo
+                                                .value
+                                                ?.snippet
+                                                .thumbnails
+                                                .defaultThumbnail
+                                                .url,
+                                            controller.selectedVideo.value
+                                                ?.snippet.title,
+                                            controller.selectedVideo.value
+                                                ?.snippet.channelTitle,
+                                            controller.selectedVideo.value
+                                                ?.snippet.publishedAt);
+                                      } else {
+                                        _favoritesController
+                                            .removeCommentFavorite(comment
+                                                .snippet.topLevelComment);
+                                      }
+                                    },
+                                  );
+                                },
                               )
                             ],
                           );
