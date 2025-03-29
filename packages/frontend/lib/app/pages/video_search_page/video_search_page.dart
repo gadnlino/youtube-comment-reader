@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:frontend/app/common/components/custom_bottom_navigation_bar.dart';
 import 'package:frontend/app/common/components/custom_divider.dart';
 import 'package:frontend/app/common/components/video_widget.dart';
-import 'package:frontend/app/common/controllers/video_search_page_controller.dart';
+import 'package:frontend/app/common/controllers/common/favorites_controller.dart';
+import 'package:frontend/app/common/controllers/pages/video_search_page_controller.dart';
 import 'package:frontend/app/common/models/models.dart';
 import 'package:frontend/app/common/utils/navigation.dart';
 import 'package:frontend/app/pages/video_comments_page/video_comments_page.dart';
@@ -21,62 +22,67 @@ class VideoSearchPageBinding implements Bindings {
 }
 
 class VideoSearchPage extends GetView<VideoSearchPageController> {
-  const VideoSearchPage({super.key});
+  late FavoritesController _favoritesController;
+
+  VideoSearchPage({super.key}) {
+    _favoritesController = Get.find<FavoritesController>();
+  }
+
+  Widget _filterDialogWidget() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Obx(() => TextFormField(
+              initialValue: controller.searchParams.value?.q,
+              onChanged: (value) => controller.searchParams.value!.q = value,
+              decoration: const InputDecoration(
+                labelText: 'video title or keywords',
+              ),
+            )),
+        const SizedBox(
+          height: 10,
+        ),
+        Obx(() => SegmentedButton(
+              selectedIcon: Container(),
+              segments: const [
+                ButtonSegment(
+                  value: "relevance",
+                  label: Text('Most relevant'),
+                ),
+                ButtonSegment(
+                  value: "date",
+                  label: Text('Most recent'),
+                ),
+              ],
+              selected: {controller.searchParams.value?.order ?? "relevance"},
+              onSelectionChanged: (Set newSelection) {
+                var newSearchParams = YouTubeSearchParams.fromJson(
+                    json.decode(json.encode(controller.searchParams.value)));
+
+                newSearchParams.order = newSelection.first as String;
+
+                controller.searchParams.value = newSearchParams;
+              },
+            )),
+        TextButton(
+            onPressed: () {
+              Navigation.goBack();
+              controller.reloadVideos();
+            },
+            child: const Text(
+              "Clear selection",
+              style: TextStyle(fontSize: 12),
+            ))
+      ],
+    );
+  }
 
   void _showVideoSearchDialog() {
     Get.defaultDialog(
         title: "Search videos",
         backgroundColor: Colors.white,
         radius: 5,
-        content: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Obx(() => TextFormField(
-                  initialValue: controller.searchParams.value?.q,
-                  onChanged: (value) =>
-                      controller.searchParams.value!.q = value,
-                  decoration: const InputDecoration(
-                    labelText: 'video title or keywords',
-                  ),
-                )),
-            const SizedBox(
-              height: 10,
-            ),
-            Obx(() => SegmentedButton(
-                  selectedIcon: Container(),
-                  segments: const [
-                    ButtonSegment(
-                      value: "relevance",
-                      label: Text('Most relevant'),
-                    ),
-                    ButtonSegment(
-                      value: "date",
-                      label: Text('Most recent'),
-                    ),
-                  ],
-                  selected: {
-                    controller.searchParams.value?.order ?? "relevance"
-                  },
-                  onSelectionChanged: (Set newSelection) {
-                    var newSearchParams = YouTubeSearchParams.fromJson(json
-                        .decode(json.encode(controller.searchParams.value)));
-
-                    newSearchParams.order = newSelection.first as String;
-
-                    controller.searchParams.value = newSearchParams;
-                  },
-                )),
-            TextButton(
-                onPressed: () {
-                  Navigation.goBack();
-                  controller.reloadVideos();
-                },
-                child: const Text(
-                  "Clear selection",
-                  style: TextStyle(fontSize: 12),
-                ))
-          ],
-        ),
+        content: _filterDialogWidget(),
         textConfirm: "Search",
         textCancel: "Cancel",
         confirmTextColor: Colors.white,
@@ -153,14 +159,16 @@ class VideoSearchPage extends GetView<VideoSearchPageController> {
                               Obx(
                                 () => VideoWidget(
                                   video: video,
-                                  favorited: controller.videoFavorites
-                                      .any((element) => element.id == video.id),
+                                  favorited: _favoritesController
+                                      .existVideoFavorite(video.id),
                                   onFavoriteTap: () {
-                                    if (!controller.videoFavorites.any(
-                                        (element) => element.id == video.id)) {
-                                      controller.addVideoFavorite(video);
+                                    if (!_favoritesController
+                                        .existVideoFavorite(video.id)) {
+                                      _favoritesController
+                                          .addVideoFavorite(video);
                                     } else {
-                                      controller.removeVideoFavorite(video);
+                                      _favoritesController
+                                          .removeVideoFavorite(video);
                                     }
                                   },
                                   onTap: () {

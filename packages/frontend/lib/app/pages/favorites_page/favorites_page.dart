@@ -5,7 +5,8 @@ import 'package:frontend/app/common/components/comment_widget.dart';
 import 'package:frontend/app/common/components/custom_bottom_navigation_bar.dart';
 import 'package:frontend/app/common/components/custom_divider.dart';
 import 'package:frontend/app/common/components/video_widget.dart';
-import 'package:frontend/app/common/controllers/favorites_page_controller.dart';
+import 'package:frontend/app/common/controllers/common/favorites_controller.dart';
+import 'package:frontend/app/common/controllers/pages/favorites_page_controller.dart';
 import 'package:frontend/app/common/utils/navigation.dart';
 import 'package:frontend/app/common/utils/utils.dart';
 import 'package:frontend/app/pages/video_comments_page/video_comments_page.dart';
@@ -23,12 +24,16 @@ class FavoritesPageBinding implements Bindings {
 }
 
 class FavoritesPage extends GetView<FavoritesPageController> {
-  const FavoritesPage({super.key});
+  late FavoritesController _favoritesController;
+
+  FavoritesPage({super.key}) {
+    _favoritesController = Get.find<FavoritesController>();
+  }
 
   Widget _videoFavoritesView(BuildContext context) {
     return Obx(
       () {
-        if (controller.loading.value) {
+        if (_favoritesController.loading.value) {
           return const Center(
             child: CircularProgressIndicator(
               color: Colors.white,
@@ -36,7 +41,7 @@ class FavoritesPage extends GetView<FavoritesPageController> {
           );
         }
 
-        if (controller.videoFavorites.isEmpty) {
+        if (_favoritesController.videoFavorites.isEmpty) {
           return const Expanded(
               child: Center(
             child: Padding(
@@ -53,29 +58,30 @@ class FavoritesPage extends GetView<FavoritesPageController> {
           children: [
             Expanded(
               child: LazyLoadScrollView(
-                isLoading: controller.loading.value,
+                isLoading: _favoritesController.loading.value,
                 onEndOfPage: () {},
                 scrollOffset: (MediaQuery.of(context).size.height - 50).toInt(),
                 child: ListView.separated(
                     separatorBuilder: (context, index) => const CustomDivider(),
-                    itemCount: controller.videoFavorites.length,
+                    itemCount: _favoritesController.videoFavorites.length,
                     physics: const ClampingScrollPhysics(),
                     shrinkWrap: true,
                     scrollDirection: Axis.vertical,
                     itemBuilder: (BuildContext context, int index) {
-                      var video = controller.videoFavorites.elementAt(index);
+                      var video =
+                          _favoritesController.videoFavorites.elementAt(index);
                       return Column(
                         children: [
                           VideoWidget(
                             video: video,
-                            favorited: controller.videoFavorites
+                            favorited: _favoritesController.videoFavorites
                                 .any((element) => element.id == video.id),
                             onFavoriteTap: () {
-                              if (!controller.videoFavorites
+                              if (!_favoritesController.videoFavorites
                                   .any((element) => element.id == video.id)) {
-                                controller.addVideoFavorite(video);
+                                _favoritesController.addVideoFavorite(video);
                               } else {
-                                controller.removeVideoFavorite(video);
+                                _favoritesController.removeVideoFavorite(video);
                               }
                             },
                             onTap: () {
@@ -98,7 +104,7 @@ class FavoritesPage extends GetView<FavoritesPageController> {
   Widget _commentFavoritesView(BuildContext context) {
     return Obx(
       () {
-        if (controller.loading.value) {
+        if (_favoritesController.loading.value) {
           return const Center(
             child: CircularProgressIndicator(
               color: Colors.white,
@@ -106,7 +112,7 @@ class FavoritesPage extends GetView<FavoritesPageController> {
           );
         }
 
-        if (controller.commentFavorites.isEmpty) {
+        if (_favoritesController.commentFavorites.isEmpty) {
           return const Expanded(
               child: Center(
             child: Padding(
@@ -123,19 +129,19 @@ class FavoritesPage extends GetView<FavoritesPageController> {
           children: [
             Expanded(
               child: LazyLoadScrollView(
-                isLoading: controller.loading.value,
+                isLoading: _favoritesController.loading.value,
                 onEndOfPage: () {},
                 scrollOffset: (MediaQuery.of(context).size.height - 50).toInt(),
                 child: ListView.separated(
                     padding: const EdgeInsets.all(8.0),
                     separatorBuilder: (context, index) => const CustomDivider(),
-                    itemCount: controller.commentFavorites.length,
+                    itemCount: _favoritesController.commentFavorites.length,
                     physics: const ClampingScrollPhysics(),
                     shrinkWrap: true,
                     scrollDirection: Axis.vertical,
                     itemBuilder: (BuildContext context, int index) {
-                      var comment =
-                          controller.commentFavorites.elementAt(index);
+                      var comment = _favoritesController.commentFavorites
+                          .elementAt(index);
                       return Column(
                         children: [
                           Padding(
@@ -161,16 +167,25 @@ class FavoritesPage extends GetView<FavoritesPageController> {
                           CommentWidget(
                             comment: comment.comment!,
                             replies: comment.replies,
-                            favorited: controller.commentFavorites.any(
-                                (element) =>
+                            favorited: _favoritesController.commentFavorites
+                                .any((element) =>
                                     element.comment?.id == comment.comment?.id),
                             onFavoriteTap: () {
-                              if (!controller.commentFavorites.any((element) =>
-                                  element.comment?.id == comment.comment?.id)) {
-                                controller.addCommentFavorite(
-                                    comment.comment!, comment.replies);
+                              if (!_favoritesController.commentFavorites.any(
+                                  (element) =>
+                                      element.comment?.id ==
+                                      comment.comment?.id)) {
+                                _favoritesController.addCommentFavorite(
+                                    comment.comment!,
+                                    comment.replies,
+                                    comment.videoId,
+                                    comment.videoDescription,
+                                    comment.videoThumbnailUrl,
+                                    comment.videoTitle,
+                                    comment.channelTitle,
+                                    comment.videoPublishedAt);
                               } else {
-                                controller
+                                _favoritesController
                                     .removeCommentFavorite(comment.comment!);
                               }
                             },

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/app/common/components/comment_widget.dart';
 import 'package:frontend/app/common/components/custom_divider.dart';
-import 'package:frontend/app/common/controllers/video_comments_page_controller.dart';
+import 'package:frontend/app/common/controllers/common/favorites_controller.dart';
+import 'package:frontend/app/common/controllers/pages/video_comments_page_controller.dart';
 import 'package:frontend/app/common/utils/navigation.dart';
 import 'package:get/get.dart';
 import 'package:html_unescape/html_unescape.dart';
@@ -17,7 +18,12 @@ class VideoCommentsPageBinding implements Bindings {
 
 class VideoCommentsPage extends GetView<VideoCommentsPageController> {
   final pageTitle = "Comments";
-  const VideoCommentsPage({super.key});
+
+  late FavoritesController _favoritesController;
+
+  VideoCommentsPage({super.key}) {
+    _favoritesController = Get.find<FavoritesController>();
+  }
 
   Widget _videoDescriptionSection(BuildContext context, String description) {
     return Column(
@@ -118,20 +124,18 @@ class VideoCommentsPage extends GetView<VideoCommentsPageController> {
                       IconButton(
                         icon: Icon(
                           Icons.star,
-                          color: controller.videoFavorites.any((element) =>
-                                  element.id ==
+                          color: _favoritesController.existVideoFavorite(
                                   controller.selectedVideo.value!.id)
                               ? Colors.yellow
                               : Colors.white,
                         ),
                         onPressed: () {
-                          if (!controller.videoFavorites.any((element) =>
-                              element.id ==
+                          if (!_favoritesController.existVideoFavorite(
                               controller.selectedVideo.value!.id)) {
-                            controller.addVideoFavorite(
+                            _favoritesController.addVideoFavorite(
                                 controller.selectedVideo.value!);
                           } else {
-                            controller.removeVideoFavorite(
+                            _favoritesController.removeVideoFavorite(
                                 controller.selectedVideo.value!);
                           }
                         },
@@ -207,20 +211,34 @@ class VideoCommentsPage extends GetView<VideoCommentsPageController> {
                                 () => CommentWidget(
                                   comment: comment.snippet.topLevelComment,
                                   replies: comment.replies?.comments,
-                                  favorited: controller.commentFavorites.any(
-                                      (element) =>
-                                          element.comment?.id == comment.id),
+                                  favorited: _favoritesController
+                                      .existCommentFavorite(comment.id),
                                   onFavoriteTap: () {
-                                    if (!controller.commentFavorites.any(
-                                        (element) =>
-                                            element.comment?.id ==
-                                            comment.id)) {
-                                      controller.addCommentFavorite(
+                                    if (!_favoritesController
+                                        .existCommentFavorite(comment.id)) {
+                                      _favoritesController.addCommentFavorite(
                                           comment.snippet.topLevelComment,
-                                          comment.replies?.comments);
+                                          comment.replies?.comments,
+                                          controller.selectedVideo.value!.id,
+                                          controller.selectedVideo.value
+                                              ?.snippet.description,
+                                          controller
+                                              .selectedVideo
+                                              .value
+                                              ?.snippet
+                                              .thumbnails
+                                              .defaultThumbnail
+                                              .url,
+                                          controller.selectedVideo.value
+                                              ?.snippet.title,
+                                          controller.selectedVideo.value
+                                              ?.snippet.channelTitle,
+                                          controller.selectedVideo.value
+                                              ?.snippet.publishedAt);
                                     } else {
-                                      controller.removeCommentFavorite(
-                                          comment.snippet.topLevelComment);
+                                      _favoritesController
+                                          .removeCommentFavorite(
+                                              comment.snippet.topLevelComment);
                                     }
                                   },
                                 ),

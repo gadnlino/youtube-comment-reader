@@ -9,7 +9,6 @@ import 'package:get/get.dart';
 class VideoSearchPageController extends GetxController {
   final _ycvApi = YoutubeCommentViewerApi();
   final _defaultSearchParams = YouTubeSearchParams(maxResults: 10);
-  final FavoriteManager _favoriteManager = FavoriteManager();
 
   Rx<bool> loadingMoreVideos = Rx(false);
   Rx<bool> reloading = Rx(false);
@@ -17,14 +16,11 @@ class VideoSearchPageController extends GetxController {
   Rxn<YouTubeSearchParams> searchParams = Rxn();
   RxList<YouTubeSearchItem> videoSearchList = RxList();
 
-  RxList<YouTubeSearchItem> videoFavorites = RxList();
-
   @override
   void onInit() {
     searchParams.value = __getDefaultSearchParams();
     (() async {
       loadMoreVideos();
-      loadFavorites();
     })();
 
     super.onInit();
@@ -76,27 +72,6 @@ class VideoSearchPageController extends GetxController {
         reloading.value = false;
       }
     }
-  }
-
-  loadFavorites() async {
-    var favorites = await _favoriteManager.getVideoFavorites();
-
-    if (favorites != null) {
-      videoFavorites.value = favorites;
-    }
-  }
-
-  addVideoFavorite(YouTubeSearchItem video) async {
-    videoFavorites.add(video);
-
-    await _favoriteManager.addVideoFavorite(video);
-  }
-
-  removeVideoFavorite(YouTubeSearchItem video) async {
-    videoFavorites.value =
-        videoFavorites.where((element) => element.id != video.id).toList();
-
-    await _favoriteManager.removeVideoFavorite(video);
   }
 
   __getDefaultSearchParams() => YouTubeSearchParams.fromJson(

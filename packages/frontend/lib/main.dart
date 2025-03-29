@@ -1,7 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:frontend/app/common/controllers/bottom_navigation_bar_controller.dart';
+import 'package:frontend/app/common/controllers/common/bottom_navigation_bar_controller.dart';
+import 'package:frontend/app/common/controllers/common/favorites_controller.dart';
 import 'package:frontend/app/common/themes/app_theme.dart';
 import 'package:frontend/app/pages/favorites_page/favorites_page.dart';
 import 'package:frontend/app/pages/video_comments_page/video_comments_page.dart';
@@ -24,6 +25,7 @@ Future main() async {
 
   // injecting global controllers, in dependency order
   Get.put(BottomNavigationBarController(), permanent: true);
+  Get.put(FavoritesController());
 
   runApp(GetMaterialApp(
     theme: appThemeData,
@@ -31,17 +33,17 @@ Future main() async {
     getPages: [
       GetPage(
         name: '/',
-        page: () => const VideoSearchPage(),
+        page: () => VideoSearchPage(),
         binding: VideoSearchPageBinding(),
       ),
       GetPage(
         name: videoCommentsPageRoute,
-        page: () => const VideoCommentsPage(),
+        page: () => VideoCommentsPage(),
         binding: VideoCommentsPageBinding(),
       ),
       GetPage(
         name: favoritesPageRoute,
-        page: () => const FavoritesPage(),
+        page: () => FavoritesPage(),
         binding: FavoritesPageBinding(),
       ),
     ],

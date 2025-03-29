@@ -12,7 +12,7 @@ import 'package:frontend/app/pages/video_search_page/video_search_page.dart';
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const VideoSearchPage());
+    await tester.pumpWidget(VideoSearchPage());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);
