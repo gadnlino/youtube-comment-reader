@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:frontend/app/common/exceptions/comments_disabled_exception.dart';
@@ -11,6 +13,9 @@ class YoutubeCommentViewerApi {
   Future<YouTubeSearchResponse?> searchVideos(
       YouTubeSearchParams params) async {
     Response? response;
+
+    debugPrint('search videos with the following parameters:');
+    debugPrint(jsonEncode(params.toJson()));
 
     try {
       response = await _clientHttp.get(

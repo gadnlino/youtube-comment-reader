@@ -817,3 +817,34 @@ class CommentFavorite {
     };
   }
 }
+
+class FilterOptions {
+  String? keywords;
+  String? order;
+  bool? showPositive;
+  bool? showNegative;
+
+  FilterOptions({
+    this.keywords,
+    this.order = 'relevance',
+    this.showPositive = false,
+    this.showNegative = false,
+  });
+
+  Map<String, dynamic> toJson() {
+    return {
+      'keywords': keywords,
+      'order': order,
+      'showPositive': showPositive,
+      'showNegative': showNegative
+    };
+  }
+
+  factory FilterOptions.fromJson(Map<String, dynamic> json) {
+    return FilterOptions(
+        keywords: json['keywords'],
+        order: json['order'],
+        showPositive: json['showPositive'],
+        showNegative: json['showNegative']);
+  }
+}

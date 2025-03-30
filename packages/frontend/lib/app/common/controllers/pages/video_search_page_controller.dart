@@ -3,26 +3,32 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:frontend/app/common/api/youtube_comment_viewer_api.dart';
 import 'package:frontend/app/common/models/models.dart';
-import 'package:frontend/app/common/utils/favorite_manager.dart';
 import 'package:get/get.dart';
 
 class VideoSearchPageController extends GetxController {
   final _ycvApi = YoutubeCommentViewerApi();
-  final _defaultSearchParams = YouTubeSearchParams(maxResults: 10);
 
   Rx<bool> loadingMoreVideos = Rx(false);
   Rx<bool> reloading = Rx(false);
+  Rx<FilterOptions> currentFilterOptions = Rx(FilterOptions());
   Rxn<YouTubeSearchResponse> videoSearchLastResponse = Rxn(null);
-  Rxn<YouTubeSearchParams> searchParams = Rxn();
   RxList<YouTubeSearchItem> videoSearchList = RxList();
+
+  Rx<YouTubeSearchParams> __searchParams = Rx(YouTubeSearchParams());
+  Rxn<String> __pageToken = Rxn();
 
   @override
   void onInit() {
-    searchParams.value = __getDefaultSearchParams();
     (() async {
       loadMoreVideos();
     })();
 
+    ever(currentFilterOptions, (callback) {
+      __searchParams.value = YouTubeSearchParams(
+          order: callback.order,
+          q: callback.keywords,
+          pageToken: __pageToken.value);
+    });
     super.onInit();
   }
 
@@ -32,7 +38,7 @@ class VideoSearchPageController extends GetxController {
 
       debugPrint("carregando mais videos");
 
-      var searchResponse = await _ycvApi.searchVideos(searchParams.value!);
+      var searchResponse = await _ycvApi.searchVideos(__searchParams.value!);
 
       if (searchResponse != null && searchResponse.items.isNotEmpty) {
         for (var element in searchResponse.items) {
@@ -41,7 +47,7 @@ class VideoSearchPageController extends GetxController {
       }
 
       videoSearchLastResponse.value = searchResponse;
-      searchParams.value?.pageToken = searchResponse?.nextPageToken;
+      __pageToken.value = searchResponse?.nextPageToken;
     } finally {
       loadingMoreVideos.value = false;
     }
@@ -49,7 +55,6 @@ class VideoSearchPageController extends GetxController {
 
   reloadVideos() async {
     if (!reloading.value) {
-      searchParams.value = __getDefaultSearchParams();
       videoSearchList = RxList<YouTubeSearchItem>();
 
       try {
@@ -74,6 +79,7 @@ class VideoSearchPageController extends GetxController {
     }
   }
 
-  __getDefaultSearchParams() => YouTubeSearchParams.fromJson(
-      json.decode(json.encode(_defaultSearchParams)));
+  clearFilters() {
+    currentFilterOptions.value = FilterOptions();
+  }
 }

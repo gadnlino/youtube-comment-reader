@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:frontend/app/common/models/models.dart';
 import 'package:frontend/app/common/utils/utils.dart';
 import 'package:html_unescape/html_unescape.dart';

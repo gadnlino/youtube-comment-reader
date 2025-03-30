@@ -22,91 +22,172 @@ class VideoSearchPageBinding implements Bindings {
 }
 
 class VideoSearchPage extends GetView<VideoSearchPageController> {
+  final pageTitle = "Youtube Comment Reader";
   late FavoritesController _favoritesController;
 
   VideoSearchPage({super.key}) {
     _favoritesController = Get.find<FavoritesController>();
   }
 
-  Widget _filterDialogWidget() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Obx(() => TextFormField(
-              initialValue: controller.searchParams.value?.q,
-              onChanged: (value) => controller.searchParams.value!.q = value,
-              decoration: const InputDecoration(
-                labelText: 'video title or keywords',
+  void _showFilterBottomSheet({
+    required BuildContext context,
+  }) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      builder: (context) {
+        final keywordsController = TextEditingController(
+            text: controller.currentFilterOptions.value.keywords);
+
+        keywordsController.addListener(
+          () {
+            var newFiltersOptions = FilterOptions.fromJson(json
+                .decode(json.encode(controller.currentFilterOptions.value)));
+
+            newFiltersOptions.keywords = keywordsController.text;
+
+            controller.currentFilterOptions.value = newFiltersOptions;
+          },
+        );
+
+        return Obx(() => Padding(
+              padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom,
+                left: 16,
+                right: 16,
+                top: 24,
               ),
-            )),
-        const SizedBox(
-          height: 10,
-        ),
-        Obx(() => SegmentedButton(
-              selectedIcon: Container(),
-              segments: const [
-                ButtonSegment(
-                  value: "relevance",
-                  label: Text('Most relevant'),
-                ),
-                ButtonSegment(
-                  value: "date",
-                  label: Text('Most recent'),
-                ),
-              ],
-              selected: {controller.searchParams.value?.order ?? "relevance"},
-              onSelectionChanged: (Set newSelection) {
-                var newSearchParams = YouTubeSearchParams.fromJson(
-                    json.decode(json.encode(controller.searchParams.value)));
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text("Search filters",
+                      style: Theme.of(context).textTheme.titleLarge),
+                  const SizedBox(height: 16),
+                  TextField(
+                    controller: keywordsController,
+                    decoration: const InputDecoration(
+                      labelText: 'keywords',
+                      hintText: 'Ex: flutter performance android',
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text("Sort by:",
+                        style: Theme.of(context).textTheme.labelLarge),
+                  ),
+                  RadioListTile<String>(
+                    title: const Text("Most relevant"),
+                    value: 'relevance',
+                    groupValue: controller.currentFilterOptions.value.order,
+                    onChanged: (val) {
+                      var newFiltersOptions = FilterOptions.fromJson(
+                          json.decode(json
+                              .encode(controller.currentFilterOptions.value)));
 
-                newSearchParams.order = newSelection.first as String;
+                      newFiltersOptions.order = val;
 
-                controller.searchParams.value = newSearchParams;
-              },
-            )),
-        TextButton(
-            onPressed: () {
-              Navigation.goBack();
-              controller.reloadVideos();
-            },
-            child: const Text(
-              "Clear selection",
-              style: TextStyle(fontSize: 12),
-            ))
-      ],
+                      controller.currentFilterOptions.value = newFiltersOptions;
+                    },
+                  ),
+                  RadioListTile<String>(
+                      title: const Text("Most recent"),
+                      value: 'date',
+                      groupValue: controller.currentFilterOptions.value.order,
+                      onChanged: (val) {
+                        var newFiltersOptions = FilterOptions.fromJson(
+                            json.decode(json.encode(
+                                controller.currentFilterOptions.value)));
+
+                        newFiltersOptions.order = val;
+
+                        controller.currentFilterOptions.value =
+                            newFiltersOptions;
+                      }),
+                  const SizedBox(height: 8),
+                  // Align(
+                  //   alignment: Alignment.centerLeft,
+                  //   child: Text("Commentary types:",
+                  //       style: Theme.of(context).textTheme.labelLarge),
+                  // ),
+                  // CheckboxListTile(
+                  //     title: const Text("Positives"),
+                  //     value: controller.currentFilterOptions.value.showPositive,
+                  //     onChanged: (val) {
+                  //       var newFiltersOptions = FilterOptions.fromJson(
+                  //           json.decode(json.encode(
+                  //               controller.currentFilterOptions.value)));
+
+                  //       newFiltersOptions.showPositive = val;
+
+                  //       controller.currentFilterOptions.value =
+                  //           newFiltersOptions;
+                  //     }),
+                  // CheckboxListTile(
+                  //   title: const Text("Negatives"),
+                  //   value: controller.currentFilterOptions.value.showNegative,
+                  //   onChanged: (val) {
+                  //     var newFiltersOptions = FilterOptions.fromJson(
+                  //         json.decode(json
+                  //             .encode(controller.currentFilterOptions.value)));
+
+                  //     newFiltersOptions.showNegative = val;
+
+                  //     controller.currentFilterOptions.value = newFiltersOptions;
+                  //   },
+                  // ),
+                  // const SizedBox(height: 16),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                          controller.clearFilters();
+                          controller.reloadVideos();
+                        },
+                        child: const Text(
+                          "Clear filters",
+                          style: TextStyle(color: Colors.red),
+                        ),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigation.goBack();
+                          controller.customSearch();
+                        },
+                        child: const Text("Search"),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                ],
+              ),
+            ));
+      },
     );
-  }
-
-  void _showVideoSearchDialog() {
-    Get.defaultDialog(
-        title: "Search videos",
-        backgroundColor: Colors.white,
-        radius: 5,
-        content: _filterDialogWidget(),
-        textConfirm: "Search",
-        textCancel: "Cancel",
-        confirmTextColor: Colors.white,
-        onConfirm: () async {
-          Navigation.goBack();
-          controller.customSearch();
-        });
   }
 
   @override
   Widget build(BuildContext context) {
-    const pageTitle = "Youtube Comment Reader";
     return Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
           centerTitle: true,
-          title: const Text(pageTitle),
+          title: Text(pageTitle),
           actions: [
             Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 3,
               ),
               child: IconButton(
-                onPressed: controller.reloadVideos,
+                onPressed: () {
+                  controller.reloadVideos();
+                },
                 icon: const Icon(Icons.refresh_sharp),
                 color: Colors.white,
               ),
@@ -116,7 +197,7 @@ class VideoSearchPage extends GetView<VideoSearchPageController> {
                 horizontal: 3,
               ),
               child: IconButton(
-                onPressed: _showVideoSearchDialog,
+                onPressed: () => _showFilterBottomSheet(context: context),
                 icon: const Icon(Icons.tune_rounded),
                 color: Colors.white,
               ),
