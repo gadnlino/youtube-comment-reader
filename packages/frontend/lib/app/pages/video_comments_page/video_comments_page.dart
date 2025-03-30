@@ -1,8 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:frontend/app/common/components/comment_widget.dart';
 import 'package:frontend/app/common/components/custom_divider.dart';
 import 'package:frontend/app/common/controllers/common/favorites_controller.dart';
 import 'package:frontend/app/common/controllers/pages/video_comments_page_controller.dart';
+import 'package:frontend/app/common/models/models.dart';
 import 'package:frontend/app/common/utils/navigation.dart';
 import 'package:get/get.dart';
 import 'package:html_unescape/html_unescape.dart';
@@ -25,6 +28,149 @@ class VideoCommentsPage extends GetView<VideoCommentsPageController> {
     _favoritesController = Get.find<FavoritesController>();
   }
 
+  void _showFilterBottomSheet({
+    required BuildContext context,
+  }) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      builder: (context) {
+        final keywordsController = TextEditingController(
+            text: controller.currentFilterOptions.value.keywords);
+
+        keywordsController.addListener(
+          () {
+            var newFiltersOptions = FilterOptions.fromJson(json
+                .decode(json.encode(controller.currentFilterOptions.value)));
+
+            newFiltersOptions.keywords = keywordsController.text;
+
+            controller.currentFilterOptions.value = newFiltersOptions;
+          },
+        );
+
+        return Obx(() => Padding(
+              padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom,
+                left: 16,
+                right: 16,
+                top: 24,
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text("Search filters",
+                      style: Theme.of(context).textTheme.titleLarge),
+                  const SizedBox(height: 16),
+                  TextField(
+                    controller: keywordsController,
+                    decoration: const InputDecoration(
+                      labelText: 'keywords',
+                      hintText: 'Ex: flutter performance android',
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text("Sort by:",
+                        style: Theme.of(context).textTheme.labelLarge),
+                  ),
+                  RadioListTile<String>(
+                    title: const Text("Most relevant"),
+                    value: 'relevance',
+                    groupValue: controller.currentFilterOptions.value.order,
+                    onChanged: (val) {
+                      var newFiltersOptions = FilterOptions.fromJson(
+                          json.decode(json
+                              .encode(controller.currentFilterOptions.value)));
+
+                      newFiltersOptions.order = val;
+
+                      controller.currentFilterOptions.value = newFiltersOptions;
+                    },
+                  ),
+                  RadioListTile<String>(
+                      title: const Text("Most recent"),
+                      value: 'time',
+                      groupValue: controller.currentFilterOptions.value.order,
+                      onChanged: (val) {
+                        var newFiltersOptions = FilterOptions.fromJson(
+                            json.decode(json.encode(
+                                controller.currentFilterOptions.value)));
+
+                        newFiltersOptions.order = val;
+
+                        controller.currentFilterOptions.value =
+                            newFiltersOptions;
+                      }),
+                  const SizedBox(height: 8),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text("Commentary types:",
+                        style: Theme.of(context).textTheme.labelLarge),
+                  ),
+                  CheckboxListTile(
+                      title: const Text("Positives"),
+                      value: controller.currentFilterOptions.value.showPositive,
+                      onChanged: (val) {
+                        var newFiltersOptions = FilterOptions.fromJson(
+                            json.decode(json.encode(
+                                controller.currentFilterOptions.value)));
+
+                        newFiltersOptions.showPositive = val;
+
+                        controller.currentFilterOptions.value =
+                            newFiltersOptions;
+                      }),
+                  CheckboxListTile(
+                    title: const Text("Negatives"),
+                    value: controller.currentFilterOptions.value.showNegative,
+                    onChanged: (val) {
+                      var newFiltersOptions = FilterOptions.fromJson(
+                          json.decode(json
+                              .encode(controller.currentFilterOptions.value)));
+
+                      newFiltersOptions.showNegative = val;
+
+                      controller.currentFilterOptions.value = newFiltersOptions;
+                    },
+                  ),
+                  const SizedBox(height: 16),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                          controller.clearFilters();
+                          controller.reloadComments();
+                        },
+                        child: const Text(
+                          "Clear filters",
+                          style: TextStyle(color: Colors.red),
+                        ),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigation.goBack();
+                          controller.reloadComments();
+                        },
+                        child: const Text("Search"),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                ],
+              ),
+            ));
+      },
+    );
+  }
+
   Widget _videoDescriptionSection(BuildContext context, String description) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,7 +186,7 @@ class VideoCommentsPage extends GetView<VideoCommentsPageController> {
                         .2) // No constraints when expanded
                 : BoxConstraints(
                     maxHeight: MediaQuery.of(context).size.height *
-                        .045), // Limit height when collapsed
+                        0), // Limit height when collapsed
             child: SingleChildScrollView(
               child: Text(
                 HtmlUnescape().convert(description),
@@ -63,8 +209,8 @@ class VideoCommentsPage extends GetView<VideoCommentsPageController> {
             child: Center(
               child: Text(
                 controller.videoDescriptionExpanded.value
-                    ? "Show less"
-                    : "Show more",
+                    ? "Hide description"
+                    : "Show description",
                 style: const TextStyle(
                   color: Colors.white60,
                   fontWeight: FontWeight.bold,
@@ -94,21 +240,11 @@ class VideoCommentsPage extends GetView<VideoCommentsPageController> {
                 horizontal: 3,
               ),
               child: IconButton(
-                onPressed: () {},
+                onPressed: () => controller.reloadComments(),
                 icon: const Icon(Icons.refresh_sharp),
                 color: Colors.white,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 3,
-              ),
-              child: IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.tune_rounded),
-                color: Colors.white,
-              ),
-            )
           ],
         ),
         body: Obx(
@@ -129,7 +265,7 @@ class VideoCommentsPage extends GetView<VideoCommentsPageController> {
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Column(
                 children: [
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 2.5),
                   // Cabeçalho do Post
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -193,6 +329,22 @@ class VideoCommentsPage extends GetView<VideoCommentsPageController> {
                     const CustomDivider(),
 
                   const SizedBox(height: 10),
+                  Row(
+                    children: [
+                      const Text(
+                        "Comments",
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                      const Spacer(),
+                      IconButton(
+                        onPressed: () =>
+                            _showFilterBottomSheet(context: context),
+                        icon: const Icon(Icons.tune_rounded),
+                        color: Colors.white,
+                      )
+                    ],
+                  ),
+                  const SizedBox(height: 10),
                   // Lista Rolável de Comentários
                   Builder(builder: (ctx) {
                     if (controller.commentsDisabledForVideo.value) {
@@ -214,7 +366,7 @@ class VideoCommentsPage extends GetView<VideoCommentsPageController> {
                         child: Padding(
                           padding: EdgeInsets.all(8.0),
                           child: Text(
-                            "No comments yet :(",
+                            "No comments yet :/",
                             style: TextStyle(fontSize: 25, color: Colors.white),
                           ),
                         ),

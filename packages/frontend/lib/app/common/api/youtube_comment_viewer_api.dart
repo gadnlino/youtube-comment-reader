@@ -42,6 +42,12 @@ class YoutubeCommentViewerApi {
       YouTubeCommentThreadsParams params) async {
     Response? response;
 
+    if (params.searchTerms != null &&
+        params.searchTerms!.isNotEmpty &&
+        params.order == 'relevance') {
+      params.order = null;
+    }
+
     try {
       response = await _clientHttp.get(
           url: "${Constants.apiUrl}/video/comments",

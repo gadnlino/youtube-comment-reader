@@ -16,6 +16,9 @@ class VideoCommentsPageController extends GetxController {
   RxList<YouTubeCommentThread> commentsThreadList = RxList();
   Rx<bool> commentsDisabledForVideo = Rx(false);
 
+  Rx<FilterOptions> currentFilterOptions =
+      Rx(FilterOptions(showPositive: true, showNegative: true));
+
   Rx<bool> videoDescriptionExpanded = Rx(false);
 
   @override
@@ -28,9 +31,8 @@ class VideoCommentsPageController extends GetxController {
             YouTubeSearchItem.fromJson(jsonDecode(Get.parameters['video']!));
 
         if (selectedVideo.value != null && selectedVideo.value!.id.isNotEmpty) {
-          videoCommentsLastResponse.value = await _ycvApi.fetchComments(
-              YouTubeCommentThreadsParams(
-                  videoId: selectedVideo.value!.id, part: 'snippet,replies'));
+          videoCommentsLastResponse.value =
+              await _ycvApi.fetchComments(__getDefaultSearchParams());
 
           if (videoCommentsLastResponse.value != null &&
               videoCommentsLastResponse.value!.items.isNotEmpty) {
@@ -44,18 +46,24 @@ class VideoCommentsPageController extends GetxController {
       }
     })();
 
+    ever(currentFilterOptions, (callback) {
+      var newSearchParams = __getDefaultSearchParams();
+
+      newSearchParams.searchTerms = callback.keywords;
+      newSearchParams.order = callback.order;
+      newSearchParams.pageToken = null;
+
+      searchParams.value = newSearchParams;
+    });
+
     super.onInit();
   }
 
-  void loadMoreComments() async {
+  loadMoreComments() async {
     try {
       loadingComments.value = true;
 
-      var searchResponse = await _ycvApi.fetchComments(
-          YouTubeCommentThreadsParams(
-              videoId: selectedVideo.value!.id,
-              pageToken: videoCommentsLastResponse.value!.nextPageToken,
-              part: 'snippet,replies'));
+      var searchResponse = await _ycvApi.fetchComments(searchParams.value!);
 
       if (searchResponse != null) {
         commentsThreadList.addAll(searchResponse.items);
@@ -65,5 +73,29 @@ class VideoCommentsPageController extends GetxController {
     } finally {
       loadingComments.value = false;
     }
+  }
+
+  reloadComments() async {
+    if (!loadingComments.value) {
+      commentsThreadList.value = [];
+
+      try {
+        loadingComments.value = true;
+        await loadMoreComments();
+      } finally {
+        loadingComments.value = false;
+      }
+    }
+  }
+
+  clearFilters() {
+    currentFilterOptions.value = FilterOptions();
+  }
+
+  YouTubeCommentThreadsParams __getDefaultSearchParams() {
+    return YouTubeCommentThreadsParams(
+        videoId: selectedVideo.value!.id,
+        pageToken: videoCommentsLastResponse.value?.nextPageToken,
+        part: 'snippet,replies');
   }
 }

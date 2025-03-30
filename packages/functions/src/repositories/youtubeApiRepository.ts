@@ -95,7 +95,7 @@ const youtubeApiRepository = {
 
         let videoCommentResults: any | null = null;
 
-        const cacheKey = `fetchComments:part=${parameters.part}&videoId=${parameters.videoId}`;
+        const cacheKey = `fetchComments:part=${parameters.part}&videoId=${parameters.videoId}&searchTerms=${parameters.searchTerms}&order=${parameters.order}`;
 
         let cacheItem = null;
 

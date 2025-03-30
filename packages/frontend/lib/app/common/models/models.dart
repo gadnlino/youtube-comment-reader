@@ -304,14 +304,14 @@ class YouTubeSearchParams {
 }
 
 class YouTubeCommentThreadsParams {
-  final String part; // Required, e.g., 'snippet,replies'
-  final String? videoId; // Video ID filter
-  final String? channelId; // Channel ID filter
-  final String? pageToken; // For paginated responses
-  final int? maxResults; // Results limit (1-100)
-  final String? order; // Sorting order
-  final String? searchTerms; // Search filter
-  final String? textFormat; // 'html' or 'plainText'
+  String part; // Required, e.g., 'snippet,replies'
+  String? videoId; // Video ID filter
+  String? channelId; // Channel ID filter
+  String? pageToken; // For paginated responses
+  int? maxResults; // Results limit (1-100)
+  String? order; // Sorting order
+  String? searchTerms; // Search filter
+  String? textFormat; // 'html' or 'plainText'
 
   YouTubeCommentThreadsParams({
     required this.videoId,
