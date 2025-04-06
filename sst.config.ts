@@ -1,6 +1,7 @@
 import { SSTConfig } from "sst";
 import { ApiStack } from "./stacks/ApiStack";
 import { DatabaseStack } from "./stacks/DatabaseStack";
+import { SentimentAnalysisFunctionStack } from "./stacks/SentimentAnalysisFunctionStack";
 
 export default {
   config(_input) {
@@ -16,6 +17,7 @@ export default {
 
     app
     .stack(DatabaseStack)
-    .stack(ApiStack);
+    .stack(ApiStack)
+    .stack(SentimentAnalysisFunctionStack);
   }
 } satisfies SSTConfig;

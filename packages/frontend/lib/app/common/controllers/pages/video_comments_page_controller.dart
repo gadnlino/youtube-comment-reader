@@ -5,24 +5,27 @@ import 'package:frontend/app/common/models/models.dart';
 import 'package:get/get.dart';
 
 class VideoCommentsPageController extends GetxController {
-  final _ycvApi = YoutubeCommentViewerApi();
+  final __ycvApi = YoutubeCommentViewerApi();
 
   Rx<bool> loading = Rx(false);
   Rx<bool> loadingComments = Rx(false);
   Rxn<YouTubeSearchItem> selectedVideo = Rxn();
 
   Rxn<YouTubeCommentThreadsResponse> videoCommentsLastResponse = Rxn();
-  Rxn<YouTubeCommentThreadsParams> searchParams = Rxn();
+
   RxList<YouTubeCommentThread> commentsThreadList = RxList();
   Rx<bool> commentsDisabledForVideo = Rx(false);
-
   Rx<FilterOptions> currentFilterOptions =
       Rx(FilterOptions(showPositive: true, showNegative: true));
 
   Rx<bool> videoDescriptionExpanded = Rx(false);
 
+  final Rxn<YouTubeCommentThreadsParams> __searchParams = Rxn();
+
   @override
   void onInit() {
+    currentFilterOptions.value = FilterOptions();
+
     (() async {
       try {
         loading.value = true;
@@ -32,7 +35,7 @@ class VideoCommentsPageController extends GetxController {
 
         if (selectedVideo.value != null && selectedVideo.value!.id.isNotEmpty) {
           videoCommentsLastResponse.value =
-              await _ycvApi.fetchComments(__getDefaultSearchParams());
+              await __ycvApi.fetchComments(__getDefaultSearchParams());
 
           if (videoCommentsLastResponse.value != null &&
               videoCommentsLastResponse.value!.items.isNotEmpty) {
@@ -53,7 +56,7 @@ class VideoCommentsPageController extends GetxController {
       newSearchParams.order = callback.order;
       newSearchParams.pageToken = null;
 
-      searchParams.value = newSearchParams;
+      __searchParams.value = newSearchParams;
     });
 
     super.onInit();
@@ -63,7 +66,7 @@ class VideoCommentsPageController extends GetxController {
     try {
       loadingComments.value = true;
 
-      var searchResponse = await _ycvApi.fetchComments(searchParams.value!);
+      var searchResponse = await __ycvApi.fetchComments(__searchParams.value!);
 
       if (searchResponse != null) {
         commentsThreadList.addAll(searchResponse.items);

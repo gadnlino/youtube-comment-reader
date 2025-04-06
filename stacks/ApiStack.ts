@@ -25,7 +25,7 @@ export function ApiStack({ stack }: StackContext) {
                         CACHE_ENABLED: "true"
                     },
                     functionName: "lbd-ycv-search-videos-" + process.env.SST_STAGE,
-                    handler: "packages/functions/src/searchVideos.main"
+                    handler: "packages/api/src/searchVideos.main"
                 },
 
             },
@@ -35,14 +35,14 @@ export function ApiStack({ stack }: StackContext) {
                         CACHE_ENABLED: "true"
                     },
                     functionName: "lbd-ycv-fetch-video-comments-" + process.env.SST_STAGE,
-                    handler: "packages/functions/src/fetchComments.main"
+                    handler: "packages/api/src/fetchComments.main"
                 },
 
             },
             "GET /video/comment/replies": {
                 function: {
                     functionName: "lbd-ycv-fetch-video-comment-replies-" + process.env.SST_STAGE,
-                    handler: "packages/functions/src/fetchCommentReplies.main",
+                    handler: "packages/api/src/fetchCommentReplies.main",
                 },
             },
         },
