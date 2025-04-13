@@ -2,14 +2,16 @@ import { DynamoDBClient, QueryCommand } from "@aws-sdk/client-dynamodb";
 import { DynamoDBDocumentClient, GetCommand, GetCommandInput, PutCommand, QueryCommandInput, unmarshallOptions } from "@aws-sdk/lib-dynamodb";
 import { unmarshall, marshall } from "@aws-sdk/util-dynamodb";
 
+const TABLE_NAME = process.env.DYNAMODB_TABLE_NAME;
+const expirationTimeMinutes = process.env.EXPIRATION_TIME_MINUTES ? Number(process.env.EXPIRATION_TIME_MINUTES) : 1;
+
 // Configure o cliente DynamoDB
 const ddbDocClient = DynamoDBDocumentClient.from(new DynamoDBClient({ region: process.env.AWS_REGION }));
-const expirationTimeMinutes = Number(process.env.EXPIRATION_TIME_MINUTES);
 
 const cache = {
     getItem: async (pk: string) => {
         const params: QueryCommandInput = {
-            TableName: process.env.SST_Table_tableName_CacheTable,
+            TableName: TABLE_NAME,
             KeyConditionExpression: "#key = :id", // Query by the primary key
             FilterExpression: "attribute_not_exists(expireAt) OR expireAt > :currentTime", // Check TTL
             ExpressionAttributeNames: {
@@ -43,20 +45,20 @@ const cache = {
     putItem: async (pk: string, data: string) => {
         const now = new Date();
         const params = {
-          TableName: process.env.SST_Table_tableName_CacheTable,
-          Item: {
-            key: pk, // Partition Key
-            expireAt: new Date(now.getTime() + expirationTimeMinutes * 60000).getTime() / 1000,
-            data: data, // Dados adicionais
-          },
+            TableName: TABLE_NAME,
+            Item: {
+                key: pk, // Partition Key
+                expireAt: new Date(now.getTime() + expirationTimeMinutes * 60000).getTime() / 1000,
+                data: data, // Dados adicionais
+            },
         };
-      
+
         try {
-          const result = await ddbDocClient.send(new PutCommand(params));
-          console.log("Item inserido com sucesso:", result);
+            const result = await ddbDocClient.send(new PutCommand(params));
+            console.log("Item inserido com sucesso:", result);
         } catch (err) {
-          console.error("Erro ao inserir item:", err);
-          throw err;
+            console.error("Erro ao inserir item:", err);
+            throw err;
         }
     },
 }

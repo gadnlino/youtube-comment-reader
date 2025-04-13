@@ -1,19 +1,19 @@
-import { YouTubeCommentThreadsParams, YouTubeSearchParams } from "src/types/types";
-import cache from "src/utils/cache";
-import { fetchComments, listVideos, searchVideos } from "src/utils/youtubeApi";
+import { YouTubeCommentThreadsParams, YouTubeSearchParams } from "../types/types";
+import cache from "../utils/cache";
+import youtubeApi from "../utils/youtubeApi";
 
 const cacheEnabled = process.env.CACHE_ENABLED === "true";
 
 const youtubeApiRepository = {
     listVideos: async (part: string, videoIds: string[]) => {
-        
+
         videoIds.sort();
 
         let searchVideoResults: any | null = null;
 
         const cacheKey = `listVideos:part=${part}&videoIds=${videoIds.join(',')}`;
 
-        let cacheItem = null;
+        let cacheItem: Record<string, any> | null = null;
 
         if (cacheEnabled) {
             console.log('cacheKey', cacheKey);
@@ -34,7 +34,7 @@ const youtubeApiRepository = {
             console.log('NAO foi possivel encontrar nenhum item para essa busca no cache');
         }
 
-        const response = await listVideos(part, videoIds);
+        const response = await youtubeApi.listVideos(part, videoIds);
 
         if (response.status < 200 || response.status > 299)
             return [response.status, response.data];
@@ -55,7 +55,7 @@ const youtubeApiRepository = {
 
         const cacheKey = `searchVideos:part=${parameters.part}&regionCode=${parameters.regionCode}&type=${parameters.type}&q=${parameters.q}&pageToken=${parameters.pageToken}`;
 
-        let cacheItem = null;
+        let cacheItem: Record<string, any> | null = null;
 
         if (cacheEnabled) {
             console.log('cacheKey', cacheKey);
@@ -76,7 +76,7 @@ const youtubeApiRepository = {
             console.log('NAO foi possivel encontrar nenhum item para essa busca no cache');
         }
 
-        const response = await searchVideos(parameters);
+        const response = await youtubeApi.searchVideos(parameters);
 
         if (response.status < 200 || response.status > 299)
             return [response.status, response.data];
@@ -97,7 +97,7 @@ const youtubeApiRepository = {
 
         const cacheKey = `fetchComments:part=${parameters.part}&videoId=${parameters.videoId}&searchTerms=${parameters.searchTerms}&order=${parameters.order}`;
 
-        let cacheItem = null;
+        let cacheItem: Record<string, any> | null = null;
 
         if (cacheEnabled) {
             console.log('cacheKey', cacheKey);
@@ -118,7 +118,7 @@ const youtubeApiRepository = {
             console.log('NAO foi possivel encontrar nenhum item para essa busca no cache');
         }
 
-        const response = await fetchComments(parameters);
+        const response = await youtubeApi.fetchComments(parameters);
 
         if (response.status === 403) {
             return [403, response.data];

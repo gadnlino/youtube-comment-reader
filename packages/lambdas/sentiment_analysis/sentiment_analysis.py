@@ -1,22 +1,23 @@
+##references: https://github.com/mgsudhanva/sentiment-service/blob/main/lambda/sentiment-service/Dockerfile
+##            https://medium.com/@mgsudhanva/deploying-hugging-face-transformers-model-on-aws-lambda-with-docker-containers-84c6f4483f2a
+
 import json
 import os
 from transformers import pipeline
 
-# Modelo multilingue que funciona com portugues
-classifier = pipeline(
-    "sentiment-analysis",
-    model="nlptown/bert-base-multilingual-uncased-sentiment"
-)
+SENTIMENT_ANALYSIS_API_KEY = os.environ.get("SENTIMENT_ANALYSIS_API_KEY")
 
-EXPECTED_KEY = os.environ.get("EXPECTED_KEY")
+MODEL_PATH = "./models/bert-multilingual"
+
+classifier = pipeline("sentiment-analysis", model=MODEL_PATH)
 
 def lambda_handler(event, context):
     try:
-        # headers = event.get("headers", {})
-        # api_key = headers.get("x-api-key")
+        headers = event.get("headers", {})
+        api_key = headers.get("x-api-key")
 
-        # if EXPECTED_KEY and api_key != EXPECTED_KEY:
-        #     return _response(403, {"error": "Unauthorized"})
+        if not SENTIMENT_ANALYSIS_API_KEY or api_key != SENTIMENT_ANALYSIS_API_KEY:
+            return _response(403, {"error": "Unauthorized"})
 
         # Suporte tanto a chamada remota quanto teste local
         body = json.loads(event.get("body", "{}"))

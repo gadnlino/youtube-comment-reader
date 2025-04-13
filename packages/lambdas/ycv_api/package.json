@@ -6,10 +6,16 @@
     "test": "sst bind vitest",
     "typecheck": "tsc -noEmit"
   },
+  "dependencies": {
+    "axios": "^1.8.4",
+    "@aws-sdk/client-dynamodb": "^3.788.0",
+    "@aws-sdk/lib-dynamodb": "^3.788.0",
+    "@aws-sdk/util-dynamodb": "^3.788.0",
+    "@aws-sdk/client-secrets-manager": "^3.787.0"
+  },
   "devDependencies": {
     "@types/node": "^22.9.3",
     "@types/aws-lambda": "^8.10.145",
-    "vitest": "^2.1.5",
-    "sst": "^3.3.27"
+    "vitest": "^2.1.5"
   }
 }
