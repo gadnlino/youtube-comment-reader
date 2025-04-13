@@ -312,6 +312,8 @@ class YouTubeCommentThreadsParams {
   String? order; // Sorting order
   String? searchTerms; // Search filter
   String? textFormat; // 'html' or 'plainText'
+  bool? showPositives; // Show positive comments
+  bool? showNegatives; // Show negative comments
 
   YouTubeCommentThreadsParams({
     required this.videoId,
@@ -322,6 +324,8 @@ class YouTubeCommentThreadsParams {
     this.order,
     this.searchTerms,
     this.textFormat,
+    this.showPositives,
+    this.showNegatives,
   });
 
   factory YouTubeCommentThreadsParams.fromJson(Map<String, dynamic> json) {
@@ -334,6 +338,8 @@ class YouTubeCommentThreadsParams {
       order: json['order'],
       searchTerms: json['searchTerms'],
       textFormat: json['textFormat'],
+      showPositives: json['showPositives'],
+      showNegatives: json['showNegatives'],
     );
   }
 
@@ -349,6 +355,8 @@ class YouTubeCommentThreadsParams {
         'searchTerms': searchTerms,
       if (textFormat != null && textFormat!.isNotEmpty)
         'textFormat': textFormat,
+      if (showPositives != null) 'showPositives': showPositives,
+      if (showNegatives != null) 'showNegatives': showNegatives,
     };
   }
 }
@@ -821,22 +829,22 @@ class CommentFavorite {
 class FilterOptions {
   String? keywords;
   String? order;
-  bool? showPositive;
-  bool? showNegative;
+  bool? showPositives;
+  bool? showNegatives;
 
   FilterOptions({
     this.keywords,
     this.order = 'relevance',
-    this.showPositive = false,
-    this.showNegative = false,
+    this.showPositives = false,
+    this.showNegatives = false,
   });
 
   Map<String, dynamic> toJson() {
     return {
       'keywords': keywords,
       'order': order,
-      'showPositive': showPositive,
-      'showNegative': showNegative
+      'showPositive': showPositives,
+      'showNegative': showNegatives
     };
   }
 
@@ -844,7 +852,7 @@ class FilterOptions {
     return FilterOptions(
         keywords: json['keywords'],
         order: json['order'],
-        showPositive: json['showPositive'],
-        showNegative: json['showNegative']);
+        showPositives: json['showPositive'],
+        showNegatives: json['showNegative']);
   }
 }

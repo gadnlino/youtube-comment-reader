@@ -229,6 +229,12 @@ export interface YouTubeCommentThreadsParams {
      * This parameter is currently ignored by the API.
      */
     textFormat?: 'html' | 'plainText';
+
+    showPositives?: boolean; // Indicates whether to show positive comments
+
+    showNegatives?: boolean; // Indicates whether to show negative comments
+
+    showNeutral?: boolean; // Indicates whether to show neutral comments
 }
 
 export interface CommentThreadsListResponse {

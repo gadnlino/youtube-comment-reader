@@ -1,8 +1,55 @@
-import { YouTubeCommentThreadsParams, YouTubeSearchParams } from "../types/types";
+import { YouTubeCommentThreadsParams, YouTubeCommentThreadsResponse, YouTubeSearchParams } from "../types/types";
 import cache from "../utils/cache";
 import youtubeApi from "../utils/youtubeApi";
+import sentimentAnalysisApi from "../utils/sentimentAnalysisApi";
 
 const cacheEnabled = process.env.CACHE_ENABLED === "true";
+
+const addSentimentInformation = async (response: YouTubeCommentThreadsResponse): Promise<YouTubeCommentThreadsResponse> => {
+    console.log('adicionando informacoes de sentimento');
+
+    if (!response.items || response.items.length === 0) {
+        return response;
+    }
+
+    const comments = response.items.map((item: any) => item.snippet.topLevelComment.snippet.textDisplay);
+
+    const sentiments = await sentimentAnalysisApi.analyzeSentiments(comments);
+
+    response.items.forEach((item: any, index: number) => {
+        item.sentiment = sentiments[index].sentiment;
+        item.score = sentiments[index].score;
+    });
+
+    return response;
+}
+
+const filterBySentiment = (response: YouTubeCommentThreadsResponse, parameters: YouTubeCommentThreadsParams): YouTubeCommentThreadsResponse => {
+
+    console.log('filtrando comentarios');
+
+    if (!response.items || response.items.length === 0) {
+        return response;
+    }
+
+    const sentiments: string[] = [];
+
+    if (parameters.showPositives) {
+        sentiments.push('positive');
+    }
+
+    if (parameters.showNegatives) {
+        sentiments.push('negative');
+    }
+
+    if (parameters.showNeutral) {
+        sentiments.push('neutral');
+    }
+
+    response.items = response.items.filter((item: any) => sentiments.includes(item.sentiment));
+
+    return response;
+}
 
 const youtubeApiRepository = {
     listVideos: async (part: string, videoIds: string[]) => {
@@ -95,24 +142,26 @@ const youtubeApiRepository = {
 
         let videoCommentResults: any | null = null;
 
+        const hasSentimentFilter = parameters.showNegatives || parameters.showPositives || parameters.showNeutral;
+
         const cacheKey = `fetchComments:part=${parameters.part}&videoId=${parameters.videoId}&searchTerms=${parameters.searchTerms}&order=${parameters.order}`;
 
         let cacheItem: Record<string, any> | null = null;
 
         if (cacheEnabled) {
-            console.log('cacheKey', cacheKey);
+            //console.log('cacheKey', cacheKey);
 
             cacheItem = await cache.getItem(cacheKey);
         }
 
         if (cacheItem) {
-            console.log('item encontrado no cache');
+            // console.log('item encontrado no cache');
 
-            console.log(cacheItem);
+            // console.log(cacheItem);
 
             videoCommentResults = JSON.parse(cacheItem.data);
 
-            return [200, videoCommentResults];
+            return [200, hasSentimentFilter ? await addSentimentInformation(videoCommentResults).then(r=>filterBySentiment(r, parameters)) : videoCommentResults];
         }
         else {
             console.log('NAO foi possivel encontrar nenhum item para essa busca no cache');
@@ -124,12 +173,18 @@ const youtubeApiRepository = {
             return [403, response.data];
         }
 
-        if (cacheEnabled) {
-            console.log('cacheando objeto');
-            await cache.putItem(cacheKey, JSON.stringify(response.data));
+        let responseVideos = response.data;
+
+        if (hasSentimentFilter) {
+            responseVideos = await addSentimentInformation(responseVideos).then(r => filterBySentiment(r, parameters));
         }
 
-        return [response.status, response.data];
+        if (cacheEnabled) {
+            console.log('cacheando objeto');
+            await cache.putItem(cacheKey, JSON.stringify(responseVideos));
+        }
+
+        return [response.status, responseVideos];
     }
 }
 

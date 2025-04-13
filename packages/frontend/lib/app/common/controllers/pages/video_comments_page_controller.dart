@@ -15,12 +15,13 @@ class VideoCommentsPageController extends GetxController {
 
   RxList<YouTubeCommentThread> commentsThreadList = RxList();
   Rx<bool> commentsDisabledForVideo = Rx(false);
-  Rx<FilterOptions> currentFilterOptions =
-      Rx(FilterOptions(showPositive: true, showNegative: true));
 
   Rx<bool> videoDescriptionExpanded = Rx(false);
 
   final Rxn<YouTubeCommentThreadsParams> __searchParams = Rxn();
+
+  Rx<FilterOptions> currentFilterOptions =
+      Rx(FilterOptions(showPositives: true, showNegatives: true));
 
   @override
   void onInit() {
@@ -55,6 +56,8 @@ class VideoCommentsPageController extends GetxController {
       newSearchParams.searchTerms = callback.keywords;
       newSearchParams.order = callback.order;
       newSearchParams.pageToken = null;
+      newSearchParams.showPositives = callback.showPositives;
+      newSearchParams.showNegatives = callback.showNegatives;
 
       __searchParams.value = newSearchParams;
     });

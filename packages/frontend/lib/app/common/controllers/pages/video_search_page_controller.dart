@@ -14,8 +14,8 @@ class VideoSearchPageController extends GetxController {
   Rxn<YouTubeSearchResponse> videoSearchLastResponse = Rxn(null);
   RxList<YouTubeSearchItem> videoSearchList = RxList();
 
-  Rx<YouTubeSearchParams> __searchParams = Rx(YouTubeSearchParams());
-  Rxn<String> __pageToken = Rxn();
+  final Rx<YouTubeSearchParams> __searchParams = Rx(YouTubeSearchParams());
+  final Rxn<String> __pageToken = Rxn();
 
   @override
   void onInit() {

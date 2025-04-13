@@ -1,7 +1,5 @@
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
+import constants
 
-model_name = "nlptown/bert-base-multilingual-uncased-sentiment"
-dest = "./models/bert-multilingual"
-
-AutoTokenizer.from_pretrained(model_name).save_pretrained(dest)
-AutoModelForSequenceClassification.from_pretrained(model_name).save_pretrained(dest)
+AutoTokenizer.from_pretrained(constants.MODEL_NAME).save_pretrained(constants.DEST_PATH)
+AutoModelForSequenceClassification.from_pretrained(constants.MODEL_NAME).save_pretrained(constants.DEST_PATH)

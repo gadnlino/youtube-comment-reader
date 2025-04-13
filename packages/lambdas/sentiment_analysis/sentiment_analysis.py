@@ -4,12 +4,11 @@
 import json
 import os
 from transformers import pipeline
+import constants
 
 SENTIMENT_ANALYSIS_API_KEY = os.environ.get("SENTIMENT_ANALYSIS_API_KEY")
 
-MODEL_PATH = "./models/bert-multilingual"
-
-classifier = pipeline("sentiment-analysis", model=MODEL_PATH)
+classifier = pipeline("sentiment-analysis", model=constants.DEST_PATH)
 
 def lambda_handler(event, context):
     try:
@@ -25,7 +24,7 @@ def lambda_handler(event, context):
 
         if not isinstance(comments, list) or not comments:
             return _response(400, {"error": "Expected a non-empty list of 'comments'"})
-
+        
         results = classifier(comments)
 
         def classify(label):
