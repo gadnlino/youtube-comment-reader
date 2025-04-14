@@ -11,6 +11,7 @@ import { LambdaFunction } from 'aws-cdk-lib/aws-events-targets';
 import * as uuid from "uuid";
 import { randomInt } from 'crypto';
 import { Environment } from 'aws-cdk-lib';
+import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from 'aws-cdk-lib/custom-resources';
 
 const APP_NAME = 'YoutubeCommentReader';
 
@@ -76,12 +77,12 @@ export class YouTubeCommentReaderBackendStack extends Stack {
                 MAX_RESULTS: "500",
                 CACHE_ENABLED: "true",
                 EXPIRATION_TIME_MINUTES: "10",
-                YOUTUBE_API_KEY_SECRET_NAME : youtubeApiKeySecret.secretName
+                YOUTUBE_API_KEY_SECRET_NAME: youtubeApiKeySecret.secretName
             },
             runtime: Runtime.NODEJS_LATEST,
         }
 
-       
+
 
         // Create a Lambda function for each of the CRUD operations
         const searchVideoLambdaFunctionName = `${APP_NAME}-searchVideos`;
@@ -159,12 +160,41 @@ export class YouTubeCommentReaderBackendStack extends Stack {
             value: functionUrl.url || "",
         });
 
-
-       
-
         youtubeApiKeySecret.grantRead(searchVideoLambdaFunction);
         youtubeApiKeySecret.grantRead(fetchVideoCommentsLambdaFunction);
         youtubeApiKeySecret.grantRead(fetchVideoCommentRepliesLambdaFunction);
+
+        const prewarmCustomResource = new AwsCustomResource(this, "InvokeWarmUpOnDeploy", {
+            onCreate: {
+                service: "Lambda",
+                action: "invoke",
+                parameters: {
+                    FunctionName: warmUpLambdaFunction.functionName,
+                    InvocationType: "Event", // Async
+                    Payload: JSON.stringify({
+                        comments: ["prewarm_create"]
+                    }),
+                },
+                physicalResourceId: PhysicalResourceId.of("WarmUpInvokeOnceCreate"),
+            },
+            onUpdate: {
+                service: "Lambda",
+                action: "invoke",
+                parameters: {
+                    FunctionName: warmUpLambdaFunction.functionName,
+                    InvocationType: "Event", // Async
+                    Payload: JSON.stringify({
+                        comments: ["prewarm_update"]
+                    }),
+                },
+                physicalResourceId: PhysicalResourceId.of("WarmUpInvokeOnceUpdate"),
+            },
+            policy: AwsCustomResourcePolicy.fromSdkCalls({
+                resources: [warmUpLambdaFunction.functionArn],
+            }),
+        });
+
+        warmUpLambdaFunction.grantInvoke(prewarmCustomResource);
     }
 }
 
