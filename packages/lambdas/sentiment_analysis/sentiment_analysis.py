@@ -27,12 +27,12 @@ def lambda_handler(event, context):
         
         results = classifier(comments)
 
-        def classify(label):
-            if "1" in label or "2" in label:
-                return "negative"
-            elif "4" in label or "5" in label:
-                return "positive"
-            return "neutral"
+        # def classify(label):
+        #     if "1" in label or "2" in label:
+        #         return "negative"
+        #     elif "4" in label or "5" in label:
+        #         return "positive"
+        #     return "neutral"
 
         output = []
         for text, result in zip(comments, results):
@@ -40,10 +40,14 @@ def lambda_handler(event, context):
                 "text": text,
                 "label": result["label"],
                 "score": result["score"],
-                "sentiment": classify(result["label"]),
+                "sentiment": result["label"],
             })
 
-        return _response(200, {"results": output})
+        result = {"results": output}
+        
+        print(f"Sentiment analysis results: {json.dumps(result)}")
+        
+        return _response(200, result)
 
     except Exception as e:
         return _response(500, {"error": str(e)})

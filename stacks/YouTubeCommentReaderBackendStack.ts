@@ -13,10 +13,10 @@ import { randomInt } from 'crypto';
 import { Environment } from 'aws-cdk-lib';
 import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from 'aws-cdk-lib/custom-resources';
 
-const APP_NAME = 'YoutubeCommentReader';
+const APP_NAME = 'YoutubeCommentReaderBackend';
 
 export class YouTubeCommentReaderBackendStack extends Stack {
-    constructor(app: App, id: string, env: Environment) {
+    constructor(app: App, id: string, envName: string, env: Environment) {
         super(app, id, {
             env
         });
@@ -30,7 +30,7 @@ export class YouTubeCommentReaderBackendStack extends Stack {
             },
             tableName,
             timeToLiveAttribute: 'expireAt',
-            removalPolicy: RemovalPolicy.RETAIN,
+            removalPolicy: envName === 'prod'? RemovalPolicy.RETAIN: RemovalPolicy.DESTROY,
         });
 
         const customApiKey = generateCustomApiKey();
@@ -59,7 +59,7 @@ export class YouTubeCommentReaderBackendStack extends Stack {
         const youtubeApiKeySecretName = `${APP_NAME}-YoutubeApiKeySecret`;
         const youtubeApiKeySecret = new Secret(this, youtubeApiKeySecretName, {
             secretName: youtubeApiKeySecretName,
-            removalPolicy: RemovalPolicy.RETAIN,
+            removalPolicy: envName === 'prod'? RemovalPolicy.RETAIN: RemovalPolicy.DESTROY,
         });
 
         const nodeJsFunctionProps: NodejsFunctionProps = {

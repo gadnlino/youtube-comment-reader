@@ -1,4 +1,4 @@
-import { YouTubeCommentThreadsParams, YouTubeCommentThreadsResponse, YouTubeSearchParams } from "../types/types";
+import { YouTubeCommentThread, YouTubeCommentThreadsParams, YouTubeCommentThreadsResponse, YouTubeSearchParams } from "../types/types";
 import cache from "../utils/cache";
 import youtubeApi from "../utils/youtubeApi";
 import sentimentAnalysisApi from "../utils/sentimentAnalysisApi";
@@ -12,7 +12,7 @@ const addSentimentInformation = async (response: YouTubeCommentThreadsResponse):
         return response;
     }
 
-    const comments = response.items.map((item: any) => item.snippet.topLevelComment.snippet.textDisplay);
+    const comments = response.items.map((item: YouTubeCommentThread) => item.snippet.topLevelComment.snippet.textDisplay);
 
     const sentiments = await sentimentAnalysisApi.analyzeSentiments(comments);
 
@@ -24,9 +24,7 @@ const addSentimentInformation = async (response: YouTubeCommentThreadsResponse):
     return response;
 }
 
-const filterBySentiment = (response: YouTubeCommentThreadsResponse, parameters: YouTubeCommentThreadsParams): YouTubeCommentThreadsResponse => {
-
-    console.log('filtrando comentarios');
+const filterBySentiment = (response: YouTubeCommentThreadsResponse, parameters: any): YouTubeCommentThreadsResponse => {
 
     if (!response.items || response.items.length === 0) {
         return response;
@@ -46,7 +44,13 @@ const filterBySentiment = (response: YouTubeCommentThreadsResponse, parameters: 
         sentiments.push('neutral');
     }
 
-    response.items = response.items.filter((item: any) => sentiments.includes(item.sentiment));
+    console.log('filtrando comentarios com sentimento', sentiments, parameters);
+
+    const filteredComments = response.items.filter((item: any) => sentiments.includes(item.sentiment));
+
+    console.log('filteredComments', filteredComments.map((item: any) => ({textDisplay: item.snippet.topLevelComment.snippet.textDisplay, sentiment : item.sentiment})));
+
+    response.items = filteredComments;
 
     return response;
 }
@@ -142,7 +146,13 @@ const youtubeApiRepository = {
 
         let videoCommentResults: any | null = null;
 
-        const hasSentimentFilter = parameters.showNegatives || parameters.showPositives || parameters.showNeutral;
+        const showPositives = parameters.showPositives && String(parameters.showPositives) === 'true';
+        const showNegatives = parameters.showNegatives && String(parameters.showNegatives) === 'true';
+        const showNeutral = parameters.showNeutral && String(parameters.showNeutral) === 'true';
+
+        console.log('sentimentFilters', {showPositives, showNegatives, showNeutral});
+
+        const hasSentimentFilter = showPositives || showNegatives || showNeutral;
 
         const cacheKey = `fetchComments:part=${parameters.part}&videoId=${parameters.videoId}&searchTerms=${parameters.searchTerms}&order=${parameters.order}`;
 
@@ -161,7 +171,7 @@ const youtubeApiRepository = {
 
             videoCommentResults = JSON.parse(cacheItem.data);
 
-            return [200, hasSentimentFilter ? await addSentimentInformation(videoCommentResults).then(r=>filterBySentiment(r, parameters)) : videoCommentResults];
+            return [200, hasSentimentFilter ? await addSentimentInformation(videoCommentResults).then(r=>filterBySentiment(r, {showPositives, showNegatives, showNeutral})) : videoCommentResults];
         }
         else {
             console.log('NAO foi possivel encontrar nenhum item para essa busca no cache');
@@ -176,7 +186,7 @@ const youtubeApiRepository = {
         let responseVideos = response.data;
 
         if (hasSentimentFilter) {
-            responseVideos = await addSentimentInformation(responseVideos).then(r => filterBySentiment(r, parameters));
+            responseVideos = await addSentimentInformation(responseVideos).then(r => filterBySentiment(r, {showPositives, showNegatives, showNeutral}));
         }
 
         if (cacheEnabled) {

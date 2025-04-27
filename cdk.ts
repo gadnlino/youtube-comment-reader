@@ -12,6 +12,6 @@ const environments = {
 
 const app = new App();
 
-new YouTubeCommentReaderBackendStack(app, 'YouTubeCommentReaderBackendStack', environments[ENV_NAME]);
+new YouTubeCommentReaderBackendStack(app, 'YouTubeCommentReaderBackendStack', ENV_NAME, environments[ENV_NAME]);
 
 app.synth();

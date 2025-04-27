@@ -48,10 +48,18 @@ class YoutubeCommentViewerApi {
       params.order = null;
     }
 
+    final url = "${Constants.apiUrl}/video/comments";
+    final queryParams = params.toJson();
+
+    queryParams.removeWhere((key, value) => value == null);
+
+    debugPrint(
+        'fetch comments with the following parameters:${jsonEncode(queryParams)}');
+
     try {
       response = await _clientHttp.get(
-          url: "${Constants.apiUrl}/video/comments",
-          queryParameters: params.toJson(),
+          url: url,
+          queryParameters: queryParams,
           options: Options(
               validateStatus: (status) =>
                   status != null &&
@@ -60,7 +68,15 @@ class YoutubeCommentViewerApi {
       if (response.statusCode! >= 200 &&
           response.statusCode! <= 299 &&
           response.data != null) {
-        return YouTubeCommentThreadsResponse.fromJson(response.data);
+        final responseData =
+            YouTubeCommentThreadsResponse.fromJson(response.data);
+
+        responseData.items.forEach((element) {
+          debugPrint(
+              'COMMENT: ${element.snippet?.topLevelComment?.snippet?.textDisplay}');
+        });
+
+        return responseData;
       }
 
       if (response.statusCode == 403 &&
