@@ -5,13 +5,15 @@ import { Secret } from 'aws-cdk-lib/aws-secretsmanager';
 import { App, Stack, RemovalPolicy, Duration, CfnOutput } from 'aws-cdk-lib';
 import { NodejsFunction, NodejsFunctionProps } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
-import { Platform } from 'aws-cdk-lib/aws-ecr-assets';
+import { Platform, DockerImageAsset } from 'aws-cdk-lib/aws-ecr-assets';
 import { Rule, Schedule } from 'aws-cdk-lib/aws-events';
 import { LambdaFunction } from 'aws-cdk-lib/aws-events-targets';
 import * as uuid from "uuid";
+import * as ecs from 'aws-cdk-lib/aws-ecs';
 import { randomInt } from 'crypto';
 import { Environment } from 'aws-cdk-lib';
 import { AwsCustomResource, AwsCustomResourcePolicy, PhysicalResourceId } from 'aws-cdk-lib/custom-resources';
+import * as ec2 from 'aws-cdk-lib/aws-ec2';
 
 const APP_NAME = 'YoutubeCommentReaderBackend';
 
@@ -20,6 +22,20 @@ export class YouTubeCommentReaderBackendStack extends Stack {
         super(app, id, {
             env
         });
+
+        // Usa a VPC padrão
+        // const vpc = ec2.Vpc.fromLookup(this, `${APP_NAME}-Vpc`, { isDefault: true });
+
+        // // Cria o cluster ECS
+        // const cluster = new ecs.Cluster(this, "Cluster", {
+        //     vpc,
+        // });
+
+        // // Cria a imagem Docker a partir do Dockerfile local
+        // const dockerImageAsset = new DockerImageAsset(this, "DockerImage", {
+        //     directory: "./caminho/para/seu/projeto", // <- coloca o caminho onde está seu Dockerfile
+        // });
+
 
         const tableName = `${APP_NAME}-CacheDynamoDBTable`;
 
@@ -30,7 +46,7 @@ export class YouTubeCommentReaderBackendStack extends Stack {
             },
             tableName,
             timeToLiveAttribute: 'expireAt',
-            removalPolicy: envName === 'prod'? RemovalPolicy.RETAIN: RemovalPolicy.DESTROY,
+            removalPolicy: envName === 'prod' ? RemovalPolicy.RETAIN : RemovalPolicy.DESTROY,
         });
 
         const customApiKey = generateCustomApiKey();
@@ -59,7 +75,7 @@ export class YouTubeCommentReaderBackendStack extends Stack {
         const youtubeApiKeySecretName = `${APP_NAME}-YoutubeApiKeySecret`;
         const youtubeApiKeySecret = new Secret(this, youtubeApiKeySecretName, {
             secretName: youtubeApiKeySecretName,
-            removalPolicy: envName === 'prod'? RemovalPolicy.RETAIN: RemovalPolicy.DESTROY,
+            removalPolicy: envName === 'prod' ? RemovalPolicy.RETAIN : RemovalPolicy.DESTROY,
         });
 
         const nodeJsFunctionProps: NodejsFunctionProps = {
@@ -89,28 +105,29 @@ export class YouTubeCommentReaderBackendStack extends Stack {
         const lambdaFolder = 'packages/lambdas/ycv_api';
 
         const searchVideoLambdaFunction = new NodejsFunction(this, searchVideoLambdaFunctionName, {
+            ...nodeJsFunctionProps,
             functionName: searchVideoLambdaFunctionName,
             entry: join(__dirname, '..', lambdaFolder, 'searchVideos.ts'),
             handler: 'main',
-            ...nodeJsFunctionProps,
         });
 
         const fetchVideoCommentsLambdaFunctionName = `${APP_NAME}-fetchVideoComments`;
 
         const fetchVideoCommentsLambdaFunction = new NodejsFunction(this, fetchVideoCommentsLambdaFunctionName, {
+            ...nodeJsFunctionProps,
             functionName: fetchVideoCommentsLambdaFunctionName,
             entry: join(__dirname, '..', lambdaFolder, 'fetchComments.ts'),
             handler: 'main',
-            ...nodeJsFunctionProps,
+            timeout: Duration.minutes(2),
         });
 
         const fetchVideoCommentRepliesLambdaFunctionName = `${APP_NAME}-fetchVideoCommentReplies`;
 
         const fetchVideoCommentRepliesLambdaFunction = new NodejsFunction(this, fetchVideoCommentRepliesLambdaFunctionName, {
+            ...nodeJsFunctionProps,
             functionName: fetchVideoCommentRepliesLambdaFunctionName,
             entry: join(__dirname, '..', lambdaFolder, 'fetchCommentReplies.ts'),
             handler: 'main',
-            ...nodeJsFunctionProps,
         });
 
         // Grant the Lambda function read access to the DynamoDB table

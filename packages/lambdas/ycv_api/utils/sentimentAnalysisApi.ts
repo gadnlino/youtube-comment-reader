@@ -1,7 +1,12 @@
 import axios from 'axios';
 
-interface SentimentAnalysisResult {
-    comment: string;
+export interface SentimentAnalysisRequest{
+    text: string;
+    id: string;
+}
+
+export interface SentimentAnalysisResult {
+    request: SentimentAnalysisRequest;
     sentiment: string;
     score: number;
 }
@@ -10,13 +15,13 @@ const API_KEY = process.env.SENTIMENT_ANALYSIS_API_KEY;
 
 const sentimentAnalysisApi = {
     analyzeSentiments: async (
-        comments: string[],
+        requests: SentimentAnalysisRequest[],
     ): Promise<SentimentAnalysisResult[]> => {
 
         try {
             const response = await axios.post(
                 process.env.SENTIMENT_ANALYSIS_API_URL!,
-                { comments },
+                { comments: requests },
                 {
                     headers: {
                         'Content-Type': 'application/json',
@@ -25,7 +30,7 @@ const sentimentAnalysisApi = {
                 }
             );
 
-            return response.data.results;
+            return response.data;
         } catch (error) {
             throw error;
         }

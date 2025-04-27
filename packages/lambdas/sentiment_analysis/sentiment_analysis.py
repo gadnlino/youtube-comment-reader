@@ -25,7 +25,7 @@ def lambda_handler(event, context):
         if not isinstance(comments, list) or not comments:
             return _response(400, {"error": "Expected a non-empty list of 'comments'"})
         
-        results = classifier(comments)
+        results = classifier(list(map(lambda x: x['text'].lower(), comments)))
 
         # def classify(label):
         #     if "1" in label or "2" in label:
@@ -35,19 +35,18 @@ def lambda_handler(event, context):
         #     return "neutral"
 
         output = []
-        for text, result in zip(comments, results):
+        for request, result in zip(comments, results):
             output.append({
-                "text": text,
+                'request': request,
+                "text": request["text"],
                 "label": result["label"],
                 "score": result["score"],
                 "sentiment": result["label"],
             })
-
-        result = {"results": output}
         
-        print(f"Sentiment analysis results: {json.dumps(result)}")
+        print(f"Sentiment analysis results: {json.dumps(output)}")
         
-        return _response(200, result)
+        return _response(200, output)
 
     except Exception as e:
         return _response(500, {"error": str(e)})
