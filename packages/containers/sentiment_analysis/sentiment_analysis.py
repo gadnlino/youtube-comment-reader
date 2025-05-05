@@ -10,29 +10,16 @@ SENTIMENT_ANALYSIS_API_KEY = os.environ.get("SENTIMENT_ANALYSIS_API_KEY")
 
 classifier = pipeline("sentiment-analysis", model=constants.DEST_PATH)
 
-def lambda_handler(event, context):
+def lambda_handler(body, context):
     try:
-        headers = event.get("headers", {})
-        api_key = headers.get("x-api-key")
-
-        if not SENTIMENT_ANALYSIS_API_KEY or api_key != SENTIMENT_ANALYSIS_API_KEY:
-            return _response(403, {"error": "Unauthorized"})
-
-        # Suporte tanto a chamada remota quanto teste local
-        body = json.loads(event.get("body", "{}"))
+        print(f"Received event: {json.dumps(body)}")
+        
         comments = body.get("comments", [])
 
         if not isinstance(comments, list) or not comments:
-            return _response(400, {"error": "Expected a non-empty list of 'comments'"})
+            return {"error": "Expected a non-empty list of 'comments'"}, 400
         
         results = classifier(list(map(lambda x: x['text'].lower(), comments)))
-
-        # def classify(label):
-        #     if "1" in label or "2" in label:
-        #         return "negative"
-        #     elif "4" in label or "5" in label:
-        #         return "positive"
-        #     return "neutral"
 
         output = []
         for request, result in zip(comments, results):
@@ -46,23 +33,14 @@ def lambda_handler(event, context):
         
         print(f"Sentiment analysis results: {json.dumps(output)}")
         
-        return _response(200, output)
+        return output, 200
 
     except Exception as e:
-        return _response(500, {"error": str(e)})
-
-def _response(status_code, body):
-    return {
-        "statusCode": status_code,
-        "headers": { "Content-Type": "application/json" },
-        "body": json.dumps(body)
-    }
+        return {"error": str(e)}, 500
     
 if(__name__ == "__main__"):
     custom_event = {
-        'body': {
             'comments': ["abcde test comment"]
         }
-    }
     
     lambda_handler(custom_event, None)

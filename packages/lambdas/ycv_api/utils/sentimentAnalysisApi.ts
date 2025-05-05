@@ -20,7 +20,7 @@ const sentimentAnalysisApi = {
 
         try {
             const response = await axios.post(
-                process.env.SENTIMENT_ANALYSIS_API_URL!,
+                process.env.SENTIMENT_ANALYSIS_API_URL! + '/analyze',
                 { comments: requests },
                 {
                     headers: {

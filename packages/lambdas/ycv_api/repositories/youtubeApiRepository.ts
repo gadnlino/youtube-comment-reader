@@ -5,8 +5,8 @@ import sentimentAnalysisApi, { SentimentAnalysisRequest, SentimentAnalysisResult
 import pLimit from "p-limit";
 
 const cacheEnabled = process.env.CACHE_ENABLED === "true";
-const FETCH_SENTIMENT_BATCH_SIZE = 10;
-const maxParallelRequests = 5;
+const FETCH_SENTIMENT_BATCH_SIZE = 100;
+const maxParallelRequests = 20;
 
 function batchify(list: any[], batchSize: number) {
     const batches: any[] = [];
