@@ -120,7 +120,7 @@ class SentimentAnalysisFargateStack extends Stack {
         this.serviceName = service.serviceName;
         this.clusterName = cluster.clusterName;
         this.logGroupName = logGroup.logGroupName;
-        this.loadBalancerURL = loadBalancer.loadBalancerDnsName;
+        this.loadBalancerURL = 'http://' + loadBalancer.loadBalancerDnsName;
 
         new CfnOutput(this, APP_NAME + "-ServiceName", {
             value: this.serviceName,
@@ -139,7 +139,7 @@ class SentimentAnalysisFargateStack extends Stack {
 
         // Output the DNS name of the ALB
         new cdk.CfnOutput(this, APP_NAME + "-ALBDNS", {
-            value: 'http://' + loadBalancer.loadBalancerDnsName,
+            value: loadBalancer.loadBalancerDnsName,
             description: "The DNS name of the ALB",
         });
     }
