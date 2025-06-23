@@ -235,3 +235,8 @@ dist
 # End of https://www.toptal.com/developers/gitignore/api/flutter,dart,node
 /.sst
 /cdk.out
+/packages/containers/sentiment_analysis/evaluation/results
+/packages/containers/sentiment_analysis/evaluation/youtube_sentiment_model
+/packages/containers/sentiment_analysis/model_evaluation/results
+/packages/containers/sentiment_analysis/model_evaluation/youtube_sentiment_model
+packages/containers/sentiment_analysis/api_evaluation/sampled_comments.csv

@@ -23,7 +23,8 @@ const addSentimentInformation = async (response: YouTubeCommentThreadsResponse):
         return response;
     }
 
-    const comments: SentimentAnalysisRequest[] = response.items.map((item: YouTubeCommentThread) => ({ text: item.snippet.topLevelComment.snippet.textDisplay, id: item.id }));
+    const comments: SentimentAnalysisRequest[] = 
+        response.items.map((item: YouTubeCommentThread) => ({ text: item.snippet.topLevelComment.snippet.textDisplay, id: item.id }));
 
     const batches = batchify(comments, FETCH_SENTIMENT_BATCH_SIZE); // Dividindo em lotes de 10
 
