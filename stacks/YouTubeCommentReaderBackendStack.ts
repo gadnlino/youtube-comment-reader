@@ -75,7 +75,7 @@ class SentimentAnalysisFargateStack extends Stack {
         // Cria a task definition
         const taskDefinition = new ecs.FargateTaskDefinition(this, APP_NAME + "-TaskDef", {
             cpu: 512, // 0.5 vCPU
-            memoryLimitMiB: 1024, // 1 GB RAM
+            memoryLimitMiB: 1024 * 4, // 1 GB RAM
             ephemeralStorageGiB: 50, // 50 GB of ephemeral storage
             runtimePlatform: {
                 cpuArchitecture: ecs.CpuArchitecture.ARM64,

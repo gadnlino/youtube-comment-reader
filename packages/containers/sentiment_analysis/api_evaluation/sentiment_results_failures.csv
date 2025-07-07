@@ -1,0 +1,2 @@
+Method,Name,Error,Occurrences
+POST,/analyze,HTTPError('400 Client Error: BAD REQUEST for url: /analyze'),2

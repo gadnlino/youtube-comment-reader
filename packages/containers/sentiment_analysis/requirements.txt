@@ -4,3 +4,4 @@ sentencepiece
 protobuf
 flask
 pydantic
+pytest

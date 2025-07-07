@@ -195,7 +195,9 @@ const youtubeApiRepository = {
 
             videoCommentResults = JSON.parse(cacheItem.data);
 
-            return [200, hasSentimentFilter ? await addSentimentInformation(videoCommentResults).then(r => filterBySentiment(r, { showPositives, showNegatives, showNeutral })) : videoCommentResults];
+            return [200, hasSentimentFilter ? 
+                await addSentimentInformation(videoCommentResults).then(r => filterBySentiment(r, { showPositives, showNegatives, showNeutral })) : 
+                videoCommentResults];
         }
         else {
             console.log('NAO foi possivel encontrar nenhum item para essa busca no cache');

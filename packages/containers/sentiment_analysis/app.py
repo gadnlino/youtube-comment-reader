@@ -18,11 +18,12 @@ def analyze():
         
         api_key = request.headers.get("x-api-key")
         
-        if not SENTIMENT_ANALYSIS_API_KEY or api_key != SENTIMENT_ANALYSIS_API_KEY:
+        #if not SENTIMENT_ANALYSIS_API_KEY or api_key != SENTIMENT_ANALYSIS_API_KEY:
+        if SENTIMENT_ANALYSIS_API_KEY and api_key != SENTIMENT_ANALYSIS_API_KEY:
             return {"error": "Unauthorized"}, 403
 
         # Process the comments using your existing logic
-        result, status_code = sentiment_analysis.lambda_handler(request.json, None)
+        result, status_code = sentiment_analysis.handler(request.json, None)
 
         # Return the results as a JSON response
         return jsonify(result), status_code

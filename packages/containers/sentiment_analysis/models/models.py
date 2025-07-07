@@ -9,12 +9,12 @@ class Comment(BaseModel):
 
 class CommentAnalysisRequest(BaseModel):
     comments: list[Comment]
-    model_name: str
+    model_name: Optional[str]
 
 class CommentAnalysisResult(BaseModel):
-    request: Comment
-    text: str
-    label: str
-    score: float
-    sentiment: str
-    total_processing_time: Optional[int] = None
+    request: Optional[Comment]
+    text: Optional[str]
+    label: Optional[str]
+    score: Optional[float]
+    sentiment: Optional[str]
+    total_processing_time: Optional[float] = None
