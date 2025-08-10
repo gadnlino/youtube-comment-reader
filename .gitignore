@@ -244,3 +244,10 @@ packages/containers/sentiment_analysis/api_evaluation/sampled_comments.csv
 /packages/containers/sentiment_analysis/__pycache__
 /packages/containers/sentiment_analysis/models/__pycache__
 /packages/containers/sentiment_analysis/api_evaluation/__pycache__
+*.pyc
+*.pt
+*.bin
+*.safetensors
+*.pkl
+*.pth
+*.model
