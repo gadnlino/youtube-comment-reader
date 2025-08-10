@@ -38,6 +38,8 @@ class VideoSearchPageController extends GetxController {
 
       debugPrint("carregando mais videos");
 
+      var searchParams = __searchParams.value;
+
       var searchResponse = await _ycvApi.searchVideos(__searchParams.value!);
 
       if (searchResponse != null && searchResponse.items.isNotEmpty) {

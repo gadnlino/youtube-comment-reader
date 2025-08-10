@@ -1,8 +1,9 @@
+import { Comment, CommentAnalysisResult } from "../utils/sentimentAnalysisApi";
 import { YouTubeCommentThread, YouTubeCommentThreadsParams, YouTubeCommentThreadsResponse, YouTubeSearchParams } from "../types/types";
 import cache from "../utils/cache";
 import youtubeApi from "../utils/youtubeApi";
-import sentimentAnalysisApi, { SentimentAnalysisRequest, SentimentAnalysisResult } from "../utils/sentimentAnalysisApi";
 import pLimit from "p-limit";
+import sentimentAnalysisApi from "../utils/sentimentAnalysisApi";
 
 const cacheEnabled = process.env.CACHE_ENABLED === "true";
 const FETCH_SENTIMENT_BATCH_SIZE = 100;
@@ -23,26 +24,31 @@ const addSentimentInformation = async (response: YouTubeCommentThreadsResponse):
         return response;
     }
 
-    const comments: SentimentAnalysisRequest[] = 
-        response.items.map((item: YouTubeCommentThread) => ({ text: item.snippet.topLevelComment.snippet.textDisplay, id: item.id }));
+    const comments: Comment[] = response.items.map((item: YouTubeCommentThread) => ({
+            id: item.id,
+            text: item.snippet.topLevelComment.snippet.textDisplay,
+            videoTitle: null
+    }));
 
-    const batches = batchify(comments, FETCH_SENTIMENT_BATCH_SIZE); // Dividindo em lotes de 10
+    const batches = batchify(comments, FETCH_SENTIMENT_BATCH_SIZE);
 
     const limit = pLimit(maxParallelRequests);
 
     const analysisPromises = batches.map(batch => limit(async () => {
-        return await sentimentAnalysisApi.analyzeSentiments(batch);
+        return await sentimentAnalysisApi.analyzeSentiments({ comments: batch });
     }));
 
-    const responses = await Promise.all(analysisPromises);
+    const responses: CommentAnalysisResult[][] = await Promise.all(analysisPromises);
 
     const allResults = responses.flatMap(res => res);
 
     response.items.forEach((item: any, index: number) => {
-        const sentiment: SentimentAnalysisResult | undefined = allResults.find((result: any) => result.request.id === item.id);
+        const sentiment: CommentAnalysisResult | undefined = allResults.find((result: CommentAnalysisResult) => result.request?.id === item.id);
 
-        item.sentiment = sentiment?.sentiment;
-        item.score = sentiment?.score;
+        if (sentiment) {
+            item.sentiment = sentiment.sentiment;
+            item.score = sentiment.score;
+        }
     });
 
     return response;
@@ -80,7 +86,47 @@ const filterBySentiment = (response: YouTubeCommentThreadsResponse, parameters: 
 }
 
 const youtubeApiRepository = {
-    listVideos: async (part: string, videoIds: string[]) => {
+    listVideos: async (parameters: YouTubeSearchParams) => {
+
+        let searchVideoResults: any | null = null;
+
+        const cacheKey = `listVideos::part=${parameters.part}&regionCode=${parameters.regionCode}&type=${parameters.type}&q=${parameters.q}&pageToken=${parameters.pageToken}&`;
+
+        let cacheItem: Record<string, any> | null = null;
+
+        if (cacheEnabled) {
+            console.log('cacheKey', cacheKey);
+
+            cacheItem = await cache.getItem(cacheKey);
+        }
+
+        if (cacheItem) {
+            console.log('item encontrado no cache');
+
+            console.log(cacheItem);
+
+            searchVideoResults = JSON.parse(cacheItem.data);
+
+            return [200, searchVideoResults];
+        }
+        else {
+            console.log('NAO foi possivel encontrar nenhum item para essa busca no cache');
+        }
+
+        const response = await youtubeApi.listVideos(parameters);
+
+        if (response.status < 200 || response.status > 299)
+            return [response.status, response.data];
+
+        searchVideoResults = response.data;
+
+        if (cacheEnabled) {
+            await cache.putItem(cacheKey, JSON.stringify(searchVideoResults));
+        }
+
+        return [200, searchVideoResults];
+    },
+    getVideoInformation: async (part: string, videoIds: string[]) => {
 
         videoIds.sort();
 
@@ -109,7 +155,7 @@ const youtubeApiRepository = {
             console.log('NAO foi possivel encontrar nenhum item para essa busca no cache');
         }
 
-        const response = await youtubeApi.listVideos(part, videoIds);
+        const response = await youtubeApi.getVideoInformation(part, videoIds);
 
         if (response.status < 200 || response.status > 299)
             return [response.status, response.data];
@@ -183,16 +229,10 @@ const youtubeApiRepository = {
         let cacheItem: Record<string, any> | null = null;
 
         if (cacheEnabled) {
-            //console.log('cacheKey', cacheKey);
-
             cacheItem = await cache.getItem(cacheKey);
         }
 
         if (cacheItem) {
-            // console.log('item encontrado no cache');
-
-            // console.log(cacheItem);
-
             videoCommentResults = JSON.parse(cacheItem.data);
 
             return [200, hasSentimentFilter ? 

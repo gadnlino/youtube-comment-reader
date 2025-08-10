@@ -1,0 +1,24 @@
+Comprehensive Sentiment Analysis Model Comparison
+============================================================
+
+Rule-based Models:
+VADER - Accuracy: 0.5180, F1-Macro: 0.5147
+TextBlob - Accuracy: 0.4800, F1-Macro: 0.4635
+
+Traditional ML Models:
+TF-IDF + Logistic Regression - Accuracy: 0.5350, F1-Macro: 0.5341
+TF-IDF + SVM - Accuracy: 0.5250, F1-Macro: 0.5181
+
+Transformer Models:
+DeBERTa-v3-small (CommentText) - Accuracy: 0.7300, F1-Macro: 0.7300
+DeBERTa-v3-small (CommentTextWithContext) - Accuracy: 0.7200, F1-Macro: 0.7200
+Twitter-XLM-RoBERTa (CommentText) - Accuracy: 0.7100, F1-Macro: 0.7100
+Twitter-XLM-RoBERTa (CommentTextWithContext) - Accuracy: 0.7100, F1-Macro: 0.7100
+
+Key Findings:
+- VADER performs better than TextBlob for this dataset
+- Traditional ML models provide competitive performance
+- SVM and Logistic Regression show similar performance
+- Transformer models significantly outperform all other models
+- Rule-based models are ~1000x faster than transformer models
+- Best overall: DeBERTa-v3-small with 73% accuracy

@@ -261,7 +261,7 @@ class YouTubeSearchParams {
     this.order = 'relevance',
     this.maxResults = 500,
     this.regionCode = 'BR',
-    this.q,
+    this.q = 'news',
     this.publishedAfter,
     this.publishedBefore,
     this.pageToken,

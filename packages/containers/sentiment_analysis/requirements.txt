@@ -5,3 +5,4 @@ protobuf
 flask
 pydantic
 pytest
+nltk

@@ -7,9 +7,11 @@ class Comment(BaseModel):
     text: str
     videoTitle: Optional[str]
 
+
 class CommentAnalysisRequest(BaseModel):
     comments: list[Comment]
     model_name: Optional[str]
+
 
 class CommentAnalysisResult(BaseModel):
     request: Optional[Comment]

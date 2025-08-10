@@ -1,14 +1,15 @@
 import axios, { AxiosResponse } from 'axios';
-import { YouTubeSearchItem, YouTubeSearchResponse, YouTubeComment, 
+import { YouTubeSearchResponse, 
     YouTubeCommentThreadsResponse, YouTubeSearchParams, YouTubeCommentThreadsParams, CommentsListParams, CommentsListResponse } from "../types/types";
 import { SecretsManagerClient, GetSecretValueCommand } from "@aws-sdk/client-secrets-manager";
-import { get } from 'http';
+
+const YOUTUBE_API_URL = 'https://www.googleapis.com/youtube/v3';
 
 // YouTube API endpoints
-const SEARCH_API_URL = 'https://www.googleapis.com/youtube/v3/search';
-const LIST_VIDEOS_API_URL = 'https://www.googleapis.com/youtube/v3/videos';
-const COMMENT_THREADS_API_URL = 'https://www.googleapis.com/youtube/v3/commentThreads';
-const COMMENTS_API_URL = 'https://www.googleapis.com/youtube/v3/comments';
+const SEARCH_API_URL = `${YOUTUBE_API_URL}/search`;
+const LIST_VIDEOS_API_URL = `${YOUTUBE_API_URL}/videos`;
+const COMMENT_THREADS_API_URL = `${YOUTUBE_API_URL}/commentThreads`;
+const COMMENTS_API_URL = `${YOUTUBE_API_URL}/comments`;
 
 let API_KEY: string| undefined;
 
@@ -50,10 +51,24 @@ const youtubeApi =  {
     
         return response;
     },
-    listVideos: async (part: string, videoIds: string[]): Promise<AxiosResponse<YouTubeSearchResponse, any>> => {
+    listVideos: async (params: YouTubeSearchParams): Promise<AxiosResponse<YouTubeSearchResponse, any>> => {
+        console.info(`executando ${LIST_VIDEOS_API_URL}, parametros: ${JSON.stringify(params)}`);
+    
+        const response = await axios.get<YouTubeSearchResponse>(LIST_VIDEOS_API_URL, {
+            params: {
+                ...params,
+                part: 'snippet',
+                chart: 'mostPopular',
+                key: await getSecret(),
+            },
+        });
+    
+        return response;
+    },
+    getVideoInformation: async (part: string, videoIds: string[]): Promise<AxiosResponse<YouTubeSearchResponse, any>> => {
         const params = {
             part,
-            id: videoIds.join(',')
+            id: videoIds?.join(',') || null,
         };
     
         console.info(`executando ${LIST_VIDEOS_API_URL}, parametros: ${JSON.stringify(params)}`);

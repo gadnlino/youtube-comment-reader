@@ -38,6 +38,33 @@ class YoutubeCommentViewerApi {
     }
   }
 
+  Future<YouTubeSearchResponse?> listVideos(YouTubeSearchParams params) async {
+    Response? response;
+
+    debugPrint('search videos with the following parameters:');
+    debugPrint(jsonEncode(params.toJson()));
+
+    try {
+      response = await _clientHttp.get(
+          url: "${Constants.apiUrl}/search", queryParameters: params.toJson());
+
+      if (response.statusCode! >= 200 &&
+          response.statusCode! <= 299 &&
+          response.data != null) {
+        return YouTubeSearchResponse.fromJson(response.data);
+      }
+
+      return null;
+    } catch (e) {
+      if (response != null) {
+        debugPrint('Response:');
+        debugPrint(response.data as String);
+      }
+      debugPrint(e.toString());
+      rethrow;
+    }
+  }
+
   Future<YouTubeCommentThreadsResponse?> fetchComments(
       YouTubeCommentThreadsParams params) async {
     Response? response;

@@ -1,11 +1,11 @@
 import { IResource, LambdaIntegration, MockIntegration, PassthroughBehavior, RestApi } from 'aws-cdk-lib/aws-apigateway';
 import { AttributeType, Table } from 'aws-cdk-lib/aws-dynamodb';
-import { Architecture, DockerImageCode, DockerImageFunction, FunctionUrlAuthType, Runtime } from 'aws-cdk-lib/aws-lambda';
+import { Runtime } from 'aws-cdk-lib/aws-lambda';
 import { Secret } from 'aws-cdk-lib/aws-secretsmanager';
 import { App, Stack, RemovalPolicy, Duration, CfnOutput } from 'aws-cdk-lib';
 import { NodejsFunction, NodejsFunctionProps } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
-import { Platform, DockerImageAsset } from 'aws-cdk-lib/aws-ecr-assets';
+import { DockerImageAsset } from 'aws-cdk-lib/aws-ecr-assets';
 import { Rule, Schedule } from 'aws-cdk-lib/aws-events';
 import { LambdaFunction } from 'aws-cdk-lib/aws-events-targets';
 import * as uuid from "uuid";
@@ -202,6 +202,14 @@ export class YouTubeCommentReaderBackendStack extends Stack {
             handler: 'main',
         });
 
+        const listVideosLambdaFunctionName = `${APP_NAME}-listVideos`;
+        const listVideosLambdaFunction = new NodejsFunction(this, listVideosLambdaFunctionName, {
+            ...nodeJsFunctionProps,
+            functionName: listVideosLambdaFunctionName,
+            entry: join(__dirname, '..', lambdaFolder, 'listVideos.ts'),
+            handler: 'main',
+        });
+
         const fetchVideoCommentsLambdaFunctionName = `${APP_NAME}-fetchVideoComments`;
 
         const fetchVideoCommentsLambdaFunction = new NodejsFunction(this, fetchVideoCommentsLambdaFunctionName, {
@@ -233,6 +241,10 @@ export class YouTubeCommentReaderBackendStack extends Stack {
             // In case you want to manage binary types, uncomment the following
             // binaryMediaTypes: ["*/*"],
         });
+
+        const listVideos = api.root.addResource('videos');
+        listVideos.addMethod('GET', new LambdaIntegration(listVideosLambdaFunction));
+        addCorsOptions(listVideos);
 
         const searchVideos = api.root.addResource('search');
         searchVideos.addMethod('GET', new LambdaIntegration(searchVideoLambdaFunction));

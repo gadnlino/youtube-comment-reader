@@ -1,22 +1,31 @@
 import axios from 'axios';
 
-export interface SentimentAnalysisRequest{
-    text: string;
+export interface Comment {
     id: string;
+    text: string;
+    videoTitle?: string | null;
 }
 
-export interface SentimentAnalysisResult {
-    request: SentimentAnalysisRequest;
-    sentiment: string;
-    score: number;
+export interface CommentAnalysisRequest {
+    comments: Comment[];
+    model_name?: string;
+}
+
+export interface CommentAnalysisResult {
+    request?: Comment;
+    text?: string;
+    label?: string;
+    score?: number;
+    sentiment?: string;
+    total_processing_time?: number;
 }
 
 const API_KEY = process.env.SENTIMENT_ANALYSIS_API_KEY;
 
 const sentimentAnalysisApi = {
     analyzeSentiments: async (
-        requests: SentimentAnalysisRequest[],
-    ): Promise<SentimentAnalysisResult[]> => {
+        requests: CommentAnalysisRequest,
+    ): Promise<CommentAnalysisResult[]> => {
 
         try {
             const response = await axios.post(
