@@ -29,8 +29,8 @@ const sentimentAnalysisApi = {
 
         try {
             const response = await axios.post(
-                process.env.SENTIMENT_ANALYSIS_API_URL! + '/analyze',
-                { comments: requests },
+                process.env.SENTIMENT_ANALYSIS_API_URL!,
+                { comments: requests.comments, model_name: requests.model_name || 'tfidf' },
                 {
                     headers: {
                         'Content-Type': 'application/json',
@@ -43,8 +43,6 @@ const sentimentAnalysisApi = {
         } catch (error) {
             throw error;
         }
-
-
     }
 }
 

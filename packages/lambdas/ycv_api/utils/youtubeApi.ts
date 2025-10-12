@@ -66,21 +66,57 @@ const youtubeApi =  {
         return response;
     },
     getVideoInformation: async (part: string, videoIds: string[]): Promise<AxiosResponse<YouTubeSearchResponse, any>> => {
+        // Validate input parameters
+        if (!part || part.trim() === '') {
+            throw new Error('part parameter is required and cannot be empty');
+        }
+        
+        if (!videoIds || videoIds.length === 0) {
+            throw new Error('videoIds array is required and cannot be empty');
+        }
+        
+        // Filter out any null, undefined, or empty video IDs
+        const validVideoIds = videoIds.filter(id => id && id.trim() !== '');
+        
+        if (validVideoIds.length === 0) {
+            throw new Error('No valid video IDs provided');
+        }
+        
+        // Get API key and validate it
+        const apiKey = await getSecret();
+        if (!apiKey) {
+            throw new Error('YouTube API key is not available');
+        }
+        
         const params = {
             part,
-            id: videoIds?.join(',') || null,
+            id: validVideoIds.join(','),
         };
     
         console.info(`executando ${LIST_VIDEOS_API_URL}, parametros: ${JSON.stringify(params)}`);
     
-        const response = await axios.get<YouTubeSearchResponse>(LIST_VIDEOS_API_URL, {
-            params: {
-                ...params,
-                key: await getSecret(),
-            },
-        });
-    
-        return response;
+        try {
+            const response = await axios.get<YouTubeSearchResponse>(LIST_VIDEOS_API_URL, {
+                params: {
+                    ...params,
+                    key: apiKey,
+                },
+            });
+            
+            return response;
+        } catch (error: any) {
+            console.error('YouTube API Error:', {
+                url: LIST_VIDEOS_API_URL,
+                params: params,
+                status: error.response?.status,
+                statusText: error.response?.statusText,
+                data: error.response?.data,
+                message: error.message
+            });
+            
+            // Re-throw with more context
+            throw new Error(`YouTube API request failed: ${error.response?.status} ${error.response?.statusText} - ${JSON.stringify(error.response?.data)}`);
+        }
     },
     fetchComments: async (params: YouTubeCommentThreadsParams): Promise<AxiosResponse<YouTubeCommentThreadsResponse, any>> => {
         console.info(`executando ${COMMENT_THREADS_API_URL}, parametros: ${JSON.stringify(params)}`);

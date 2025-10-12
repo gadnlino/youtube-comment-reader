@@ -1,149 +1,21 @@
 import { IResource, LambdaIntegration, MockIntegration, PassthroughBehavior, RestApi } from 'aws-cdk-lib/aws-apigateway';
 import { AttributeType, Table } from 'aws-cdk-lib/aws-dynamodb';
-import { Runtime } from 'aws-cdk-lib/aws-lambda';
+import { Runtime, Function, Code } from 'aws-cdk-lib/aws-lambda';
+import * as lambda from 'aws-cdk-lib/aws-lambda';
 import { Secret } from 'aws-cdk-lib/aws-secretsmanager';
 import { App, Stack, RemovalPolicy, Duration, CfnOutput } from 'aws-cdk-lib';
 import { NodejsFunction, NodejsFunctionProps } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { join } from 'path';
-import { DockerImageAsset } from 'aws-cdk-lib/aws-ecr-assets';
 import { Rule, Schedule } from 'aws-cdk-lib/aws-events';
 import { LambdaFunction } from 'aws-cdk-lib/aws-events-targets';
 import * as uuid from "uuid";
-import * as ecs from 'aws-cdk-lib/aws-ecs';
 import { randomInt } from 'crypto';
 import { Environment } from 'aws-cdk-lib';
-import * as ec2 from 'aws-cdk-lib/aws-ec2';
-import * as logs from 'aws-cdk-lib/aws-logs';
-import * as elbv2 from 'aws-cdk-lib/aws-elasticloadbalancingv2';
-import * as cdk from 'aws-cdk-lib';
 
 const APP_NAME = 'YoutubeCommentReaderBackend';
 
 const CUSTOM_API_KEY = generateCustomApiKey();
 
-class SentimentAnalysisFargateStack extends Stack {
-    public readonly serviceName: string;
-    public readonly clusterName: string;
-    public readonly logGroupName: string;
-    public readonly loadBalancerURL: string;
-
-    constructor(app: App, id: string, env: Environment) {
-        super(app, id, {
-            env
-        });
-
-        // Usa a VPC padrão
-        const vpc = ec2.Vpc.fromLookup(this, `${APP_NAME}-Vpc`, { isDefault: true });
-
-        // Create a security group for the ALB
-        const albSecurityGroup = new ec2.SecurityGroup(this, APP_NAME + "-ALBSecurityGroup", {
-            vpc,
-            allowAllOutbound: true,
-        });
-
-        // Add ingress rule to allow HTTP traffic
-        albSecurityGroup.addIngressRule(ec2.Peer.anyIpv4(), ec2.Port.tcp(80), "Allow HTTP traffic");
-
-        // Create the Application Load Balancer
-        const loadBalancer = new elbv2.ApplicationLoadBalancer(this, APP_NAME + "-ALB", {
-            vpc,
-            internetFacing: true,
-            securityGroup: albSecurityGroup,
-        });
-
-        // Add a listener to the ALB
-        const listener = loadBalancer.addListener(APP_NAME + "-Listener", {
-            port: 80,
-            open: true,
-        });
-
-        // Cria o cluster ECS
-        const cluster = new ecs.Cluster(this, "Cluster", {
-            vpc,
-        });
-
-        // Cria a imagem Docker a partir do Dockerfile local
-        const dockerImageAsset = new DockerImageAsset(this, APP_NAME + "-DockerImage", {
-            directory: join(__dirname, '../packages/containers/sentiment_analysis'),
-        });
-
-        // Cria um grupo de logs para a task Fargate
-        const logGroup = new logs.LogGroup(this, APP_NAME + "-LogGroup", {
-            retention: logs.RetentionDays.ONE_WEEK, // Retain logs for 1 week
-        });
-
-        // Cria a task definition
-        const taskDefinition = new ecs.FargateTaskDefinition(this, APP_NAME + "-TaskDef", {
-            cpu: 512, // 0.5 vCPU
-            memoryLimitMiB: 1024 * 4, // 1 GB RAM
-            ephemeralStorageGiB: 50, // 50 GB of ephemeral storage
-            runtimePlatform: {
-                cpuArchitecture: ecs.CpuArchitecture.ARM64,
-                operatingSystemFamily: ecs.OperatingSystemFamily.LINUX,
-            },
-        });
-
-        // Adiciona o container com configuração de logging
-        const container = taskDefinition.addContainer(APP_NAME + "-Container", {
-            image: ecs.ContainerImage.fromDockerImageAsset(dockerImageAsset),
-            portMappings: [{ containerPort: 8080 }], // A porta que seu app escuta
-            logging: ecs.LogDriver.awsLogs({
-                streamPrefix: APP_NAME, // Prefixo para os streams de log
-                logGroup, // Usa o grupo de logs criado
-            }),
-            environment: {
-                SENTIMENT_ANALYSIS_API_KEY: CUSTOM_API_KEY,
-            },
-        });
-
-        const service = new ecs.FargateService(this, APP_NAME + "-Service", {
-            cluster,
-            taskDefinition,
-            desiredCount: 1,
-            assignPublicIp: true, // <- IP público para acessar diretamente
-            vpcSubnets: { subnetType: ec2.SubnetType.PUBLIC },
-        });
-
-        // Attach the Fargate service to the ALB
-        listener.addTargets(APP_NAME + "-ECS", {
-            port: 8080, // The port your container listens on
-            targets: [service],
-        });
-        // Grant the ALB permission to invoke the ECS service
-        service.connections.allowFrom(listener, ec2.Port.tcp(8080), "Allow ALB to connect to ECS service");
-        // Grant the ALB permission to connect to the ECS service
-        loadBalancer.connections.allowFrom(service.connections, ec2.Port.tcp(8080), "Allow ECS service to connect to ALB");
-
-        // Grant the ECS service permission to write logs to CloudWatch
-        logGroup.grantWrite(service.taskDefinition.taskRole);
-
-        this.serviceName = service.serviceName;
-        this.clusterName = cluster.clusterName;
-        this.logGroupName = logGroup.logGroupName;
-        this.loadBalancerURL = 'http://' + loadBalancer.loadBalancerDnsName;
-
-        new CfnOutput(this, APP_NAME + "-ServiceName", {
-            value: this.serviceName,
-            description: "The name of the Fargate service",
-        });
-
-        new CfnOutput(this, APP_NAME + "-ClusterName", {
-            value: this.clusterName,
-            description: "The name of the ECS cluster",
-        });
-
-        new CfnOutput(this, APP_NAME + "-LogGroupName", {
-            value: this.logGroupName,
-            description: "The name of the CloudWatch log group",
-        });
-
-        // Output the DNS name of the ALB
-        new cdk.CfnOutput(this, APP_NAME + "-ALBDNS", {
-            value: loadBalancer.loadBalancerDnsName,
-            description: "The DNS name of the ALB",
-        });
-    }
-}
 
 export class YouTubeCommentReaderBackendStack extends Stack {
     constructor(app: App, id: string, envName: string, env: Environment) {
@@ -163,12 +35,44 @@ export class YouTubeCommentReaderBackendStack extends Stack {
             removalPolicy: envName === 'prod' ? RemovalPolicy.RETAIN : RemovalPolicy.DESTROY,
         });
 
-        const sentimentAnalysisFargateStack = new SentimentAnalysisFargateStack(app, `${APP_NAME}-SentimentAnalysisFargateStack`, env);
 
         const youtubeApiKeySecretName = `${APP_NAME}-YoutubeApiKeySecret`;
         const youtubeApiKeySecret = new Secret(this, youtubeApiKeySecretName, {
             secretName: youtubeApiKeySecretName,
             removalPolicy: envName === 'prod' ? RemovalPolicy.RETAIN : RemovalPolicy.DESTROY,
+        });
+
+        // Create Python Lambda function for sentiment analysis first
+        const sentimentAnalysisLambdaFunctionName = `${APP_NAME}-sentimentAnalysis`;
+        const sentimentAnalysisLambdaFunction = new Function(this, sentimentAnalysisLambdaFunctionName, {
+            functionName: sentimentAnalysisLambdaFunctionName,
+            runtime: Runtime.PYTHON_3_11,
+            handler: 'handler.lambda_handler',
+            code: Code.fromAsset(join(__dirname, '..', 'packages/lambdas/sentiment_analysis')),
+            timeout: Duration.minutes(2),
+            memorySize: 512,
+            environment: {
+                SENTIMENT_ANALYSIS_API_KEY: CUSTOM_API_KEY,
+            },
+        });
+
+        // Add Lambda Function URL for direct HTTP access
+        const sentimentAnalysisFunctionUrl = sentimentAnalysisLambdaFunction.addFunctionUrl({
+            authType: lambda.FunctionUrlAuthType.NONE, // No authentication for simplicity
+            cors: {
+                allowCredentials: false,
+                allowHeaders: ['Content-Type', 'x-api-key'],
+                allowMethods: [lambda.HttpMethod.POST, lambda.HttpMethod.OPTIONS],
+                allowOrigins: ['*'],
+            },
+        });
+
+        const apiName = `${APP_NAME}-RESTAPI`;
+        // Create an API Gateway resource for each of the CRUD operations
+        const api = new RestApi(this, apiName, {
+            restApiName: apiName
+            // In case you want to manage binary types, uncomment the following
+            // binaryMediaTypes: ["*/*"],
         });
 
         const nodeJsFunctionProps: NodejsFunctionProps = {
@@ -181,7 +85,7 @@ export class YouTubeCommentReaderBackendStack extends Stack {
             },
             environment: {
                 DYNAMODB_TABLE_NAME: dynamoTable.tableName,
-                SENTIMENT_ANALYSIS_API_URL: sentimentAnalysisFargateStack.loadBalancerURL,
+                SENTIMENT_ANALYSIS_API_URL: sentimentAnalysisFunctionUrl.url,
                 SENTIMENT_ANALYSIS_API_KEY: CUSTOM_API_KEY,
                 MAX_RESULTS: "500",
                 CACHE_ENABLED: "true",
@@ -234,14 +138,6 @@ export class YouTubeCommentReaderBackendStack extends Stack {
         dynamoTable.grantReadWriteData(fetchVideoCommentsLambdaFunction);
         dynamoTable.grantReadWriteData(fetchVideoCommentRepliesLambdaFunction);
 
-        const apiName = `${APP_NAME}-RESTAPI`;
-        // Create an API Gateway resource for each of the CRUD operations
-        const api = new RestApi(this, apiName, {
-            restApiName: apiName
-            // In case you want to manage binary types, uncomment the following
-            // binaryMediaTypes: ["*/*"],
-        });
-
         const listVideos = api.root.addResource('videos');
         listVideos.addMethod('GET', new LambdaIntegration(listVideosLambdaFunction));
         addCorsOptions(listVideos);
@@ -279,6 +175,12 @@ export class YouTubeCommentReaderBackendStack extends Stack {
         youtubeApiKeySecret.grantRead(searchVideoLambdaFunction);
         youtubeApiKeySecret.grantRead(fetchVideoCommentsLambdaFunction);
         youtubeApiKeySecret.grantRead(fetchVideoCommentRepliesLambdaFunction);
+
+        // Output the Lambda Function URL for sentiment analysis
+        new CfnOutput(this, 'SentimentAnalysisFunctionUrl', {
+            value: sentimentAnalysisFunctionUrl.url,
+            description: 'The URL of the sentiment analysis Lambda function',
+        });
     }
 }
 

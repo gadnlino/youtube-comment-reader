@@ -127,46 +127,71 @@ const youtubeApiRepository = {
         return [200, searchVideoResults];
     },
     getVideoInformation: async (part: string, videoIds: string[]) => {
+        try {
+            // Validate input parameters
+            if (!part || part.trim() === '') {
+                console.error('getVideoInformation: part parameter is required');
+                return [400, { error: 'part parameter is required and cannot be empty' }];
+            }
+            
+            if (!videoIds || videoIds.length === 0) {
+                console.error('getVideoInformation: videoIds array is required');
+                return [400, { error: 'videoIds array is required and cannot be empty' }];
+            }
 
-        videoIds.sort();
+            // Filter out any null, undefined, or empty video IDs
+            const validVideoIds = videoIds.filter(id => id && id.trim() !== '');
+            
+            if (validVideoIds.length === 0) {
+                console.error('getVideoInformation: No valid video IDs provided');
+                return [400, { error: 'No valid video IDs provided' }];
+            }
 
-        let searchVideoResults: any | null = null;
+            validVideoIds.sort();
 
-        const cacheKey = `listVideos:part=${part}&videoIds=${videoIds.join(',')}`;
+            let searchVideoResults: any | null = null;
 
-        let cacheItem: Record<string, any> | null = null;
+            const cacheKey = `listVideos:part=${part}&videoIds=${validVideoIds.join(',')}`;
 
-        if (cacheEnabled) {
-            console.log('cacheKey', cacheKey);
+            let cacheItem: Record<string, any> | null = null;
 
-            cacheItem = await cache.getItem(cacheKey);
-        }
+            if (cacheEnabled) {
+                console.log('cacheKey', cacheKey);
 
-        if (cacheItem) {
-            console.log('item encontrado no cache');
+                cacheItem = await cache.getItem(cacheKey);
+            }
 
-            console.log(cacheItem);
+            if (cacheItem) {
+                console.log('item encontrado no cache');
 
-            searchVideoResults = JSON.parse(cacheItem.data);
+                console.log(cacheItem);
+
+                searchVideoResults = JSON.parse(cacheItem.data);
+
+                return [200, searchVideoResults];
+            }
+            else {
+                console.log('NAO foi possivel encontrar nenhum item para essa busca no cache');
+            }
+
+            const response = await youtubeApi.getVideoInformation(part, validVideoIds);
+
+            if (response.status < 200 || response.status > 299) {
+                console.error('YouTube API returned error status:', response.status, response.data);
+                return [response.status, response.data];
+            }
+
+            searchVideoResults = response.data;
+
+            if (cacheEnabled) {
+                await cache.putItem(cacheKey, JSON.stringify(searchVideoResults));
+            }
 
             return [200, searchVideoResults];
+        } catch (error: any) {
+            console.error('Error in getVideoInformation:', error.message);
+            return [500, { error: error.message }];
         }
-        else {
-            console.log('NAO foi possivel encontrar nenhum item para essa busca no cache');
-        }
-
-        const response = await youtubeApi.getVideoInformation(part, videoIds);
-
-        if (response.status < 200 || response.status > 299)
-            return [response.status, response.data];
-
-        searchVideoResults = response.data;
-
-        if (cacheEnabled) {
-            await cache.putItem(cacheKey, JSON.stringify(searchVideoResults));
-        }
-
-        return [200, searchVideoResults];
     },
 
     searchVideos: async (parameters: YouTubeSearchParams) => {
