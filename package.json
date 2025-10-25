@@ -7,7 +7,7 @@
     "build": "tsc",
     "watch": "tsc -w",
     "cdk": "cdk",
-    "deploy:dev": "cdk bootstrap aws://626536433438/us-east-1 && cdk synth --verbose && cdk deploy '*' --require-approval never --verbose"
+    "deploy:dev": "bash scripts/deploy-with-sentiment.sh"
   },
   "author": {
     "name": "Aleksandar Simovic <alexander.simovic@gmail.com>",

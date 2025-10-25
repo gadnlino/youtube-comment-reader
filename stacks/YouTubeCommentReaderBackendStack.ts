@@ -1,6 +1,6 @@
 import { IResource, LambdaIntegration, MockIntegration, PassthroughBehavior, RestApi } from 'aws-cdk-lib/aws-apigateway';
 import { AttributeType, Table } from 'aws-cdk-lib/aws-dynamodb';
-import { Runtime, Function, Code } from 'aws-cdk-lib/aws-lambda';
+import { Runtime, Function, Code, Handler } from 'aws-cdk-lib/aws-lambda';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import { Secret } from 'aws-cdk-lib/aws-secretsmanager';
 import { App, Stack, RemovalPolicy, Duration, CfnOutput } from 'aws-cdk-lib';
@@ -8,6 +8,7 @@ import { NodejsFunction, NodejsFunctionProps } from 'aws-cdk-lib/aws-lambda-node
 import { join } from 'path';
 import { Rule, Schedule } from 'aws-cdk-lib/aws-events';
 import { LambdaFunction } from 'aws-cdk-lib/aws-events-targets';
+import * as ecr from 'aws-cdk-lib/aws-ecr';
 import * as uuid from "uuid";
 import { randomInt } from 'crypto';
 import { Environment } from 'aws-cdk-lib';
@@ -42,15 +43,36 @@ export class YouTubeCommentReaderBackendStack extends Stack {
             removalPolicy: envName === 'prod' ? RemovalPolicy.RETAIN : RemovalPolicy.DESTROY,
         });
 
-        // Create Python Lambda function for sentiment analysis first
-        const sentimentAnalysisLambdaFunctionName = `${APP_NAME}-sentimentAnalysis`;
+        // Reference existing ECR repository for sentiment analysis Lambda
+        // The repository should be created manually or imported
+        const ecrRepoName = `${APP_NAME.toLowerCase()}-sentiment-analysis`;
+        const sentimentAnalysisEcrRepo = ecr.Repository.fromRepositoryName(
+            this, 
+            'SentimentAnalysisEcrRepo', 
+            ecrRepoName
+        );
+
+        // Create Python Lambda function for sentiment analysis
+        // NOTE: You must manually build and push the Docker image to ECR first:
+        // 1. aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin <account-id>.dkr.ecr.us-east-1.amazonaws.com
+        // 2. cd packages/lambdas/sentiment_analysis
+        // 3. docker build --no-cache -t sentiment-analysis:latest .
+        // 4. docker tag sentiment-analysis:latest <account-id>.dkr.ecr.us-east-1.amazonaws.com/<repo-name>:latest
+        // 5. docker push <account-id>.dkr.ecr.us-east-1.amazonaws.com/<repo-name>:latest
+        // 
+        // To update: Change the IMAGE_DIGEST below to the new image digest after pushing
+        const IMAGE_DIGEST = process.env.IMAGE_DIGEST || 'sha256:e1ed578a7fa46a0c2d345e077577623f5e02e49c3e178b9a2d0db8d1680d144d';
+        
+        const sentimentAnalysisLambdaFunctionName = `${APP_NAME}-sentimentAnalysis-v2`;
         const sentimentAnalysisLambdaFunction = new Function(this, sentimentAnalysisLambdaFunctionName, {
             functionName: sentimentAnalysisLambdaFunctionName,
-            runtime: Runtime.PYTHON_3_11,
-            handler: 'handler.lambda_handler',
-            code: Code.fromAsset(join(__dirname, '..', 'packages/lambdas/sentiment_analysis')),
+            code: Code.fromEcrImage(sentimentAnalysisEcrRepo, {
+                tagOrDigest: IMAGE_DIGEST
+            }),
+            handler: Handler.FROM_IMAGE,
+            runtime: Runtime.FROM_IMAGE,
             timeout: Duration.minutes(2),
-            memorySize: 512,
+            memorySize: 1024, // Increased memory for ML workloads
             environment: {
                 SENTIMENT_ANALYSIS_API_KEY: CUSTOM_API_KEY,
             },
@@ -59,12 +81,6 @@ export class YouTubeCommentReaderBackendStack extends Stack {
         // Add Lambda Function URL for direct HTTP access
         const sentimentAnalysisFunctionUrl = sentimentAnalysisLambdaFunction.addFunctionUrl({
             authType: lambda.FunctionUrlAuthType.NONE, // No authentication for simplicity
-            cors: {
-                allowCredentials: false,
-                allowHeaders: ['Content-Type', 'x-api-key'],
-                allowMethods: [lambda.HttpMethod.POST, lambda.HttpMethod.OPTIONS],
-                allowOrigins: ['*'],
-            },
         });
 
         const apiName = `${APP_NAME}-RESTAPI`;
@@ -180,6 +196,12 @@ export class YouTubeCommentReaderBackendStack extends Stack {
         new CfnOutput(this, 'SentimentAnalysisFunctionUrl', {
             value: sentimentAnalysisFunctionUrl.url,
             description: 'The URL of the sentiment analysis Lambda function',
+        });
+
+        // Output the ECR repository URI
+        new CfnOutput(this, 'SentimentAnalysisEcrRepositoryUri', {
+            value: sentimentAnalysisEcrRepo.repositoryUri,
+            description: 'ECR repository URI for sentiment analysis Docker image',
         });
     }
 }

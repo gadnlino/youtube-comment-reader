@@ -63,15 +63,15 @@ const filterBySentiment = (response: YouTubeCommentThreadsResponse, parameters: 
     const sentiments: string[] = [];
 
     if (parameters.showPositives) {
-        sentiments.push('positive');
+        sentiments.push('POSITIVE');
     }
 
     if (parameters.showNegatives) {
-        sentiments.push('negative');
+        sentiments.push('NEGATIVE');
     }
 
     if (parameters.showNeutral) {
-        sentiments.push('neutral');
+        sentiments.push('NEUTRAL');
     }
 
     console.log('filtrando comentarios com sentimento', sentiments, parameters);

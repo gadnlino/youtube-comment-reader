@@ -249,6 +249,7 @@ packages/containers/sentiment_analysis/api_evaluation/sampled_comments.csv
 *.bin
 *.safetensors
 *.pkl
+!packages/lambdas/sentiment_analysis/models/tfidf_logistic_model.pkl
 *.pth
 *.model
 /packages/containers/sentiment_analysis/evaluation/model_evaluation/results

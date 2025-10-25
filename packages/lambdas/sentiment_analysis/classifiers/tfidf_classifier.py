@@ -175,6 +175,9 @@ class TfidfClassifier(BaseCommentClassifier):
             
             predicted_label = self._label_encoder.inverse_transform([predicted_class_idx])[0]
             
+            # Normalize to lowercase for consistent mapping
+            predicted_label_lower = predicted_label.lower()
+            
             # Map to our standard format
             sentiment_map = {
                 'negative': 'NEGATIVE',
@@ -182,7 +185,7 @@ class TfidfClassifier(BaseCommentClassifier):
                 'positive': 'POSITIVE'
             }
             
-            sentiment = sentiment_map.get(predicted_label, 'NEUTRAL')
+            sentiment = sentiment_map.get(predicted_label_lower, 'NEUTRAL')
             
             return CommentAnalysisResult(
                 request=comment,
