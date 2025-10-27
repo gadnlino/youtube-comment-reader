@@ -1,0 +1,70 @@
+{
+  "total_tests": 6,
+  "passed": 5,
+  "failed": 1,
+  "success_rate": 83.33333333333334,
+  "results": [
+    {
+      "test": "Fetch Comments (No Sentiment)",
+      "passed": true,
+      "message": "Successfully fetched 100 comments without sentiment",
+      "timestamp": "2025-10-25T14:21:58.314432",
+      "details": {
+        "comment_count": 100,
+        "has_sentiment": false,
+        "sample_comment": "can confirm: he never gave us up"
+      }
+    },
+    {
+      "test": "Fetch Comments (With Sentiment)",
+      "passed": true,
+      "message": "Successfully analyzed 100 comments",
+      "timestamp": "2025-10-25T14:21:59.691516",
+      "details": {
+        "total_comments": 100,
+        "with_sentiment": 100,
+        "positive": 20,
+        "negative": 9,
+        "neutral": 71
+      }
+    },
+    {
+      "test": "Filter Positive Comments",
+      "passed": true,
+      "message": "All 20 filtered comments are POSITIVE",
+      "timestamp": "2025-10-25T14:22:00.714179",
+      "details": {
+        "comment_count": 20,
+        "all_positive": true
+      }
+    },
+    {
+      "test": "Filter Negative Comments",
+      "passed": true,
+      "message": "All 9 filtered comments are NEGATIVE",
+      "timestamp": "2025-10-25T14:22:01.541049",
+      "details": {
+        "comment_count": 9,
+        "all_negative": true
+      }
+    },
+    {
+      "test": "Filter Neutral Comments",
+      "passed": true,
+      "message": "All 71 filtered comments are NEUTRAL",
+      "timestamp": "2025-10-25T14:22:02.560635",
+      "details": {
+        "comment_count": 71,
+        "all_neutral": true
+      }
+    },
+    {
+      "test": "Error Handling",
+      "passed": false,
+      "message": "Some error scenarios not handled",
+      "timestamp": "2025-10-25T14:22:03.321078",
+      "details": {}
+    }
+  ],
+  "timestamp": "2025-10-25T14:22:03.322033"
+}

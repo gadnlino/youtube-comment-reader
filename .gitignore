@@ -275,3 +275,4 @@ packages/containers/sentiment_analysis/evaluation/model_evaluation/textblob_resu
 packages/containers/sentiment_analysis/evaluation/model_evaluation/svm_results.txt
 packages/containers/sentiment_analysis/evaluation/model_evaluation/svm_fast_results.txt
 packages/containers/sentiment_analysis/DATASET_EVALUATION_REPORT.md
+/evaluation/api_load_testing/venv
