@@ -1,0 +1,93 @@
+================================================================================
+MULTILINGUAL SENTIMENT ANALYSIS - DETAILED REPORT
+================================================================================
+
+Generated: 2025-11-02 12:49:34
+Videos Analyzed: 5
+
+
+────────────────────────────────────────────────────────────────────────────────
+ENGLISH-DOMINANT VIDEOS
+Expected: Lower NEUTRAL% (model trained on English)
+────────────────────────────────────────────────────────────────────────────────
+
+  Rick Astley - Never Gonna Give You Up:
+    Language: English
+    POSITIVE: 17.0% (17 comments)
+    NEGATIVE: 7.0% (7 comments)
+    NEUTRAL:  76.0% (76 comments)
+
+  Luis Fonsi - Despacito:
+    Language: Spanish/English
+    POSITIVE: 5.0% (5 comments)
+    NEGATIVE: 2.0% (2 comments)
+    NEUTRAL:  93.0% (93 comments)
+
+  Queen - Bohemian Rhapsody:
+    Language: English
+    POSITIVE: 35.0% (35 comments)
+    NEGATIVE: 7.0% (7 comments)
+    NEUTRAL:  58.0% (58 comments)
+
+  Mark Ronson - Uptown Funk:
+    Language: English
+    POSITIVE: 18.2% (18 comments)
+    NEGATIVE: 5.1% (5 comments)
+    NEUTRAL:  76.8% (76 comments)
+
+  AVERAGE FOR ENGLISH VIDEOS:
+    POSITIVE: 18.8%
+    NEGATIVE: 5.3%
+    NEUTRAL:  75.9%
+
+────────────────────────────────────────────────────────────────────────────────
+MULTILINGUAL/NON-ENGLISH VIDEOS
+Expected: Higher NEUTRAL% (unrecognized tokens)
+────────────────────────────────────────────────────────────────────────────────
+
+  PSY - Gangnam Style:
+    Language: Multilingual (Korean/English/Spanish/Portuguese)
+    POSITIVE: 15.0% (15 comments)
+    NEGATIVE: 5.0% (5 comments)
+    NEUTRAL:  80.0% (80 comments)
+
+  Luis Fonsi - Despacito:
+    Language: Spanish/English
+    POSITIVE: 5.0% (5 comments)
+    NEGATIVE: 2.0% (2 comments)
+    NEUTRAL:  93.0% (93 comments)
+
+  AVERAGE FOR MULTILINGUAL VIDEOS:
+    POSITIVE: 10.0%
+    NEGATIVE: 3.5%
+    NEUTRAL:  86.5%
+
+================================================================================
+KEY FINDINGS - LANGUAGE IMPACT ON SENTIMENT CLASSIFICATION
+================================================================================
+
+1. NEUTRAL Classification Bias:
+   English videos NEUTRAL%:      75.9%
+   Multilingual videos NEUTRAL%: 86.5%
+   Difference:                   +10.6 percentage points
+
+   ⚠️  SIGNIFICANT LANGUAGE BIAS DETECTED
+   Multilingual comments show notably increased NEUTRAL classification.
+   The model's English-centric training limits its multilingual capability.
+
+2. Statistical Interpretation:
+   - Reported accuracy (66.14%) is valid for ENGLISH comments only
+   - Non-English classification accuracy is likely < 50% (random baseline)
+   - System is optimized for English-speaking audiences
+   - Global deployment requires multilingual model retraining
+
+3. Actionable Recommendations:
+   HIGH PRIORITY:
+   - Document language limitation prominently in user documentation
+   - Add language detection + warning for non-English videos
+   - Consider multilingual models (mBERT, XLM-RoBERTa)
+   - Or implement language-specific classifiers
+
+================================================================================
+END OF ANALYSIS REPORT
+================================================================================

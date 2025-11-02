@@ -1,0 +1,271 @@
+{
+  "timestamp": "20251102_125322",
+  "test_date": "2025-11-02T12:53:22.711196",
+  "hypothesis": "Non-English comments are classified as NEUTRAL more frequently",
+  "videos_tested": 10,
+  "successful_tests": 9,
+  "failed_tests": 1,
+  "results": [
+    {
+      "video_id": "dQw4w9WgXcQ",
+      "video_name": "Rick Astley - Never Gonna Give You Up",
+      "language": "English",
+      "region": "USA/UK",
+      "description": "Classic 1987 music video - English comments",
+      "total_comments": 100,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 17,
+          "percentage": 17.0
+        },
+        "NEGATIVE": {
+          "count": 7,
+          "percentage": 7.000000000000001
+        },
+        "NEUTRAL": {
+          "count": 76,
+          "percentage": 76.0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 2489.905834197998,
+      "success": true
+    },
+    {
+      "video_id": "fJ9rUzIMcZQ",
+      "video_name": "Queen - Bohemian Rhapsody",
+      "language": "English",
+      "region": "Global",
+      "description": "Classic rock - predominantly English comments",
+      "total_comments": 100,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 35,
+          "percentage": 35.0
+        },
+        "NEGATIVE": {
+          "count": 7,
+          "percentage": 7.000000000000001
+        },
+        "NEUTRAL": {
+          "count": 58,
+          "percentage": 57.99999999999999
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 1084.6281051635742,
+      "success": true
+    },
+    {
+      "video_id": "OPf0YbXqDm0",
+      "video_name": "Mark Ronson - Uptown Funk",
+      "language": "English",
+      "region": "USA/Global",
+      "description": "Pop music - primarily English comments",
+      "total_comments": 99,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 18,
+          "percentage": 18.181818181818183
+        },
+        "NEGATIVE": {
+          "count": 5,
+          "percentage": 5.05050505050505
+        },
+        "NEUTRAL": {
+          "count": 76,
+          "percentage": 76.76767676767676
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 1090.9960269927979,
+      "success": true
+    },
+    {
+      "video_id": "kJQP7kiw5Fk",
+      "video_name": "Luis Fonsi - Despacito",
+      "language": "Spanish",
+      "region": "Latin America",
+      "description": "Spanish language music - primarily Spanish comments",
+      "total_comments": 100,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 5,
+          "percentage": 5.0
+        },
+        "NEGATIVE": {
+          "count": 2,
+          "percentage": 2.0
+        },
+        "NEUTRAL": {
+          "count": 93,
+          "percentage": 93.0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 1117.3980236053467,
+      "success": true
+    },
+    {
+      "video_id": "YbJOTdZBX1g",
+      "video_name": "Shakira - Waka Waka",
+      "language": "Spanish/English",
+      "region": "Latin America/Global",
+      "description": "World Cup song - Spanish and English comments",
+      "total_comments": 100,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 16,
+          "percentage": 16.0
+        },
+        "NEGATIVE": {
+          "count": 37,
+          "percentage": 37.0
+        },
+        "NEUTRAL": {
+          "count": 47,
+          "percentage": 47.0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 1675.8027076721191,
+      "success": true
+    },
+    {
+      "video_id": "hcm55lU9knw",
+      "video_name": "Anitta - Envolver",
+      "language": "Portuguese",
+      "region": "Brazil",
+      "description": "Brazilian pop - primarily Portuguese comments",
+      "total_comments": 100,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 12,
+          "percentage": 12.0
+        },
+        "NEGATIVE": {
+          "count": 2,
+          "percentage": 2.0
+        },
+        "NEUTRAL": {
+          "count": 86,
+          "percentage": 86.0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 1792.6299571990967,
+      "success": true
+    },
+    {
+      "video_id": "9bZkp7q19f0",
+      "video_name": "PSY - Gangnam Style",
+      "language": "Korean/Multilingual",
+      "region": "South Korea/Global",
+      "description": "K-pop viral - Korean, English, Spanish, Portuguese comments",
+      "total_comments": 100,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 15,
+          "percentage": 15.0
+        },
+        "NEGATIVE": {
+          "count": 5,
+          "percentage": 5.0
+        },
+        "NEUTRAL": {
+          "count": 80,
+          "percentage": 80.0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 1434.3290328979492,
+      "success": true
+    },
+    {
+      "video_id": "gdZLi9oWNZg",
+      "video_name": "Maroon 5 - Girls Like You",
+      "language": "English",
+      "region": "Global",
+      "description": "Pop music - predominantly English with some multilingual",
+      "total_comments": 100,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 29,
+          "percentage": 28.999999999999996
+        },
+        "NEGATIVE": {
+          "count": 3,
+          "percentage": 3.0
+        },
+        "NEUTRAL": {
+          "count": 68,
+          "percentage": 68.0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 1715.418815612793,
+      "success": true
+    },
+    {
+      "video_id": "RBumgq5yVrA",
+      "video_name": "Passenger - Let Her Go",
+      "language": "English",
+      "region": "UK/Global",
+      "description": "Indie folk - English comments with some European languages",
+      "total_comments": 100,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 16,
+          "percentage": 16.0
+        },
+        "NEGATIVE": {
+          "count": 4,
+          "percentage": 4.0
+        },
+        "NEUTRAL": {
+          "count": 80,
+          "percentage": 80.0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 1594.3388938903809,
+      "success": true
+    },
+    {
+      "video_id": "CJiG15euUes",
+      "video_name": "RADWIMPS - Sparkle (Your Name OST)",
+      "language": "Japanese",
+      "region": "Japan",
+      "description": "Anime soundtrack - primarily Japanese comments",
+      "success": false,
+      "error": "HTTP 502"
+    }
+  ]
+}

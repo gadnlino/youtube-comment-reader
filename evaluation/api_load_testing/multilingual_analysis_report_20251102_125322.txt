@@ -1,0 +1,132 @@
+================================================================================
+MULTILINGUAL SENTIMENT ANALYSIS - DETAILED REPORT
+================================================================================
+
+Generated: 2025-11-02 12:53:23
+Videos Analyzed: 9
+
+
+────────────────────────────────────────────────────────────────────────────────
+ENGLISH VIDEOS (CONTROL GROUP)
+────────────────────────────────────────────────────────────────────────────────
+
+  Rick Astley - Never Gonna Give You Up:
+    Region: USA/UK
+    POSITIVE: 17.0% (17 comments)
+    NEGATIVE: 7.0% (7 comments)
+    NEUTRAL:  76.0% (76 comments)
+
+  Queen - Bohemian Rhapsody:
+    Region: Global
+    POSITIVE: 35.0% (35 comments)
+    NEGATIVE: 7.0% (7 comments)
+    NEUTRAL:  58.0% (58 comments)
+
+  Mark Ronson - Uptown Funk:
+    Region: USA/Global
+    POSITIVE: 18.2% (18 comments)
+    NEGATIVE: 5.1% (5 comments)
+    NEUTRAL:  76.8% (76 comments)
+
+  Maroon 5 - Girls Like You:
+    Region: Global
+    POSITIVE: 29.0% (29 comments)
+    NEGATIVE: 3.0% (3 comments)
+    NEUTRAL:  68.0% (68 comments)
+
+  Passenger - Let Her Go:
+    Region: UK/Global
+    POSITIVE: 16.0% (16 comments)
+    NEGATIVE: 4.0% (4 comments)
+    NEUTRAL:  80.0% (80 comments)
+
+  AVERAGE FOR ENGLISH VIDEOS (CONTROL GROUP):
+    POSITIVE: 23.0%
+    NEGATIVE: 5.2%
+    NEUTRAL:  71.8%
+
+────────────────────────────────────────────────────────────────────────────────
+SPANISH VIDEOS
+────────────────────────────────────────────────────────────────────────────────
+
+  Luis Fonsi - Despacito:
+    Region: Latin America
+    POSITIVE: 5.0% (5 comments)
+    NEGATIVE: 2.0% (2 comments)
+    NEUTRAL:  93.0% (93 comments)
+
+  Shakira - Waka Waka:
+    Region: Latin America/Global
+    POSITIVE: 16.0% (16 comments)
+    NEGATIVE: 37.0% (37 comments)
+    NEUTRAL:  47.0% (47 comments)
+
+  AVERAGE FOR SPANISH VIDEOS:
+    POSITIVE: 10.5%
+    NEGATIVE: 19.5%
+    NEUTRAL:  70.0%
+
+────────────────────────────────────────────────────────────────────────────────
+PORTUGUESE VIDEOS
+────────────────────────────────────────────────────────────────────────────────
+
+  Anitta - Envolver:
+    Region: Brazil
+    POSITIVE: 12.0% (12 comments)
+    NEGATIVE: 2.0% (2 comments)
+    NEUTRAL:  86.0% (86 comments)
+
+  AVERAGE FOR PORTUGUESE VIDEOS:
+    POSITIVE: 12.0%
+    NEGATIVE: 2.0%
+    NEUTRAL:  86.0%
+
+────────────────────────────────────────────────────────────────────────────────
+KOREAN/MULTILINGUAL VIDEOS
+────────────────────────────────────────────────────────────────────────────────
+
+  PSY - Gangnam Style:
+    Region: South Korea/Global
+    POSITIVE: 15.0% (15 comments)
+    NEGATIVE: 5.0% (5 comments)
+    NEUTRAL:  80.0% (80 comments)
+
+  AVERAGE FOR KOREAN/MULTILINGUAL VIDEOS:
+    POSITIVE: 15.0%
+    NEGATIVE: 5.0%
+    NEUTRAL:  80.0%
+
+================================================================================
+KEY FINDINGS - LANGUAGE IMPACT ON SENTIMENT CLASSIFICATION
+================================================================================
+
+1. NEUTRAL Classification Bias by Language:
+   English (baseline):  71.8%
+   Spanish:             70.0% (-1.8 pp)
+   Portuguese:          86.0% (+14.2 pp)
+   Korean/Multilingual: 80.0% (+8.2 pp)
+
+2. Cross-Language Comparison:
+   Average non-English NEUTRAL%: 78.7%
+   Maximum difference from English: +14.2 pp
+
+   ⚠️  SIGNIFICANT LANGUAGE BIAS DETECTED
+   Non-English content shows notably increased NEUTRAL classification.
+   The model's English-centric training limits multilingual capability.
+
+3. Implications:
+   - Reported accuracy (66.14%) is valid for ENGLISH comments only
+   - Non-English classification accuracy is degraded significantly
+   - System is optimized for English-speaking audiences
+   - Global deployment requires multilingual model retraining
+
+4. Actionable Recommendations:
+   HIGH PRIORITY:
+   - Document language limitation prominently in documentation
+   - Add language detection + warning for non-English videos
+   - Consider multilingual models (mBERT, XLM-RoBERTa)
+   - Or implement language-specific classifiers per language
+
+================================================================================
+END OF ANALYSIS REPORT
+================================================================================

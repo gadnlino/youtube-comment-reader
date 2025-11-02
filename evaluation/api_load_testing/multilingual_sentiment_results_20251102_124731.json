@@ -1,0 +1,150 @@
+{
+  "timestamp": "20251102_124731",
+  "test_date": "2025-11-02T12:47:31.257042",
+  "hypothesis": "Non-English comments are classified as NEUTRAL more frequently",
+  "videos_tested": 5,
+  "successful_tests": 5,
+  "failed_tests": 0,
+  "results": [
+    {
+      "video_id": "dQw4w9WgXcQ",
+      "video_name": "Rick Astley - Never Gonna Give You Up",
+      "language": "English",
+      "region": "USA/UK",
+      "description": "Classic 1987 music video - English comments",
+      "total_comments": 0,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 0,
+          "percentage": 0
+        },
+        "NEGATIVE": {
+          "count": 0,
+          "percentage": 0
+        },
+        "NEUTRAL": {
+          "count": 0,
+          "percentage": 0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0
+        }
+      },
+      "response_time_ms": 4287.841081619263,
+      "success": true
+    },
+    {
+      "video_id": "9bZkp7q19f0",
+      "video_name": "PSY - Gangnam Style",
+      "language": "Multilingual (Korean/English/Spanish/Portuguese)",
+      "region": "Global",
+      "description": "Viral phenomenon - highly multilingual comments",
+      "total_comments": 0,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 0,
+          "percentage": 0
+        },
+        "NEGATIVE": {
+          "count": 0,
+          "percentage": 0
+        },
+        "NEUTRAL": {
+          "count": 0,
+          "percentage": 0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0
+        }
+      },
+      "response_time_ms": 1687.6800060272217,
+      "success": true
+    },
+    {
+      "video_id": "kJQP7kiw5Fk",
+      "video_name": "Luis Fonsi - Despacito",
+      "language": "Spanish/English",
+      "region": "Latin America/Global",
+      "description": "Spanish language music - primarily Spanish comments",
+      "total_comments": 0,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 0,
+          "percentage": 0
+        },
+        "NEGATIVE": {
+          "count": 0,
+          "percentage": 0
+        },
+        "NEUTRAL": {
+          "count": 0,
+          "percentage": 0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0
+        }
+      },
+      "response_time_ms": 1990.3109073638916,
+      "success": true
+    },
+    {
+      "video_id": "fJ9rUzIMcZQ",
+      "video_name": "Queen - Bohemian Rhapsody",
+      "language": "English",
+      "region": "Global",
+      "description": "Classic rock - predominantly English comments",
+      "total_comments": 0,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 0,
+          "percentage": 0
+        },
+        "NEGATIVE": {
+          "count": 0,
+          "percentage": 0
+        },
+        "NEUTRAL": {
+          "count": 0,
+          "percentage": 0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0
+        }
+      },
+      "response_time_ms": 1558.9871406555176,
+      "success": true
+    },
+    {
+      "video_id": "OPf0YbXqDm0",
+      "video_name": "Mark Ronson - Uptown Funk",
+      "language": "English",
+      "region": "USA/Global",
+      "description": "Pop music - primarily English comments",
+      "total_comments": 0,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 0,
+          "percentage": 0
+        },
+        "NEGATIVE": {
+          "count": 0,
+          "percentage": 0
+        },
+        "NEUTRAL": {
+          "count": 0,
+          "percentage": 0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0
+        }
+      },
+      "response_time_ms": 1550.1623153686523,
+      "success": true
+    }
+  ]
+}

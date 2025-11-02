@@ -42,8 +42,7 @@ class FavoritesPage extends GetView<FavoritesPageController> {
         }
 
         if (_favoritesController.videoFavorites.isEmpty) {
-          return const Expanded(
-              child: Center(
+          return const Center(
             child: Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
@@ -51,7 +50,7 @@ class FavoritesPage extends GetView<FavoritesPageController> {
                 style: TextStyle(fontSize: 25, color: Colors.white),
               ),
             ),
-          ));
+          );
         }
 
         return Column(
@@ -113,8 +112,7 @@ class FavoritesPage extends GetView<FavoritesPageController> {
         }
 
         if (_favoritesController.commentFavorites.isEmpty) {
-          return const Expanded(
-              child: Center(
+          return const Center(
             child: Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
@@ -122,7 +120,7 @@ class FavoritesPage extends GetView<FavoritesPageController> {
                 style: TextStyle(fontSize: 25, color: Colors.white),
               ),
             ),
-          ));
+          );
         }
 
         return Column(

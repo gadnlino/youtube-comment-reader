@@ -1,0 +1,55 @@
+{
+  "timestamp": "20251102_124611",
+  "test_date": "2025-11-02T12:46:11.602012",
+  "hypothesis": "Non-English comments are classified as NEUTRAL more frequently",
+  "videos_tested": 5,
+  "successful_tests": 0,
+  "failed_tests": 5,
+  "results": [
+    {
+      "video_id": "dQw4w9WgXcQ",
+      "video_name": "Rick Astley - Never Gonna Give You Up",
+      "language": "English",
+      "region": "USA/UK",
+      "description": "Classic 1987 music video - English comments",
+      "success": false,
+      "error": "Comments disabled for this video"
+    },
+    {
+      "video_id": "9bZkp7q19f0",
+      "video_name": "PSY - Gangnam Style",
+      "language": "Multilingual (Korean/English/Spanish/Portuguese)",
+      "region": "Global",
+      "description": "Viral phenomenon - highly multilingual comments",
+      "success": false,
+      "error": "Comments disabled for this video"
+    },
+    {
+      "video_id": "kJQP7kiw5Fk",
+      "video_name": "Luis Fonsi - Despacito",
+      "language": "Spanish/English",
+      "region": "Latin America/Global",
+      "description": "Spanish language music - primarily Spanish comments",
+      "success": false,
+      "error": "Comments disabled for this video"
+    },
+    {
+      "video_id": "fJ9rUzIMcZQ",
+      "video_name": "Queen - Bohemian Rhapsody",
+      "language": "English",
+      "region": "Global",
+      "description": "Classic rock - predominantly English comments",
+      "success": false,
+      "error": "Comments disabled for this video"
+    },
+    {
+      "video_id": "OPf0YbXqDm0",
+      "video_name": "Mark Ronson - Uptown Funk",
+      "language": "English",
+      "region": "USA/Global",
+      "description": "Pop music - primarily English comments",
+      "success": false,
+      "error": "Comments disabled for this video"
+    }
+  ]
+}
