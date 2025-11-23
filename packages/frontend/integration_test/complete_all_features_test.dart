@@ -1,29 +1,28 @@
-/**
- * COMPLETE E2E Test Suite - All Application Features
- * 
- * This test suite validates EVERY user-facing feature:
- * 
- * VIDEO SEARCH PAGE:
- * ✓ List of videos
- * ✓ Filter videos by keywords
- * ✓ Sort videos by most recent
- * ✓ Sort videos by most relevant
- * ✓ Add video to favorites
- * 
- * VIDEO COMMENTS PAGE:
- * ✓ View comments list
- * ✓ Filter comments by keywords
- * ✓ Sort comments by most recent
- * ✓ Sort comments by most relevant
- * ✓ Filter by sentiment: Positive
- * ✓ Filter by sentiment: Negative
- * ✓ Add comment to favorites
- * 
- * FAVORITES PAGE:
- * ✓ View favorited videos
- * ✓ Remove video from favorites
- * ✓ Navigate back to search
- */
+/// COMPLETE E2E Test Suite - All Application Features
+/// 
+/// This test suite validates EVERY user-facing feature:
+/// 
+/// VIDEO SEARCH PAGE:
+/// ✓ List of videos
+/// ✓ Filter videos by keywords
+/// ✓ Sort videos by most recent
+/// ✓ Sort videos by most relevant
+/// ✓ Add video to favorites
+/// 
+/// VIDEO COMMENTS PAGE:
+/// ✓ View comments list
+/// ✓ Filter comments by keywords
+/// ✓ Sort comments by most recent
+/// ✓ Sort comments by most relevant
+/// ✓ Filter by sentiment: Positive
+/// ✓ Filter by sentiment: Negative
+/// ✓ Add comment to favorites
+/// 
+/// FAVORITES PAGE:
+/// ✓ View favorited videos
+/// ✓ Remove video from favorites
+/// ✓ Navigate back to search
+library;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -45,7 +44,7 @@ void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
   setUpAll(() async {
-    print('\n' + '=' * 90);
+    print('\n${'=' * 90}');
     print('🎯 COMPLETE E2E TEST SUITE - ALL APPLICATION FEATURES');
     print('=' * 90 + '\n');
     
@@ -743,7 +742,7 @@ void main() {
     });
 
     tearDownAll(() {
-      print('\n' + '=' * 90);
+      print('\n${'=' * 90}');
       print('🏆 COMPLETE E2E TEST SUITE - FINAL RESULTS');
       print('=' * 90);
       print('');

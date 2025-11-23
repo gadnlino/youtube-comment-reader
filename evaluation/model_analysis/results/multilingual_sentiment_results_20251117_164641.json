@@ -1,0 +1,467 @@
+{
+  "timestamp": "20251117_164641",
+  "test_date": "2025-11-17T16:46:41.047852",
+  "hypothesis": "Non-English comments are classified as NEUTRAL more frequently",
+  "videos_tested": 17,
+  "successful_tests": 16,
+  "failed_tests": 1,
+  "results": [
+    {
+      "video_id": "dQw4w9WgXcQ",
+      "video_name": "Rick Astley - Never Gonna Give You Up",
+      "language": "English",
+      "region": "USA/UK",
+      "description": "Classic 1987 music video - English comments",
+      "total_comments": 100,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 15,
+          "percentage": 15.0
+        },
+        "NEGATIVE": {
+          "count": 16,
+          "percentage": 16.0
+        },
+        "NEUTRAL": {
+          "count": 69,
+          "percentage": 69.0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 2938.5321140289307,
+      "success": true
+    },
+    {
+      "video_id": "fJ9rUzIMcZQ",
+      "video_name": "Queen - Bohemian Rhapsody",
+      "language": "English",
+      "region": "Global",
+      "description": "Classic rock - predominantly English comments",
+      "total_comments": 100,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 24,
+          "percentage": 24.0
+        },
+        "NEGATIVE": {
+          "count": 14,
+          "percentage": 14.000000000000002
+        },
+        "NEUTRAL": {
+          "count": 62,
+          "percentage": 62.0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 1380.7501792907715,
+      "success": true
+    },
+    {
+      "video_id": "OPf0YbXqDm0",
+      "video_name": "Mark Ronson - Uptown Funk",
+      "language": "English",
+      "region": "USA/Global",
+      "description": "Pop music - primarily English comments",
+      "total_comments": 100,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 18,
+          "percentage": 18.0
+        },
+        "NEGATIVE": {
+          "count": 6,
+          "percentage": 6.0
+        },
+        "NEUTRAL": {
+          "count": 76,
+          "percentage": 76.0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 1329.0209770202637,
+      "success": true
+    },
+    {
+      "video_id": "JGwWNGJdvx8",
+      "video_name": "Ed Sheeran - Shape of You",
+      "language": "English",
+      "region": "UK/Global",
+      "description": "Pop hit - English comments",
+      "total_comments": 100,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 17,
+          "percentage": 17.0
+        },
+        "NEGATIVE": {
+          "count": 5,
+          "percentage": 5.0
+        },
+        "NEUTRAL": {
+          "count": 78,
+          "percentage": 78.0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 1316.087007522583,
+      "success": true
+    },
+    {
+      "video_id": "CevxZvSJLk8",
+      "video_name": "Katy Perry - Roar",
+      "language": "English",
+      "region": "USA/Global",
+      "description": "Pop anthem - English comments",
+      "total_comments": 100,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 22,
+          "percentage": 22.0
+        },
+        "NEGATIVE": {
+          "count": 8,
+          "percentage": 8.0
+        },
+        "NEUTRAL": {
+          "count": 70,
+          "percentage": 70.0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 1250.0207424163818,
+      "success": true
+    },
+    {
+      "video_id": "kJQP7kiw5Fk",
+      "video_name": "Luis Fonsi - Despacito",
+      "language": "Spanish",
+      "region": "Latin America",
+      "description": "Spanish language music - primarily Spanish comments",
+      "total_comments": 100,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 7,
+          "percentage": 7.000000000000001
+        },
+        "NEGATIVE": {
+          "count": 6,
+          "percentage": 6.0
+        },
+        "NEUTRAL": {
+          "count": 87,
+          "percentage": 87.0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 3086.4992141723633,
+      "success": true
+    },
+    {
+      "video_id": "pRpeEdMmmQ0",
+      "video_name": "Shakira - Waka Waka",
+      "language": "Spanish/English",
+      "region": "Latin America/Global",
+      "description": "World Cup song - Spanish and English comments",
+      "total_comments": 100,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 17,
+          "percentage": 17.0
+        },
+        "NEGATIVE": {
+          "count": 4,
+          "percentage": 4.0
+        },
+        "NEUTRAL": {
+          "count": 79,
+          "percentage": 79.0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 943.3999061584473,
+      "success": true
+    },
+    {
+      "video_id": "DUT5rEU6pqM",
+      "video_name": "Shakira - Hips Don't Lie",
+      "language": "Spanish/English",
+      "region": "Latin America",
+      "description": "Latin pop - Spanish/English bilingual",
+      "total_comments": 100,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 15,
+          "percentage": 15.0
+        },
+        "NEGATIVE": {
+          "count": 9,
+          "percentage": 9.0
+        },
+        "NEUTRAL": {
+          "count": 76,
+          "percentage": 76.0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 1542.0379638671875,
+      "success": true
+    },
+    {
+      "video_id": "wnJ6LuUFpMo",
+      "video_name": "J Balvin, Willy William - Mi Gente",
+      "language": "Spanish",
+      "region": "Latin America",
+      "description": "Reggaeton - Spanish comments",
+      "total_comments": 100,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 9,
+          "percentage": 9.0
+        },
+        "NEGATIVE": {
+          "count": 8,
+          "percentage": 8.0
+        },
+        "NEUTRAL": {
+          "count": 83,
+          "percentage": 83.0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 1222.9278087615967,
+      "success": true
+    },
+    {
+      "video_id": "EZGg7pspeUI",
+      "video_name": "Anitta - Envolver",
+      "language": "Portuguese",
+      "region": "Brazil",
+      "description": "Brazilian pop - primarily Portuguese comments",
+      "total_comments": 0,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 0,
+          "percentage": 0
+        },
+        "NEGATIVE": {
+          "count": 0,
+          "percentage": 0
+        },
+        "NEUTRAL": {
+          "count": 0,
+          "percentage": 0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0
+        }
+      },
+      "response_time_ms": 829.9672603607178,
+      "success": true
+    },
+    {
+      "video_id": "fiore9Z5iUg",
+      "video_name": "Anitta - Girl From Rio",
+      "language": "Portuguese",
+      "region": "Brazil",
+      "description": "Brazilian pop - Portuguese/English mix",
+      "total_comments": 100,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 19,
+          "percentage": 19.0
+        },
+        "NEGATIVE": {
+          "count": 13,
+          "percentage": 13.0
+        },
+        "NEUTRAL": {
+          "count": 68,
+          "percentage": 68.0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 1020.988941192627,
+      "success": true
+    },
+    {
+      "video_id": "cNYzyPnybJk",
+      "video_name": "Ludmilla - Cheguei",
+      "language": "Portuguese",
+      "region": "Brazil",
+      "description": "Brazilian funk - Portuguese comments",
+      "success": false,
+      "error": "HTTP 502"
+    },
+    {
+      "video_id": "KQ6zr6kCPj8",
+      "video_name": "MC Kevinho - Olha a Explosão",
+      "language": "Portuguese",
+      "region": "Brazil",
+      "description": "Brazilian funk - Portuguese comments",
+      "total_comments": 100,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 15,
+          "percentage": 15.0
+        },
+        "NEGATIVE": {
+          "count": 8,
+          "percentage": 8.0
+        },
+        "NEUTRAL": {
+          "count": 77,
+          "percentage": 77.0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 982.8450679779053,
+      "success": true
+    },
+    {
+      "video_id": "9bZkp7q19f0",
+      "video_name": "PSY - Gangnam Style",
+      "language": "Korean/Multilingual",
+      "region": "South Korea/Global",
+      "description": "K-pop viral - Korean, English, Spanish, Portuguese comments",
+      "total_comments": 100,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 15,
+          "percentage": 15.0
+        },
+        "NEGATIVE": {
+          "count": 5,
+          "percentage": 5.0
+        },
+        "NEUTRAL": {
+          "count": 80,
+          "percentage": 80.0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 1347.9528427124023,
+      "success": true
+    },
+    {
+      "video_id": "gdZLi9oWNZg",
+      "video_name": "BTS - Dynamite",
+      "language": "Korean/English",
+      "region": "South Korea/Global",
+      "description": "K-pop hit - Korean and English comments",
+      "total_comments": 100,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 29,
+          "percentage": 28.999999999999996
+        },
+        "NEGATIVE": {
+          "count": 5,
+          "percentage": 5.0
+        },
+        "NEUTRAL": {
+          "count": 66,
+          "percentage": 66.0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 1032.3326587677002,
+      "success": true
+    },
+    {
+      "video_id": "ioNng23DkIM",
+      "video_name": "BLACKPINK - How You Like That",
+      "language": "Korean/English",
+      "region": "South Korea/Global",
+      "description": "K-pop - Korean and international comments",
+      "total_comments": 100,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 20,
+          "percentage": 20.0
+        },
+        "NEGATIVE": {
+          "count": 3,
+          "percentage": 3.0
+        },
+        "NEUTRAL": {
+          "count": 77,
+          "percentage": 77.0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 1044.990062713623,
+      "success": true
+    },
+    {
+      "video_id": "IHNzOHi8sJs",
+      "video_name": "BLACKPINK - DDU-DU DDU-DU",
+      "language": "Korean",
+      "region": "South Korea/Global",
+      "description": "K-pop hit - predominantly Korean comments",
+      "total_comments": 100,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 20,
+          "percentage": 20.0
+        },
+        "NEGATIVE": {
+          "count": 1,
+          "percentage": 1.0
+        },
+        "NEUTRAL": {
+          "count": 79,
+          "percentage": 79.0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 607.2018146514893,
+      "success": true
+    }
+  ]
+}

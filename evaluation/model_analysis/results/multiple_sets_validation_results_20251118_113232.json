@@ -1,0 +1,3120 @@
+{
+  "config": {
+    "n_sets": 5,
+    "m_videos_per_set": 30,
+    "min_comments": 500,
+    "timestamp": "20251118_113232"
+  },
+  "set_statistics": [
+    {
+      "n_videos": 23,
+      "bias": {
+        "POSITIVE": {
+          "mean": -9.14116207023223,
+          "std": 16.29401659429782
+        },
+        "NEGATIVE": {
+          "mean": -15.681723466421067,
+          "std": 13.767548180050012
+        },
+        "NEUTRAL": {
+          "mean": 24.822885536653303,
+          "std": 14.863664279536422
+        }
+      },
+      "ground_truth": {
+        "POSITIVE": {
+          "mean": 27.054205548493098,
+          "std": 17.961935995648275
+        },
+        "NEGATIVE": {
+          "mean": 44.768679988160194,
+          "std": 15.149673679279616
+        },
+        "NEUTRAL": {
+          "mean": 28.177114463346697,
+          "std": 7.948208806156737
+        }
+      },
+      "predicted": {
+        "POSITIVE": {
+          "mean": 17.91304347826087,
+          "std": 12.0322502990496
+        },
+        "NEGATIVE": {
+          "mean": 29.08695652173913,
+          "std": 13.802687335941572
+        },
+        "NEUTRAL": {
+          "mean": 53.0,
+          "std": 14.885066925993458
+        }
+      },
+      "chi2_pvalue_mean": 0.003486977600808305,
+      "chi2_pvalue_std": 0.010115999278702678,
+      "similar_distributions_count": 0
+    },
+    {
+      "n_videos": 16,
+      "bias": {
+        "POSITIVE": {
+          "mean": -4.338815621605862,
+          "std": 6.96514251732321
+        },
+        "NEGATIVE": {
+          "mean": -17.568377983529295,
+          "std": 10.331798028961247
+        },
+        "NEUTRAL": {
+          "mean": 21.90719360513516,
+          "std": 8.514498870798981
+        }
+      },
+      "ground_truth": {
+        "POSITIVE": {
+          "mean": 25.46381562160586,
+          "std": 11.564408784717898
+        },
+        "NEGATIVE": {
+          "mean": 49.1308779835293,
+          "std": 12.127688991146094
+        },
+        "NEUTRAL": {
+          "mean": 25.405306394864844,
+          "std": 11.206716424359195
+        }
+      },
+      "predicted": {
+        "POSITIVE": {
+          "mean": 21.125,
+          "std": 12.594021399060747
+        },
+        "NEGATIVE": {
+          "mean": 31.5625,
+          "std": 12.082884330738253
+        },
+        "NEUTRAL": {
+          "mean": 47.3125,
+          "std": 11.077673210110506
+        }
+      },
+      "chi2_pvalue_mean": 0.0031662008404954984,
+      "chi2_pvalue_std": 0.007979480723750057,
+      "similar_distributions_count": 0
+    },
+    {
+      "n_videos": 13,
+      "bias": {
+        "POSITIVE": {
+          "mean": -6.739683713970787,
+          "std": 9.51647352989552
+        },
+        "NEGATIVE": {
+          "mean": -12.47559047992468,
+          "std": 8.985867514304932
+        },
+        "NEUTRAL": {
+          "mean": 19.215274193895468,
+          "std": 9.312259710094787
+        }
+      },
+      "ground_truth": {
+        "POSITIVE": {
+          "mean": 20.81660679089386,
+          "std": 13.222734428721026
+        },
+        "NEGATIVE": {
+          "mean": 52.70635971069392,
+          "std": 18.28659364293628
+        },
+        "NEUTRAL": {
+          "mean": 26.477033498412222,
+          "std": 10.550770520995064
+        }
+      },
+      "predicted": {
+        "POSITIVE": {
+          "mean": 14.076923076923077,
+          "std": 6.855223033588089
+        },
+        "NEGATIVE": {
+          "mean": 40.23076923076923,
+          "std": 15.054535969415925
+        },
+        "NEUTRAL": {
+          "mean": 45.69230769230769,
+          "std": 13.763857997750794
+        }
+      },
+      "chi2_pvalue_mean": 0.017362437059165153,
+      "chi2_pvalue_std": 0.05040106461013571,
+      "similar_distributions_count": 1
+    },
+    {
+      "n_videos": 12,
+      "bias": {
+        "POSITIVE": {
+          "mean": -11.028406307251037,
+          "std": 11.393552871485834
+        },
+        "NEGATIVE": {
+          "mean": -7.569108455260103,
+          "std": 11.104532338961514
+        },
+        "NEUTRAL": {
+          "mean": 18.59751476251114,
+          "std": 10.76688119620209
+        }
+      },
+      "ground_truth": {
+        "POSITIVE": {
+          "mean": 41.02840630725104,
+          "std": 17.800067747167816
+        },
+        "NEGATIVE": {
+          "mean": 31.902441788593435,
+          "std": 13.637988539228312
+        },
+        "NEUTRAL": {
+          "mean": 27.06915190415553,
+          "std": 9.19886739106286
+        }
+      },
+      "predicted": {
+        "POSITIVE": {
+          "mean": 30.0,
+          "std": 15.732132722552274
+        },
+        "NEGATIVE": {
+          "mean": 24.333333333333332,
+          "std": 17.225626903605637
+        },
+        "NEUTRAL": {
+          "mean": 45.666666666666664,
+          "std": 10.632758605157722
+        }
+      },
+      "chi2_pvalue_mean": 0.04989227160698257,
+      "chi2_pvalue_std": 0.15877096910490512,
+      "similar_distributions_count": 1
+    },
+    {
+      "n_videos": 13,
+      "bias": {
+        "POSITIVE": {
+          "mean": -3.5799205439463293,
+          "std": 8.225802525922619
+        },
+        "NEGATIVE": {
+          "mean": -17.843212460432323,
+          "std": 8.00234184985683
+        },
+        "NEUTRAL": {
+          "mean": 21.423133004378652,
+          "std": 8.64229409659378
+        }
+      },
+      "ground_truth": {
+        "POSITIVE": {
+          "mean": 18.81068977471556,
+          "std": 11.686511871264168
+        },
+        "NEGATIVE": {
+          "mean": 48.61244322966309,
+          "std": 17.94220702323361
+        },
+        "NEUTRAL": {
+          "mean": 32.576866995621344,
+          "std": 9.635320859453918
+        }
+      },
+      "predicted": {
+        "POSITIVE": {
+          "mean": 15.23076923076923,
+          "std": 9.316270681355496
+        },
+        "NEGATIVE": {
+          "mean": 30.76923076923077,
+          "std": 16.93496086231923
+        },
+        "NEUTRAL": {
+          "mean": 54.0,
+          "std": 13.37046112777083
+        }
+      },
+      "chi2_pvalue_mean": 0.009798166655624014,
+      "chi2_pvalue_std": 0.01844087764594545,
+      "similar_distributions_count": 1
+    }
+  ],
+  "overall_statistics": {
+    "bias": {
+      "POSITIVE": {
+        "mean": -6.965597651401249,
+        "std": 2.816143644406548,
+        "ci95": 2.4684587403324385
+      },
+      "NEGATIVE": {
+        "mean": -14.227602569113495,
+        "std": 3.840650285163652,
+        "ci95": 3.366478405248512
+      },
+      "NEUTRAL": {
+        "mean": 21.193200220514747,
+        "std": 2.2084857027492073,
+        "ci95": 1.9358230702039796
+      }
+    }
+  },
+  "all_video_results": [
+    {
+      "video_id": "41hzYEvgIwc",
+      "video_title": "Helium Balloon Turns Deadly 😢",
+      "ground_truth": {
+        "POSITIVE": 52,
+        "NEGATIVE": 284,
+        "NEUTRAL": 255,
+        "POSITIVE_PCT": 8.79864636209814,
+        "NEGATIVE_PCT": 48.05414551607445,
+        "NEUTRAL_PCT": 43.14720812182741,
+        "TOTAL": 591
+      },
+      "predicted": {
+        "POSITIVE": 16,
+        "NEGATIVE": 33,
+        "NEUTRAL": 51,
+        "POSITIVE_PCT": 16.0,
+        "NEGATIVE_PCT": 33.0,
+        "NEUTRAL_PCT": 51.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 12.039321235102921,
+        "chi2_pvalue": 0.0024304943221819435,
+        "percentage_differences": {
+          "POSITIVE": 7.20135363790186,
+          "NEGATIVE": 15.054145516074449,
+          "NEUTRAL": 7.852791878172589
+        },
+        "avg_percentage_difference": 10.036097010716299,
+        "bias": {
+          "POSITIVE": 7.20135363790186,
+          "NEGATIVE": -15.054145516074449,
+          "NEUTRAL": 7.852791878172589
+        }
+      }
+    },
+    {
+      "video_id": "BP7AEdI5W14",
+      "video_title": "This Guy Broke an Egg but... 🐔",
+      "ground_truth": {
+        "POSITIVE": 41,
+        "NEGATIVE": 346,
+        "NEUTRAL": 242,
+        "POSITIVE_PCT": 6.518282988871224,
+        "NEGATIVE_PCT": 55.00794912559619,
+        "NEUTRAL_PCT": 38.47376788553259,
+        "TOTAL": 629
+      },
+      "predicted": {
+        "POSITIVE": 8,
+        "NEGATIVE": 25,
+        "NEUTRAL": 67,
+        "POSITIVE_PCT": 8.0,
+        "NEGATIVE_PCT": 25.0,
+        "NEUTRAL_PCT": 67.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 37.85743163146533,
+        "chi2_pvalue": 6.016766695201e-09,
+        "percentage_differences": {
+          "POSITIVE": 1.4817170111287759,
+          "NEGATIVE": 30.00794912559619,
+          "NEUTRAL": 28.526232114467412
+        },
+        "avg_percentage_difference": 20.005299417064126,
+        "bias": {
+          "POSITIVE": 1.4817170111287759,
+          "NEGATIVE": -30.00794912559619,
+          "NEUTRAL": 28.526232114467412
+        }
+      }
+    },
+    {
+      "video_id": "oAZqLoAp_cQ",
+      "video_title": "SIDEMEN SURVIVE THE 7 WONDERS OF THE WORLD (Part 2)",
+      "ground_truth": {
+        "POSITIVE": 222,
+        "NEGATIVE": 165,
+        "NEUTRAL": 129,
+        "POSITIVE_PCT": 43.02325581395349,
+        "NEGATIVE_PCT": 31.976744186046513,
+        "NEUTRAL_PCT": 25.0,
+        "TOTAL": 516
+      },
+      "predicted": {
+        "POSITIVE": 27,
+        "NEGATIVE": 26,
+        "NEUTRAL": 47,
+        "POSITIVE_PCT": 27.0,
+        "NEGATIVE_PCT": 26.0,
+        "NEUTRAL_PCT": 47.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 26.44468796068796,
+        "chi2_pvalue": 1.8097099387843708e-06,
+        "percentage_differences": {
+          "POSITIVE": 16.02325581395349,
+          "NEGATIVE": 5.976744186046513,
+          "NEUTRAL": 22.0
+        },
+        "avg_percentage_difference": 14.666666666666666,
+        "bias": {
+          "POSITIVE": -16.02325581395349,
+          "NEGATIVE": -5.976744186046513,
+          "NEUTRAL": 22.0
+        }
+      }
+    },
+    {
+      "video_id": "Xg5TBryM9WI",
+      "video_title": "From Trash to Treasure 💎💸 (@cinema_chelsey on TikTok) #shorts",
+      "ground_truth": {
+        "POSITIVE": 100,
+        "NEGATIVE": 602,
+        "NEUTRAL": 269,
+        "POSITIVE_PCT": 10.298661174047375,
+        "NEGATIVE_PCT": 61.997940267765195,
+        "NEUTRAL_PCT": 27.703398558187438,
+        "TOTAL": 971
+      },
+      "predicted": {
+        "POSITIVE": 42,
+        "NEGATIVE": 18,
+        "NEUTRAL": 40,
+        "POSITIVE_PCT": 42.0,
+        "NEGATIVE_PCT": 18.0,
+        "NEUTRAL_PCT": 40.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 134.26502690659387,
+        "chi2_pvalue": 6.993906965614211e-30,
+        "percentage_differences": {
+          "POSITIVE": 31.701338825952625,
+          "NEGATIVE": 43.997940267765195,
+          "NEUTRAL": 12.296601441812562
+        },
+        "avg_percentage_difference": 29.331960178510126,
+        "bias": {
+          "POSITIVE": 31.701338825952625,
+          "NEGATIVE": -43.997940267765195,
+          "NEUTRAL": 12.296601441812562
+        }
+      }
+    },
+    {
+      "video_id": "jrLP6Jituwg",
+      "video_title": "Shane Gillis Explains Hilarious Behind Scenes Of Nick Saban Story",
+      "ground_truth": {
+        "POSITIVE": 226,
+        "NEGATIVE": 198,
+        "NEUTRAL": 93,
+        "POSITIVE_PCT": 43.7137330754352,
+        "NEGATIVE_PCT": 38.297872340425535,
+        "NEUTRAL_PCT": 17.988394584139265,
+        "TOTAL": 517
+      },
+      "predicted": {
+        "POSITIVE": 45,
+        "NEGATIVE": 28,
+        "NEUTRAL": 27,
+        "POSITIVE_PCT": 45.0,
+        "NEGATIVE_PCT": 28.000000000000004,
+        "NEUTRAL_PCT": 27.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 7.321355187616966,
+        "chi2_pvalue": 0.025715082441053458,
+        "percentage_differences": {
+          "POSITIVE": 1.2862669245647993,
+          "NEGATIVE": 10.297872340425531,
+          "NEUTRAL": 9.011605415860735
+        },
+        "avg_percentage_difference": 6.865248226950356,
+        "bias": {
+          "POSITIVE": 1.2862669245647993,
+          "NEGATIVE": -10.297872340425531,
+          "NEUTRAL": 9.011605415860735
+        }
+      }
+    },
+    {
+      "video_id": "2Ud-zbEdHuI",
+      "video_title": "Trump unleashes TERRIFYING demented rant",
+      "ground_truth": {
+        "POSITIVE": 146,
+        "NEGATIVE": 296,
+        "NEUTRAL": 126,
+        "POSITIVE_PCT": 25.704225352112676,
+        "NEGATIVE_PCT": 52.112676056338024,
+        "NEUTRAL_PCT": 22.183098591549296,
+        "TOTAL": 568
+      },
+      "predicted": {
+        "POSITIVE": 7,
+        "NEGATIVE": 61,
+        "NEUTRAL": 32,
+        "POSITIVE_PCT": 7.000000000000001,
+        "NEGATIVE_PCT": 61.0,
+        "NEUTRAL_PCT": 32.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 19.470544184105826,
+        "chi2_pvalue": 5.915957571006948e-05,
+        "percentage_differences": {
+          "POSITIVE": 18.704225352112676,
+          "NEGATIVE": 8.887323943661976,
+          "NEUTRAL": 9.816901408450704
+        },
+        "avg_percentage_difference": 12.46948356807512,
+        "bias": {
+          "POSITIVE": -18.704225352112676,
+          "NEGATIVE": 8.887323943661976,
+          "NEUTRAL": 9.816901408450704
+        }
+      }
+    },
+    {
+      "video_id": "57lQhU5-ZKQ",
+      "video_title": "kurt’s personal bird feeder?",
+      "ground_truth": {
+        "POSITIVE": 198,
+        "NEGATIVE": 364,
+        "NEUTRAL": 278,
+        "POSITIVE_PCT": 23.57142857142857,
+        "NEGATIVE_PCT": 43.333333333333336,
+        "NEUTRAL_PCT": 33.095238095238095,
+        "TOTAL": 840
+      },
+      "predicted": {
+        "POSITIVE": 29,
+        "NEGATIVE": 26,
+        "NEUTRAL": 45,
+        "POSITIVE_PCT": 28.999999999999996,
+        "NEGATIVE_PCT": 26.0,
+        "NEUTRAL_PCT": 45.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 12.465838238500112,
+        "chi2_pvalue": 0.0019637112146403133,
+        "percentage_differences": {
+          "POSITIVE": 5.428571428571427,
+          "NEGATIVE": 17.333333333333336,
+          "NEUTRAL": 11.904761904761905
+        },
+        "avg_percentage_difference": 11.555555555555557,
+        "bias": {
+          "POSITIVE": 5.428571428571427,
+          "NEGATIVE": -17.333333333333336,
+          "NEUTRAL": 11.904761904761905
+        }
+      }
+    },
+    {
+      "video_id": "TobUm4xXA1M",
+      "video_title": "Chat, did we find the one?! #toyotasupra #toyota #supra #cars #bmw",
+      "ground_truth": {
+        "POSITIVE": 80,
+        "NEGATIVE": 353,
+        "NEUTRAL": 105,
+        "POSITIVE_PCT": 14.869888475836431,
+        "NEGATIVE_PCT": 65.61338289962825,
+        "NEUTRAL_PCT": 19.516728624535315,
+        "TOTAL": 538
+      },
+      "predicted": {
+        "POSITIVE": 12,
+        "NEGATIVE": 43,
+        "NEUTRAL": 45,
+        "POSITIVE_PCT": 12.0,
+        "NEGATIVE_PCT": 43.0,
+        "NEUTRAL_PCT": 45.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 41.62136948603804,
+        "chi2_pvalue": 9.162931744502415e-10,
+        "percentage_differences": {
+          "POSITIVE": 2.869888475836431,
+          "NEGATIVE": 22.61338289962825,
+          "NEUTRAL": 25.483271375464685
+        },
+        "avg_percentage_difference": 16.98884758364312,
+        "bias": {
+          "POSITIVE": -2.869888475836431,
+          "NEGATIVE": -22.61338289962825,
+          "NEUTRAL": 25.483271375464685
+        }
+      }
+    },
+    {
+      "video_id": "TloMiwQv1x4",
+      "video_title": "This Guy Is Completely Crazy 🤯",
+      "ground_truth": {
+        "POSITIVE": 179,
+        "NEGATIVE": 288,
+        "NEUTRAL": 357,
+        "POSITIVE_PCT": 21.723300970873787,
+        "NEGATIVE_PCT": 34.95145631067961,
+        "NEUTRAL_PCT": 43.3252427184466,
+        "TOTAL": 824
+      },
+      "predicted": {
+        "POSITIVE": 13,
+        "NEGATIVE": 33,
+        "NEUTRAL": 54,
+        "POSITIVE_PCT": 13.0,
+        "NEGATIVE_PCT": 33.0,
+        "NEUTRAL_PCT": 54.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 6.242038754049105,
+        "chi2_pvalue": 0.044112178551451414,
+        "percentage_differences": {
+          "POSITIVE": 8.723300970873787,
+          "NEGATIVE": 1.9514563106796103,
+          "NEUTRAL": 10.674757281553397
+        },
+        "avg_percentage_difference": 7.116504854368931,
+        "bias": {
+          "POSITIVE": -8.723300970873787,
+          "NEGATIVE": -1.9514563106796103,
+          "NEUTRAL": 10.674757281553397
+        }
+      }
+    },
+    {
+      "video_id": "qUEJt0x9Phg",
+      "video_title": "Saving private kitten 🐾. #marinecorps #marines #semperfi #usmc #usmilitary",
+      "ground_truth": {
+        "POSITIVE": 218,
+        "NEGATIVE": 170,
+        "NEUTRAL": 114,
+        "POSITIVE_PCT": 43.42629482071713,
+        "NEGATIVE_PCT": 33.86454183266932,
+        "NEUTRAL_PCT": 22.709163346613543,
+        "TOTAL": 502
+      },
+      "predicted": {
+        "POSITIVE": 23,
+        "NEGATIVE": 21,
+        "NEUTRAL": 56,
+        "POSITIVE_PCT": 23.0,
+        "NEGATIVE_PCT": 21.0,
+        "NEUTRAL_PCT": 56.00000000000001,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 63.298065308982125,
+        "chi2_pvalue": 1.7988699234332822e-14,
+        "percentage_differences": {
+          "POSITIVE": 20.426294820717132,
+          "NEGATIVE": 12.864541832669318,
+          "NEUTRAL": 33.290836653386464
+        },
+        "avg_percentage_difference": 22.193891102257638,
+        "bias": {
+          "POSITIVE": -20.426294820717132,
+          "NEGATIVE": -12.864541832669318,
+          "NEUTRAL": 33.290836653386464
+        }
+      }
+    },
+    {
+      "video_id": "IyR-s3Te8Dg",
+      "video_title": "Chinese Fighters Geekin 💀💀  #ufc #mmafights #iliatopuria #mmafighter #combatsport #mmajunkie",
+      "ground_truth": {
+        "POSITIVE": 58,
+        "NEGATIVE": 334,
+        "NEUTRAL": 168,
+        "POSITIVE_PCT": 10.357142857142858,
+        "NEGATIVE_PCT": 59.64285714285714,
+        "NEUTRAL_PCT": 30.0,
+        "TOTAL": 560
+      },
+      "predicted": {
+        "POSITIVE": 16,
+        "NEGATIVE": 24,
+        "NEUTRAL": 60,
+        "POSITIVE_PCT": 16.0,
+        "NEGATIVE_PCT": 24.0,
+        "NEUTRAL_PCT": 60.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 54.37472640925046,
+        "chi2_pvalue": 1.5583972843301429e-12,
+        "percentage_differences": {
+          "POSITIVE": 5.642857142857142,
+          "NEGATIVE": 35.64285714285714,
+          "NEUTRAL": 30.0
+        },
+        "avg_percentage_difference": 23.76190476190476,
+        "bias": {
+          "POSITIVE": 5.642857142857142,
+          "NEGATIVE": -35.64285714285714,
+          "NEUTRAL": 30.0
+        }
+      }
+    },
+    {
+      "video_id": "uo_kV9LDrro",
+      "video_title": "A Budget Hotel Experience",
+      "ground_truth": {
+        "POSITIVE": 211,
+        "NEGATIVE": 376,
+        "NEUTRAL": 289,
+        "POSITIVE_PCT": 24.08675799086758,
+        "NEGATIVE_PCT": 42.922374429223744,
+        "NEUTRAL_PCT": 32.99086757990868,
+        "TOTAL": 876
+      },
+      "predicted": {
+        "POSITIVE": 8,
+        "NEGATIVE": 23,
+        "NEUTRAL": 69,
+        "POSITIVE_PCT": 8.0,
+        "NEGATIVE_PCT": 23.0,
+        "NEUTRAL_PCT": 69.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 59.29430043932109,
+        "chi2_pvalue": 1.3316995575242168e-13,
+        "percentage_differences": {
+          "POSITIVE": 16.08675799086758,
+          "NEGATIVE": 19.922374429223744,
+          "NEUTRAL": 36.00913242009132
+        },
+        "avg_percentage_difference": 24.00608828006088,
+        "bias": {
+          "POSITIVE": -16.08675799086758,
+          "NEGATIVE": -19.922374429223744,
+          "NEUTRAL": 36.00913242009132
+        }
+      }
+    },
+    {
+      "video_id": "2uyFVdsO7ss",
+      "video_title": "Bing in Google Clothing",
+      "ground_truth": {
+        "POSITIVE": 151,
+        "NEGATIVE": 245,
+        "NEUTRAL": 194,
+        "POSITIVE_PCT": 25.593220338983052,
+        "NEGATIVE_PCT": 41.52542372881356,
+        "NEUTRAL_PCT": 32.88135593220339,
+        "TOTAL": 590
+      },
+      "predicted": {
+        "POSITIVE": 15,
+        "NEGATIVE": 22,
+        "NEUTRAL": 63,
+        "POSITIVE_PCT": 15.0,
+        "NEGATIVE_PCT": 22.0,
+        "NEUTRAL_PCT": 63.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 41.15360196348628,
+        "chi2_pvalue": 1.157734241768863e-09,
+        "percentage_differences": {
+          "POSITIVE": 10.593220338983052,
+          "NEGATIVE": 19.525423728813557,
+          "NEUTRAL": 30.11864406779661
+        },
+        "avg_percentage_difference": 20.07909604519774,
+        "bias": {
+          "POSITIVE": -10.593220338983052,
+          "NEGATIVE": -19.525423728813557,
+          "NEUTRAL": 30.11864406779661
+        }
+      }
+    },
+    {
+      "video_id": "MKrrg_aCIMA",
+      "video_title": "He got a crazy gift for Christmas! 🤯😮",
+      "ground_truth": {
+        "POSITIVE": 357,
+        "NEGATIVE": 151,
+        "NEUTRAL": 115,
+        "POSITIVE_PCT": 57.30337078651685,
+        "NEGATIVE_PCT": 24.23756019261637,
+        "NEUTRAL_PCT": 18.45906902086677,
+        "TOTAL": 623
+      },
+      "predicted": {
+        "POSITIVE": 6,
+        "NEGATIVE": 3,
+        "NEUTRAL": 91,
+        "POSITIVE_PCT": 6.0,
+        "NEGATIVE_PCT": 3.0,
+        "NEUTRAL_PCT": 91.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 349.6137337104725,
+        "chi2_pvalue": 1.2087662511798844e-76,
+        "percentage_differences": {
+          "POSITIVE": 51.30337078651685,
+          "NEGATIVE": 21.23756019261637,
+          "NEUTRAL": 72.54093097913324
+        },
+        "avg_percentage_difference": 48.36062065275549,
+        "bias": {
+          "POSITIVE": -51.30337078651685,
+          "NEGATIVE": -21.23756019261637,
+          "NEUTRAL": 72.54093097913324
+        }
+      }
+    },
+    {
+      "video_id": "rVzx1t5liGY",
+      "video_title": "This is nothing short of amazing 🤯\rWith @aius085",
+      "ground_truth": {
+        "POSITIVE": 45,
+        "NEGATIVE": 456,
+        "NEUTRAL": 180,
+        "POSITIVE_PCT": 6.607929515418502,
+        "NEGATIVE_PCT": 66.96035242290749,
+        "NEUTRAL_PCT": 26.431718061674008,
+        "TOTAL": 681
+      },
+      "predicted": {
+        "POSITIVE": 6,
+        "NEGATIVE": 22,
+        "NEUTRAL": 72,
+        "POSITIVE_PCT": 6.0,
+        "NEGATIVE_PCT": 22.0,
+        "NEUTRAL_PCT": 72.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 108.80415789473685,
+        "chi2_pvalue": 2.363073930645363e-24,
+        "percentage_differences": {
+          "POSITIVE": 0.607929515418502,
+          "NEGATIVE": 44.96035242290749,
+          "NEUTRAL": 45.568281938325995
+        },
+        "avg_percentage_difference": 30.378854625550662,
+        "bias": {
+          "POSITIVE": -0.607929515418502,
+          "NEGATIVE": -44.96035242290749,
+          "NEUTRAL": 45.568281938325995
+        }
+      }
+    },
+    {
+      "video_id": "blx1frsX0C0",
+      "video_title": "iPad kid starter pack 😂.",
+      "ground_truth": {
+        "POSITIVE": 257,
+        "NEGATIVE": 168,
+        "NEUTRAL": 186,
+        "POSITIVE_PCT": 42.06219312602291,
+        "NEGATIVE_PCT": 27.495908346972175,
+        "NEUTRAL_PCT": 30.441898527004913,
+        "TOTAL": 611
+      },
+      "predicted": {
+        "POSITIVE": 18,
+        "NEGATIVE": 25,
+        "NEUTRAL": 57,
+        "POSITIVE_PCT": 18.0,
+        "NEGATIVE_PCT": 25.0,
+        "NEUTRAL_PCT": 56.99999999999999,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 37.161437365143115,
+        "chi2_pvalue": 8.52111460420758e-09,
+        "percentage_differences": {
+          "POSITIVE": 24.062193126022912,
+          "NEGATIVE": 2.4959083469721755,
+          "NEUTRAL": 26.55810147299508
+        },
+        "avg_percentage_difference": 17.70540098199672,
+        "bias": {
+          "POSITIVE": -24.062193126022912,
+          "NEGATIVE": -2.4959083469721755,
+          "NEUTRAL": 26.55810147299508
+        }
+      }
+    },
+    {
+      "video_id": "j7Y3DH983dA",
+      "video_title": "Don't mistake impoliteness for personality #boxing",
+      "ground_truth": {
+        "POSITIVE": 179,
+        "NEGATIVE": 247,
+        "NEUTRAL": 150,
+        "POSITIVE_PCT": 31.07638888888889,
+        "NEGATIVE_PCT": 42.88194444444444,
+        "NEUTRAL_PCT": 26.041666666666668,
+        "TOTAL": 576
+      },
+      "predicted": {
+        "POSITIVE": 15,
+        "NEGATIVE": 51,
+        "NEUTRAL": 34,
+        "POSITIVE_PCT": 15.0,
+        "NEGATIVE_PCT": 51.0,
+        "NEUTRAL_PCT": 34.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 12.285522249112253,
+        "chi2_pvalue": 0.0021489818125863167,
+        "percentage_differences": {
+          "POSITIVE": 16.07638888888889,
+          "NEGATIVE": 8.118055555555557,
+          "NEUTRAL": 7.958333333333332
+        },
+        "avg_percentage_difference": 10.717592592592593,
+        "bias": {
+          "POSITIVE": -16.07638888888889,
+          "NEGATIVE": 8.118055555555557,
+          "NEUTRAL": 7.958333333333332
+        }
+      }
+    },
+    {
+      "video_id": "8HzuLnvvEM8",
+      "video_title": "The Grooms daughter leave him a message before her and her mummy walk down the aisle!",
+      "ground_truth": {
+        "POSITIVE": 572,
+        "NEGATIVE": 77,
+        "NEUTRAL": 80,
+        "POSITIVE_PCT": 78.46364883401921,
+        "NEGATIVE_PCT": 10.562414266117969,
+        "NEUTRAL_PCT": 10.973936899862826,
+        "TOTAL": 729
+      },
+      "predicted": {
+        "POSITIVE": 44,
+        "NEGATIVE": 9,
+        "NEUTRAL": 47,
+        "POSITIVE_PCT": 44.0,
+        "NEGATIVE_PCT": 9.0,
+        "NEUTRAL_PCT": 47.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 133.63767245254743,
+        "chi2_pvalue": 9.570797770102097e-30,
+        "percentage_differences": {
+          "POSITIVE": 34.46364883401921,
+          "NEGATIVE": 1.562414266117969,
+          "NEUTRAL": 36.02606310013717
+        },
+        "avg_percentage_difference": 24.017375400091453,
+        "bias": {
+          "POSITIVE": -34.46364883401921,
+          "NEGATIVE": -1.562414266117969,
+          "NEUTRAL": 36.02606310013717
+        }
+      }
+    },
+    {
+      "video_id": "1DsMZuJm5Sg",
+      "video_title": "Fails🔥 #lowrider #classic #carmodification #oldschool #automobile #oldies #westcoast #impala",
+      "ground_truth": {
+        "POSITIVE": 135,
+        "NEGATIVE": 377,
+        "NEUTRAL": 243,
+        "POSITIVE_PCT": 17.880794701986755,
+        "NEGATIVE_PCT": 49.93377483443708,
+        "NEUTRAL_PCT": 32.18543046357616,
+        "TOTAL": 755
+      },
+      "predicted": {
+        "POSITIVE": 3,
+        "NEGATIVE": 30,
+        "NEUTRAL": 67,
+        "POSITIVE_PCT": 3.0,
+        "NEGATIVE_PCT": 30.0,
+        "NEUTRAL_PCT": 67.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 58.000251279868124,
+        "chi2_pvalue": 2.5433460814682533e-13,
+        "percentage_differences": {
+          "POSITIVE": 14.880794701986755,
+          "NEGATIVE": 19.93377483443708,
+          "NEUTRAL": 34.81456953642384
+        },
+        "avg_percentage_difference": 23.209713024282554,
+        "bias": {
+          "POSITIVE": -14.880794701986755,
+          "NEGATIVE": -19.93377483443708,
+          "NEUTRAL": 34.81456953642384
+        }
+      }
+    },
+    {
+      "video_id": "c9L1Icxg4PY",
+      "video_title": "What’s your thoughts? 😂🙌 #repo #automobile #skills #towtruck #tow #goat 🐐",
+      "ground_truth": {
+        "POSITIVE": 133,
+        "NEGATIVE": 290,
+        "NEUTRAL": 126,
+        "POSITIVE_PCT": 24.225865209471767,
+        "NEGATIVE_PCT": 52.82331511839708,
+        "NEUTRAL_PCT": 22.950819672131146,
+        "TOTAL": 549
+      },
+      "predicted": {
+        "POSITIVE": 18,
+        "NEGATIVE": 45,
+        "NEUTRAL": 37,
+        "POSITIVE_PCT": 18.0,
+        "NEGATIVE_PCT": 45.0,
+        "NEUTRAL_PCT": 37.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 11.358765880217787,
+        "chi2_pvalue": 0.0034156654634087116,
+        "percentage_differences": {
+          "POSITIVE": 6.225865209471767,
+          "NEGATIVE": 7.823315118397083,
+          "NEUTRAL": 14.049180327868854
+        },
+        "avg_percentage_difference": 9.366120218579235,
+        "bias": {
+          "POSITIVE": -6.225865209471767,
+          "NEGATIVE": -7.823315118397083,
+          "NEUTRAL": 14.049180327868854
+        }
+      }
+    },
+    {
+      "video_id": "3a8dScJg6O0",
+      "video_title": "I Was The FIRST To Game On The RTX 5090 - NVIDIA 50 Series Announcement",
+      "ground_truth": {
+        "POSITIVE": 45,
+        "NEGATIVE": 360,
+        "NEUTRAL": 178,
+        "POSITIVE_PCT": 7.718696397941681,
+        "NEGATIVE_PCT": 61.74957118353345,
+        "NEUTRAL_PCT": 30.53173241852487,
+        "TOTAL": 583
+      },
+      "predicted": {
+        "POSITIVE": 14,
+        "NEGATIVE": 43,
+        "NEUTRAL": 43,
+        "POSITIVE_PCT": 14.000000000000002,
+        "NEGATIVE_PCT": 43.0,
+        "NEUTRAL_PCT": 43.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 15.896360486891385,
+        "chi2_pvalue": 0.00035330450819098737,
+        "percentage_differences": {
+          "POSITIVE": 6.281303602058321,
+          "NEGATIVE": 18.749571183533448,
+          "NEUTRAL": 12.468267581475128
+        },
+        "avg_percentage_difference": 12.499714122355632,
+        "bias": {
+          "POSITIVE": 6.281303602058321,
+          "NEGATIVE": -18.749571183533448,
+          "NEUTRAL": 12.468267581475128
+        }
+      }
+    },
+    {
+      "video_id": "mJnIst-IW9Q",
+      "video_title": "Someone Forgot to SET LIMITS for This Kid",
+      "ground_truth": {
+        "POSITIVE": 229,
+        "NEGATIVE": 110,
+        "NEUTRAL": 205,
+        "POSITIVE_PCT": 42.095588235294116,
+        "NEGATIVE_PCT": 20.22058823529412,
+        "NEUTRAL_PCT": 37.68382352941176,
+        "TOTAL": 544
+      },
+      "predicted": {
+        "POSITIVE": 22,
+        "NEGATIVE": 10,
+        "NEUTRAL": 68,
+        "POSITIVE_PCT": 22.0,
+        "NEGATIVE_PCT": 10.0,
+        "NEUTRAL_PCT": 68.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 39.14826719855925,
+        "chi2_pvalue": 3.155453537575577e-09,
+        "percentage_differences": {
+          "POSITIVE": 20.095588235294116,
+          "NEGATIVE": 10.22058823529412,
+          "NEUTRAL": 30.31617647058824
+        },
+        "avg_percentage_difference": 20.210784313725494,
+        "bias": {
+          "POSITIVE": -20.095588235294116,
+          "NEGATIVE": -10.22058823529412,
+          "NEUTRAL": 30.31617647058824
+        }
+      }
+    },
+    {
+      "video_id": "YzdfoHi-RAY",
+      "video_title": "New 2025 Apple Products Leaked! EVERYTHING We're Getting!",
+      "ground_truth": {
+        "POSITIVE": 68,
+        "NEGATIVE": 329,
+        "NEUTRAL": 121,
+        "POSITIVE_PCT": 13.127413127413126,
+        "NEGATIVE_PCT": 63.51351351351351,
+        "NEUTRAL_PCT": 23.35907335907336,
+        "TOTAL": 518
+      },
+      "predicted": {
+        "POSITIVE": 5,
+        "NEGATIVE": 48,
+        "NEUTRAL": 47,
+        "POSITIVE_PCT": 5.0,
+        "NEGATIVE_PCT": 48.0,
+        "NEUTRAL_PCT": 47.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 32.747263883573474,
+        "chi2_pvalue": 7.745010287665522e-08,
+        "percentage_differences": {
+          "POSITIVE": 8.127413127413126,
+          "NEGATIVE": 15.513513513513509,
+          "NEUTRAL": 23.64092664092664
+        },
+        "avg_percentage_difference": 15.760617760617757,
+        "bias": {
+          "POSITIVE": -8.127413127413126,
+          "NEGATIVE": -15.513513513513509,
+          "NEUTRAL": 23.64092664092664
+        }
+      }
+    },
+    {
+      "video_id": "JgyrqCiYFFc",
+      "video_title": "Demi Moore roasts Bruce Willis",
+      "ground_truth": {
+        "POSITIVE": 243,
+        "NEGATIVE": 193,
+        "NEUTRAL": 72,
+        "POSITIVE_PCT": 47.83464566929133,
+        "NEGATIVE_PCT": 37.99212598425197,
+        "NEUTRAL_PCT": 14.173228346456693,
+        "TOTAL": 508
+      },
+      "predicted": {
+        "POSITIVE": 55,
+        "NEGATIVE": 16,
+        "NEUTRAL": 29,
+        "POSITIVE_PCT": 55.00000000000001,
+        "NEGATIVE_PCT": 16.0,
+        "NEUTRAL_PCT": 28.999999999999996,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 29.314143691763153,
+        "chi2_pvalue": 4.3103702490444297e-07,
+        "percentage_differences": {
+          "POSITIVE": 7.165354330708674,
+          "NEGATIVE": 21.99212598425197,
+          "NEUTRAL": 14.826771653543304
+        },
+        "avg_percentage_difference": 14.66141732283465,
+        "bias": {
+          "POSITIVE": 7.165354330708674,
+          "NEGATIVE": -21.99212598425197,
+          "NEUTRAL": 14.826771653543304
+        }
+      }
+    },
+    {
+      "video_id": "F33juPjPLLA",
+      "video_title": "Don't Lose Your Child Here",
+      "ground_truth": {
+        "POSITIVE": 55,
+        "NEGATIVE": 223,
+        "NEUTRAL": 350,
+        "POSITIVE_PCT": 8.75796178343949,
+        "NEGATIVE_PCT": 35.509554140127385,
+        "NEUTRAL_PCT": 55.73248407643312,
+        "TOTAL": 628
+      },
+      "predicted": {
+        "POSITIVE": 10,
+        "NEGATIVE": 23,
+        "NEUTRAL": 67,
+        "POSITIVE_PCT": 10.0,
+        "NEGATIVE_PCT": 23.0,
+        "NEUTRAL_PCT": 67.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 6.861066635606546,
+        "chi2_pvalue": 0.03236967284585505,
+        "percentage_differences": {
+          "POSITIVE": 1.2420382165605108,
+          "NEGATIVE": 12.509554140127385,
+          "NEUTRAL": 11.267515923566883
+        },
+        "avg_percentage_difference": 8.339702760084926,
+        "bias": {
+          "POSITIVE": 1.2420382165605108,
+          "NEGATIVE": -12.509554140127385,
+          "NEUTRAL": 11.267515923566883
+        }
+      }
+    },
+    {
+      "video_id": "__PT-asfnVM",
+      "video_title": "🤣💀 #mileycyrus #music",
+      "ground_truth": {
+        "POSITIVE": 154,
+        "NEGATIVE": 231,
+        "NEUTRAL": 172,
+        "POSITIVE_PCT": 27.648114901256733,
+        "NEGATIVE_PCT": 41.4721723518851,
+        "NEUTRAL_PCT": 30.879712746858168,
+        "TOTAL": 557
+      },
+      "predicted": {
+        "POSITIVE": 12,
+        "NEGATIVE": 32,
+        "NEUTRAL": 56,
+        "POSITIVE_PCT": 12.0,
+        "NEGATIVE_PCT": 32.0,
+        "NEUTRAL_PCT": 56.00000000000001,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 31.454915936776406,
+        "chi2_pvalue": 1.477922939154181e-07,
+        "percentage_differences": {
+          "POSITIVE": 15.648114901256733,
+          "NEGATIVE": 9.4721723518851,
+          "NEUTRAL": 25.12028725314184
+        },
+        "avg_percentage_difference": 16.746858168761225,
+        "bias": {
+          "POSITIVE": -15.648114901256733,
+          "NEGATIVE": -9.4721723518851,
+          "NEUTRAL": 25.12028725314184
+        }
+      }
+    },
+    {
+      "video_id": "jDyfxPUiUBQ",
+      "video_title": "Squid Game Season 2 | The Frontman Edit | #squidgame #edit #shorts",
+      "ground_truth": {
+        "POSITIVE": 243,
+        "NEGATIVE": 284,
+        "NEUTRAL": 261,
+        "POSITIVE_PCT": 30.83756345177665,
+        "NEGATIVE_PCT": 36.04060913705584,
+        "NEUTRAL_PCT": 33.121827411167516,
+        "TOTAL": 788
+      },
+      "predicted": {
+        "POSITIVE": 27,
+        "NEGATIVE": 13,
+        "NEUTRAL": 60,
+        "POSITIVE_PCT": 27.0,
+        "NEGATIVE_PCT": 13.0,
+        "NEUTRAL_PCT": 60.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 37.01881010199125,
+        "chi2_pvalue": 9.150978248259401e-09,
+        "percentage_differences": {
+          "POSITIVE": 3.8375634517766493,
+          "NEGATIVE": 23.04060913705584,
+          "NEUTRAL": 26.878172588832484
+        },
+        "avg_percentage_difference": 17.918781725888323,
+        "bias": {
+          "POSITIVE": -3.8375634517766493,
+          "NEGATIVE": -23.04060913705584,
+          "NEUTRAL": 26.878172588832484
+        }
+      }
+    },
+    {
+      "video_id": "IdoCZYDnpcQ",
+      "video_title": "That’s real cat #cat #shorts",
+      "ground_truth": {
+        "POSITIVE": 99,
+        "NEGATIVE": 364,
+        "NEUTRAL": 46,
+        "POSITIVE_PCT": 19.44990176817289,
+        "NEGATIVE_PCT": 71.51277013752456,
+        "NEUTRAL_PCT": 9.037328094302556,
+        "TOTAL": 509
+      },
+      "predicted": {
+        "POSITIVE": 22,
+        "NEGATIVE": 33,
+        "NEUTRAL": 45,
+        "POSITIVE_PCT": 22.0,
+        "NEGATIVE_PCT": 33.0,
+        "NEUTRAL_PCT": 45.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 164.18314606890692,
+        "chi2_pvalue": 2.2288601545385835e-36,
+        "percentage_differences": {
+          "POSITIVE": 2.5500982318271106,
+          "NEGATIVE": 38.512770137524555,
+          "NEUTRAL": 35.96267190569745
+        },
+        "avg_percentage_difference": 25.675180091683035,
+        "bias": {
+          "POSITIVE": 2.5500982318271106,
+          "NEGATIVE": -38.512770137524555,
+          "NEUTRAL": 35.96267190569745
+        }
+      }
+    },
+    {
+      "video_id": "7uAK5hnZ1Jk",
+      "video_title": "The True Cost of Your iPhone Revealed! 🤯📱",
+      "ground_truth": {
+        "POSITIVE": 28,
+        "NEGATIVE": 370,
+        "NEUTRAL": 174,
+        "POSITIVE_PCT": 4.895104895104895,
+        "NEGATIVE_PCT": 64.6853146853147,
+        "NEUTRAL_PCT": 30.419580419580424,
+        "TOTAL": 572
+      },
+      "predicted": {
+        "POSITIVE": 5,
+        "NEGATIVE": 43,
+        "NEUTRAL": 52,
+        "POSITIVE_PCT": 5.0,
+        "NEGATIVE_PCT": 43.0,
+        "NEUTRAL_PCT": 52.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 22.58179834021213,
+        "chi2_pvalue": 1.2486042093107099e-05,
+        "percentage_differences": {
+          "POSITIVE": 0.104895104895105,
+          "NEGATIVE": 21.685314685314694,
+          "NEUTRAL": 21.580419580419576
+        },
+        "avg_percentage_difference": 14.456876456876458,
+        "bias": {
+          "POSITIVE": 0.104895104895105,
+          "NEGATIVE": -21.685314685314694,
+          "NEUTRAL": 21.580419580419576
+        }
+      }
+    },
+    {
+      "video_id": "I_5XnVmJ91o",
+      "video_title": "The Dog’s Final Treat",
+      "ground_truth": {
+        "POSITIVE": 198,
+        "NEGATIVE": 346,
+        "NEUTRAL": 72,
+        "POSITIVE_PCT": 32.142857142857146,
+        "NEGATIVE_PCT": 56.16883116883117,
+        "NEUTRAL_PCT": 11.688311688311687,
+        "TOTAL": 616
+      },
+      "predicted": {
+        "POSITIVE": 22,
+        "NEGATIVE": 32,
+        "NEUTRAL": 46,
+        "POSITIVE_PCT": 22.0,
+        "NEGATIVE_PCT": 32.0,
+        "NEUTRAL_PCT": 46.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 114.32408477842006,
+        "chi2_pvalue": 1.4956859568757617e-25,
+        "percentage_differences": {
+          "POSITIVE": 10.142857142857146,
+          "NEGATIVE": 24.16883116883117,
+          "NEUTRAL": 34.311688311688314
+        },
+        "avg_percentage_difference": 22.874458874458877,
+        "bias": {
+          "POSITIVE": -10.142857142857146,
+          "NEGATIVE": -24.16883116883117,
+          "NEUTRAL": 34.311688311688314
+        }
+      }
+    },
+    {
+      "video_id": "ItMLWCKUyF8",
+      "video_title": "Samsung Don't Even Draw iPhone?",
+      "ground_truth": {
+        "POSITIVE": 133,
+        "NEGATIVE": 359,
+        "NEUTRAL": 270,
+        "POSITIVE_PCT": 17.454068241469816,
+        "NEGATIVE_PCT": 47.112860892388454,
+        "NEUTRAL_PCT": 35.43307086614173,
+        "TOTAL": 762
+      },
+      "predicted": {
+        "POSITIVE": 17,
+        "NEGATIVE": 24,
+        "NEUTRAL": 59,
+        "POSITIVE_PCT": 17.0,
+        "NEGATIVE_PCT": 24.0,
+        "NEUTRAL_PCT": 59.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 27.025260919243326,
+        "chi2_pvalue": 1.3537521375858639e-06,
+        "percentage_differences": {
+          "POSITIVE": 0.45406824146981606,
+          "NEGATIVE": 23.112860892388454,
+          "NEUTRAL": 23.566929133858267
+        },
+        "avg_percentage_difference": 15.711286089238845,
+        "bias": {
+          "POSITIVE": -0.45406824146981606,
+          "NEGATIVE": -23.112860892388454,
+          "NEUTRAL": 23.566929133858267
+        }
+      }
+    },
+    {
+      "video_id": "BF9SWXBK2Xw",
+      "video_title": "Actor describes neighbor's rescue an hour before house burned down in wildfire",
+      "ground_truth": {
+        "POSITIVE": 195,
+        "NEGATIVE": 312,
+        "NEUTRAL": 84,
+        "POSITIVE_PCT": 32.99492385786802,
+        "NEGATIVE_PCT": 52.79187817258884,
+        "NEUTRAL_PCT": 14.213197969543149,
+        "TOTAL": 591
+      },
+      "predicted": {
+        "POSITIVE": 18,
+        "NEGATIVE": 40,
+        "NEUTRAL": 42,
+        "POSITIVE_PCT": 18.0,
+        "NEGATIVE_PCT": 40.0,
+        "NEUTRAL_PCT": 42.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 64.2373846153846,
+        "chi2_pvalue": 1.124680498766895e-14,
+        "percentage_differences": {
+          "POSITIVE": 14.994923857868017,
+          "NEGATIVE": 12.791878172588838,
+          "NEUTRAL": 27.78680203045685
+        },
+        "avg_percentage_difference": 18.524534686971236,
+        "bias": {
+          "POSITIVE": -14.994923857868017,
+          "NEGATIVE": -12.791878172588838,
+          "NEUTRAL": 27.78680203045685
+        }
+      }
+    },
+    {
+      "video_id": "OvorXXWRqpw",
+      "video_title": "#whalerescue#fishingtrip#barnacles#wildlife#oceanlife#foryou#foryoupage#fyp",
+      "ground_truth": {
+        "POSITIVE": 169,
+        "NEGATIVE": 242,
+        "NEUTRAL": 89,
+        "POSITIVE_PCT": 33.800000000000004,
+        "NEGATIVE_PCT": 48.4,
+        "NEUTRAL_PCT": 17.8,
+        "TOTAL": 500
+      },
+      "predicted": {
+        "POSITIVE": 32,
+        "NEGATIVE": 32,
+        "NEUTRAL": 36,
+        "POSITIVE_PCT": 32.0,
+        "NEGATIVE_PCT": 32.0,
+        "NEUTRAL_PCT": 36.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 24.26187154559905,
+        "chi2_pvalue": 5.390158469643825e-06,
+        "percentage_differences": {
+          "POSITIVE": 1.8000000000000043,
+          "NEGATIVE": 16.4,
+          "NEUTRAL": 18.2
+        },
+        "avg_percentage_difference": 12.133333333333335,
+        "bias": {
+          "POSITIVE": -1.8000000000000043,
+          "NEGATIVE": -16.4,
+          "NEUTRAL": 18.2
+        }
+      }
+    },
+    {
+      "video_id": "VjKyvpip-V8",
+      "video_title": "Londyn gets KICKED OUT of ICE CREAM MUSEUM! #dlafam",
+      "ground_truth": {
+        "POSITIVE": 56,
+        "NEGATIVE": 493,
+        "NEUTRAL": 121,
+        "POSITIVE_PCT": 8.358208955223882,
+        "NEGATIVE_PCT": 73.5820895522388,
+        "NEUTRAL_PCT": 18.059701492537314,
+        "TOTAL": 670
+      },
+      "predicted": {
+        "POSITIVE": 10,
+        "NEGATIVE": 43,
+        "NEUTRAL": 47,
+        "POSITIVE_PCT": 10.0,
+        "NEGATIVE_PCT": 43.0,
+        "NEUTRAL_PCT": 47.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 59.40921220582846,
+        "chi2_pvalue": 1.2573421722986183e-13,
+        "percentage_differences": {
+          "POSITIVE": 1.6417910447761184,
+          "NEGATIVE": 30.5820895522388,
+          "NEUTRAL": 28.940298507462686
+        },
+        "avg_percentage_difference": 20.388059701492534,
+        "bias": {
+          "POSITIVE": 1.6417910447761184,
+          "NEGATIVE": -30.5820895522388,
+          "NEUTRAL": 28.940298507462686
+        }
+      }
+    },
+    {
+      "video_id": "_iB2h0aL77k",
+      "video_title": "Automatic sortable 4 connect (4 in a row) Game",
+      "ground_truth": {
+        "POSITIVE": 202,
+        "NEGATIVE": 184,
+        "NEUTRAL": 159,
+        "POSITIVE_PCT": 37.06422018348624,
+        "NEGATIVE_PCT": 33.76146788990826,
+        "NEUTRAL_PCT": 29.174311926605505,
+        "TOTAL": 545
+      },
+      "predicted": {
+        "POSITIVE": 26,
+        "NEGATIVE": 17,
+        "NEUTRAL": 57,
+        "POSITIVE_PCT": 26.0,
+        "NEGATIVE_PCT": 17.0,
+        "NEUTRAL_PCT": 56.99999999999999,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 38.16376254883487,
+        "chi2_pvalue": 5.1623121103176334e-09,
+        "percentage_differences": {
+          "POSITIVE": 11.064220183486242,
+          "NEGATIVE": 16.76146788990826,
+          "NEUTRAL": 27.82568807339449
+        },
+        "avg_percentage_difference": 18.55045871559633,
+        "bias": {
+          "POSITIVE": -11.064220183486242,
+          "NEGATIVE": -16.76146788990826,
+          "NEUTRAL": 27.82568807339449
+        }
+      }
+    },
+    {
+      "video_id": "Jo8DuEHc-SQ",
+      "video_title": "Biker stands up for himself when approached by this stranger 😱 @Undisclosed_Moto",
+      "ground_truth": {
+        "POSITIVE": 177,
+        "NEGATIVE": 377,
+        "NEUTRAL": 217,
+        "POSITIVE_PCT": 22.957198443579767,
+        "NEGATIVE_PCT": 48.89753566796368,
+        "NEUTRAL_PCT": 28.14526588845655,
+        "TOTAL": 771
+      },
+      "predicted": {
+        "POSITIVE": 18,
+        "NEGATIVE": 40,
+        "NEUTRAL": 42,
+        "POSITIVE_PCT": 18.0,
+        "NEGATIVE_PCT": 40.0,
+        "NEUTRAL_PCT": 42.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 9.509544459801054,
+        "chi2_pvalue": 0.008610505685676844,
+        "percentage_differences": {
+          "POSITIVE": 4.957198443579767,
+          "NEGATIVE": 8.89753566796368,
+          "NEUTRAL": 13.85473411154345
+        },
+        "avg_percentage_difference": 9.236489407695633,
+        "bias": {
+          "POSITIVE": -4.957198443579767,
+          "NEGATIVE": -8.89753566796368,
+          "NEUTRAL": 13.85473411154345
+        }
+      }
+    },
+    {
+      "video_id": "-hV6aeyPHPA",
+      "video_title": "After a new engine her car dies on her way home makes me think the worst! 😱#fyp #mobile #love #help",
+      "ground_truth": {
+        "POSITIVE": 442,
+        "NEGATIVE": 420,
+        "NEUTRAL": 289,
+        "POSITIVE_PCT": 38.40139009556907,
+        "NEGATIVE_PCT": 36.490008688097305,
+        "NEUTRAL_PCT": 25.10860121633362,
+        "TOTAL": 1151
+      },
+      "predicted": {
+        "POSITIVE": 41,
+        "NEGATIVE": 23,
+        "NEUTRAL": 36,
+        "POSITIVE_PCT": 41.0,
+        "NEGATIVE_PCT": 23.0,
+        "NEUTRAL_PCT": 36.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 9.887354607906511,
+        "chi2_pvalue": 0.007128337054453465,
+        "percentage_differences": {
+          "POSITIVE": 2.59860990443093,
+          "NEGATIVE": 13.490008688097305,
+          "NEUTRAL": 10.891398783666379
+        },
+        "avg_percentage_difference": 8.993339125398204,
+        "bias": {
+          "POSITIVE": 2.59860990443093,
+          "NEGATIVE": -13.490008688097305,
+          "NEUTRAL": 10.891398783666379
+        }
+      }
+    },
+    {
+      "video_id": "C-DJM_kxDYU",
+      "video_title": "Thanos when he takes his medicines #squidgame #edit #thanos",
+      "ground_truth": {
+        "POSITIVE": 124,
+        "NEGATIVE": 309,
+        "NEUTRAL": 191,
+        "POSITIVE_PCT": 19.871794871794872,
+        "NEGATIVE_PCT": 49.519230769230774,
+        "NEUTRAL_PCT": 30.60897435897436,
+        "TOTAL": 624
+      },
+      "predicted": {
+        "POSITIVE": 13,
+        "NEGATIVE": 32,
+        "NEUTRAL": 55,
+        "POSITIVE_PCT": 13.0,
+        "NEGATIVE_PCT": 32.0,
+        "NEUTRAL_PCT": 55.00000000000001,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 28.01057621137862,
+        "chi2_pvalue": 8.271431133465698e-07,
+        "percentage_differences": {
+          "POSITIVE": 6.871794871794872,
+          "NEGATIVE": 17.519230769230774,
+          "NEUTRAL": 24.391025641025646
+        },
+        "avg_percentage_difference": 16.260683760683765,
+        "bias": {
+          "POSITIVE": -6.871794871794872,
+          "NEGATIVE": -17.519230769230774,
+          "NEUTRAL": 24.391025641025646
+        }
+      }
+    },
+    {
+      "video_id": "6pDTedR6PM0",
+      "video_title": "\"Too Stupid To Be LA Mayor\": Megyn Kelly Slams \"Moron\" Karen Bass' Incompetence",
+      "ground_truth": {
+        "POSITIVE": 133,
+        "NEGATIVE": 278,
+        "NEUTRAL": 122,
+        "POSITIVE_PCT": 24.953095684803,
+        "NEGATIVE_PCT": 52.15759849906192,
+        "NEUTRAL_PCT": 22.88930581613508,
+        "TOTAL": 533
+      },
+      "predicted": {
+        "POSITIVE": 10,
+        "NEGATIVE": 62,
+        "NEUTRAL": 28,
+        "POSITIVE_PCT": 10.0,
+        "NEGATIVE_PCT": 62.0,
+        "NEUTRAL_PCT": 28.000000000000004,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 11.95903430589683,
+        "chi2_pvalue": 0.002530047623382774,
+        "percentage_differences": {
+          "POSITIVE": 14.953095684803,
+          "NEGATIVE": 9.842401500938081,
+          "NEUTRAL": 5.110694183864922
+        },
+        "avg_percentage_difference": 9.968730456535335,
+        "bias": {
+          "POSITIVE": -14.953095684803,
+          "NEGATIVE": 9.842401500938081,
+          "NEUTRAL": 5.110694183864922
+        }
+      }
+    },
+    {
+      "video_id": "Zf_6wLyqPDU",
+      "video_title": "Officer quit after this 😂 (@larad_official)",
+      "ground_truth": {
+        "POSITIVE": 101,
+        "NEGATIVE": 337,
+        "NEUTRAL": 89,
+        "POSITIVE_PCT": 19.165085388994306,
+        "NEGATIVE_PCT": 63.946869070208734,
+        "NEUTRAL_PCT": 16.888045540796963,
+        "TOTAL": 527
+      },
+      "predicted": {
+        "POSITIVE": 12,
+        "NEGATIVE": 52,
+        "NEUTRAL": 36,
+        "POSITIVE_PCT": 12.0,
+        "NEGATIVE_PCT": 52.0,
+        "NEUTRAL_PCT": 36.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 26.539441381206778,
+        "chi2_pvalue": 1.725971132373004e-06,
+        "percentage_differences": {
+          "POSITIVE": 7.1650853889943065,
+          "NEGATIVE": 11.946869070208734,
+          "NEUTRAL": 19.111954459203037
+        },
+        "avg_percentage_difference": 12.741302972802027,
+        "bias": {
+          "POSITIVE": -7.1650853889943065,
+          "NEGATIVE": -11.946869070208734,
+          "NEUTRAL": 19.111954459203037
+        }
+      }
+    },
+    {
+      "video_id": "cueKMCaXzi4",
+      "video_title": "Cop Did NOT Want My E-Bike On The Highway!",
+      "ground_truth": {
+        "POSITIVE": 116,
+        "NEGATIVE": 318,
+        "NEUTRAL": 160,
+        "POSITIVE_PCT": 19.52861952861953,
+        "NEGATIVE_PCT": 53.535353535353536,
+        "NEUTRAL_PCT": 26.936026936026934,
+        "TOTAL": 594
+      },
+      "predicted": {
+        "POSITIVE": 17,
+        "NEGATIVE": 48,
+        "NEUTRAL": 35,
+        "POSITIVE_PCT": 17.0,
+        "NEGATIVE_PCT": 48.0,
+        "NEUTRAL_PCT": 35.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 3.313899235523749,
+        "chi2_pvalue": 0.19071986217495968,
+        "percentage_differences": {
+          "POSITIVE": 2.5286195286195294,
+          "NEGATIVE": 5.535353535353536,
+          "NEUTRAL": 8.063973063973066
+        },
+        "avg_percentage_difference": 5.375982042648711,
+        "bias": {
+          "POSITIVE": -2.5286195286195294,
+          "NEGATIVE": -5.535353535353536,
+          "NEUTRAL": 8.063973063973066
+        }
+      }
+    },
+    {
+      "video_id": "4fe182VAupY",
+      "video_title": "German brakes 💪, American brakes 👶",
+      "ground_truth": {
+        "POSITIVE": 142,
+        "NEGATIVE": 215,
+        "NEUTRAL": 218,
+        "POSITIVE_PCT": 24.695652173913043,
+        "NEGATIVE_PCT": 37.391304347826086,
+        "NEUTRAL_PCT": 37.913043478260875,
+        "TOTAL": 575
+      },
+      "predicted": {
+        "POSITIVE": 12,
+        "NEGATIVE": 36,
+        "NEUTRAL": 52,
+        "POSITIVE_PCT": 12.0,
+        "NEGATIVE_PCT": 36.0,
+        "NEUTRAL_PCT": 52.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 11.812551949203215,
+        "chi2_pvalue": 0.0027223059704069535,
+        "percentage_differences": {
+          "POSITIVE": 12.695652173913043,
+          "NEGATIVE": 1.391304347826086,
+          "NEUTRAL": 14.086956521739125
+        },
+        "avg_percentage_difference": 9.391304347826084,
+        "bias": {
+          "POSITIVE": -12.695652173913043,
+          "NEGATIVE": -1.391304347826086,
+          "NEUTRAL": 14.086956521739125
+        }
+      }
+    },
+    {
+      "video_id": "1KtBz3mPgyY",
+      "video_title": "$40 dollar poki bowl!!                    Gotta try this one #food #foodie #salmonlover",
+      "ground_truth": {
+        "POSITIVE": 53,
+        "NEGATIVE": 397,
+        "NEUTRAL": 109,
+        "POSITIVE_PCT": 9.481216457960643,
+        "NEGATIVE_PCT": 71.01967799642217,
+        "NEUTRAL_PCT": 19.499105545617173,
+        "TOTAL": 559
+      },
+      "predicted": {
+        "POSITIVE": 13,
+        "NEGATIVE": 35,
+        "NEUTRAL": 52,
+        "POSITIVE_PCT": 13.0,
+        "NEGATIVE_PCT": 35.0,
+        "NEUTRAL_PCT": 52.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 73.74648505822404,
+        "chi2_pvalue": 9.686218013059666e-17,
+        "percentage_differences": {
+          "POSITIVE": 3.5187835420393565,
+          "NEGATIVE": 36.019677996422175,
+          "NEUTRAL": 32.50089445438283
+        },
+        "avg_percentage_difference": 24.013118664281453,
+        "bias": {
+          "POSITIVE": 3.5187835420393565,
+          "NEGATIVE": -36.019677996422175,
+          "NEUTRAL": 32.50089445438283
+        }
+      }
+    },
+    {
+      "video_id": "ixlpwh2jvUk",
+      "video_title": "This girl is so arrogant😡😤 #motivationalquotes #inspiration #emotional #kindness #raisedarmy #sad",
+      "ground_truth": {
+        "POSITIVE": 63,
+        "NEGATIVE": 528,
+        "NEUTRAL": 99,
+        "POSITIVE_PCT": 9.130434782608695,
+        "NEGATIVE_PCT": 76.52173913043478,
+        "NEUTRAL_PCT": 14.347826086956522,
+        "TOTAL": 690
+      },
+      "predicted": {
+        "POSITIVE": 12,
+        "NEGATIVE": 55,
+        "NEUTRAL": 33,
+        "POSITIVE_PCT": 12.0,
+        "NEGATIVE_PCT": 55.00000000000001,
+        "NEUTRAL_PCT": 33.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 31.202678571428564,
+        "chi2_pvalue": 1.6765806052409635e-07,
+        "percentage_differences": {
+          "POSITIVE": 2.8695652173913047,
+          "NEGATIVE": 21.521739130434774,
+          "NEUTRAL": 18.652173913043477
+        },
+        "avg_percentage_difference": 14.347826086956518,
+        "bias": {
+          "POSITIVE": 2.8695652173913047,
+          "NEGATIVE": -21.521739130434774,
+          "NEUTRAL": 18.652173913043477
+        }
+      }
+    },
+    {
+      "video_id": "76P8f61tYFo",
+      "video_title": "This Woman Never Misses!",
+      "ground_truth": {
+        "POSITIVE": 248,
+        "NEGATIVE": 183,
+        "NEUTRAL": 91,
+        "POSITIVE_PCT": 47.509578544061306,
+        "NEGATIVE_PCT": 35.05747126436782,
+        "NEUTRAL_PCT": 17.43295019157088,
+        "TOTAL": 522
+      },
+      "predicted": {
+        "POSITIVE": 20,
+        "NEGATIVE": 30,
+        "NEUTRAL": 50,
+        "POSITIVE_PCT": 20.0,
+        "NEGATIVE_PCT": 30.0,
+        "NEUTRAL_PCT": 50.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 77.49807939284406,
+        "chi2_pvalue": 1.4842459781452473e-17,
+        "percentage_differences": {
+          "POSITIVE": 27.509578544061306,
+          "NEGATIVE": 5.05747126436782,
+          "NEUTRAL": 32.56704980842912
+        },
+        "avg_percentage_difference": 21.711366538952745,
+        "bias": {
+          "POSITIVE": -27.509578544061306,
+          "NEGATIVE": -5.05747126436782,
+          "NEUTRAL": 32.56704980842912
+        }
+      }
+    },
+    {
+      "video_id": "8b0Fzb3NWoQ",
+      "video_title": "Finding the athlete with the highest jump🤯​⁠​⁠@TannerWittNation  #jump #challenge #athlete",
+      "ground_truth": {
+        "POSITIVE": 125,
+        "NEGATIVE": 185,
+        "NEUTRAL": 245,
+        "POSITIVE_PCT": 22.52252252252252,
+        "NEGATIVE_PCT": 33.33333333333333,
+        "NEUTRAL_PCT": 44.14414414414414,
+        "TOTAL": 555
+      },
+      "predicted": {
+        "POSITIVE": 14,
+        "NEGATIVE": 29,
+        "NEUTRAL": 57,
+        "POSITIVE_PCT": 14.000000000000002,
+        "NEGATIVE_PCT": 28.999999999999996,
+        "NEUTRAL_PCT": 56.99999999999999,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 7.532195918367346,
+        "chi2_pvalue": 0.023142189102022825,
+        "percentage_differences": {
+          "POSITIVE": 8.52252252252252,
+          "NEGATIVE": 4.333333333333332,
+          "NEUTRAL": 12.85585585585585
+        },
+        "avg_percentage_difference": 8.570570570570567,
+        "bias": {
+          "POSITIVE": -8.52252252252252,
+          "NEGATIVE": -4.333333333333332,
+          "NEUTRAL": 12.85585585585585
+        }
+      }
+    },
+    {
+      "video_id": "loSIrsoEZdw",
+      "video_title": "This Truck Made History!",
+      "ground_truth": {
+        "POSITIVE": 46,
+        "NEGATIVE": 587,
+        "NEUTRAL": 157,
+        "POSITIVE_PCT": 5.822784810126582,
+        "NEGATIVE_PCT": 74.30379746835443,
+        "NEUTRAL_PCT": 19.873417721518987,
+        "TOTAL": 790
+      },
+      "predicted": {
+        "POSITIVE": 13,
+        "NEGATIVE": 62,
+        "NEUTRAL": 25,
+        "POSITIVE_PCT": 13.0,
+        "NEGATIVE_PCT": 62.0,
+        "NEUTRAL_PCT": 25.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 12.206518106467227,
+        "chi2_pvalue": 0.00223556999249178,
+        "percentage_differences": {
+          "POSITIVE": 7.177215189873418,
+          "NEGATIVE": 12.303797468354432,
+          "NEUTRAL": 5.126582278481013
+        },
+        "avg_percentage_difference": 8.202531645569621,
+        "bias": {
+          "POSITIVE": 7.177215189873418,
+          "NEGATIVE": -12.303797468354432,
+          "NEUTRAL": 5.126582278481013
+        }
+      }
+    },
+    {
+      "video_id": "fEWFpJXBg54",
+      "video_title": "Karen Block The Road RoadRage😬",
+      "ground_truth": {
+        "POSITIVE": 48,
+        "NEGATIVE": 352,
+        "NEUTRAL": 114,
+        "POSITIVE_PCT": 9.33852140077821,
+        "NEGATIVE_PCT": 68.48249027237354,
+        "NEUTRAL_PCT": 22.17898832684825,
+        "TOTAL": 514
+      },
+      "predicted": {
+        "POSITIVE": 6,
+        "NEGATIVE": 58,
+        "NEUTRAL": 36,
+        "POSITIVE_PCT": 6.0,
+        "NEGATIVE_PCT": 57.99999999999999,
+        "NEUTRAL_PCT": 36.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 11.410729665071772,
+        "chi2_pvalue": 0.0033280629779615773,
+        "percentage_differences": {
+          "POSITIVE": 3.3385214007782107,
+          "NEGATIVE": 10.482490272373546,
+          "NEUTRAL": 13.821011673151752
+        },
+        "avg_percentage_difference": 9.21400778210117,
+        "bias": {
+          "POSITIVE": -3.3385214007782107,
+          "NEGATIVE": -10.482490272373546,
+          "NEUTRAL": 13.821011673151752
+        }
+      }
+    },
+    {
+      "video_id": "_XJs8B9UO7Y",
+      "video_title": "¡La reina del voleibol playa se convierte en la reina del baile! 💃🏐 #voleyplaya #baile #short",
+      "ground_truth": {
+        "POSITIVE": 169,
+        "NEGATIVE": 236,
+        "NEUTRAL": 120,
+        "POSITIVE_PCT": 32.19047619047619,
+        "NEGATIVE_PCT": 44.952380952380956,
+        "NEUTRAL_PCT": 22.857142857142858,
+        "TOTAL": 525
+      },
+      "predicted": {
+        "POSITIVE": 20,
+        "NEGATIVE": 24,
+        "NEUTRAL": 56,
+        "POSITIVE_PCT": 20.0,
+        "NEGATIVE_PCT": 24.0,
+        "NEUTRAL_PCT": 56.00000000000001,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 62.43959482499247,
+        "chi2_pvalue": 2.7632123266906762e-14,
+        "percentage_differences": {
+          "POSITIVE": 12.19047619047619,
+          "NEGATIVE": 20.952380952380956,
+          "NEUTRAL": 33.14285714285715
+        },
+        "avg_percentage_difference": 22.095238095238102,
+        "bias": {
+          "POSITIVE": -12.19047619047619,
+          "NEGATIVE": -20.952380952380956,
+          "NEUTRAL": 33.14285714285715
+        }
+      }
+    },
+    {
+      "video_id": "-GBqPXxsxek",
+      "video_title": "Jimmy Carter funeral: Five US presidents gather",
+      "ground_truth": {
+        "POSITIVE": 311,
+        "NEGATIVE": 225,
+        "NEUTRAL": 197,
+        "POSITIVE_PCT": 42.42837653478854,
+        "NEGATIVE_PCT": 30.69577080491132,
+        "NEUTRAL_PCT": 26.875852660300136,
+        "TOTAL": 733
+      },
+      "predicted": {
+        "POSITIVE": 32,
+        "NEGATIVE": 24,
+        "NEUTRAL": 44,
+        "POSITIVE_PCT": 32.0,
+        "NEGATIVE_PCT": 24.0,
+        "NEUTRAL_PCT": 44.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 14.934514854652583,
+        "chi2_pvalue": 0.0005714935120277086,
+        "percentage_differences": {
+          "POSITIVE": 10.42837653478854,
+          "NEGATIVE": 6.695770804911319,
+          "NEUTRAL": 17.124147339699864
+        },
+        "avg_percentage_difference": 11.416098226466573,
+        "bias": {
+          "POSITIVE": -10.42837653478854,
+          "NEGATIVE": -6.695770804911319,
+          "NEUTRAL": 17.124147339699864
+        }
+      }
+    },
+    {
+      "video_id": "J7JKVEvX2JA",
+      "video_title": "Lady Almost Runs Over Motorcycle Driver",
+      "ground_truth": {
+        "POSITIVE": 26,
+        "NEGATIVE": 530,
+        "NEUTRAL": 187,
+        "POSITIVE_PCT": 3.4993270524899054,
+        "NEGATIVE_PCT": 71.33243606998654,
+        "NEUTRAL_PCT": 25.168236877523555,
+        "TOTAL": 743
+      },
+      "predicted": {
+        "POSITIVE": 6,
+        "NEGATIVE": 56,
+        "NEUTRAL": 38,
+        "POSITIVE_PCT": 6.0,
+        "NEGATIVE_PCT": 56.00000000000001,
+        "NEUTRAL_PCT": 38.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 11.62476586232857,
+        "chi2_pvalue": 0.002990295906282881,
+        "percentage_differences": {
+          "POSITIVE": 2.5006729475100946,
+          "NEGATIVE": 15.332436069986535,
+          "NEUTRAL": 12.831763122476445
+        },
+        "avg_percentage_difference": 10.221624046657691,
+        "bias": {
+          "POSITIVE": 2.5006729475100946,
+          "NEGATIVE": -15.332436069986535,
+          "NEUTRAL": 12.831763122476445
+        }
+      }
+    },
+    {
+      "video_id": "IUHULQU2kEk",
+      "video_title": "“I’LL EAT SNOW FOR DINNER IF YOU HAVE THESE EMOJIS IN FIDGETS” 🥶❄️ #shorts",
+      "ground_truth": {
+        "POSITIVE": 146,
+        "NEGATIVE": 142,
+        "NEUTRAL": 289,
+        "POSITIVE_PCT": 25.30329289428076,
+        "NEGATIVE_PCT": 24.610051993067593,
+        "NEUTRAL_PCT": 50.08665511265165,
+        "TOTAL": 577
+      },
+      "predicted": {
+        "POSITIVE": 6,
+        "NEGATIVE": 14,
+        "NEUTRAL": 80,
+        "POSITIVE_PCT": 6.0,
+        "NEGATIVE_PCT": 14.000000000000002,
+        "NEUTRAL_PCT": 80.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 37.16551179094283,
+        "chi2_pvalue": 8.503772949933299e-09,
+        "percentage_differences": {
+          "POSITIVE": 19.30329289428076,
+          "NEGATIVE": 10.610051993067591,
+          "NEUTRAL": 29.91334488734835
+        },
+        "avg_percentage_difference": 19.9422299248989,
+        "bias": {
+          "POSITIVE": -19.30329289428076,
+          "NEGATIVE": -10.610051993067591,
+          "NEUTRAL": 29.91334488734835
+        }
+      }
+    },
+    {
+      "video_id": "7J2AvxhEMu0",
+      "video_title": "Need A Favor",
+      "ground_truth": {
+        "POSITIVE": 475,
+        "NEGATIVE": 142,
+        "NEUTRAL": 245,
+        "POSITIVE_PCT": 55.10440835266821,
+        "NEGATIVE_PCT": 16.473317865429234,
+        "NEUTRAL_PCT": 28.42227378190255,
+        "TOTAL": 862
+      },
+      "predicted": {
+        "POSITIVE": 33,
+        "NEGATIVE": 17,
+        "NEUTRAL": 50,
+        "POSITIVE_PCT": 33.0,
+        "NEGATIVE_PCT": 17.0,
+        "NEUTRAL_PCT": 50.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 25.265189010756266,
+        "chi2_pvalue": 3.2638779792215496e-06,
+        "percentage_differences": {
+          "POSITIVE": 22.10440835266821,
+          "NEGATIVE": 0.5266821345707662,
+          "NEUTRAL": 21.57772621809745
+        },
+        "avg_percentage_difference": 14.736272235112141,
+        "bias": {
+          "POSITIVE": -22.10440835266821,
+          "NEGATIVE": 0.5266821345707662,
+          "NEUTRAL": 21.57772621809745
+        }
+      }
+    },
+    {
+      "video_id": "hFPYHhG1uaY",
+      "video_title": "This Guy Faced the World Champion But... 🏆",
+      "ground_truth": {
+        "POSITIVE": 232,
+        "NEGATIVE": 150,
+        "NEUTRAL": 125,
+        "POSITIVE_PCT": 45.75936883629191,
+        "NEGATIVE_PCT": 29.585798816568047,
+        "NEUTRAL_PCT": 24.65483234714004,
+        "TOTAL": 507
+      },
+      "predicted": {
+        "POSITIVE": 52,
+        "NEGATIVE": 17,
+        "NEUTRAL": 31,
+        "POSITIVE_PCT": 52.0,
+        "NEGATIVE_PCT": 17.0,
+        "NEUTRAL_PCT": 31.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 7.838084137931035,
+        "chi2_pvalue": 0.01986011025110194,
+        "percentage_differences": {
+          "POSITIVE": 6.240631163708088,
+          "NEGATIVE": 12.585798816568047,
+          "NEUTRAL": 6.34516765285996
+        },
+        "avg_percentage_difference": 8.390532544378699,
+        "bias": {
+          "POSITIVE": 6.240631163708088,
+          "NEGATIVE": -12.585798816568047,
+          "NEUTRAL": 6.34516765285996
+        }
+      }
+    },
+    {
+      "video_id": "57QBueEV7Fo",
+      "video_title": "Single Father brings groceries home for his family on a scooter 🤯",
+      "ground_truth": {
+        "POSITIVE": 351,
+        "NEGATIVE": 360,
+        "NEUTRAL": 147,
+        "POSITIVE_PCT": 40.909090909090914,
+        "NEGATIVE_PCT": 41.95804195804196,
+        "NEUTRAL_PCT": 17.132867132867133,
+        "TOTAL": 858
+      },
+      "predicted": {
+        "POSITIVE": 44,
+        "NEGATIVE": 17,
+        "NEUTRAL": 39,
+        "POSITIVE_PCT": 44.0,
+        "NEGATIVE_PCT": 17.0,
+        "NEUTRAL_PCT": 39.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 42.98901247165533,
+        "chi2_pvalue": 4.624391034655566e-10,
+        "percentage_differences": {
+          "POSITIVE": 3.0909090909090864,
+          "NEGATIVE": 24.95804195804196,
+          "NEUTRAL": 21.867132867132867
+        },
+        "avg_percentage_difference": 16.638694638694638,
+        "bias": {
+          "POSITIVE": 3.0909090909090864,
+          "NEGATIVE": -24.95804195804196,
+          "NEUTRAL": 21.867132867132867
+        }
+      }
+    },
+    {
+      "video_id": "Lzccd-ol1Ks",
+      "video_title": "A man saved a mountain lion and raise it with love",
+      "ground_truth": {
+        "POSITIVE": 620,
+        "NEGATIVE": 356,
+        "NEUTRAL": 201,
+        "POSITIVE_PCT": 52.67629566694987,
+        "NEGATIVE_PCT": 30.246389124893795,
+        "NEUTRAL_PCT": 17.077315208156328,
+        "TOTAL": 1177
+      },
+      "predicted": {
+        "POSITIVE": 43,
+        "NEGATIVE": 13,
+        "NEUTRAL": 44,
+        "POSITIVE_PCT": 43.0,
+        "NEGATIVE_PCT": 13.0,
+        "NEUTRAL_PCT": 44.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 54.05538740873379,
+        "chi2_pvalue": 1.8281918376976828e-12,
+        "percentage_differences": {
+          "POSITIVE": 9.67629566694987,
+          "NEGATIVE": 17.246389124893795,
+          "NEUTRAL": 26.922684791843672
+        },
+        "avg_percentage_difference": 17.94845652789578,
+        "bias": {
+          "POSITIVE": -9.67629566694987,
+          "NEGATIVE": -17.246389124893795,
+          "NEUTRAL": 26.922684791843672
+        }
+      }
+    },
+    {
+      "video_id": "AifbNF2n6mk",
+      "video_title": "Making South Carolina out of Palmetto Wood | Official State Tree Map #shorts #trees #wood",
+      "ground_truth": {
+        "POSITIVE": 221,
+        "NEGATIVE": 115,
+        "NEUTRAL": 304,
+        "POSITIVE_PCT": 34.53125,
+        "NEGATIVE_PCT": 17.96875,
+        "NEUTRAL_PCT": 47.5,
+        "TOTAL": 640
+      },
+      "predicted": {
+        "POSITIVE": 19,
+        "NEGATIVE": 10,
+        "NEUTRAL": 71,
+        "POSITIVE_PCT": 19.0,
+        "NEGATIVE_PCT": 10.0,
+        "NEUTRAL_PCT": 71.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 22.14583182331197,
+        "chi2_pvalue": 1.552722052082178e-05,
+        "percentage_differences": {
+          "POSITIVE": 15.53125,
+          "NEGATIVE": 7.96875,
+          "NEUTRAL": 23.5
+        },
+        "avg_percentage_difference": 15.666666666666666,
+        "bias": {
+          "POSITIVE": -15.53125,
+          "NEGATIVE": -7.96875,
+          "NEUTRAL": 23.5
+        }
+      }
+    },
+    {
+      "video_id": "MxcvVGtoYZE",
+      "video_title": "Families, firefighters in shock as California wildfires continue | 60 Minutes",
+      "ground_truth": {
+        "POSITIVE": 247,
+        "NEGATIVE": 246,
+        "NEUTRAL": 161,
+        "POSITIVE_PCT": 37.76758409785933,
+        "NEGATIVE_PCT": 37.61467889908257,
+        "NEUTRAL_PCT": 24.617737003058103,
+        "TOTAL": 654
+      },
+      "predicted": {
+        "POSITIVE": 16,
+        "NEGATIVE": 50,
+        "NEUTRAL": 34,
+        "POSITIVE_PCT": 16.0,
+        "NEGATIVE_PCT": 50.0,
+        "NEUTRAL_PCT": 34.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 20.19972665164829,
+        "chi2_pvalue": 4.108517012335263e-05,
+        "percentage_differences": {
+          "POSITIVE": 21.767584097859327,
+          "NEGATIVE": 12.38532110091743,
+          "NEUTRAL": 9.382262996941897
+        },
+        "avg_percentage_difference": 14.511722731906218,
+        "bias": {
+          "POSITIVE": -21.767584097859327,
+          "NEGATIVE": 12.38532110091743,
+          "NEUTRAL": 9.382262996941897
+        }
+      }
+    },
+    {
+      "video_id": "C7u7Hhh3V5I",
+      "video_title": "this mom loved to do the most unique cake you’ll ever see ❤️",
+      "ground_truth": {
+        "POSITIVE": 395,
+        "NEGATIVE": 146,
+        "NEUTRAL": 122,
+        "POSITIVE_PCT": 59.57767722473605,
+        "NEGATIVE_PCT": 22.021116138763198,
+        "NEUTRAL_PCT": 18.401206636500756,
+        "TOTAL": 663
+      },
+      "predicted": {
+        "POSITIVE": 53,
+        "NEGATIVE": 5,
+        "NEUTRAL": 42,
+        "POSITIVE_PCT": 53.0,
+        "NEGATIVE_PCT": 5.0,
+        "NEUTRAL_PCT": 42.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 44.14708430669694,
+        "chi2_pvalue": 2.5916863820548433e-10,
+        "percentage_differences": {
+          "POSITIVE": 6.57767722473605,
+          "NEGATIVE": 17.021116138763198,
+          "NEUTRAL": 23.598793363499244
+        },
+        "avg_percentage_difference": 15.732528908999498,
+        "bias": {
+          "POSITIVE": -6.57767722473605,
+          "NEGATIVE": -17.021116138763198,
+          "NEUTRAL": 23.598793363499244
+        }
+      }
+    },
+    {
+      "video_id": "SM66GDRyIVY",
+      "video_title": "I Helped 2,000 People Walk Again",
+      "ground_truth": {
+        "POSITIVE": 444,
+        "NEGATIVE": 66,
+        "NEUTRAL": 117,
+        "POSITIVE_PCT": 70.81339712918661,
+        "NEGATIVE_PCT": 10.526315789473683,
+        "NEUTRAL_PCT": 18.660287081339714,
+        "TOTAL": 627
+      },
+      "predicted": {
+        "POSITIVE": 42,
+        "NEGATIVE": 4,
+        "NEUTRAL": 54,
+        "POSITIVE_PCT": 42.0,
+        "NEGATIVE_PCT": 4.0,
+        "NEUTRAL_PCT": 54.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 82.69823284823283,
+        "chi2_pvalue": 1.1023180159061402e-18,
+        "percentage_differences": {
+          "POSITIVE": 28.813397129186612,
+          "NEGATIVE": 6.526315789473683,
+          "NEUTRAL": 35.33971291866028
+        },
+        "avg_percentage_difference": 23.559808612440193,
+        "bias": {
+          "POSITIVE": -28.813397129186612,
+          "NEGATIVE": -6.526315789473683,
+          "NEUTRAL": 35.33971291866028
+        }
+      }
+    },
+    {
+      "video_id": "surjcaLlQ0s",
+      "video_title": "Siberia's CRAZIEST Winter Fishing in -40°C! 🎣😳",
+      "ground_truth": {
+        "POSITIVE": 64,
+        "NEGATIVE": 304,
+        "NEUTRAL": 202,
+        "POSITIVE_PCT": 11.228070175438596,
+        "NEGATIVE_PCT": 53.333333333333336,
+        "NEUTRAL_PCT": 35.43859649122807,
+        "TOTAL": 570
+      },
+      "predicted": {
+        "POSITIVE": 15,
+        "NEGATIVE": 36,
+        "NEUTRAL": 49,
+        "POSITIVE_PCT": 15.0,
+        "NEGATIVE_PCT": 36.0,
+        "NEUTRAL_PCT": 49.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 12.090052599009905,
+        "chi2_pvalue": 0.0023696185183678985,
+        "percentage_differences": {
+          "POSITIVE": 3.771929824561404,
+          "NEGATIVE": 17.333333333333336,
+          "NEUTRAL": 13.561403508771932
+        },
+        "avg_percentage_difference": 11.555555555555557,
+        "bias": {
+          "POSITIVE": 3.771929824561404,
+          "NEGATIVE": -17.333333333333336,
+          "NEUTRAL": 13.561403508771932
+        }
+      }
+    },
+    {
+      "video_id": "JZhUmQP0xes",
+      "video_title": "WHAT KIND OF RIDER ARE YOU? 😳",
+      "ground_truth": {
+        "POSITIVE": 213,
+        "NEGATIVE": 152,
+        "NEUTRAL": 170,
+        "POSITIVE_PCT": 39.81308411214953,
+        "NEGATIVE_PCT": 28.41121495327103,
+        "NEUTRAL_PCT": 31.775700934579437,
+        "TOTAL": 535
+      },
+      "predicted": {
+        "POSITIVE": 20,
+        "NEGATIVE": 36,
+        "NEUTRAL": 44,
+        "POSITIVE_PCT": 20.0,
+        "NEGATIVE_PCT": 36.0,
+        "NEUTRAL_PCT": 44.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 16.589796654021136,
+        "chi2_pvalue": 0.00024978791828108367,
+        "percentage_differences": {
+          "POSITIVE": 19.813084112149532,
+          "NEGATIVE": 7.588785046728969,
+          "NEUTRAL": 12.224299065420563
+        },
+        "avg_percentage_difference": 13.208722741433021,
+        "bias": {
+          "POSITIVE": -19.813084112149532,
+          "NEGATIVE": 7.588785046728969,
+          "NEUTRAL": 12.224299065420563
+        }
+      }
+    },
+    {
+      "video_id": "BSz2IqjZ9Oc",
+      "video_title": "Bruh moment lolol #trending #memes #meme #shorts #capcut #dog #dogs #funny #dogshorts #subscribe",
+      "ground_truth": {
+        "POSITIVE": 213,
+        "NEGATIVE": 212,
+        "NEUTRAL": 125,
+        "POSITIVE_PCT": 38.72727272727273,
+        "NEGATIVE_PCT": 38.54545454545455,
+        "NEUTRAL_PCT": 22.727272727272727,
+        "TOTAL": 550
+      },
+      "predicted": {
+        "POSITIVE": 19,
+        "NEGATIVE": 26,
+        "NEUTRAL": 55,
+        "POSITIVE_PCT": 19.0,
+        "NEGATIVE_PCT": 26.0,
+        "NEUTRAL_PCT": 55.00000000000001,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 59.95933209318807,
+        "chi2_pvalue": 9.549848164133235e-14,
+        "percentage_differences": {
+          "POSITIVE": 19.727272727272727,
+          "NEGATIVE": 12.545454545454547,
+          "NEUTRAL": 32.27272727272728
+        },
+        "avg_percentage_difference": 21.51515151515152,
+        "bias": {
+          "POSITIVE": -19.727272727272727,
+          "NEGATIVE": -12.545454545454547,
+          "NEUTRAL": 32.27272727272728
+        }
+      }
+    },
+    {
+      "video_id": "i4BIm2JFo3U",
+      "video_title": "California Is Burning Down",
+      "ground_truth": {
+        "POSITIVE": 42,
+        "NEGATIVE": 434,
+        "NEUTRAL": 297,
+        "POSITIVE_PCT": 5.433376455368694,
+        "NEGATIVE_PCT": 56.144890038809834,
+        "NEUTRAL_PCT": 38.42173350582148,
+        "TOTAL": 773
+      },
+      "predicted": {
+        "POSITIVE": 4,
+        "NEGATIVE": 61,
+        "NEUTRAL": 35,
+        "POSITIVE_PCT": 4.0,
+        "NEGATIVE_PCT": 61.0,
+        "NEUTRAL_PCT": 35.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 1.1027124548092293,
+        "chi2_pvalue": 0.5761678656038851,
+        "percentage_differences": {
+          "POSITIVE": 1.4333764553686938,
+          "NEGATIVE": 4.855109961190166,
+          "NEUTRAL": 3.4217335058214786
+        },
+        "avg_percentage_difference": 3.2367399741267797,
+        "bias": {
+          "POSITIVE": -1.4333764553686938,
+          "NEGATIVE": 4.855109961190166,
+          "NEUTRAL": -3.4217335058214786
+        }
+      }
+    },
+    {
+      "video_id": "ba0her9ldv4",
+      "video_title": "No one told us it was a roller coaster 😭",
+      "ground_truth": {
+        "POSITIVE": 264,
+        "NEGATIVE": 158,
+        "NEUTRAL": 292,
+        "POSITIVE_PCT": 36.97478991596639,
+        "NEGATIVE_PCT": 22.128851540616246,
+        "NEUTRAL_PCT": 40.896358543417364,
+        "TOTAL": 714
+      },
+      "predicted": {
+        "POSITIVE": 29,
+        "NEGATIVE": 17,
+        "NEUTRAL": 54,
+        "POSITIVE_PCT": 28.999999999999996,
+        "NEGATIVE_PCT": 17.0,
+        "NEUTRAL_PCT": 54.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 7.107292471270712,
+        "chi2_pvalue": 0.028620093565185734,
+        "percentage_differences": {
+          "POSITIVE": 7.974789915966394,
+          "NEGATIVE": 5.128851540616246,
+          "NEUTRAL": 13.103641456582636
+        },
+        "avg_percentage_difference": 8.735760971055091,
+        "bias": {
+          "POSITIVE": -7.974789915966394,
+          "NEGATIVE": -5.128851540616246,
+          "NEUTRAL": 13.103641456582636
+        }
+      }
+    },
+    {
+      "video_id": "W4j4A_UgF08",
+      "video_title": "The craziest chocolate I’ve ever tasted!",
+      "ground_truth": {
+        "POSITIVE": 189,
+        "NEGATIVE": 169,
+        "NEUTRAL": 320,
+        "POSITIVE_PCT": 27.876106194690266,
+        "NEGATIVE_PCT": 24.926253687315633,
+        "NEUTRAL_PCT": 47.1976401179941,
+        "TOTAL": 678
+      },
+      "predicted": {
+        "POSITIVE": 9,
+        "NEGATIVE": 13,
+        "NEUTRAL": 78,
+        "POSITIVE_PCT": 9.0,
+        "NEGATIVE_PCT": 13.0,
+        "NEUTRAL_PCT": 78.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 38.59046428571429,
+        "chi2_pvalue": 4.170490663886349e-09,
+        "percentage_differences": {
+          "POSITIVE": 18.876106194690266,
+          "NEGATIVE": 11.926253687315633,
+          "NEUTRAL": 30.802359882005902
+        },
+        "avg_percentage_difference": 20.534906588003935,
+        "bias": {
+          "POSITIVE": -18.876106194690266,
+          "NEGATIVE": -11.926253687315633,
+          "NEUTRAL": 30.802359882005902
+        }
+      }
+    },
+    {
+      "video_id": "rlV7Ynd-g94",
+      "video_title": "The TRUTH About RTX 5000 Pricing. it surprised me",
+      "ground_truth": {
+        "POSITIVE": 62,
+        "NEGATIVE": 375,
+        "NEUTRAL": 159,
+        "POSITIVE_PCT": 10.40268456375839,
+        "NEGATIVE_PCT": 62.91946308724832,
+        "NEUTRAL_PCT": 26.677852348993287,
+        "TOTAL": 596
+      },
+      "predicted": {
+        "POSITIVE": 3,
+        "NEGATIVE": 55,
+        "NEUTRAL": 42,
+        "POSITIVE_PCT": 3.0,
+        "NEGATIVE_PCT": 55.00000000000001,
+        "NEUTRAL_PCT": 42.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 15.064758774599312,
+        "chi2_pvalue": 0.0005354626666574252,
+        "percentage_differences": {
+          "POSITIVE": 7.40268456375839,
+          "NEGATIVE": 7.91946308724831,
+          "NEUTRAL": 15.322147651006713
+        },
+        "avg_percentage_difference": 10.214765100671137,
+        "bias": {
+          "POSITIVE": -7.40268456375839,
+          "NEGATIVE": -7.91946308724831,
+          "NEUTRAL": 15.322147651006713
+        }
+      }
+    },
+    {
+      "video_id": "DxmiTVV3GHY",
+      "video_title": "Bomber waited a decade for cops to show up | #TheRookie",
+      "ground_truth": {
+        "POSITIVE": 69,
+        "NEGATIVE": 453,
+        "NEUTRAL": 196,
+        "POSITIVE_PCT": 9.610027855153204,
+        "NEGATIVE_PCT": 63.091922005571035,
+        "NEUTRAL_PCT": 27.298050139275766,
+        "TOTAL": 718
+      },
+      "predicted": {
+        "POSITIVE": 21,
+        "NEGATIVE": 34,
+        "NEUTRAL": 45,
+        "POSITIVE_PCT": 21.0,
+        "NEGATIVE_PCT": 34.0,
+        "NEUTRAL_PCT": 45.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 38.393160072551915,
+        "chi2_pvalue": 4.602896598611528e-09,
+        "percentage_differences": {
+          "POSITIVE": 11.389972144846796,
+          "NEGATIVE": 29.091922005571035,
+          "NEUTRAL": 17.701949860724234
+        },
+        "avg_percentage_difference": 19.394614670380687,
+        "bias": {
+          "POSITIVE": 11.389972144846796,
+          "NEGATIVE": -29.091922005571035,
+          "NEUTRAL": 17.701949860724234
+        }
+      }
+    },
+    {
+      "video_id": "8eXz8jZF9lg",
+      "video_title": "Are You Actually Connected To 5G? #funfact",
+      "ground_truth": {
+        "POSITIVE": 48,
+        "NEGATIVE": 366,
+        "NEUTRAL": 175,
+        "POSITIVE_PCT": 8.149405772495756,
+        "NEGATIVE_PCT": 62.13921901528013,
+        "NEUTRAL_PCT": 29.711375212224105,
+        "TOTAL": 589
+      },
+      "predicted": {
+        "POSITIVE": 11,
+        "NEGATIVE": 50,
+        "NEUTRAL": 39,
+        "POSITIVE_PCT": 11.0,
+        "NEGATIVE_PCT": 50.0,
+        "NEUTRAL_PCT": 39.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 6.272463056206091,
+        "chi2_pvalue": 0.04344621563364928,
+        "percentage_differences": {
+          "POSITIVE": 2.850594227504244,
+          "NEGATIVE": 12.139219015280133,
+          "NEUTRAL": 9.288624787775895
+        },
+        "avg_percentage_difference": 8.092812676853425,
+        "bias": {
+          "POSITIVE": 2.850594227504244,
+          "NEGATIVE": -12.139219015280133,
+          "NEUTRAL": 9.288624787775895
+        }
+      }
+    },
+    {
+      "video_id": "Rg05HLeRZ6k",
+      "video_title": "This sketchbook blew my mind🤯",
+      "ground_truth": {
+        "POSITIVE": 161,
+        "NEGATIVE": 155,
+        "NEUTRAL": 186,
+        "POSITIVE_PCT": 32.07171314741036,
+        "NEGATIVE_PCT": 30.87649402390438,
+        "NEUTRAL_PCT": 37.05179282868526,
+        "TOTAL": 502
+      },
+      "predicted": {
+        "POSITIVE": 14,
+        "NEGATIVE": 14,
+        "NEUTRAL": 72,
+        "POSITIVE_PCT": 14.000000000000002,
+        "NEGATIVE_PCT": 14.000000000000002,
+        "NEUTRAL_PCT": 72.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 52.37143338008415,
+        "chi2_pvalue": 4.243143668996326e-12,
+        "percentage_differences": {
+          "POSITIVE": 18.071713147410357,
+          "NEGATIVE": 16.876494023904378,
+          "NEUTRAL": 34.94820717131474
+        },
+        "avg_percentage_difference": 23.29880478087649,
+        "bias": {
+          "POSITIVE": -18.071713147410357,
+          "NEGATIVE": -16.876494023904378,
+          "NEUTRAL": 34.94820717131474
+        }
+      }
+    },
+    {
+      "video_id": "qFKDQDfX2ME",
+      "video_title": "My home 🚙 #smarthome #homecleaning #cleaning #gadgets",
+      "ground_truth": {
+        "POSITIVE": 195,
+        "NEGATIVE": 174,
+        "NEUTRAL": 139,
+        "POSITIVE_PCT": 38.38582677165354,
+        "NEGATIVE_PCT": 34.25196850393701,
+        "NEUTRAL_PCT": 27.36220472440945,
+        "TOTAL": 508
+      },
+      "predicted": {
+        "POSITIVE": 31,
+        "NEGATIVE": 12,
+        "NEUTRAL": 57,
+        "POSITIVE_PCT": 31.0,
+        "NEGATIVE_PCT": 12.0,
+        "NEUTRAL_PCT": 56.99999999999999,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 47.97985163699278,
+        "chi2_pvalue": 3.813358147363502e-11,
+        "percentage_differences": {
+          "POSITIVE": 7.385826771653541,
+          "NEGATIVE": 22.251968503937007,
+          "NEUTRAL": 29.63779527559054
+        },
+        "avg_percentage_difference": 19.75853018372703,
+        "bias": {
+          "POSITIVE": -7.385826771653541,
+          "NEGATIVE": -22.251968503937007,
+          "NEUTRAL": 29.63779527559054
+        }
+      }
+    },
+    {
+      "video_id": "1D6IkGqE1TY",
+      "video_title": "They're literally driving art! 🔥 #cars #trailer #vehicles",
+      "ground_truth": {
+        "POSITIVE": 70,
+        "NEGATIVE": 321,
+        "NEUTRAL": 192,
+        "POSITIVE_PCT": 12.006861063464838,
+        "NEGATIVE_PCT": 55.06003430531733,
+        "NEUTRAL_PCT": 32.933104631217844,
+        "TOTAL": 583
+      },
+      "predicted": {
+        "POSITIVE": 14,
+        "NEGATIVE": 27,
+        "NEUTRAL": 59,
+        "POSITIVE_PCT": 14.000000000000002,
+        "NEGATIVE_PCT": 27.0,
+        "NEUTRAL_PCT": 59.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 35.26320804127725,
+        "chi2_pvalue": 2.2013630205474753e-08,
+        "percentage_differences": {
+          "POSITIVE": 1.9931389365351642,
+          "NEGATIVE": 28.06003430531733,
+          "NEUTRAL": 26.066895368782156
+        },
+        "avg_percentage_difference": 18.706689536878216,
+        "bias": {
+          "POSITIVE": 1.9931389365351642,
+          "NEGATIVE": -28.06003430531733,
+          "NEUTRAL": 26.066895368782156
+        }
+      }
+    },
+    {
+      "video_id": "GTb920e9Boc",
+      "video_title": "HOW TO BURN & SEASON A WOK #SHORTS #231",
+      "ground_truth": {
+        "POSITIVE": 111,
+        "NEGATIVE": 322,
+        "NEUTRAL": 268,
+        "POSITIVE_PCT": 15.834522111269614,
+        "NEGATIVE_PCT": 45.93437945791726,
+        "NEUTRAL_PCT": 38.23109843081313,
+        "TOTAL": 701
+      },
+      "predicted": {
+        "POSITIVE": 16,
+        "NEGATIVE": 21,
+        "NEUTRAL": 63,
+        "POSITIVE_PCT": 16.0,
+        "NEGATIVE_PCT": 21.0,
+        "NEUTRAL_PCT": 63.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 29.583866843806813,
+        "chi2_pvalue": 3.7665604180496783e-07,
+        "percentage_differences": {
+          "POSITIVE": 0.16547788873038627,
+          "NEGATIVE": 24.93437945791726,
+          "NEUTRAL": 24.768901569186873
+        },
+        "avg_percentage_difference": 16.622919638611506,
+        "bias": {
+          "POSITIVE": 0.16547788873038627,
+          "NEGATIVE": -24.93437945791726,
+          "NEUTRAL": 24.768901569186873
+        }
+      }
+    },
+    {
+      "video_id": "dxGO4QbCrrc",
+      "video_title": "He Thought He Would Get Away With THIS #shorts",
+      "ground_truth": {
+        "POSITIVE": 95,
+        "NEGATIVE": 348,
+        "NEUTRAL": 61,
+        "POSITIVE_PCT": 18.849206349206348,
+        "NEGATIVE_PCT": 69.04761904761905,
+        "NEUTRAL_PCT": 12.103174603174603,
+        "TOTAL": 504
+      },
+      "predicted": {
+        "POSITIVE": 13,
+        "NEGATIVE": 53,
+        "NEUTRAL": 34,
+        "POSITIVE_PCT": 13.0,
+        "NEGATIVE_PCT": 53.0,
+        "NEUTRAL_PCT": 34.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 45.16009484990033,
+        "chi2_pvalue": 1.561744561369317e-10,
+        "percentage_differences": {
+          "POSITIVE": 5.849206349206348,
+          "NEGATIVE": 16.04761904761905,
+          "NEUTRAL": 21.8968253968254
+        },
+        "avg_percentage_difference": 14.5978835978836,
+        "bias": {
+          "POSITIVE": -5.849206349206348,
+          "NEGATIVE": -16.04761904761905,
+          "NEUTRAL": 21.8968253968254
+        }
+      }
+    },
+    {
+      "video_id": "JYHOBRh2f3k",
+      "video_title": "Crazy Convoy Tries To Block Driver From Crossing An Intersection! 😨",
+      "ground_truth": {
+        "POSITIVE": 19,
+        "NEGATIVE": 534,
+        "NEUTRAL": 150,
+        "POSITIVE_PCT": 2.7027027027027026,
+        "NEGATIVE_PCT": 75.96017069701281,
+        "NEUTRAL_PCT": 21.337126600284495,
+        "TOTAL": 703
+      },
+      "predicted": {
+        "POSITIVE": 4,
+        "NEGATIVE": 59,
+        "NEUTRAL": 37,
+        "POSITIVE_PCT": 4.0,
+        "NEGATIVE_PCT": 59.0,
+        "NEUTRAL_PCT": 37.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 15.907114606741576,
+        "chi2_pvalue": 0.0003514098670430747,
+        "percentage_differences": {
+          "POSITIVE": 1.2972972972972974,
+          "NEGATIVE": 16.960170697012813,
+          "NEUTRAL": 15.662873399715505
+        },
+        "avg_percentage_difference": 11.306780464675205,
+        "bias": {
+          "POSITIVE": 1.2972972972972974,
+          "NEGATIVE": -16.960170697012813,
+          "NEUTRAL": 15.662873399715505
+        }
+      }
+    },
+    {
+      "video_id": "myPFXZPNidg",
+      "video_title": "I didn't Think This Was Possible (@driving_lessons)",
+      "ground_truth": {
+        "POSITIVE": 142,
+        "NEGATIVE": 146,
+        "NEUTRAL": 260,
+        "POSITIVE_PCT": 25.91240875912409,
+        "NEGATIVE_PCT": 26.642335766423358,
+        "NEUTRAL_PCT": 47.44525547445255,
+        "TOTAL": 548
+      },
+      "predicted": {
+        "POSITIVE": 29,
+        "NEGATIVE": 16,
+        "NEUTRAL": 55,
+        "POSITIVE_PCT": 28.999999999999996,
+        "NEGATIVE_PCT": 16.0,
+        "NEUTRAL_PCT": 55.00000000000001,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 5.821952388726458,
+        "chi2_pvalue": 0.05442257691678608,
+        "percentage_differences": {
+          "POSITIVE": 3.0875912408759056,
+          "NEGATIVE": 10.642335766423358,
+          "NEUTRAL": 7.554744525547456
+        },
+        "avg_percentage_difference": 7.094890510948907,
+        "bias": {
+          "POSITIVE": 3.0875912408759056,
+          "NEGATIVE": -10.642335766423358,
+          "NEUTRAL": 7.554744525547456
+        }
+      }
+    },
+    {
+      "video_id": "I3QZI8Zt9N8",
+      "video_title": "Still the best Xbox monitor tho 🤷‍♂️",
+      "ground_truth": {
+        "POSITIVE": 34,
+        "NEGATIVE": 348,
+        "NEUTRAL": 208,
+        "POSITIVE_PCT": 5.762711864406779,
+        "NEGATIVE_PCT": 58.98305084745763,
+        "NEUTRAL_PCT": 35.25423728813559,
+        "TOTAL": 590
+      },
+      "predicted": {
+        "POSITIVE": 4,
+        "NEGATIVE": 29,
+        "NEUTRAL": 67,
+        "POSITIVE_PCT": 4.0,
+        "NEGATIVE_PCT": 28.999999999999996,
+        "NEUTRAL_PCT": 67.0,
+        "TOTAL": 100
+      },
+      "comparison": {
+        "chi2_statistic": 44.367015460030174,
+        "chi2_pvalue": 2.32180105178393e-10,
+        "percentage_differences": {
+          "POSITIVE": 1.7627118644067794,
+          "NEGATIVE": 29.983050847457637,
+          "NEUTRAL": 31.74576271186441
+        },
+        "avg_percentage_difference": 21.16384180790961,
+        "bias": {
+          "POSITIVE": -1.7627118644067794,
+          "NEGATIVE": -29.983050847457637,
+          "NEUTRAL": 31.74576271186441
+        }
+      }
+    }
+  ]
+}

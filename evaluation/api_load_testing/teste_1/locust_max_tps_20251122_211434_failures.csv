@@ -1,0 +1,2 @@
+Method,Name,Error,Occurrences
+GET,/search,CatchResponseError('Status 502'),2

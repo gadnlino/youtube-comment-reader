@@ -15,13 +15,36 @@ Future main() async {
 
   await dotenv.load(fileName: ".env");
 
-  await Firebase.initializeApp(
-      options: FirebaseOptions(
-    apiKey: dotenv.get("FIREBASE_API_KEY"),
-    appId: dotenv.get("FIREBASE_APP_ID"),
-    messagingSenderId: dotenv.get("FIREBASE_MESSAGE_SENDER_ID"),
-    projectId: dotenv.get("FIREBASE_PROJECT_ID"),
-  ));
+  // Wait a bit to ensure Flutter engine is fully ready
+  await Future.delayed(const Duration(milliseconds: 100));
+
+  // Initialize Firebase using default initialization (reads from google-services.json)
+  // This is the recommended approach when using the Google Services plugin
+  try {
+    await Firebase.initializeApp();
+    debugPrint("✅ Firebase initialized successfully");
+  } catch (e) {
+    // If default initialization fails, fall back to manual initialization
+    debugPrint("Default Firebase initialization failed: $e");
+    debugPrint("Attempting manual initialization with .env values...");
+    try {
+      await Firebase.initializeApp(
+        options: FirebaseOptions(
+          apiKey: dotenv.get("FIREBASE_API_KEY"),
+          appId: dotenv.get("FIREBASE_APP_ID"),
+          messagingSenderId: dotenv.get("FIREBASE_MESSAGE_SENDER_ID"),
+          projectId: dotenv.get("FIREBASE_PROJECT_ID"),
+          storageBucket: "${dotenv.get("FIREBASE_PROJECT_ID")}.appspot.com",
+        ),
+      );
+      debugPrint("✅ Firebase initialized manually");
+    } catch (e2) {
+      debugPrint("❌ Manual Firebase initialization also failed: $e2");
+      // Don't rethrow - allow app to continue without Firebase for now
+      // This will help identify if Firebase is actually needed at startup
+      debugPrint("⚠️  Continuing without Firebase initialization");
+    }
+  }
 
   // injecting global controllers, in dependency order
   Get.put(BottomNavigationBarController(), permanent: true);

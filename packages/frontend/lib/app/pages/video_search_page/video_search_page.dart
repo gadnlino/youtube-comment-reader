@@ -109,38 +109,6 @@ class VideoSearchPage extends GetView<VideoSearchPageController> {
                             newFiltersOptions;
                       }),
                   const SizedBox(height: 8),
-                  // Align(
-                  //   alignment: Alignment.centerLeft,
-                  //   child: Text("Commentary types:",
-                  //       style: Theme.of(context).textTheme.labelLarge),
-                  // ),
-                  // CheckboxListTile(
-                  //     title: const Text("Positives"),
-                  //     value: controller.currentFilterOptions.value.showPositive,
-                  //     onChanged: (val) {
-                  //       var newFiltersOptions = FilterOptions.fromJson(
-                  //           json.decode(json.encode(
-                  //               controller.currentFilterOptions.value)));
-
-                  //       newFiltersOptions.showPositive = val;
-
-                  //       controller.currentFilterOptions.value =
-                  //           newFiltersOptions;
-                  //     }),
-                  // CheckboxListTile(
-                  //   title: const Text("Negatives"),
-                  //   value: controller.currentFilterOptions.value.showNegative,
-                  //   onChanged: (val) {
-                  //     var newFiltersOptions = FilterOptions.fromJson(
-                  //         json.decode(json
-                  //             .encode(controller.currentFilterOptions.value)));
-
-                  //     newFiltersOptions.showNegative = val;
-
-                  //     controller.currentFilterOptions.value = newFiltersOptions;
-                  //   },
-                  // ),
-                  // const SizedBox(height: 16),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

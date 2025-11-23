@@ -1,0 +1,6 @@
+Method,Name,Error,Occurrences
+GET,/search,CatchResponseError('Status 0'),1
+GET,/search,CatchResponseError('Status 502'),76901
+GET,/video/comments,CatchResponseError('Status 403'),10483
+GET,/video/comments,CatchResponseError('Status 502'),238
+GET,/video/comments,CatchResponseError('Status 0'),1

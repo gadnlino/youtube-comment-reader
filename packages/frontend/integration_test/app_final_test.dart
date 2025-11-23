@@ -1,8 +1,7 @@
-/**
- * Flutter Integration Tests for YouTube Comment Reader - FINAL VERSION
- * 
- * Successfully initializes Firebase and tests real app functionality
- */
+/// Flutter Integration Tests for YouTube Comment Reader - FINAL VERSION
+/// 
+/// Successfully initializes Firebase and tests real app functionality
+library;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -228,7 +227,7 @@ void main() {
 
     // Summary
     tearDownAll(() {
-      print('\n' + '=' * 80);
+      print('\n${'=' * 80}');
       print('📊 FLUTTER E2E INTEGRATION TEST RESULTS');
       print('=' * 80);
       print('Platform: Android Emulator (arm64)');

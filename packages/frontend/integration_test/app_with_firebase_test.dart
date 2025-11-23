@@ -1,8 +1,7 @@
-/**
- * Flutter Integration Tests for YouTube Comment Reader - With Firebase
- * 
- * This version properly initializes Firebase before running tests
- */
+/// Flutter Integration Tests for YouTube Comment Reader - With Firebase
+/// 
+/// This version properly initializes Firebase before running tests
+library;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -265,7 +264,7 @@ void main() {
 
     // Summary
     tearDownAll(() {
-      print('\n' + '=' * 80);
+      print('\n${'=' * 80}');
       print('📊 FLUTTER INTEGRATION TEST SUMMARY');
       print('=' * 80);
       print('Total Tests: 4');

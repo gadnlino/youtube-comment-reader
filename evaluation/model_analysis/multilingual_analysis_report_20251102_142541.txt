@@ -1,0 +1,172 @@
+================================================================================
+MULTILINGUAL SENTIMENT ANALYSIS - DETAILED REPORT
+================================================================================
+
+Generated: 2025-11-02 14:25:41
+Videos Analyzed: 16
+
+
+────────────────────────────────────────────────────────────────────────────────
+ENGLISH VIDEOS (CONTROL GROUP)
+────────────────────────────────────────────────────────────────────────────────
+
+  Rick Astley - Never Gonna Give You Up:
+    Region: USA/UK
+    POSITIVE: 17.0% (17 comments)
+    NEGATIVE: 7.0% (7 comments)
+    NEUTRAL:  76.0% (76 comments)
+
+  Queen - Bohemian Rhapsody:
+    Region: Global
+    POSITIVE: 32.0% (32 comments)
+    NEGATIVE: 7.0% (7 comments)
+    NEUTRAL:  61.0% (61 comments)
+
+  Mark Ronson - Uptown Funk:
+    Region: USA/Global
+    POSITIVE: 19.0% (19 comments)
+    NEGATIVE: 8.0% (8 comments)
+    NEUTRAL:  73.0% (73 comments)
+
+  Ed Sheeran - Shape of You:
+    Region: UK/Global
+    POSITIVE: 10.0% (10 comments)
+    NEGATIVE: 5.0% (5 comments)
+    NEUTRAL:  85.0% (85 comments)
+
+  Katy Perry - Roar:
+    Region: USA/Global
+    POSITIVE: 16.0% (16 comments)
+    NEGATIVE: 3.0% (3 comments)
+    NEUTRAL:  81.0% (81 comments)
+
+  AVERAGE FOR ENGLISH VIDEOS (CONTROL GROUP):
+    POSITIVE: 18.8%
+    NEGATIVE: 6.0%
+    NEUTRAL:  75.2%
+
+────────────────────────────────────────────────────────────────────────────────
+SPANISH VIDEOS
+────────────────────────────────────────────────────────────────────────────────
+
+  Luis Fonsi - Despacito:
+    Region: Latin America
+    POSITIVE: 4.0% (4 comments)
+    NEGATIVE: 3.0% (3 comments)
+    NEUTRAL:  93.0% (93 comments)
+
+  Shakira - Waka Waka:
+    Region: Latin America/Global
+    POSITIVE: 17.0% (17 comments)
+    NEGATIVE: 36.0% (36 comments)
+    NEUTRAL:  47.0% (47 comments)
+
+  Shakira - Hips Don't Lie:
+    Region: Latin America
+    POSITIVE: 20.0% (20 comments)
+    NEGATIVE: 6.0% (6 comments)
+    NEUTRAL:  74.0% (74 comments)
+
+  J Balvin, Willy William - Mi Gente:
+    Region: Latin America
+    POSITIVE: 15.0% (15 comments)
+    NEGATIVE: 5.0% (5 comments)
+    NEUTRAL:  80.0% (80 comments)
+
+  AVERAGE FOR SPANISH VIDEOS:
+    POSITIVE: 14.0%
+    NEGATIVE: 12.5%
+    NEUTRAL:  73.5%
+
+────────────────────────────────────────────────────────────────────────────────
+PORTUGUESE VIDEOS
+────────────────────────────────────────────────────────────────────────────────
+
+  Anitta - Envolver:
+    Region: Brazil
+    POSITIVE: 12.0% (12 comments)
+    NEGATIVE: 2.0% (2 comments)
+    NEUTRAL:  86.0% (86 comments)
+
+  Anitta - Girl From Rio:
+    Region: Brazil
+    POSITIVE: 13.0% (13 comments)
+    NEGATIVE: 6.0% (6 comments)
+    NEUTRAL:  81.0% (81 comments)
+
+  MC Kevinho - Olha a Explosão:
+    Region: Brazil
+    POSITIVE: 6.0% (6 comments)
+    NEGATIVE: 12.0% (12 comments)
+    NEUTRAL:  82.0% (82 comments)
+
+  AVERAGE FOR PORTUGUESE VIDEOS:
+    POSITIVE: 10.3%
+    NEGATIVE: 6.7%
+    NEUTRAL:  83.0%
+
+────────────────────────────────────────────────────────────────────────────────
+KOREAN/MULTILINGUAL VIDEOS
+────────────────────────────────────────────────────────────────────────────────
+
+  PSY - Gangnam Style:
+    Region: South Korea/Global
+    POSITIVE: 14.0% (14 comments)
+    NEGATIVE: 5.0% (5 comments)
+    NEUTRAL:  81.0% (81 comments)
+
+  BTS - Dynamite:
+    Region: South Korea/Global
+    POSITIVE: 34.0% (34 comments)
+    NEGATIVE: 9.0% (9 comments)
+    NEUTRAL:  57.0% (57 comments)
+
+  BLACKPINK - How You Like That:
+    Region: South Korea/Global
+    POSITIVE: 21.0% (21 comments)
+    NEGATIVE: 3.0% (3 comments)
+    NEUTRAL:  76.0% (76 comments)
+
+  BLACKPINK - DDU-DU DDU-DU:
+    Region: South Korea/Global
+    POSITIVE: 15.0% (15 comments)
+    NEGATIVE: 5.0% (5 comments)
+    NEUTRAL:  80.0% (80 comments)
+
+  AVERAGE FOR KOREAN/MULTILINGUAL VIDEOS:
+    POSITIVE: 21.0%
+    NEGATIVE: 5.5%
+    NEUTRAL:  73.5%
+
+================================================================================
+KEY FINDINGS - LANGUAGE IMPACT ON SENTIMENT CLASSIFICATION
+================================================================================
+
+1. NEUTRAL Classification Bias by Language:
+   English (baseline):  75.2%
+   Spanish:             73.5% (-1.7 pp)
+   Portuguese:          83.0% (+7.8 pp)
+   Korean/Multilingual: 73.5% (-1.7 pp)
+
+2. Cross-Language Comparison:
+   Average non-English NEUTRAL%: 76.7%
+   Maximum difference from English: +7.8 pp
+
+   ⚠️  MODERATE LANGUAGE BIAS DETECTED
+   Some increase in NEUTRAL classification for non-English content.
+
+3. Implications:
+   - Reported accuracy (66.14%) is valid for ENGLISH comments only
+   - Non-English classification accuracy is degraded significantly
+   - System is optimized for English-speaking audiences
+   - Global deployment requires multilingual model retraining
+
+4. Actionable Recommendations:
+   MEDIUM PRIORITY:
+   - Document language characteristics transparently
+   - Monitor user feedback for multilingual use cases
+   - Consider multilingual support for future versions
+
+================================================================================
+END OF ANALYSIS REPORT
+================================================================================

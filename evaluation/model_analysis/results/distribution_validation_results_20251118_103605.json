@@ -1,0 +1,266 @@
+[
+  {
+    "video_id": "K0LjzVfQRys",
+    "video_title": "This is your sign to find a buddy to do hard things with",
+    "ground_truth": {
+      "POSITIVE": 89,
+      "NEGATIVE": 434,
+      "NEUTRAL": 232,
+      "POSITIVE_PCT": 11.788079470198676,
+      "NEGATIVE_PCT": 57.48344370860927,
+      "NEUTRAL_PCT": 30.728476821192054,
+      "TOTAL": 755
+    },
+    "predicted": {
+      "POSITIVE": 10,
+      "NEGATIVE": 22,
+      "NEUTRAL": 68,
+      "POSITIVE_PCT": 10.0,
+      "NEGATIVE_PCT": 22.0,
+      "NEUTRAL_PCT": 68.0,
+      "TOTAL": 100
+    },
+    "comparison": {
+      "chi2_statistic": 67.38227208044609,
+      "chi2_pvalue": 2.334132623569384e-15,
+      "percentage_differences": {
+        "POSITIVE": 1.7880794701986762,
+        "NEGATIVE": 35.48344370860927,
+        "NEUTRAL": 37.271523178807946
+      },
+      "avg_percentage_difference": 24.8476821192053
+    },
+    "visualization": "distribution_comparison_K0LjzVfQRys.png"
+  },
+  {
+    "video_id": "-GBqPXxsxek",
+    "video_title": "Jimmy Carter funeral: Five US presidents gather",
+    "ground_truth": {
+      "POSITIVE": 311,
+      "NEGATIVE": 225,
+      "NEUTRAL": 197,
+      "POSITIVE_PCT": 42.42837653478854,
+      "NEGATIVE_PCT": 30.69577080491132,
+      "NEUTRAL_PCT": 26.875852660300136,
+      "TOTAL": 733
+    },
+    "predicted": {
+      "POSITIVE": 32,
+      "NEGATIVE": 24,
+      "NEUTRAL": 44,
+      "POSITIVE_PCT": 32.0,
+      "NEGATIVE_PCT": 24.0,
+      "NEUTRAL_PCT": 44.0,
+      "TOTAL": 100
+    },
+    "comparison": {
+      "chi2_statistic": 14.934514854652583,
+      "chi2_pvalue": 0.0005714935120277086,
+      "percentage_differences": {
+        "POSITIVE": 10.42837653478854,
+        "NEGATIVE": 6.695770804911319,
+        "NEUTRAL": 17.124147339699864
+      },
+      "avg_percentage_difference": 11.416098226466573
+    },
+    "visualization": "distribution_comparison_-GBqPXxsxek.png"
+  },
+  {
+    "video_id": "FJGCFdVTFlA",
+    "video_title": "He brought $200 Caviar",
+    "ground_truth": {
+      "POSITIVE": 192,
+      "NEGATIVE": 435,
+      "NEUTRAL": 251,
+      "POSITIVE_PCT": 21.867881548974943,
+      "NEGATIVE_PCT": 49.54441913439636,
+      "NEUTRAL_PCT": 28.5876993166287,
+      "TOTAL": 878
+    },
+    "predicted": {
+      "POSITIVE": 14,
+      "NEGATIVE": 35,
+      "NEUTRAL": 51,
+      "POSITIVE_PCT": 14.000000000000002,
+      "NEGATIVE_PCT": 35.0,
+      "NEUTRAL_PCT": 51.0,
+      "TOTAL": 100
+    },
+    "comparison": {
+      "chi2_statistic": 24.671391273984526,
+      "chi2_pvalue": 4.392132714036008e-06,
+      "percentage_differences": {
+        "POSITIVE": 7.867881548974941,
+        "NEGATIVE": 14.544419134396357,
+        "NEUTRAL": 22.4123006833713
+      },
+      "avg_percentage_difference": 14.9415337889142
+    },
+    "visualization": "distribution_comparison_FJGCFdVTFlA.png"
+  },
+  {
+    "video_id": "DxmiTVV3GHY",
+    "video_title": "Bomber waited a decade for cops to show up",
+    "ground_truth": {
+      "POSITIVE": 69,
+      "NEGATIVE": 453,
+      "NEUTRAL": 196,
+      "POSITIVE_PCT": 9.610027855153204,
+      "NEGATIVE_PCT": 63.091922005571035,
+      "NEUTRAL_PCT": 27.298050139275766,
+      "TOTAL": 718
+    },
+    "predicted": {
+      "POSITIVE": 21,
+      "NEGATIVE": 34,
+      "NEUTRAL": 45,
+      "POSITIVE_PCT": 21.0,
+      "NEGATIVE_PCT": 34.0,
+      "NEUTRAL_PCT": 45.0,
+      "TOTAL": 100
+    },
+    "comparison": {
+      "chi2_statistic": 38.393160072551915,
+      "chi2_pvalue": 4.602896598611528e-09,
+      "percentage_differences": {
+        "POSITIVE": 11.389972144846796,
+        "NEGATIVE": 29.091922005571035,
+        "NEUTRAL": 17.701949860724234
+      },
+      "avg_percentage_difference": 19.394614670380687
+    },
+    "visualization": "distribution_comparison_DxmiTVV3GHY.png"
+  },
+  {
+    "video_id": "JYHOBRh2f3k",
+    "video_title": "Crazy Convoy Tries To Block Driver",
+    "ground_truth": {
+      "POSITIVE": 19,
+      "NEGATIVE": 534,
+      "NEUTRAL": 150,
+      "POSITIVE_PCT": 2.7027027027027026,
+      "NEGATIVE_PCT": 75.96017069701281,
+      "NEUTRAL_PCT": 21.337126600284495,
+      "TOTAL": 703
+    },
+    "predicted": {
+      "POSITIVE": 4,
+      "NEGATIVE": 59,
+      "NEUTRAL": 37,
+      "POSITIVE_PCT": 4.0,
+      "NEGATIVE_PCT": 59.0,
+      "NEUTRAL_PCT": 37.0,
+      "TOTAL": 100
+    },
+    "comparison": {
+      "chi2_statistic": 15.907114606741576,
+      "chi2_pvalue": 0.0003514098670430747,
+      "percentage_differences": {
+        "POSITIVE": 1.2972972972972974,
+        "NEGATIVE": 16.960170697012813,
+        "NEUTRAL": 15.662873399715505
+      },
+      "avg_percentage_difference": 11.306780464675205
+    },
+    "visualization": "distribution_comparison_JYHOBRh2f3k.png"
+  },
+  {
+    "video_id": "b_ThVKNF2co",
+    "video_title": "Fail! Girl attempts to load motorcycle",
+    "ground_truth": {
+      "POSITIVE": 177,
+      "NEGATIVE": 320,
+      "NEUTRAL": 268,
+      "POSITIVE_PCT": 23.137254901960784,
+      "NEGATIVE_PCT": 41.830065359477125,
+      "NEUTRAL_PCT": 35.03267973856209,
+      "TOTAL": 765
+    },
+    "predicted": {
+      "POSITIVE": 27,
+      "NEGATIVE": 31,
+      "NEUTRAL": 42,
+      "POSITIVE_PCT": 27.0,
+      "NEGATIVE_PCT": 31.0,
+      "NEUTRAL_PCT": 42.0,
+      "TOTAL": 100
+    },
+    "comparison": {
+      "chi2_statistic": 4.834518443270936,
+      "chi2_pvalue": 0.08916566619363181,
+      "percentage_differences": {
+        "POSITIVE": 3.862745098039216,
+        "NEGATIVE": 10.830065359477125,
+        "NEUTRAL": 6.967320261437912
+      },
+      "avg_percentage_difference": 7.220043572984751
+    },
+    "visualization": "distribution_comparison_b_ThVKNF2co.png"
+  },
+  {
+    "video_id": "2FwwlFkAdLk",
+    "video_title": "The clapback",
+    "ground_truth": {
+      "POSITIVE": 157,
+      "NEGATIVE": 287,
+      "NEUTRAL": 162,
+      "POSITIVE_PCT": 25.90759075907591,
+      "NEGATIVE_PCT": 47.35973597359736,
+      "NEUTRAL_PCT": 26.732673267326735,
+      "TOTAL": 606
+    },
+    "predicted": {
+      "POSITIVE": 21,
+      "NEGATIVE": 36,
+      "NEUTRAL": 43,
+      "POSITIVE_PCT": 21.0,
+      "NEGATIVE_PCT": 36.0,
+      "NEUTRAL_PCT": 43.0,
+      "TOTAL": 100
+    },
+    "comparison": {
+      "chi2_statistic": 13.55335193445959,
+      "chi2_pvalue": 0.0011400581977398343,
+      "percentage_differences": {
+        "POSITIVE": 4.907590759075909,
+        "NEGATIVE": 11.35973597359736,
+        "NEUTRAL": 16.267326732673265
+      },
+      "avg_percentage_difference": 10.844884488448846
+    },
+    "visualization": "distribution_comparison_2FwwlFkAdLk.png"
+  },
+  {
+    "video_id": "AifbNF2n6mk",
+    "video_title": "Making South Carolina out of Palmetto Wood",
+    "ground_truth": {
+      "POSITIVE": 221,
+      "NEGATIVE": 115,
+      "NEUTRAL": 304,
+      "POSITIVE_PCT": 34.53125,
+      "NEGATIVE_PCT": 17.96875,
+      "NEUTRAL_PCT": 47.5,
+      "TOTAL": 640
+    },
+    "predicted": {
+      "POSITIVE": 19,
+      "NEGATIVE": 10,
+      "NEUTRAL": 71,
+      "POSITIVE_PCT": 19.0,
+      "NEGATIVE_PCT": 10.0,
+      "NEUTRAL_PCT": 71.0,
+      "TOTAL": 100
+    },
+    "comparison": {
+      "chi2_statistic": 22.14583182331197,
+      "chi2_pvalue": 1.552722052082178e-05,
+      "percentage_differences": {
+        "POSITIVE": 15.53125,
+        "NEGATIVE": 7.96875,
+        "NEUTRAL": 23.5
+      },
+      "avg_percentage_difference": 15.666666666666666
+    },
+    "visualization": "distribution_comparison_AifbNF2n6mk.png"
+  }
+]

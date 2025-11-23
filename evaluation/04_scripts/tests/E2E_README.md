@@ -1,6 +1,8 @@
 # End-to-End Functionality Testing
 
-This directory contains all end-to-end functionality tests for the YouTube Comment Reader application.
+> **Note**: The E2E test script has been moved to `evaluation/e2e_functionality_testing/` for better organization. This README is kept for reference.
+
+The end-to-end functionality tests for the YouTube Comment Reader application are now located in `evaluation/e2e_functionality_testing/`.
 
 ---
 
@@ -146,8 +148,8 @@ python e2e_functionality_test.py
 
 ### Prerequisites:
 ```bash
-# Ensure you're in the evaluation directory
-cd /Users/guiavenas/source/repos/youtube-comment-reader/evaluation/e2e_functionality_testing
+# Navigate to the test directory
+cd evaluation/e2e_functionality_testing
 
 # Python 3.x with requests library
 pip install requests
@@ -155,6 +157,7 @@ pip install requests
 
 ### Run Tests:
 ```bash
+cd evaluation/e2e_functionality_testing
 python e2e_functionality_test.py
 ```
 

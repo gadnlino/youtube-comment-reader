@@ -110,7 +110,7 @@ class VideoCommentsPage extends GetView<VideoCommentsPageController> {
                   const SizedBox(height: 8),
                   Align(
                     alignment: Alignment.centerLeft,
-                    child: Text("Commentary types:",
+                    child: Text("Comment types:",
                         style: Theme.of(context).textTheme.labelLarge),
                   ),
                   CheckboxListTile(
@@ -126,6 +126,22 @@ class VideoCommentsPage extends GetView<VideoCommentsPageController> {
                                 controller.currentFilterOptions.value)));
 
                         newFiltersOptions.showPositives = val;
+
+                        controller.currentFilterOptions.value =
+                            newFiltersOptions;
+                      }),
+                  CheckboxListTile(
+                      title: const Text("Neutral"),
+                      value: controller.currentFilterOptions.value.showNeutral,
+                      selected:
+                          controller.currentFilterOptions.value.showNeutral ??
+                              false,
+                      onChanged: (val) {
+                        var newFiltersOptions = FilterOptions.fromJson(
+                            json.decode(json.encode(
+                                controller.currentFilterOptions.value)));
+
+                        newFiltersOptions.showNeutral = val;
 
                         controller.currentFilterOptions.value =
                             newFiltersOptions;

@@ -831,12 +831,14 @@ class FilterOptions {
   String? order;
   bool? showPositives;
   bool? showNegatives;
+  bool? showNeutral;
 
   FilterOptions({
     this.keywords,
     this.order = 'relevance',
     this.showPositives = false,
     this.showNegatives = false,
+    this.showNeutral = false,
   });
 
   Map<String, dynamic> toJson() {
@@ -844,7 +846,8 @@ class FilterOptions {
       'keywords': keywords,
       'order': order,
       'showPositive': showPositives,
-      'showNegative': showNegatives
+      'showNegative': showNegatives,
+      'showNeutral': showNeutral,
     };
   }
 
@@ -853,6 +856,7 @@ class FilterOptions {
         keywords: json['keywords'],
         order: json['order'],
         showPositives: json['showPositive'],
-        showNegatives: json['showNegative']);
+        showNegatives: json['showNegative'],
+        showNeutral: json['showNeutral']);
   }
 }

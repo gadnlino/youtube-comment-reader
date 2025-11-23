@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/app/common/models/models.dart';
-import 'package:frontend/app/common/utils/navigation.dart';
 import 'package:frontend/app/common/utils/utils.dart';
-import 'package:frontend/app/pages/favorites_page/favorites_page.dart';
-import 'package:get/get.dart';
 import 'package:html_unescape/html_unescape.dart';
 
 class VideoWidget extends StatelessWidget {

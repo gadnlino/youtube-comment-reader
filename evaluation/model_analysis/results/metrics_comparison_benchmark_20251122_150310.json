@@ -1,0 +1,79 @@
+{
+  "config": {
+    "n_sets": 5,
+    "m_videos_per_set": 29,
+    "timestamp": "20251122_150310"
+  },
+  "benchmark_metrics": {
+    "accuracy": 0.6614,
+    "precision": 0.6664,
+    "recall": 0.6614,
+    "f1_score": 0.6628
+  },
+  "overall_validation_metrics": {
+    "total_comments": 917,
+    "accuracy": 0.6499454743729552,
+    "precision": 0.6719920029080335,
+    "recall": 0.6499454743729552,
+    "f1_score": 0.6511778572937222
+  },
+  "comparison": {
+    "differences": {
+      "accuracy": -0.011454525627044743,
+      "precision": 0.005592002908033522,
+      "recall": -0.011454525627044743,
+      "f1_score": -0.011622142706277705
+    },
+    "relative_differences_pct": {
+      "accuracy": -1.731860542341207,
+      "precision": 0.8391360906412848,
+      "recall": -1.731860542341207,
+      "f1_score": -1.7534916575554775
+    },
+    "similar": {
+      "accuracy": true,
+      "precision": true,
+      "recall": true,
+      "f1_score": true
+    }
+  },
+  "set_metrics": [
+    {
+      "total_comments": 184,
+      "accuracy": 0.6086956521739131,
+      "precision": 0.6384452826553558,
+      "recall": 0.6086956521739131,
+      "f1_score": 0.6124263393828613
+    },
+    {
+      "total_comments": 190,
+      "accuracy": 0.6368421052631579,
+      "precision": 0.6943009081704491,
+      "recall": 0.6368421052631579,
+      "f1_score": 0.6390520266182699
+    },
+    {
+      "total_comments": 111,
+      "accuracy": 0.6666666666666666,
+      "precision": 0.7028148945957166,
+      "recall": 0.6666666666666666,
+      "f1_score": 0.6567452789656607
+    },
+    {
+      "total_comments": 201,
+      "accuracy": 0.7213930348258707,
+      "precision": 0.7260296381672368,
+      "recall": 0.7213930348258707,
+      "f1_score": 0.7227160860617464
+    },
+    {
+      "total_comments": 231,
+      "accuracy": 0.6233766233766234,
+      "precision": 0.6450969155527893,
+      "recall": 0.6233766233766234,
+      "f1_score": 0.6259378930679824
+    }
+  ],
+  "total_videos_analyzed": 73,
+  "total_comments_analyzed": 917
+}

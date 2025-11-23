@@ -98,10 +98,10 @@ class YoutubeCommentViewerApi {
         final responseData =
             YouTubeCommentThreadsResponse.fromJson(response.data);
 
-        responseData.items.forEach((element) {
+        for (var element in responseData.items) {
           debugPrint(
-              'COMMENT: ${element.snippet?.topLevelComment?.snippet?.textDisplay}');
-        });
+              'COMMENT: ${element.snippet.topLevelComment.snippet.textDisplay}');
+        }
 
         return responseData;
       }

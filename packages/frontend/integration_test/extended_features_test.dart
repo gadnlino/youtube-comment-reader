@@ -1,14 +1,13 @@
-/**
- * EXTENDED E2E Tests - Favorites & Additional Scenarios
- * 
- * Additional test coverage for:
- * - Favorite videos
- * - Favorite comments
- * - View favorites page
- * - Remove favorites
- * - Multiple filters simultaneously
- * - Sort options
- */
+/// EXTENDED E2E Tests - Favorites & Additional Scenarios
+/// 
+/// Additional test coverage for:
+/// - Favorite videos
+/// - Favorite comments
+/// - View favorites page
+/// - Remove favorites
+/// - Multiple filters simultaneously
+/// - Sort options
+library;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -30,7 +29,7 @@ void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
   setUpAll(() async {
-    print('\n' + '=' * 80);
+    print('\n${'=' * 80}');
     print('⭐ INITIALIZING EXTENDED E2E TESTS - FAVORITES & MORE');
     print('=' * 80 + '\n');
     
@@ -481,7 +480,7 @@ void main() {
     });
 
     tearDownAll(() {
-      print('\n' + '=' * 80);
+      print('\n${'=' * 80}');
       print('📊 EXTENDED E2E TEST SUITE COMPLETED');
       print('=' * 80);
       print('');

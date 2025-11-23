@@ -1,0 +1,101 @@
+[
+  {
+    "video_id": "K0LjzVfQRys",
+    "video_title": "This is your sign to find a buddy to do hard things with",
+    "ground_truth": {
+      "POSITIVE": 89,
+      "NEGATIVE": 434,
+      "NEUTRAL": 232,
+      "POSITIVE_PCT": 11.788079470198676,
+      "NEGATIVE_PCT": 57.48344370860927,
+      "NEUTRAL_PCT": 30.728476821192054,
+      "TOTAL": 755
+    },
+    "predicted": {
+      "POSITIVE": 10,
+      "NEGATIVE": 22,
+      "NEUTRAL": 68,
+      "POSITIVE_PCT": 10.0,
+      "NEGATIVE_PCT": 22.0,
+      "NEUTRAL_PCT": 68.0,
+      "TOTAL": 100
+    },
+    "comparison": {
+      "chi2_statistic": 67.38227208044609,
+      "chi2_pvalue": 2.334132623569384e-15,
+      "percentage_differences": {
+        "POSITIVE": 1.7880794701986762,
+        "NEGATIVE": 35.48344370860927,
+        "NEUTRAL": 37.271523178807946
+      },
+      "avg_percentage_difference": 24.8476821192053
+    },
+    "visualization": "distribution_comparison_K0LjzVfQRys.png"
+  },
+  {
+    "video_id": "-GBqPXxsxek",
+    "video_title": "Jimmy Carter funeral: Five US presidents gather",
+    "ground_truth": {
+      "POSITIVE": 311,
+      "NEGATIVE": 225,
+      "NEUTRAL": 197,
+      "POSITIVE_PCT": 42.42837653478854,
+      "NEGATIVE_PCT": 30.69577080491132,
+      "NEUTRAL_PCT": 26.875852660300136,
+      "TOTAL": 733
+    },
+    "predicted": {
+      "POSITIVE": 32,
+      "NEGATIVE": 24,
+      "NEUTRAL": 44,
+      "POSITIVE_PCT": 32.0,
+      "NEGATIVE_PCT": 24.0,
+      "NEUTRAL_PCT": 44.0,
+      "TOTAL": 100
+    },
+    "comparison": {
+      "chi2_statistic": 14.934514854652583,
+      "chi2_pvalue": 0.0005714935120277086,
+      "percentage_differences": {
+        "POSITIVE": 10.42837653478854,
+        "NEGATIVE": 6.695770804911319,
+        "NEUTRAL": 17.124147339699864
+      },
+      "avg_percentage_difference": 11.416098226466573
+    },
+    "visualization": "distribution_comparison_-GBqPXxsxek.png"
+  },
+  {
+    "video_id": "FJGCFdVTFlA",
+    "video_title": "He brought $200 Caviar",
+    "ground_truth": {
+      "POSITIVE": 192,
+      "NEGATIVE": 435,
+      "NEUTRAL": 251,
+      "POSITIVE_PCT": 21.867881548974943,
+      "NEGATIVE_PCT": 49.54441913439636,
+      "NEUTRAL_PCT": 28.5876993166287,
+      "TOTAL": 878
+    },
+    "predicted": {
+      "POSITIVE": 14,
+      "NEGATIVE": 35,
+      "NEUTRAL": 51,
+      "POSITIVE_PCT": 14.000000000000002,
+      "NEGATIVE_PCT": 35.0,
+      "NEUTRAL_PCT": 51.0,
+      "TOTAL": 100
+    },
+    "comparison": {
+      "chi2_statistic": 24.671391273984526,
+      "chi2_pvalue": 4.392132714036008e-06,
+      "percentage_differences": {
+        "POSITIVE": 7.867881548974941,
+        "NEGATIVE": 14.544419134396357,
+        "NEUTRAL": 22.4123006833713
+      },
+      "avg_percentage_difference": 14.9415337889142
+    },
+    "visualization": "distribution_comparison_FJGCFdVTFlA.png"
+  }
+]

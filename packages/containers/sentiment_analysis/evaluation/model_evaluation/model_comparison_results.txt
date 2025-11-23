@@ -1,7 +1,0 @@
-Sentiment Analysis Model Comparison Results
-==================================================
-
-VADER - Accuracy: 0.5180, F1-Macro: 0.5147
-TextBlob - Accuracy: 0.4800, F1-Macro: 0.4635
-VADER Time: 0.10s
-TextBlob Time: 0.10s

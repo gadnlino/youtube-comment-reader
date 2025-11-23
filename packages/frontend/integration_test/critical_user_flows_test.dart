@@ -1,9 +1,8 @@
-/**
- * Critical User Flows E2E Test Suite
- * 
- * Tests the most important user journeys without getting stuck on animations.
- * Uses pump() instead of pumpAndSettle() to avoid hanging on continuous animations.
- */
+/// Critical User Flows E2E Test Suite
+/// 
+/// Tests the most important user journeys without getting stuck on animations.
+/// Uses pump() instead of pumpAndSettle() to avoid hanging on continuous animations.
+library;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -25,7 +24,7 @@ void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
   setUpAll(() async {
-    print('\n' + '=' * 90);
+    print('\n${'=' * 90}');
     print('🎯 CRITICAL USER FLOWS E2E TEST SUITE');
     print('=' * 90 + '\n');
     
@@ -375,7 +374,7 @@ void main() {
       
       // Try multiple videos until we find one with comments enabled
       for (int videoIndex = 0; videoIndex < maxVideosToTry && !commentFavorited; videoIndex++) {
-        print('ℹ️  Trying video #${videoIndex + 1}/${maxVideosToTry}...');
+        print('ℹ️  Trying video #${videoIndex + 1}/$maxVideosToTry...');
         
         // Tap on the video
         await tester.tap(videoWidgets.at(videoIndex));
@@ -475,7 +474,7 @@ void main() {
       }
       
       if (!commentFavorited) {
-        print('⚠️  Could not favorite a comment after trying ${maxVideosToTry} videos');
+        print('⚠️  Could not favorite a comment after trying $maxVideosToTry videos');
         print('ℹ️  This could indicate:');
         print('    - All test videos have comments disabled');
         print('    - API quota limit reached');
@@ -487,7 +486,7 @@ void main() {
     });
 
     tearDownAll(() {
-      print('\n' + '=' * 90);
+      print('\n${'=' * 90}');
       print('🏆 CRITICAL USER FLOWS - TEST RESULTS');
       print('=' * 90);
       print('All critical user flows validated successfully!');

@@ -1,9 +1,8 @@
-/**
- * Flutter Integration Tests for YouTube Comment Reader
- * 
- * SIMPLIFIED VERSION - Tests basic app functionality without Firebase dependency
- * This version validates that the app can be launched and basic UI elements are present
- */
+/// Flutter Integration Tests for YouTube Comment Reader
+/// 
+/// SIMPLIFIED VERSION - Tests basic app functionality without Firebase dependency
+/// This version validates that the app can be launched and basic UI elements are present
+library;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -124,7 +123,7 @@ void main() {
 
     // Summary
     tearDownAll(() {
-      print('\n' + '=' * 80);
+      print('\n${'=' * 80}');
       print('📊 FLUTTER INTEGRATION TEST SUMMARY');
       print('=' * 80);
       print('Total Tests: 4');

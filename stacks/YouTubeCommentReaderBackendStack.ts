@@ -1,5 +1,5 @@
 import { IResource, LambdaIntegration, MockIntegration, PassthroughBehavior, RestApi } from 'aws-cdk-lib/aws-apigateway';
-import { AttributeType, Table } from 'aws-cdk-lib/aws-dynamodb';
+import { AttributeType, BillingMode, Table } from 'aws-cdk-lib/aws-dynamodb';
 import { Runtime, Function, Code, Handler } from 'aws-cdk-lib/aws-lambda';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import { Secret } from 'aws-cdk-lib/aws-secretsmanager';
@@ -33,6 +33,7 @@ export class YouTubeCommentReaderBackendStack extends Stack {
             },
             tableName,
             timeToLiveAttribute: 'expireAt',
+            billingMode: BillingMode.PAY_PER_REQUEST, // On-demand (auto-scaling)
             removalPolicy: envName === 'prod' ? RemovalPolicy.RETAIN : RemovalPolicy.DESTROY,
         });
 

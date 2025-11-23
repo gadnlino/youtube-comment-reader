@@ -1,6 +1,0 @@
-pandas
-scikit-learn
-transformers
-accelerate==0.28.0
-kagglehub
-datasets

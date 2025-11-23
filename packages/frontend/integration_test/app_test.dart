@@ -1,33 +1,32 @@
-/**
- * Flutter Integration Tests for YouTube Comment Reader
- *
- * This file contains end-to-end integration tests that simulate real user 
- * interactions with the Flutter mobile application. These tests verify the 
- * complete user flow from searching videos to filtering comments by sentiment.
- *
- * Tests included:
- * 1. Video search functionality
- * 2. Comment loading without sentiment
- * 3. Comment loading with sentiment analysis
- * 4. Filtering by positive sentiment
- * 5. Filtering by negative sentiment
- * 6. Filtering by neutral sentiment
- * 7. Multiple filters active simultaneously
- * 8. Error handling
- *
- * Technologies:
- * - Flutter integration_test package
- * - WidgetTester for UI interactions
- * - Patrol for advanced testing (optional)
- *
- * Usage:
- *   flutter test integration_test/app_test.dart
- *   
- * Or with device/emulator:
- *   flutter drive \
- *     --driver=test_driver/integration_test.dart \
- *     --target=integration_test/app_test.dart
- */
+/// Flutter Integration Tests for YouTube Comment Reader
+///
+/// This file contains end-to-end integration tests that simulate real user 
+/// interactions with the Flutter mobile application. These tests verify the 
+/// complete user flow from searching videos to filtering comments by sentiment.
+///
+/// Tests included:
+/// 1. Video search functionality
+/// 2. Comment loading without sentiment
+/// 3. Comment loading with sentiment analysis
+/// 4. Filtering by positive sentiment
+/// 5. Filtering by negative sentiment
+/// 6. Filtering by neutral sentiment
+/// 7. Multiple filters active simultaneously
+/// 8. Error handling
+///
+/// Technologies:
+/// - Flutter integration_test package
+/// - WidgetTester for UI interactions
+/// - Patrol for advanced testing (optional)
+///
+/// Usage:
+///   flutter test integration_test/app_test.dart
+///   
+/// Or with device/emulator:
+///   flutter drive \
+///     --driver=test_driver/integration_test.dart \
+///     --target=integration_test/app_test.dart
+library;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -380,7 +379,7 @@ void main() {
 
   // Generate test report
   tearDownAll(() {
-    print('\n' + '='*80);
+    print('\n${'='*80}');
     print('📊 FLUTTER INTEGRATION TEST SUMMARY');
     print('='*80);
     print('Total Tests: 8');

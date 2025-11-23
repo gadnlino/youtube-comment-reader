@@ -1,15 +1,14 @@
-/**
- * COMPREHENSIVE E2E Tests for YouTube Comment Reader
- * 
- * These tests validate real user workflows:
- * 1. Search for videos by keyword
- * 2. Verify search results contain the keyword
- * 3. Navigate to video comments
- * 4. Apply sentiment filters (Positive, Negative)
- * 5. Verify filters work correctly
- * 
- * All tests interact with REAL UI and make REAL API calls
- */
+/// COMPREHENSIVE E2E Tests for YouTube Comment Reader
+/// 
+/// These tests validate real user workflows:
+/// 1. Search for videos by keyword
+/// 2. Verify search results contain the keyword
+/// 3. Navigate to video comments
+/// 4. Apply sentiment filters (Positive, Negative)
+/// 5. Verify filters work correctly
+/// 
+/// All tests interact with REAL UI and make REAL API calls
+library;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -32,7 +31,7 @@ void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
   setUpAll(() async {
-    print('\n' + '=' * 80);
+    print('\n${'=' * 80}');
     print('🚀 INITIALIZING COMPREHENSIVE E2E TESTS');
     print('=' * 80 + '\n');
     
@@ -480,7 +479,7 @@ void main() {
     });
 
     tearDownAll(() {
-      print('\n' + '=' * 80);
+      print('\n${'=' * 80}');
       print('📊 COMPREHENSIVE E2E TEST SUITE COMPLETED');
       print('=' * 80);
       print('');

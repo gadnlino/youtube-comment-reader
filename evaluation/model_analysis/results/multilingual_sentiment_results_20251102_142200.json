@@ -1,0 +1,458 @@
+{
+  "timestamp": "20251102_142200",
+  "test_date": "2025-11-02T14:22:00.616494",
+  "hypothesis": "Non-English comments are classified as NEUTRAL more frequently",
+  "videos_tested": 16,
+  "successful_tests": 16,
+  "failed_tests": 0,
+  "results": [
+    {
+      "video_id": "dQw4w9WgXcQ",
+      "video_name": "Rick Astley - Never Gonna Give You Up",
+      "language": "English",
+      "region": "USA/UK",
+      "description": "Classic 1987 music video - English comments",
+      "total_comments": 100,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 17,
+          "percentage": 17.0
+        },
+        "NEGATIVE": {
+          "count": 7,
+          "percentage": 7.000000000000001
+        },
+        "NEUTRAL": {
+          "count": 76,
+          "percentage": 76.0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 4228.584051132202,
+      "success": true
+    },
+    {
+      "video_id": "fJ9rUzIMcZQ",
+      "video_name": "Queen - Bohemian Rhapsody",
+      "language": "English",
+      "region": "Global",
+      "description": "Classic rock - predominantly English comments",
+      "total_comments": 100,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 32,
+          "percentage": 32.0
+        },
+        "NEGATIVE": {
+          "count": 7,
+          "percentage": 7.000000000000001
+        },
+        "NEUTRAL": {
+          "count": 61,
+          "percentage": 61.0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 1576.4150619506836,
+      "success": true
+    },
+    {
+      "video_id": "OPf0YbXqDm0",
+      "video_name": "Mark Ronson - Uptown Funk",
+      "language": "English",
+      "region": "USA/Global",
+      "description": "Pop music - primarily English comments",
+      "total_comments": 100,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 19,
+          "percentage": 19.0
+        },
+        "NEGATIVE": {
+          "count": 8,
+          "percentage": 8.0
+        },
+        "NEUTRAL": {
+          "count": 73,
+          "percentage": 73.0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 1801.0387420654297,
+      "success": true
+    },
+    {
+      "video_id": "JGwWNGJdvx8",
+      "video_name": "Ed Sheeran - Shape of You",
+      "language": "English",
+      "region": "UK/Global",
+      "description": "Pop hit - English comments",
+      "total_comments": 100,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 10,
+          "percentage": 10.0
+        },
+        "NEGATIVE": {
+          "count": 5,
+          "percentage": 5.0
+        },
+        "NEUTRAL": {
+          "count": 85,
+          "percentage": 85.0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 2104.1269302368164,
+      "success": true
+    },
+    {
+      "video_id": "CevxZvSJLk8",
+      "video_name": "Katy Perry - Roar",
+      "language": "English",
+      "region": "USA/Global",
+      "description": "Pop anthem - English comments",
+      "total_comments": 100,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 16,
+          "percentage": 16.0
+        },
+        "NEGATIVE": {
+          "count": 3,
+          "percentage": 3.0
+        },
+        "NEUTRAL": {
+          "count": 81,
+          "percentage": 81.0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 1635.5459690093994,
+      "success": true
+    },
+    {
+      "video_id": "kJQP7kiw5Fk",
+      "video_name": "Luis Fonsi - Despacito",
+      "language": "Spanish",
+      "region": "Latin America",
+      "description": "Spanish language music - primarily Spanish comments",
+      "total_comments": 100,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 4,
+          "percentage": 4.0
+        },
+        "NEGATIVE": {
+          "count": 3,
+          "percentage": 3.0
+        },
+        "NEUTRAL": {
+          "count": 93,
+          "percentage": 93.0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 1638.174057006836,
+      "success": true
+    },
+    {
+      "video_id": "YbJOTdZBX1g",
+      "video_name": "Shakira - Waka Waka",
+      "language": "Spanish/English",
+      "region": "Latin America/Global",
+      "description": "World Cup song - Spanish and English comments",
+      "total_comments": 100,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 17,
+          "percentage": 17.0
+        },
+        "NEGATIVE": {
+          "count": 36,
+          "percentage": 36.0
+        },
+        "NEUTRAL": {
+          "count": 47,
+          "percentage": 47.0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 1512.605905532837,
+      "success": true
+    },
+    {
+      "video_id": "60ItHLz5WEA",
+      "video_name": "Alan Walker - Faded",
+      "language": "English",
+      "region": "Global",
+      "description": "Electronic music - multilingual comments",
+      "total_comments": 100,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 23,
+          "percentage": 23.0
+        },
+        "NEGATIVE": {
+          "count": 4,
+          "percentage": 4.0
+        },
+        "NEUTRAL": {
+          "count": 73,
+          "percentage": 73.0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 1743.238925933838,
+      "success": true
+    },
+    {
+      "video_id": "hcm55lU9knw",
+      "video_name": "Anitta - Envolver",
+      "language": "Portuguese",
+      "region": "Brazil",
+      "description": "Brazilian pop - primarily Portuguese comments",
+      "total_comments": 100,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 12,
+          "percentage": 12.0
+        },
+        "NEGATIVE": {
+          "count": 2,
+          "percentage": 2.0
+        },
+        "NEUTRAL": {
+          "count": 86,
+          "percentage": 86.0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 1530.1432609558105,
+      "success": true
+    },
+    {
+      "video_id": "2vjPBrBU-TM",
+      "video_name": "Sia - Chandelier",
+      "language": "English",
+      "region": "Global",
+      "description": "Pop music - multilingual including Portuguese",
+      "total_comments": 100,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 26,
+          "percentage": 26.0
+        },
+        "NEGATIVE": {
+          "count": 8,
+          "percentage": 8.0
+        },
+        "NEUTRAL": {
+          "count": 66,
+          "percentage": 66.0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 1779.3710231781006,
+      "success": true
+    },
+    {
+      "video_id": "RgKAFK5djSk",
+      "video_name": "Wiz Khalifa - See You Again",
+      "language": "English",
+      "region": "Global",
+      "description": "Global hit - multilingual including Portuguese",
+      "total_comments": 100,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 18,
+          "percentage": 18.0
+        },
+        "NEGATIVE": {
+          "count": 8,
+          "percentage": 8.0
+        },
+        "NEUTRAL": {
+          "count": 74,
+          "percentage": 74.0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 1956.9180011749268,
+      "success": true
+    },
+    {
+      "video_id": "PT2_F-1esPk",
+      "video_name": "The Weeknd - Blinding Lights",
+      "language": "English",
+      "region": "Global",
+      "description": "Recent hit - multilingual comments",
+      "total_comments": 100,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 13,
+          "percentage": 13.0
+        },
+        "NEGATIVE": {
+          "count": 7,
+          "percentage": 7.000000000000001
+        },
+        "NEUTRAL": {
+          "count": 80,
+          "percentage": 80.0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 1722.656011581421,
+      "success": true
+    },
+    {
+      "video_id": "9bZkp7q19f0",
+      "video_name": "PSY - Gangnam Style",
+      "language": "Korean/Multilingual",
+      "region": "South Korea/Global",
+      "description": "K-pop viral - Korean, English, Spanish, Portuguese comments",
+      "total_comments": 100,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 14,
+          "percentage": 14.000000000000002
+        },
+        "NEGATIVE": {
+          "count": 5,
+          "percentage": 5.0
+        },
+        "NEUTRAL": {
+          "count": 81,
+          "percentage": 81.0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 1377.716064453125,
+      "success": true
+    },
+    {
+      "video_id": "DDWKuo3gXMQ",
+      "video_name": "BTS - Dynamite",
+      "language": "Korean/English",
+      "region": "South Korea/Global",
+      "description": "K-pop hit - Korean and English comments",
+      "total_comments": 100,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 34,
+          "percentage": 34.0
+        },
+        "NEGATIVE": {
+          "count": 9,
+          "percentage": 9.0
+        },
+        "NEUTRAL": {
+          "count": 57,
+          "percentage": 56.99999999999999
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 1740.8971786499023,
+      "success": true
+    },
+    {
+      "video_id": "pBuZEGYXA6E",
+      "video_name": "BLACKPINK - How You Like That",
+      "language": "Korean/English",
+      "region": "South Korea/Global",
+      "description": "K-pop - Korean and international comments",
+      "total_comments": 100,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 21,
+          "percentage": 21.0
+        },
+        "NEGATIVE": {
+          "count": 3,
+          "percentage": 3.0
+        },
+        "NEUTRAL": {
+          "count": 76,
+          "percentage": 76.0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 1592.3221111297607,
+      "success": true
+    },
+    {
+      "video_id": "IHNzOHi8sJs",
+      "video_name": "BLACKPINK - DDU-DU DDU-DU",
+      "language": "Korean",
+      "region": "South Korea/Global",
+      "description": "K-pop hit - predominantly Korean comments",
+      "total_comments": 100,
+      "sentiment_distribution": {
+        "POSITIVE": {
+          "count": 15,
+          "percentage": 15.0
+        },
+        "NEGATIVE": {
+          "count": 5,
+          "percentage": 5.0
+        },
+        "NEUTRAL": {
+          "count": 80,
+          "percentage": 80.0
+        },
+        "UNKNOWN": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "response_time_ms": 1671.5929508209229,
+      "success": true
+    }
+  ]
+}

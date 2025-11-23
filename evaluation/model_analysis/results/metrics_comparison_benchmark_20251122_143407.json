@@ -1,0 +1,72 @@
+{
+  "config": {
+    "n_sets": 5,
+    "m_videos_per_set": 29,
+    "timestamp": "20251122_143407"
+  },
+  "benchmark_metrics": {
+    "accuracy": 0.6614,
+    "precision": 0.6664,
+    "recall": 0.6614,
+    "f1_score": 0.6628
+  },
+  "overall_validation_metrics": {
+    "total_comments": 296,
+    "accuracy": 0.5168918918918919,
+    "precision": 0.6827348644118831,
+    "recall": 0.5168918918918919,
+    "f1_score": 0.49033801721777137
+  },
+  "comparison": {
+    "differences": {
+      "accuracy": -0.1445081081081081,
+      "precision": 0.016334864411883143,
+      "recall": -0.1445081081081081,
+      "f1_score": -0.17246198278222857
+    },
+    "relative_differences_pct": {
+      "accuracy": -21.848821909299684,
+      "precision": 2.4512101458408075,
+      "recall": -21.848821909299684,
+      "f1_score": -26.020214662376066
+    },
+    "similar": {
+      "accuracy": false,
+      "precision": true,
+      "recall": false,
+      "f1_score": false
+    }
+  },
+  "set_metrics": [
+    {
+      "total_comments": 10,
+      "accuracy": 0.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1_score": 0.0
+    },
+    {
+      "total_comments": 116,
+      "accuracy": 0.23275862068965517,
+      "precision": 0.8039122178585301,
+      "recall": 0.23275862068965517,
+      "f1_score": 0.26646303563311163
+    },
+    {
+      "total_comments": 111,
+      "accuracy": 0.7477477477477478,
+      "precision": 0.7557819136766505,
+      "recall": 0.7477477477477478,
+      "f1_score": 0.7342203742203741
+    },
+    {
+      "total_comments": 59,
+      "accuracy": 0.7288135593220338,
+      "precision": 0.7332577518281278,
+      "recall": 0.7288135593220338,
+      "f1_score": 0.7285921023492504
+    }
+  ],
+  "total_videos_analyzed": 10,
+  "total_comments_analyzed": 296
+}
