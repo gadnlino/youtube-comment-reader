@@ -1,0 +1,37 @@
+{
+  "dataset": "Twitter US Airline Sentiment",
+  "model": "TF-IDF + Logistic Regression",
+  "api_url": "https://srklkhuzmgcxzalrpoiakiwrba0uaooq.lambda-url.us-east-1.on.aws/",
+  "total_samples": 14640,
+  "processing_time_seconds": 135.29019689559937,
+  "tweets_per_second": 108.21183157340944,
+  "metrics": {
+    "accuracy": 0.5700136612021858,
+    "precision": 0.7035290919509803,
+    "recall": 0.5700136612021858,
+    "f1_score": 0.5895363741972964
+  },
+  "confusion_matrix": [
+    [
+      4547,
+      3526,
+      1105
+    ],
+    [
+      506,
+      2087,
+      506
+    ],
+    [
+      147,
+      505,
+      1711
+    ]
+  ],
+  "confusion_matrix_labels": [
+    "NEGATIVE",
+    "NEUTRAL",
+    "POSITIVE"
+  ],
+  "timestamp": "20251123_191755"
+}

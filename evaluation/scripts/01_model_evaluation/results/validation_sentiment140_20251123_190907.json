@@ -1,0 +1,37 @@
+{
+  "dataset": "Sentiment140 (Twitter)",
+  "model": "TF-IDF + Logistic Regression",
+  "api_url": "https://srklkhuzmgcxzalrpoiakiwrba0uaooq.lambda-url.us-east-1.on.aws/",
+  "total_samples": 100000,
+  "processing_time_seconds": 782.8982241153717,
+  "tweets_per_second": 127.73052348278607,
+  "metrics": {
+    "accuracy": 0.38192,
+    "precision": 0.7061036920510971,
+    "recall": 0.38192,
+    "f1_score": 0.4950947142491312
+  },
+  "confusion_matrix": [
+    [
+      18738,
+      21550,
+      9712
+    ],
+    [
+      0,
+      0,
+      0
+    ],
+    [
+      6407,
+      24139,
+      19454
+    ]
+  ],
+  "confusion_matrix_labels": [
+    "NEGATIVE",
+    "NEUTRAL",
+    "POSITIVE"
+  ],
+  "timestamp": "20251123_190907"
+}

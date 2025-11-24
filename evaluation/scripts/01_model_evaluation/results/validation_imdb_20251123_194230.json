@@ -1,0 +1,38 @@
+{
+  "dataset": "IMDB Movie Reviews",
+  "language": "English",
+  "model": "TF-IDF + Logistic Regression",
+  "api_url": "https://srklkhuzmgcxzalrpoiakiwrba0uaooq.lambda-url.us-east-1.on.aws/",
+  "total_samples": 10000,
+  "processing_time_seconds": 180.01171112060547,
+  "reviews_per_second": 55.551941247312136,
+  "metrics": {
+    "accuracy": 0.724,
+    "precision": 0.7841339160837124,
+    "recall": 0.724,
+    "f1_score": 0.7357985120580319
+  },
+  "confusion_matrix": [
+    [
+      4364,
+      164,
+      472
+    ],
+    [
+      0,
+      0,
+      0
+    ],
+    [
+      1789,
+      335,
+      2876
+    ]
+  ],
+  "confusion_matrix_labels": [
+    "NEGATIVE",
+    "NEUTRAL",
+    "POSITIVE"
+  ],
+  "timestamp": "20251123_194230"
+}

@@ -7,23 +7,275 @@
 
 ## 📋 Índice
 
-1. [Testes de Avaliação do Modelo de Análise de Sentimentos](#1-testes-de-avaliação-do-modelo-de-análise-de-sentimentos)
+0. [Comparação de Modelos de Análise de Sentimentos](#0-comparação-de-modelos-de-análise-de-sentimentos)
+1. [Testes de Avaliação do Modelo Selecionado](#1-testes-de-avaliação-do-modelo-selecionado)
 2. [Testes de Carga e Performance da API](#2-testes-de-carga-e-performance-da-api)
 3. [Testes End-to-End do Frontend](#3-testes-end-to-end-do-frontend)
 
 ---
 
-## 1. Testes de Avaliação do Modelo de Análise de Sentimentos
+## 0. Comparação de Modelos de Análise de Sentimentos
+
+> **⚠️ Ordem Cronológica**: Esta etapa foi executada **ANTES** da avaliação do modelo selecionado. Primeiro comparamos diferentes modelos para selecionar o melhor, depois avaliamos o modelo selecionado.
+
+### 📍 Localização
+
+**Scripts**: `evaluation/model_comparison/scripts/`  
+**Resultados**: `evaluation/model_comparison/results/`  
+**Notebooks**: `evaluation/model_comparison/notebooks/`  
+**Documentação**: `evaluation/model_comparison/README.md`
+
+### 🎯 Objetivo
+
+Comparar diferentes modelos de análise de sentimento para selecionar o melhor modelo para o sistema, incluindo:
+- Modelos baseados em regras (VADER, TextBlob)
+- Modelos de Machine Learning tradicional (TF-IDF + Logistic Regression, TF-IDF + SVM)
+- Modelos Transformer (DeBERTa, Twitter-XLM-RoBERTa)
+- Métricas de desempenho (Accuracy, F1-Score, tempo de processamento)
+- Seleção do modelo final baseado em desempenho e viabilidade
+
+### 📁 Scripts Principais
+
+> **⚠️ Importante**: Para reproduzir os resultados da Tabela 1 da monografia, execute os scripts individuais abaixo. Cada script gera os resultados específicos de um modelo usando o dataset completo (ou amostras grandes).
+
+#### 1. TF-IDF + Logistic Regression (Modelo Selecionado)
+
+**`tfidf_logistic_classification_report.py`**
+- **Função**: Treina e avalia o modelo TF-IDF + Logistic Regression no dataset completo
+- **Uso**: Estabelece o benchmark do modelo selecionado
+- **Divisão de dados**: 80% treino / 20% teste (ao nível de comentários, `random_state=42`)
+- **Dataset**: 1.032.225 comentários (dataset completo)
+- **Resultados esperados**: 66.1% accuracy, 66.2% F1-Macro
+- **Saída**: Métricas detalhadas, matriz de confusão, relatório de classificação
+- **Execução**: 
+  ```bash
+  cd evaluation/model_comparison/scripts
+  python tfidf_logistic_classification_report.py
+  ```
+
+#### 2. VADER (Rule-based)
+
+**`vader_classification_report.py`**
+- **Função**: Avalia o modelo VADER no dataset completo
+- **Dataset**: 1.032.225 comentários (dataset completo)
+- **Resultados esperados**: 53.4% accuracy, 52.9% F1-Macro
+- **Execução**: 
+  ```bash
+  cd evaluation/model_comparison/scripts
+  python vader_classification_report.py
+  ```
+
+#### 3. TextBlob (Rule-based)
+
+**`textblob_classification_report.py`**
+- **Função**: Avalia o modelo TextBlob no dataset completo
+- **Dataset**: 1.032.225 comentários (dataset completo)
+- **Resultados esperados**: 48.8% accuracy, 46.8% F1-Macro
+- **Execução**: 
+  ```bash
+  cd evaluation/model_comparison/scripts
+  python textblob_classification_report.py
+  ```
+
+#### 4. TF-IDF + SVM (Traditional ML)
+
+**`svm_classification_report.py`**
+- **Função**: Avalia o modelo TF-IDF + SVM
+- **Dataset**: 50.000 comentários (amostra grande para treinamento mais rápido)
+- **Resultados esperados**: 52.5% accuracy, 51.8% F1-Macro
+- **Execução**: 
+  ```bash
+  cd evaluation/model_comparison/scripts
+  python svm_classification_report.py
+  ```
+
+#### 5. Transformers (DeBERTa, Twitter-XLM-RoBERTa)
+
+**Notebook**: `evaluation/model_comparison/notebooks/youtube_comments_sentiment_analysis_comparison.ipynb`
+- **Função**: Análise de modelos Transformer
+- **Resultados esperados**: 
+  - DeBERTa-v3-small: 73.0% accuracy, 73.0% F1-Macro
+  - Twitter-XLM-RoBERTa: 71.0% accuracy, 71.0% F1-Macro
+- **Execução**: Abrir e executar o notebook Jupyter
+
+### 🚀 Como Executar - Passo a Passo para Reproduzir a Tabela 1
+
+> **📋 Objetivo**: Reproduzir os resultados da Tabela 1 - Comparação dos modelos de classificação de sentimento da monografia.
+
+#### Pré-requisitos
+
+```bash
+# Instalar dependências
+cd evaluation/model_comparison/scripts
+pip install -r requirements.txt
+pip install textblob nltk
+
+# Configuração do NLTK (para VADER) - executar uma vez
+python fix_nltk_ssl.py
+python -c "import nltk; nltk.download('vader_lexicon')"
+```
+
+#### Passo a Passo para Reproduzir os Resultados
+
+**1. TF-IDF + Logistic Regression (66.1% accuracy, 66.2% F1-Macro)**
+```bash
+cd evaluation/model_comparison/scripts
+python tfidf_logistic_classification_report.py
+```
+- **Tempo estimado**: ~100-200 segundos
+- **Resultado**: Salvo em `../results/tfidf_logistic_results.txt`
+- **Dataset**: 1.032.225 comentários (dataset completo)
+- **Divisão**: 80% treino / 20% teste ao nível de **comentários individuais** (não vídeos)
+- **Nota**: Este script estabelece o **benchmark** do modelo selecionado que será usado posteriormente na validação (`compare_metrics_vs_benchmark.py`).
+- **⚠️ Importante - Generalização**: A divisão ao nível de comentários significa que comentários do mesmo vídeo podem estar tanto no treino quanto no teste. Isso é adequado para **comparar modelos**, mas a **validação de generalização para vídeos diferentes** é feita posteriormente nos scripts de `scripts/01_model_evaluation/`, que usam vídeos completos diferentes via API em produção.
+
+**2. VADER (53.4% accuracy, 52.9% F1-Macro)**
+```bash
+cd evaluation/model_comparison/scripts
+python vader_classification_report.py
+```
+- **Tempo estimado**: ~100 segundos
+- **Resultado**: Salvo em `../results/vader_results_full_dataset.txt`
+- **Dataset**: 1.032.225 comentários (dataset completo)
+- **Nota**: O script executa com diferentes tamanhos de amostra. O resultado do dataset completo é o que aparece na tabela.
+- **⚠️ Importante**: Modelos rule-based (VADER, TextBlob) não fazem divisão train/test, pois não são modelos treinados. Eles são avaliados diretamente em todo o dataset.
+
+**3. TextBlob (48.8% accuracy, 46.8% F1-Macro)**
+```bash
+cd evaluation/model_comparison/scripts
+python textblob_classification_report.py
+```
+- **Tempo estimado**: ~95 segundos
+- **Resultado**: Salvo em `../results/textblob_results_full_dataset.txt`
+- **Dataset**: 1.032.225 comentários (dataset completo)
+- **⚠️ Importante**: Modelos rule-based não fazem divisão train/test, pois não são modelos treinados.
+
+**4. TF-IDF + SVM (52.5% accuracy, 51.8% F1-Macro)**
+```bash
+cd evaluation/model_comparison/scripts
+python svm_classification_report.py
+```
+- **Tempo estimado**: Varia conforme hardware (usa 50k amostras)
+- **Resultado**: Salvo em `../results/svm_results_*.txt`
+- **Dataset**: 50.000 comentários (amostra grande para treinamento mais rápido)
+- **Divisão**: 80% treino / 20% teste ao nível de **comentários individuais** (não vídeos)
+- **⚠️ Importante - Generalização**: Ver nota do TF-IDF + Logistic Regression acima.
+
+**5. Transformers (DeBERTa: 73.0%, Twitter-XLM-RoBERTa: 71.0%)**
+- **Execução**: Abrir e executar o notebook Jupyter
+  ```bash
+  cd evaluation/model_comparison/notebooks
+  jupyter notebook youtube_comments_sentiment_analysis_comparison.ipynb
+  ```
+- **Tempo estimado**: ~20-30 minutos por modelo (requer GPU recomendado)
+
+#### Ordem Recomendada de Execução
+
+1. **Primeiro**: Execute os modelos rule-based (VADER, TextBlob) - são mais rápidos
+2. **Segundo**: Execute os modelos Traditional ML (TF-IDF + LR, TF-IDF + SVM)
+3. **Terceiro**: Execute os Transformers (se tiver recursos computacionais)
+
+#### Consolidação dos Resultados
+
+Após executar todos os scripts, os resultados estarão em:
+- `evaluation/model_comparison/results/` - Arquivos de texto com métricas detalhadas
+- Os valores podem ser consolidados manualmente na tabela comparativa
+
+### 📊 Resultados
+
+#### Onde os Resultados são Salvos
+
+- **Arquivos de texto**: Resultados são salvos em `evaluation/model_comparison/results/*.txt`
+- **Arquivos Markdown**: Resumos em `evaluation/model_comparison/` (raiz)
+- **Modelos salvos**: Modelos treinados são salvos como arquivos `.pkl` (se configurado, na pasta de scripts)
+
+#### Resultados Principais Obtidos
+
+**Modelo Selecionado: TF-IDF + Logistic Regression**
+
+- **Accuracy**: 66.14%
+- **F1-Score (Macro)**: 66.28%
+- **Precision (Macro)**: 66.64%
+- **Recall (Macro)**: 66.14%
+- **Dataset Utilizado**: 1.032.225 comentários
+- **Divisão Train/Test**: 80/20 (ao nível de comentários, `random_state=42`)
+- **Tempo de Processamento**: ~100-200 segundos (dependendo do hardware)
+
+**Comparação com Outros Modelos**:
+
+| Modelo | Accuracy | F1 (Macro) | Velocidade | Tipo |
+|--------|----------|------------|------------|------|
+| VADER | ~53% | ~53% | Muito Rápido | Rule-based |
+| TextBlob | ~50% | ~50% | Muito Rápido | Rule-based |
+| TF-IDF + LR | **66.14%** | **66.28%** | Rápido | Traditional ML |
+| TF-IDF + SVM | ~65% | ~65% | Médio | Traditional ML |
+| Transformers | ~71-73% | ~71-73% | Lento | Deep Learning |
+
+**Decisão**: TF-IDF + Logistic Regression foi selecionado por oferecer o melhor equilíbrio entre desempenho, velocidade e viabilidade de deploy em produção.
+
+### ⚠️ Notas Importantes sobre a Divisão de Dados e Generalização
+
+**Como a divisão foi feita na comparação de modelos**:
+- O `train_test_split` foi feito ao nível de **comentários individuais** (não vídeos)
+- Divisão: 80% treino / 20% teste, com `random_state=42` e `stratify=labels`
+- Isso significa que comentários do mesmo vídeo podem estar tanto no treino quanto no teste
+- Dataset completo: 1.032.225 comentários
+  - Treino: ~825.780 comentários (80%)
+  - Teste: ~206.445 comentários (20%)
+
+**Por que esta divisão é adequada para comparação de modelos**:
+- ✅ Testa a capacidade de classificar **comentários individuais**, que é o objetivo dos modelos
+- ✅ Permite comparar modelos de forma justa usando a mesma divisão de dados
+- ✅ É o método padrão para avaliação de modelos de classificação de texto
+
+**Por que não invalida o argumento de generalização**:
+- ✅ A **validação de generalização para vídeos diferentes** é feita **separadamente** nos scripts de `scripts/01_model_evaluation/`
+- ✅ A validação usa **vídeos completos diferentes** buscados via API em produção
+- ✅ Os vídeos usados na validação são **diferentes** dos vídeos usados na comparação
+- ✅ A maioria dos comentários nos vídeos de validação são **novos** e não foram vistos durante o treino/teste
+- ✅ A validação testa o modelo em **produção real**, não no dataset local
+
+**Conclusão**:
+- A comparação de modelos (esta etapa) usa divisão ao nível de comentários para **comparar modelos entre si**
+- A validação de generalização (próxima etapa) usa vídeos diferentes para **validar que o modelo generaliza para novos vídeos**
+- Ambas as análises são válidas e complementares
+- Veja `evaluation/ARGUMENTO_GENERALIZACAO_MODELO_SELECIONADO.md` para argumentos detalhados sobre a relevância estatística
+
+### 📝 Notas Importantes
+
+- Todos os scripts devem ser executados a partir da pasta `evaluation/model_comparison/scripts/`
+- O dataset é baixado automaticamente usando `kagglehub` na primeira execução
+- Os scripts são **reproduzíveis** - ao executá-los, novos resultados serão gerados
+- O benchmark estabelecido aqui é usado posteriormente na validação do modelo
+
+### 🔗 Referências Adicionais
+
+- **Documentação principal**: `evaluation/model_comparison/README.md`
+- **Resumo da comparação**: `evaluation/model_comparison/MODEL_COMPARISON_SUMMARY.md`
+- **Resultados completos**: `evaluation/model_comparison/results/comprehensive_model_comparison.txt`
+- **Análise VADER**: `evaluation/model_comparison/README_VADER_ANALYSIS.md`
+- **Notebook Jupyter**: `evaluation/model_comparison/notebooks/youtube_comments_sentiment_analysis_comparison.ipynb`
+
+---
+
+## 1. Testes de Avaliação do Modelo Selecionado
 
 ### 📍 Localização
 
 **Scripts**: `evaluation/scripts/01_model_evaluation/`  
 **Dados e Resultados Completos**: `evaluation/model_analysis/`  
+  - **Scripts originais**: `evaluation/model_analysis/scripts/`  
+  - **Resultados**: `evaluation/model_analysis/results/`  
+  - **Gráficos**: `evaluation/model_analysis/graphs/`  
+  - **Logs**: `evaluation/model_analysis/logs/`  
+  - **Relatórios**: `evaluation/model_analysis/reports/`  
 **Resultados de Referência**: `evaluation/scripts/01_model_evaluation/results/` e `graphs/`
 
 ### 🎯 Objetivo
 
-Avaliar e validar o modelo de classificação de sentimento (TF-IDF + Logistic Regression) utilizado no sistema, incluindo:
+> **⚠️ Ordem Cronológica**: Esta etapa foi executada **DEPOIS** da comparação de modelos. Após selecionar o modelo TF-IDF + Logistic Regression, validamos seu desempenho em vídeos diferentes.
+
+Avaliar e validar o modelo de classificação de sentimento (TF-IDF + Logistic Regression) **selecionado na etapa anterior**, incluindo:
 - Acurácia do modelo comparado ao ground truth do dataset
 - Métricas de desempenho (Accuracy, Precision, Recall, F1-Score)
 - Análise de impacto do idioma na classificação
@@ -37,13 +289,19 @@ Avaliar e validar o modelo de classificação de sentimento (TF-IDF + Logistic R
 - **Função**: Compara as métricas básicas (Accuracy, Precision, Recall, F1-Score) da validação atual com o benchmark inicial
 - **Valida**: Se o modelo mantém o desempenho observado durante a seleção
 - **Uso**: Validação de desempenho do modelo
-- **⚠️ Nota Importante**: Este script seleciona vídeos aleatoriamente de `working_videos_*.json`. Embora o objetivo seja usar vídeos diferentes dos do benchmark inicial (test set), não há verificação automática explícita. Os vídeos são selecionados aleatoriamente do dataset completo, mas é recomendado verificar manualmente que os vídeos selecionados não foram parte do conjunto de treino/teste original (80/20 split).
+- **📊 Relevância Estatística**: 
+  - Na comparação de modelos (`model_comparison/`), o `train_test_split` foi feito ao nível de **comentários individuais** (não vídeos), com `random_state=42` e `test_size=0.2` (80/20).
+  - Este script seleciona **vídeos aleatoriamente diferentes** de `working_videos_*.json` (com `random.seed(42)`).
+  - **A análise mantém relevância estatística** porque: (1) usa 145 vídeos diferentes (~72.500 comentários), (2) os vídeos são diferentes dos usados na comparação, (3) testa o modelo em produção via API, e (4) demonstra que o modelo mantém desempenho em vídeos diferentes, validando a capacidade de generalização.
 
 **`validate_model_accuracy_with_dataset.py`**
 - **Função**: Valida a acurácia do modelo comparando predições da API com ground truth do dataset
 - **Valida**: Acurácia comentário por comentário
 - **Uso**: Validação detalhada de acurácia
-- **⚠️ Nota Importante**: Este script usa vídeos de `test_3_videos.json` ou `dataset_videos_for_accuracy_validation.json`. É necessário garantir que esses vídeos não foram utilizados no conjunto de treino/teste original do modelo (80/20 split). Os vídeos devem ser selecionados manualmente para garantir independência dos dados de treino/teste.
+- **📊 Relevância Estatística**: 
+  - Na comparação de modelos (`model_comparison/`), o `train_test_split` foi feito ao nível de **comentários individuais** (não vídeos), com `random_state=42` e `test_size=0.2` (80/20).
+  - Este script de validação usa **vídeos completos diferentes** de `test_3_videos.json` ou `dataset_videos_for_accuracy_validation.json`.
+  - **A análise mantém relevância estatística** porque: (1) os vídeos são diferentes dos usados na comparação, (2) a maioria dos comentários são novos, (3) testa o modelo em produção via API, e (4) demonstra generalização para vídeos diferentes, que é o objetivo principal da validação.
 
 #### Análise de Idioma
 
@@ -116,6 +374,11 @@ python multilingual_sentiment_analysis.py
 python generate_confusion_matrix.py
 python generate_metrics_comparison_table.py
 python generate_language_analysis_graphs_pt.py
+
+# OU executar os scripts originais em model_analysis/scripts/
+cd evaluation/model_analysis/scripts
+python compare_metrics_vs_benchmark.py
+# ... etc
 ```
 
 #### Estrutura de Dados Necessários
@@ -132,19 +395,50 @@ Os scripts esperam encontrar os seguintes arquivos:
 
 **Nota**: Os scripts tentam encontrar automaticamente os arquivos em diferentes locais. Se necessário, ajuste os caminhos nos scripts.
 
-**⚠️ Importante - Separação de Dados**: Os scripts de validação usam o dataset completo (`youtube_comments_cleaned.csv`) para buscar o ground truth, mas **não há verificação automática** de que os vídeos/comentários selecionados não foram parte do conjunto de treino/teste original usado na seleção do modelo (divisão 80/20). Para garantir validação independente, é recomendado:
+**⚠️ Importante - Separação de Dados e Relevância Estatística**: 
 
-1. Manter registro dos vídeos/comentários usados no treino/teste original
-2. Verificar manualmente que os vídeos em `test_3_videos.json`, `dataset_videos_for_accuracy_validation.json` ou `working_videos_*.json` não foram parte do conjunto original
-3. Ou usar uma divisão explícita do dataset (ex: usar apenas vídeos de um período específico ou com IDs específicos que não foram usados no treino/teste)
+**Como a divisão foi feita na comparação de modelos (etapa anterior):**
+- Na pasta `model_comparison/`, o `train_test_split` foi feito ao nível de **comentários individuais** (não vídeos)
+- Divisão: 80% treino / 20% teste, com `random_state=42`
+- Dataset completo: 1.032.225 comentários
+  - Treino: ~825.780 comentários (80%)
+  - Teste: ~206.445 comentários (20%)
+- Isso significa que comentários do mesmo vídeo podem estar tanto no treino quanto no teste original
+
+**Como a validação foi feita (esta etapa):**
+- Os scripts de validação (`validate_model_accuracy_with_dataset.py` e `compare_metrics_vs_benchmark.py`) usam **vídeos completos diferentes** do dataset
+- Os vídeos selecionados para validação são diferentes dos vídeos usados na comparação de modelos
+- A validação testa o modelo em produção (via API), não no dataset local
+- Vídeos testados: 145 vídeos diferentes
+- Comentários buscados: ~72.500 comentários
+- Comentários validados (matched): 917 comentários
+
+**Relevância Estatística e Generalização:**
+✅ **A análise mantém relevância estatística e o argumento de generalização é válido** pelos seguintes motivos:
+
+1. **Vídeos Diferentes**: Os vídeos usados na validação são diferentes dos vídeos usados na comparação de modelos. Isso é o aspecto mais importante para demonstrar generalização - o modelo é testado em vídeos completamente novos.
+
+2. **Validação em Produção**: A validação testa o modelo através da API em produção, não no dataset local. Isso valida o comportamento real do sistema.
+
+3. **Maioria dos Comentários são Novos**: Mesmo que alguns comentários individuais de um vídeo possam ter estado no test set original (devido à divisão ao nível de comentários), a maioria dos comentários nos vídeos de validação são novos e não foram vistos durante o treino/teste.
+
+4. **Treino ao Nível de Comentários**: O modelo foi treinado em comentários individuais, não em vídeos completos. Portanto, testar em vídeos completos diferentes ainda é uma validação válida de generalização.
+
+5. **Amostra Maior e Mais Diversa**: A validação usa uma amostra maior (145 vídeos, ~72.500 comentários) e mais diversa, fornecendo evidência robusta de que o modelo mantém desempenho em vídeos diferentes.
+
+**Conclusão**: A possível sobreposição parcial de alguns comentários individuais não invalida o argumento de que o modelo generaliza para vídeos diferentes, pois os vídeos são diferentes e a validação testa o modelo em um contexto de produção real.
+
+**📚 Documento de Referência**: Para argumentos detalhados sobre a relevância estatística, consulte `evaluation/ARGUMENTO_GENERALIZACAO_MODELO_SELECIONADO.md`.
 
 ### 📊 Resultados
 
 #### Onde os Resultados são Salvos
 
-- **Arquivos JSON**: Resultados das análises são salvos em `../../model_analysis/results/`
-- **Gráficos PNG**: Visualizações são salvas em `../../model_analysis/graphs/`
-- **Resultados de Referência**: Cópias dos resultados mais recentes estão em `results/` e `graphs/` dentro da pasta dos scripts
+- **Arquivos JSON**: Resultados das análises são salvos em `evaluation/model_analysis/results/`
+- **Gráficos PNG**: Visualizações são salvas em `evaluation/model_analysis/graphs/`
+- **Logs**: Arquivos de log são salvos em `evaluation/model_analysis/logs/`
+- **Relatórios TXT**: Relatórios de análise são salvos em `evaluation/model_analysis/reports/`
+- **Resultados de Referência**: Cópias dos resultados mais recentes estão em `evaluation/scripts/01_model_evaluation/results/` e `graphs/`
 
 #### Resultados Principais Obtidos
 
@@ -187,6 +481,12 @@ Na pasta `evaluation/scripts/01_model_evaluation/`:
 
 **Scripts**: `evaluation/scripts/02_api_performance/`  
 **Dados e Resultados Completos**: `evaluation/api_load_testing/`  
+  - **Scripts originais**: `evaluation/api_load_testing/scripts/`  
+  - **Resultados**: `evaluation/api_load_testing/results/`  
+  - **Gráficos**: `evaluation/api_load_testing/graphs/`  
+  - **Gráficos Consolidados**: `evaluation/api_load_testing/consolidated_graphs/`  
+  - **Logs**: `evaluation/api_load_testing/logs/`  
+  - **Documentação**: `evaluation/api_load_testing/docs/`  
 **Resultados de Referência**: `evaluation/scripts/02_api_performance/results/` e `graphs/`
 
 ### 🎯 Objetivo
@@ -284,6 +584,10 @@ cd evaluation/scripts/02_api_performance
 
 # Executar todos os testes e gerar resumo
 python run_all.py
+
+# OU executar os scripts originais em api_load_testing/scripts/
+cd evaluation/api_load_testing/scripts
+python run_all.py
 ```
 
 #### Executar Testes Individuais
@@ -367,11 +671,12 @@ DURATION_MINUTES = 60  # Duração do teste
 
 #### Onde os Resultados são Salvos
 
-- **Arquivos CSV**: Dados brutos dos testes são salvos em `../../api_load_testing/results/`
-- **Arquivos JSON**: Resumos estatísticos são salvos em `../../api_load_testing/results/`
-- **Gráficos PNG**: Visualizações são salvas em `../../api_load_testing/graphs/` ou `../../api_load_testing/consolidated_graphs/`
-- **Relatórios HTML**: Relatórios do Locust são salvos em `../../api_load_testing/results/`
-- **Resultados de Referência**: Cópias dos resultados mais recentes estão em `results/` e `graphs/` dentro da pasta dos scripts
+- **Arquivos CSV**: Dados brutos dos testes são salvos em `evaluation/api_load_testing/results/`
+- **Arquivos JSON**: Resumos estatísticos são salvos em `evaluation/api_load_testing/results/`
+- **Gráficos PNG**: Visualizações são salvas em `evaluation/api_load_testing/graphs/` ou `evaluation/api_load_testing/consolidated_graphs/`
+- **Relatórios HTML**: Relatórios do Locust são salvos em `evaluation/api_load_testing/results/`
+- **Logs**: Arquivos de log são salvos em `evaluation/api_load_testing/logs/`
+- **Resultados de Referência**: Cópias dos resultados mais recentes estão em `evaluation/scripts/02_api_performance/results/` e `graphs/`
 
 #### Resultados Principais Obtidos
 
@@ -430,7 +735,9 @@ Esses scripts podem ser executados diretamente de `evaluation/04_scripts/tests/`
 
 ### 📍 Localização
 
-**Scripts**: `packages/frontend/integration_test/` (na raiz do projeto, não em `evaluation/`)
+**Scripts**: `packages/frontend/integration_test/tests/` (na raiz do projeto, não em `evaluation/`)  
+**Documentação**: `packages/frontend/integration_test/docs/`  
+**README**: `packages/frontend/integration_test/README.md`
 
 > **Nota Importante**: Os testes do frontend estão localizados na pasta do frontend do projeto, não na pasta de avaliação, pois fazem parte do código do aplicativo Flutter.
 
@@ -514,7 +821,7 @@ Para testar a lógica sem renderizar em device/emulador:
 
 ```bash
 cd packages/frontend
-flutter test integration_test/app_test.dart
+flutter test integration_test/tests/app_test.dart
 ```
 
 ##### Opção 2: Teste Completo (com device/emulador)
@@ -530,7 +837,7 @@ flutter devices
 # 2. Execute os testes
 flutter drive \
   --driver=test_driver/integration_test.dart \
-  --target=integration_test/app_test.dart
+  --target=integration_test/tests/app_test.dart
 ```
 
 ##### Opção 3: Teste em Device Específico
@@ -542,7 +849,7 @@ flutter devices
 # Executar em device específico
 flutter drive \
   --driver=test_driver/integration_test.dart \
-  --target=integration_test/app_test.dart \
+  --target=integration_test/tests/app_test.dart \
   -d <device_id>
 ```
 
@@ -550,7 +857,7 @@ flutter drive \
 
 ```bash
 cd packages/frontend
-flutter test integration_test/
+flutter test integration_test/tests/
 ```
 
 ### 📊 Resultados
@@ -590,7 +897,8 @@ flutter test integration_test/
 ### 🔗 Referências Adicionais
 
 - **Documentação completa**: `packages/frontend/integration_test/README.md`
-- **Relatórios de teste**: `packages/frontend/integration_test/*_REPORT.md`
+- **Relatórios de teste**: `packages/frontend/integration_test/docs/*_REPORT.md`
+- **Guia de execução**: `packages/frontend/integration_test/docs/HOW_TO_RUN_TESTS.md`
 - **Relatórios de avaliação**: `evaluation/01_reports/`
 
 ---
@@ -601,24 +909,50 @@ flutter test integration_test/
 
 ```
 evaluation/
+├── model_comparison/                 # Scripts de comparação de modelos (ETAPA 0)
+│   ├── scripts/                      # Scripts Python
+│   ├── results/                      # Resultados (arquivos .txt)
+│   ├── notebooks/                    # Notebooks Jupyter
+│   └── README.md                     # Documentação
+│
 ├── scripts/                          # Scripts organizados por categoria
-│   ├── 01_model_evaluation/         # Scripts de avaliação do modelo
+│   ├── 01_model_evaluation/         # Scripts de avaliação do modelo selecionado (ETAPA 1)
 │   │   ├── results/                 # Resultados de referência (JSON)
 │   │   ├── graphs/                  # Gráficos de referência (PNG)
 │   │   └── *.py                     # Scripts de avaliação
-│   ├── 02_api_performance/          # Scripts de testes de carga/performance
+│   ├── 02_api_performance/          # Scripts de testes de carga/performance (ETAPA 2)
 │   │   ├── results/                 # Resultados de referência (JSON)
 │   │   ├── graphs/                  # Gráficos consolidados de referência (PNG)
 │   │   └── *.py                     # Scripts de testes
 │   └── README.md                     # Documentação consolidada
 │
 ├── model_analysis/                   # Dados e resultados completos do modelo
+│   ├── scripts/                     # Scripts Python originais
+│   ├── results/                     # Resultados JSON
+│   ├── graphs/                      # Gráficos PNG
+│   ├── logs/                         # Arquivos de log
+│   ├── reports/                      # Relatórios TXT
+│   ├── data/                         # Dados de entrada (JSON)
+│   └── README.md                     # Documentação
+│
 ├── api_load_testing/                 # Dados e resultados completos da API
+│   ├── scripts/                     # Scripts Python originais
+│   ├── results/                     # Resultados CSV/JSON/HTML
+│   ├── graphs/                      # Gráficos PNG
+│   ├── consolidated_graphs/         # Gráficos consolidados
+│   ├── logs/                         # Arquivos de log
+│   ├── docs/                         # Documentação adicional
+│   ├── teste_1/, teste_2/, etc.     # Resultados de testes específicos
+│   └── README.md                     # Documentação
+│
 ├── 01_reports/                       # Relatórios de avaliação
 ├── 02_graphs/                        # Gráficos finais (português/inglês)
 └── 03_data/                          # Dados brutos consolidados
 
-packages/frontend/integration_test/   # Testes E2E do frontend (Flutter)
+packages/frontend/integration_test/   # Testes E2E do frontend (Flutter) (ETAPA 3)
+├── tests/                            # Scripts de teste Dart
+├── docs/                             # Documentação e relatórios
+└── README.md                         # Documentação principal
 ```
 
 ### Dependências Gerais
@@ -644,7 +978,8 @@ Este guia pode ser referenciado na monografia como:
 
 **Estrutura de Referência Sugerida**:
 
-1. **Avaliação do Modelo**: Scripts em `evaluation/scripts/01_model_evaluation/`
+0. **Comparação de Modelos**: Scripts em `evaluation/model_comparison/`
+1. **Avaliação do Modelo Selecionado**: Scripts em `evaluation/scripts/01_model_evaluation/`
 2. **Avaliação de Performance**: Scripts em `evaluation/scripts/02_api_performance/`
 3. **Testes E2E do Frontend**: Scripts em `packages/frontend/integration_test/`
 

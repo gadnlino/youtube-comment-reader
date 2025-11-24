@@ -1,0 +1,71 @@
+{
+  "dataset": "airespucrs_pt",
+  "timestamp": "20251123_221424",
+  "total_samples": 80788,
+  "processing_time_seconds": 1196.2009069919586,
+  "metrics": {
+    "accuracy": 0.48289349903451007,
+    "precision": 0.6107546458920999,
+    "recall": 0.48289349903451007,
+    "f1_score": 0.5140793878631831,
+    "confusion_matrix": [
+      [
+        12450,
+        7691,
+        20253
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        6583,
+        7249,
+        26562
+      ]
+    ],
+    "classification_report": {
+      "NEGATIVE": {
+        "precision": 0.6541270425051227,
+        "recall": 0.3082140912016636,
+        "f1-score": 0.41900146398101873,
+        "support": 40394.0
+      },
+      "NEUTRAL": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 0.0
+      },
+      "POSITIVE": {
+        "precision": 0.5673822492790772,
+        "recall": 0.6575729068673566,
+        "f1-score": 0.6091573117453474,
+        "support": 40394.0
+      },
+      "accuracy": 0.48289349903451007,
+      "macro avg": {
+        "precision": 0.40716976392806664,
+        "recall": 0.32192899935634006,
+        "f1-score": 0.3427195919087887,
+        "support": 80788.0
+      },
+      "weighted avg": {
+        "precision": 0.6107546458920999,
+        "recall": 0.48289349903451007,
+        "f1-score": 0.5140793878631831,
+        "support": 80788.0
+      }
+    },
+    "labels": [
+      "NEGATIVE",
+      "NEUTRAL",
+      "POSITIVE"
+    ]
+  },
+  "distribution": {
+    "NEGATIVE": 40394,
+    "POSITIVE": 40394
+  }
+}
