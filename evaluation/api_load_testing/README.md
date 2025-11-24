@@ -6,12 +6,20 @@ Este diretório contém scripts automatizados para avaliar o desempenho da API i
 
 ```
 evaluation/api_load_testing/
-├── common.py          # Funções utilitárias (HTTP, métricas, gráficos)
-├── videos.py          # Testes de listagem de vídeos
-├── comments.py        # Testes de listagem de comentários
-├── stability.py       # Teste de estabilidade temporal
-├── run_all.py         # Script principal (executa todos os testes)
-└── README.md          # Este arquivo
+├── scripts/
+│   ├── common.py          # Funções utilitárias (HTTP, métricas, gráficos)
+│   ├── videos.py          # Testes de listagem de vídeos
+│   ├── comments.py        # Testes de listagem de comentários
+│   ├── stability.py       # Teste de estabilidade temporal
+│   ├── run_all.py         # Script principal (executa todos os testes)
+│   ├── locust_max_tps.py  # Teste de TPS máximo com Locust
+│   ├── run_max_tps_test.sh # Script bash para executar teste de TPS
+│   └── [outros scripts auxiliares]
+├── results/               # Resultados dos testes (CSV, JSON)
+├── graphs/                # Gráficos gerados
+├── logs/                  # Logs de execução
+├── docs/                  # Documentação adicional
+└── README.md              # Este arquivo
 ```
 
 ## Pré-requisitos
@@ -20,27 +28,50 @@ evaluation/api_load_testing/
 pip install requests matplotlib seaborn numpy
 ```
 
+Para testes de TPS máximo com Locust:
+```bash
+pip install locust
+```
+
+## Início Rápido
+
+```bash
+# 1. Instalar dependências
+pip install requests matplotlib seaborn numpy
+
+# 2. Configurar (editar scripts/common.py, scripts/videos.py, scripts/comments.py conforme necessário)
+
+# 3. Executar todos os testes
+cd evaluation/api_load_testing/scripts
+python3 run_all.py
+
+# 4. Ver resultados
+# - Resultados: ../results/
+# - Gráficos: ../graphs/
+# - Logs: ../logs/perf_test.log
+```
+
 ## Configuração
 
 Antes de executar os testes, você precisa configurar:
 
 ### 1. URLs e Endpoints
 
-Edite `common.py` e ajuste:
+Edite `scripts/common.py` e ajuste:
 ```python
 API_BASE_URL = "https://5jthpuzp9f.execute-api.us-east-1.amazonaws.com/prod"
 ```
 
 ### 2. Testes de Vídeos
 
-Edite `videos.py` e ajuste:
+Edite `scripts/videos.py` e ajuste:
 ```python
 SEARCH_KEYWORD = "python tutorial"  # Palavra-chave para busca
 ```
 
 ### 3. Testes de Comentários
 
-Edite `comments.py` e preencha os IDs dos vídeos:
+Edite `scripts/comments.py` e preencha os IDs dos vídeos:
 ```python
 VIDEOS = {
     'poucos': {
@@ -60,14 +91,14 @@ VIDEOS = {
 
 ### 4. Teste de Estabilidade
 
-Edite `stability.py` e configure:
+Edite `scripts/stability.py` e configure:
 ```python
 TEST_ENDPOINT = '/video/comments'  # ou '/search'
 TEST_PARAMS = {
     'videoId': 'VIDEO_ID_AQUI',  # Se usar /video/comments
     # ... outros parâmetros
 }
-DURATION_MINUTES = 60  # Duração do teste
+DURATION_MINUTES = 10  # Duração do teste (padrão: 10 minutos)
 ```
 
 ## Uso
@@ -75,13 +106,20 @@ DURATION_MINUTES = 60  # Duração do teste
 ### Executar Todos os Testes
 
 ```bash
-cd evaluation/api_load_testing
+cd evaluation/api_load_testing/scripts
 python3 run_all.py
+```
+
+Ou a partir da raiz do projeto:
+```bash
+cd evaluation/api_load_testing/scripts && python3 run_all.py
 ```
 
 ### Executar Testes Individuais
 
 ```bash
+cd evaluation/api_load_testing/scripts
+
 # Apenas testes de vídeos
 python3 videos.py
 
@@ -92,30 +130,35 @@ python3 comments.py
 python3 stability.py
 ```
 
+**Nota**: Todos os scripts devem ser executados a partir do diretório `scripts/` para que os imports funcionem corretamente.
+
 ## Saída
 
-Os scripts geram:
+Os scripts geram arquivos nos seguintes diretórios (criados automaticamente):
 
 1. **Arquivos CSV**: Dados brutos de cada requisição
-   - `results/videos_test_YYYYMMDD_HHMMSS.csv`
-   - `results/comments_test_YYYYMMDD_HHMMSS.csv`
-   - `results/stability_test_YYYYMMDD_HHMMSS.csv`
+   - `evaluation/api_load_testing/results/videos_test_YYYYMMDD_HHMMSS.csv`
+   - `evaluation/api_load_testing/results/comments_test_YYYYMMDD_HHMMSS.csv`
+   - `evaluation/api_load_testing/results/stability_test_YYYYMMDD_HHMMSS.csv`
 
 2. **Arquivos JSON**: Dados brutos + métricas agregadas
-   - `results/videos_test_YYYYMMDD_HHMMSS.json`
-   - `results/comments_test_YYYYMMDD_HHMMSS.json`
-   - `results/stability_test_YYYYMMDD_HHMMSS.json`
+   - `evaluation/api_load_testing/results/videos_test_YYYYMMDD_HHMMSS.json`
+   - `evaluation/api_load_testing/results/comments_test_YYYYMMDD_HHMMSS.json`
+   - `evaluation/api_load_testing/results/stability_test_YYYYMMDD_HHMMSS.json`
 
 3. **Gráficos PNG**: Visualizações dos resultados
-   - `graphs/videos_mean_comparison_*.png` - Comparação de tempos médios
-   - `graphs/videos_p95_comparison_*.png` - Comparação de P95
-   - `graphs/videos_boxplot_*.png` - Distribuição de tempos
-   - `graphs/comments_*.png` - Gráficos similares para comentários
-   - `graphs/stability_timeseries_*.png` - Série temporal de estabilidade
+   - `evaluation/api_load_testing/graphs/videos_mean_comparison_*.png` - Comparação de tempos médios
+   - `evaluation/api_load_testing/graphs/videos_p95_comparison_*.png` - Comparação de P95
+   - `evaluation/api_load_testing/graphs/videos_boxplot_*.png` - Distribuição de tempos
+   - `evaluation/api_load_testing/graphs/comments_*.png` - Gráficos similares para comentários
+   - `evaluation/api_load_testing/graphs/stability_timeseries_*.png` - Série temporal de estabilidade
 
 4. **Resumo Executivo**: 
-   - `results/perf_summary_YYYYMMDD_HHMMSS.txt` - Resumo textual
-   - `results/perf_summary_YYYYMMDD_HHMMSS.json` - Resumo em JSON
+   - `evaluation/api_load_testing/results/perf_summary_YYYYMMDD_HHMMSS.txt` - Resumo textual
+   - `evaluation/api_load_testing/results/perf_summary_YYYYMMDD_HHMMSS.json` - Resumo em JSON
+
+5. **Logs de Execução**:
+   - `evaluation/api_load_testing/logs/perf_test.log` - Log detalhado de todas as execuções
 
 ## Métricas Calculadas
 
@@ -177,7 +220,8 @@ Para encontrar o **TPS máximo** da API com aumento gradual de carga:
 pip install locust
 
 # Executar teste de TPS máximo (script automatizado)
-cd evaluation/api_load_testing
+cd evaluation/api_load_testing/scripts
+chmod +x run_max_tps_test.sh  # Dar permissão de execução (primeira vez)
 ./run_max_tps_test.sh
 
 # Ou com parâmetros customizados
@@ -192,15 +236,18 @@ O teste de TPS máximo:
 - Identifica TPS máximo sustentável
 - Detecta ponto de degradação de performance
 - Identifica quando começam as falhas
-- Gera relatórios CSV e HTML detalhados
+- Gera relatórios CSV e HTML detalhados em `evaluation/api_load_testing/results/`
 
-**Veja `README_MAX_TPS.md` para documentação completa.**
+**Veja `docs/README_MAX_TPS.md` para documentação completa.**
 
-## Notas
+## Notas Importantes
 
-- Os scripts incluem marcadores `TODO` onde você precisa ajustar configurações
-- Os intervalos entre requisições podem ser ajustados nos scripts individuais
-- O teste de estabilidade executa muitas requisições em 10 minutos (teste de carga)
-- Todos os arquivos são salvos com timestamp para evitar sobrescrita
-- TPS é calculado automaticamente nos testes de estabilidade
+- **Diretório de execução**: Todos os scripts Python devem ser executados a partir do diretório `scripts/` para que os imports funcionem corretamente
+- **Paths relativos**: Os scripts criam automaticamente os diretórios `results/`, `graphs/` e `logs/` no diretório pai (`evaluation/api_load_testing/`)
+- **Configuração**: Os scripts incluem marcadores `TODO` onde você precisa ajustar configurações (URLs, IDs de vídeos, etc.)
+- **Intervalos**: Os intervalos entre requisições podem ser ajustados nos scripts individuais (`DELAY_BETWEEN_REQUESTS`)
+- **Estabilidade**: O teste de estabilidade executa muitas requisições em 10 minutos (teste de carga) - pode levar tempo
+- **Timestamps**: Todos os arquivos são salvos com timestamp para evitar sobrescrita
+- **TPS**: TPS é calculado automaticamente nos testes de estabilidade
+- **Logs**: Todos os logs são salvos em `logs/perf_test.log` para acompanhamento em tempo real
 
