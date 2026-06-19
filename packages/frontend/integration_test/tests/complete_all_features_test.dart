@@ -33,6 +33,7 @@ import 'package:get/get.dart';
 
 import 'package:frontend/app/common/controllers/common/bottom_navigation_bar_controller.dart';
 import 'package:frontend/app/common/controllers/common/favorites_controller.dart';
+import 'package:frontend/app/common/controllers/common/theme_controller.dart';
 import 'package:frontend/app/common/themes/app_theme.dart';
 import 'package:frontend/app/pages/favorites_page/favorites_page.dart';
 import 'package:frontend/app/pages/video_comments_page/video_comments_page.dart';
@@ -68,32 +69,38 @@ void main() {
     Get.testMode = true;
     Get.put(BottomNavigationBarController(), permanent: true);
     Get.put(FavoritesController(), permanent: true);
+    Get.put(ThemeController(), permanent: true);
     print('✅ Controllers initialized\n');
   });
 
   group('🎬 COMPLETE Application Test Suite', () {
     
     Widget buildApp() {
-      return GetMaterialApp(
-        theme: appThemeData,
-        initialRoute: '/',
-        getPages: [
-          GetPage(
-            name: '/',
-            page: () => VideoSearchPage(),
-            binding: VideoSearchPageBinding(),
-          ),
-          GetPage(
-            name: videoCommentsPageRoute,
-            page: () => VideoCommentsPage(),
-            binding: VideoCommentsPageBinding(),
-          ),
-          GetPage(
-            name: favoritesPageRoute,
-            page: () => FavoritesPage(),
-            binding: FavoritesPageBinding(),
-          ),
-        ],
+      final themeController = Get.find<ThemeController>();
+      return Obx(
+        () => GetMaterialApp(
+          theme: appLightTheme,
+          darkTheme: appDarkTheme,
+          themeMode: themeController.themeMode.value,
+          initialRoute: '/',
+          getPages: [
+            GetPage(
+              name: '/',
+              page: () => VideoSearchPage(),
+              binding: VideoSearchPageBinding(),
+            ),
+            GetPage(
+              name: videoCommentsPageRoute,
+              page: () => VideoCommentsPage(),
+              binding: VideoCommentsPageBinding(),
+            ),
+            GetPage(
+              name: favoritesPageRoute,
+              page: () => FavoritesPage(),
+              binding: FavoritesPageBinding(),
+            ),
+          ],
+        ),
       );
     }
     

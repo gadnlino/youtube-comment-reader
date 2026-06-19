@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/app/common/models/models.dart';
+import 'package:frontend/app/common/themes/app_theme_context.dart';
 import 'package:frontend/app/common/utils/utils.dart';
 import 'package:html_unescape/html_unescape.dart';
 
@@ -18,6 +19,9 @@ class VideoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appTheme = context.appTheme;
+    final textTheme = Theme.of(context).textTheme;
+
     return InkWell(
       onTap: onTap,
       child: Padding(
@@ -33,7 +37,7 @@ class VideoWidget extends StatelessWidget {
                 errorBuilder: (context, error, stackTrace) => Stack(
                   children: [
                     Container(
-                        color: Colors.white,
+                        color: appTheme.imageFallbackBackground,
                         height: video.snippet.thumbnails.defaultThumbnail.height
                             .toDouble(),
                         width: video.snippet.thumbnails.defaultThumbnail.width
@@ -43,9 +47,9 @@ class VideoWidget extends StatelessWidget {
                           .toDouble(),
                       width: video.snippet.thumbnails.defaultThumbnail.width
                           .toDouble(),
-                      child: const Icon(
+                      child: Icon(
                         Icons.question_mark_outlined,
-                        color: Colors.black,
+                        color: appTheme.imageFallbackIcon,
                         size: 30,
                       ),
                     )
@@ -62,15 +66,12 @@ class VideoWidget extends StatelessWidget {
                     HtmlUnescape().convert(video.snippet.title),
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
+                    style: textTheme.titleMedium,
                   ),
                   const SizedBox(height: 4),
                   Text(
                     '${video.snippet.channelTitle} · ${Utils.formatDateOrNull(DateTime.parse(video.snippet.publishedAt), 'dd/MM/yyyy')}',
-                    style: TextStyle(fontSize: 12, color: Colors.grey[200]),
+                    style: textTheme.bodySmall,
                   ),
                 ],
               ),
@@ -78,7 +79,9 @@ class VideoWidget extends StatelessWidget {
             IconButton(
               icon: Icon(
                 favorited ? Icons.star : Icons.star_border,
-                color: favorited ? Colors.yellow : Colors.white,
+                color: favorited
+                    ? appTheme.favoritedColor
+                    : context.appColors.onSurface,
               ),
               onPressed: onFavoriteTap,
             ),

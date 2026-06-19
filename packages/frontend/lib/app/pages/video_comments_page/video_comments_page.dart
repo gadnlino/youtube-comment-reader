@@ -3,9 +3,11 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:frontend/app/common/components/comment_widget.dart';
 import 'package:frontend/app/common/components/custom_divider.dart';
+import 'package:frontend/app/common/components/theme_mode_button.dart';
 import 'package:frontend/app/common/controllers/common/favorites_controller.dart';
 import 'package:frontend/app/common/controllers/pages/video_comments_page_controller.dart';
 import 'package:frontend/app/common/models/models.dart';
+import 'package:frontend/app/common/themes/app_theme_context.dart';
 import 'package:frontend/app/common/utils/navigation.dart';
 import 'package:get/get.dart';
 import 'package:html_unescape/html_unescape.dart';
@@ -172,9 +174,10 @@ class VideoCommentsPage extends GetView<VideoCommentsPageController> {
                           controller.clearFilters();
                           controller.reloadComments();
                         },
-                        child: const Text(
+                        child: Text(
                           "Clear filters",
-                          style: TextStyle(color: Colors.red),
+                          style: TextStyle(
+                              color: Theme.of(context).colorScheme.error),
                         ),
                       ),
                       ElevatedButton(
@@ -195,6 +198,9 @@ class VideoCommentsPage extends GetView<VideoCommentsPageController> {
   }
 
   Widget _videoDescriptionSection(BuildContext context, String description) {
+    final textTheme = Theme.of(context).textTheme;
+    final appTheme = context.appTheme;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -215,7 +221,9 @@ class VideoCommentsPage extends GetView<VideoCommentsPageController> {
                 HtmlUnescape().convert(description),
                 overflow: TextOverflow.fade,
                 softWrap: true,
-                style: const TextStyle(fontSize: 14, color: Colors.white70),
+                style: textTheme.bodyMedium?.copyWith(
+                  color: appTheme.mutedText,
+                ),
               ),
             ),
           ),
@@ -234,8 +242,8 @@ class VideoCommentsPage extends GetView<VideoCommentsPageController> {
                 controller.videoDescriptionExpanded.value
                     ? "Hide description"
                     : "Show description",
-                style: const TextStyle(
-                  color: Colors.white60,
+                style: textTheme.bodyMedium?.copyWith(
+                  color: appTheme.mutedText,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -248,6 +256,10 @@ class VideoCommentsPage extends GetView<VideoCommentsPageController> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final appTheme = context.appTheme;
+    final onSurface = context.appColors.onSurface;
+
     return Scaffold(
         appBar: AppBar(
           title: Text(pageTitle),
@@ -258,6 +270,7 @@ class VideoCommentsPage extends GetView<VideoCommentsPageController> {
               },
               icon: const Icon(Icons.arrow_back)),
           actions: [
+            const ThemeModeButton(),
             Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 3,
@@ -265,7 +278,6 @@ class VideoCommentsPage extends GetView<VideoCommentsPageController> {
               child: IconButton(
                 onPressed: () => controller.reloadComments(),
                 icon: const Icon(Icons.refresh_sharp),
-                color: Colors.white,
               ),
             ),
           ],
@@ -300,16 +312,14 @@ class VideoCommentsPage extends GetView<VideoCommentsPageController> {
                             ? HtmlUnescape().convert(
                                 controller.selectedVideo.value!.snippet.title)
                             : "",
-                        style: const TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
+                        style: textTheme.titleMedium,
                       )),
                       IconButton(
                         icon: Icon(
                           videoFavorited ? Icons.star : Icons.star_border,
-                          color: videoFavorited ? Colors.yellow : Colors.white,
+                          color: videoFavorited
+                              ? appTheme.favoritedColor
+                              : onSurface,
                         ),
                         onPressed: () {
                           if (!videoFavorited) {
@@ -354,16 +364,15 @@ class VideoCommentsPage extends GetView<VideoCommentsPageController> {
                   const SizedBox(height: 10),
                   Row(
                     children: [
-                      const Text(
+                      Text(
                         "Comments",
-                        style: TextStyle(color: Colors.white, fontSize: 20),
+                        style: textTheme.titleLarge,
                       ),
                       const Spacer(),
                       IconButton(
                         onPressed: () =>
                             _showFilterBottomSheet(context: context),
                         icon: const Icon(Icons.tune_rounded),
-                        color: Colors.white,
                       )
                     ],
                   ),
@@ -371,26 +380,28 @@ class VideoCommentsPage extends GetView<VideoCommentsPageController> {
                   // Lista Rolável de Comentários
                   Builder(builder: (ctx) {
                     if (controller.commentsDisabledForVideo.value) {
-                      return const Expanded(
+                      return Expanded(
                           child: Center(
                         child: Padding(
-                          padding: EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(8.0),
                           child: Text(
                             "Comments disabled for this video :(",
-                            style: TextStyle(fontSize: 25, color: Colors.white),
+                            style: textTheme.headlineSmall,
+                            textAlign: TextAlign.center,
                           ),
                         ),
                       ));
                     }
 
                     if (controller.commentsThreadList.isEmpty) {
-                      return const Expanded(
+                      return Expanded(
                           child: Center(
                         child: Padding(
-                          padding: EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(8.0),
                           child: Text(
                             "No comments yet :/",
-                            style: TextStyle(fontSize: 25, color: Colors.white),
+                            style: textTheme.headlineSmall,
+                            textAlign: TextAlign.center,
                           ),
                         ),
                       ));

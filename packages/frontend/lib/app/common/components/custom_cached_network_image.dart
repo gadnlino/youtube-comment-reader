@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:frontend/app/common/themes/app_theme_context.dart';
 
 class CustomCachedNetworkImage extends StatelessWidget {
   String url;
@@ -17,8 +18,8 @@ class CustomCachedNetworkImage extends StatelessWidget {
       fit: fit,
       height: height,
       width: width,
-      placeholder: (context, url) => const CircularProgressIndicator(
-        color: Colors.black45,
+      placeholder: (context, url) => CircularProgressIndicator(
+        color: context.appTheme.placeholderOverlay,
       ),
       errorWidget: (context, url, error) => const Icon(Icons.error),
     );

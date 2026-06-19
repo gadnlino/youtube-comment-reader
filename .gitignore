@@ -276,3 +276,41 @@ packages/containers/sentiment_analysis/evaluation/model_evaluation/svm_results.t
 packages/containers/sentiment_analysis/evaluation/model_evaluation/svm_fast_results.txt
 packages/containers/sentiment_analysis/DATASET_EVALUATION_REPORT.md
 /evaluation/api_load_testing/venv
+
+### OpenSpec / AI agent scaffolds ###
+# OpenSpec init can emit duplicate workflow files under packages/frontend/.
+# Canonical workflow lives at the repo root (.cursor/, .claude/, .codex/, openspec/).
+packages/frontend/.agent/
+packages/frontend/.amazonq/
+packages/frontend/.augment/
+packages/frontend/.bob/
+packages/frontend/.claude/
+packages/frontend/.cline/
+packages/frontend/.clinerules/
+packages/frontend/.codebuddy/
+packages/frontend/.codex/
+packages/frontend/.continue/
+packages/frontend/.cospec/
+packages/frontend/.crush/
+packages/frontend/.cursor/
+packages/frontend/.factory/
+packages/frontend/.forge/
+packages/frontend/.gemini/
+packages/frontend/.github/
+packages/frontend/.iflow/
+packages/frontend/.junie/
+packages/frontend/.kilocode/
+packages/frontend/.kimi/
+packages/frontend/.kiro/
+packages/frontend/.lingma/
+packages/frontend/.opencode/
+packages/frontend/.pi/
+packages/frontend/.qoder/
+packages/frontend/.qwen/
+packages/frontend/.roo/
+packages/frontend/.trae/
+packages/frontend/.vibe/
+packages/frontend/.windsurf/
+
+# Local Flutter DevTools settings (machine-specific)
+packages/frontend/devtools_options.yaml

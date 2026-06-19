@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:frontend/app/common/controllers/common/bottom_navigation_bar_controller.dart';
 import 'package:frontend/app/common/controllers/common/favorites_controller.dart';
+import 'package:frontend/app/common/controllers/common/theme_controller.dart';
 import 'package:frontend/app/common/themes/app_theme.dart';
 import 'package:frontend/app/pages/favorites_page/favorites_page.dart';
 import 'package:frontend/app/pages/video_comments_page/video_comments_page.dart';
@@ -49,26 +50,43 @@ Future main() async {
   // injecting global controllers, in dependency order
   Get.put(BottomNavigationBarController(), permanent: true);
   Get.put(FavoritesController());
+  final themeController = Get.put(ThemeController(), permanent: true);
+  await themeController.loadSavedTheme();
 
-  runApp(GetMaterialApp(
-    theme: appThemeData,
-    initialRoute: '/',
-    getPages: [
-      GetPage(
-        name: '/',
-        page: () => VideoSearchPage(),
-        binding: VideoSearchPageBinding(),
+  runApp(const CommentReaderApp());
+}
+
+class CommentReaderApp extends StatelessWidget {
+  const CommentReaderApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final themeController = Get.find<ThemeController>();
+
+    return Obx(
+      () => GetMaterialApp(
+        theme: appLightTheme,
+        darkTheme: appDarkTheme,
+        themeMode: themeController.themeMode.value,
+        initialRoute: '/',
+        getPages: [
+          GetPage(
+            name: '/',
+            page: () => VideoSearchPage(),
+            binding: VideoSearchPageBinding(),
+          ),
+          GetPage(
+            name: videoCommentsPageRoute,
+            page: () => VideoCommentsPage(),
+            binding: VideoCommentsPageBinding(),
+          ),
+          GetPage(
+            name: favoritesPageRoute,
+            page: () => FavoritesPage(),
+            binding: FavoritesPageBinding(),
+          ),
+        ],
       ),
-      GetPage(
-        name: videoCommentsPageRoute,
-        page: () => VideoCommentsPage(),
-        binding: VideoCommentsPageBinding(),
-      ),
-      GetPage(
-        name: favoritesPageRoute,
-        page: () => FavoritesPage(),
-        binding: FavoritesPageBinding(),
-      ),
-    ],
-  ));
+    );
+  }
 }

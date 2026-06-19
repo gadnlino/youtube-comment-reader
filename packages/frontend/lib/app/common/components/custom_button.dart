@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/app/common/themes/app_theme_context.dart';
+import 'package:frontend/app/common/themes/app_theme_extension.dart';
 
 enum ButtonType { primary, success, cancel, neutral }
 
@@ -16,50 +18,39 @@ class CustomButton extends StatelessWidget {
     this.disabled = false,
   });
 
-  Color getButtonColor() {
-    Color color;
-
+  Color _getButtonColor(AppThemeExtension appTheme) {
     switch (type) {
       case ButtonType.primary:
-        color = const Color(0xfffff50a);
-        break;
+        return appTheme.buttonPrimary;
       case ButtonType.success:
-        color = const Color(0xff35A3D2);
-        break;
+        return appTheme.buttonSuccess;
       case ButtonType.cancel:
-        color = const Color(0xffE85B3C);
-        break;
+        return appTheme.buttonCancel;
       case ButtonType.neutral:
-        color = Colors.transparent;
-        break;
+        return Colors.transparent;
     }
-
-    return color;
   }
 
-  Color getTextColor() {
-    Color color;
-
+  Color _getTextColor(
+      AppThemeExtension appTheme, ColorScheme colorScheme, ButtonType type) {
     switch (type) {
       case ButtonType.primary:
-        color = const Color(0xff000000);
-        break;
+        return appTheme.buttonPrimaryText;
       case ButtonType.success:
-        color = const Color(0xff000000);
-        break;
+        return appTheme.buttonSuccessText;
       case ButtonType.cancel:
-        color = const Color(0xffffffff);
-        break;
+        return appTheme.buttonCancelText;
       case ButtonType.neutral:
-        color = const Color(0xff000000);
-        break;
+        return colorScheme.onSurface;
     }
-
-    return color;
   }
 
   @override
   Widget build(BuildContext context) {
+    final appTheme = context.appTheme;
+    final colorScheme = context.appColors;
+    final textTheme = Theme.of(context).textTheme;
+
     return Material(
       color: Colors.transparent,
       child: MaterialButton(
@@ -70,12 +61,13 @@ class CustomButton extends StatelessWidget {
           }
         },
         height: 50,
-        color: getButtonColor(),
+        color: _getButtonColor(appTheme),
         child: Text(
           text,
           textAlign: TextAlign.center,
-          style: TextStyle(
-              color: getTextColor(), fontFamily: "Poppins", fontSize: 20),
+          style: textTheme.titleLarge?.copyWith(
+            color: _getTextColor(appTheme, colorScheme, type),
+          ),
         ),
       ),
     );

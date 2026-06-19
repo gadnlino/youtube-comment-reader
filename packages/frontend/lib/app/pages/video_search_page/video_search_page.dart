@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:frontend/app/common/components/custom_bottom_navigation_bar.dart';
 import 'package:frontend/app/common/components/custom_divider.dart';
+import 'package:frontend/app/common/components/theme_mode_button.dart';
 import 'package:frontend/app/common/components/video_widget.dart';
 import 'package:frontend/app/common/controllers/common/favorites_controller.dart';
 import 'package:frontend/app/common/controllers/pages/video_search_page_controller.dart';
@@ -118,9 +119,10 @@ class VideoSearchPage extends GetView<VideoSearchPageController> {
                           controller.clearFilters();
                           controller.reloadVideos();
                         },
-                        child: const Text(
+                        child: Text(
                           "Clear filters",
-                          style: TextStyle(color: Colors.red),
+                          style: TextStyle(
+                              color: Theme.of(context).colorScheme.error),
                         ),
                       ),
                       ElevatedButton(
@@ -148,6 +150,7 @@ class VideoSearchPage extends GetView<VideoSearchPageController> {
           centerTitle: true,
           title: Text(pageTitle),
           actions: [
+            const ThemeModeButton(),
             Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 3,
@@ -157,7 +160,6 @@ class VideoSearchPage extends GetView<VideoSearchPageController> {
                   controller.reloadVideos();
                 },
                 icon: const Icon(Icons.refresh_sharp),
-                color: Colors.white,
               ),
             ),
             Padding(
@@ -167,7 +169,6 @@ class VideoSearchPage extends GetView<VideoSearchPageController> {
               child: IconButton(
                 onPressed: () => _showFilterBottomSheet(context: context),
                 icon: const Icon(Icons.tune_rounded),
-                color: Colors.white,
               ),
             )
           ],
@@ -178,9 +179,9 @@ class VideoSearchPage extends GetView<VideoSearchPageController> {
             if ((controller.loadingMoreVideos.value ||
                     controller.reloading.value) &&
                 controller.videoSearchList.isEmpty) {
-              return const Center(
+              return Center(
                 child: CircularProgressIndicator(
-                  color: Colors.white,
+                  color: Theme.of(context).colorScheme.onSurface,
                 ),
               );
             }

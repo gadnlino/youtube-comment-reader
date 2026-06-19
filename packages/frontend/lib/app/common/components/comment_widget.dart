@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/app/common/models/models.dart';
+import 'package:frontend/app/common/themes/app_theme_context.dart';
 import 'package:frontend/app/common/utils/utils.dart';
 import 'package:html_unescape/html_unescape.dart';
 
@@ -27,9 +28,12 @@ class _CommentWidgetState extends State<CommentWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final appTheme = context.appTheme;
+    final textTheme = Theme.of(context).textTheme;
+    final onSurface = context.appColors.onSurface;
+
     return Stack(
       children: [
-        // Linhas verticais para cada nível de aninhamento
         if (widget.level > 0)
           ...List.generate(widget.level, (index) {
             return Positioned(
@@ -38,11 +42,10 @@ class _CommentWidgetState extends State<CommentWidget> {
               bottom: 0,
               width: 2.0,
               child: Container(
-                color: Colors.grey.withOpacity(0.3),
+                color: appTheme.nestedCommentLine,
               ),
             );
           }),
-        // Conteúdo do comentário
         Padding(
           padding: EdgeInsets.only(
               left: widget.level * 12.0 + 5.0,
@@ -63,8 +66,9 @@ class _CommentWidgetState extends State<CommentWidget> {
                   ),
                   Text(
                     "${widget.comment.snippet.authorDisplayName} ",
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w500, color: Colors.white),
+                    style: textTheme.bodyMedium?.copyWith(
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                   Expanded(
                       child: Align(
@@ -75,42 +79,43 @@ class _CommentWidgetState extends State<CommentWidget> {
                                   widget.comment.snippet.publishedAt),
                               "dd/MM/yyyy HH:mm") ??
                           "",
-                      style: const TextStyle(color: Colors.white, fontSize: 10),
+                      style: textTheme.labelSmall,
                     ),
                   ))
                 ],
               ),
               const SizedBox(height: 4.0),
               Text(HtmlUnescape().convert(widget.comment.snippet.textOriginal),
-                  style: const TextStyle(color: Colors.white)),
+                  style: textTheme.bodyMedium),
               const SizedBox(height: 4.0),
               Row(
                 children: [
-                  const Icon(
+                  Icon(
                     Icons.thumb_up,
                     size: 16,
-                    color: Colors.grey,
+                    color: appTheme.iconMuted,
                   ),
                   const SizedBox(width: 4.0),
                   Text(
                     widget.comment.snippet.likeCount.toString(),
-                    style: const TextStyle(color: Colors.white),
+                    style: textTheme.bodyMedium,
                   ),
                   const SizedBox(width: 4.0),
                   if (widget.replies != null && widget.replies!.isNotEmpty)
-                    const Icon(Icons.comment, size: 16, color: Colors.grey),
+                    Icon(Icons.comment, size: 16, color: appTheme.iconMuted),
                   if (widget.replies != null && widget.replies!.isNotEmpty)
                     const SizedBox(width: 4.0),
                   if (widget.replies != null && widget.replies!.isNotEmpty)
                     Text(
                         "${widget.replies!.length} ${widget.replies!.length == 1 ? 'reply' : 'replies'}",
-                        style: const TextStyle(color: Colors.white)),
+                        style: textTheme.bodyMedium),
                   IconButton(
                       onPressed: widget.onFavoriteTap,
                       icon: Icon(
                           widget.favorited ? Icons.star : Icons.star_border,
-                          color:
-                              widget.favorited ? Colors.yellow : Colors.white))
+                          color: widget.favorited
+                              ? appTheme.favoritedColor
+                              : onSurface))
                 ],
               ),
               const SizedBox(height: 4.0),
@@ -134,14 +139,13 @@ class _CommentWidgetState extends State<CommentWidget> {
                                   _isExpanded
                                       ? Icons.expand_less
                                       : Icons.expand_more,
-                                  color: Colors.white,
+                                  color: onSurface,
                                   size: 16,
                                 ),
                                 const SizedBox(width: 4),
                                 Text(
                                   _isExpanded ? "Hide replies" : "Show replies",
-                                  style: const TextStyle(
-                                      color: Colors.white, fontSize: 13),
+                                  style: textTheme.bodyMedium,
                                 ),
                               ],
                             ),

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:frontend/app/common/components/comment_widget.dart';
 import 'package:frontend/app/common/components/custom_bottom_navigation_bar.dart';
 import 'package:frontend/app/common/components/custom_divider.dart';
+import 'package:frontend/app/common/components/theme_mode_button.dart';
 import 'package:frontend/app/common/components/video_widget.dart';
 import 'package:frontend/app/common/controllers/common/favorites_controller.dart';
 import 'package:frontend/app/common/controllers/pages/favorites_page_controller.dart';
@@ -31,23 +32,26 @@ class FavoritesPage extends GetView<FavoritesPageController> {
   }
 
   Widget _videoFavoritesView(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
     return Obx(
       () {
         if (_favoritesController.loading.value) {
-          return const Center(
+          return Center(
             child: CircularProgressIndicator(
-              color: Colors.white,
+              color: Theme.of(context).colorScheme.onSurface,
             ),
           );
         }
 
         if (_favoritesController.videoFavorites.isEmpty) {
-          return const Center(
+          return Center(
             child: Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: Text(
                 "No videos favorited:(",
-                style: TextStyle(fontSize: 25, color: Colors.white),
+                style: textTheme.headlineSmall,
+                textAlign: TextAlign.center,
               ),
             ),
           );
@@ -101,23 +105,26 @@ class FavoritesPage extends GetView<FavoritesPageController> {
   }
 
   Widget _commentFavoritesView(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
     return Obx(
       () {
         if (_favoritesController.loading.value) {
-          return const Center(
+          return Center(
             child: CircularProgressIndicator(
-              color: Colors.white,
+              color: Theme.of(context).colorScheme.onSurface,
             ),
           );
         }
 
         if (_favoritesController.commentFavorites.isEmpty) {
-          return const Center(
+          return Center(
             child: Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: Text(
                 "No comments favorited:(",
-                style: TextStyle(fontSize: 25, color: Colors.white),
+                style: textTheme.headlineSmall,
+                textAlign: TextAlign.center,
               ),
             ),
           );
@@ -146,8 +153,7 @@ class FavoritesPage extends GetView<FavoritesPageController> {
                             padding: const EdgeInsets.symmetric(vertical: 4.0),
                             child: Text(
                               HtmlUnescape().convert(comment.videoTitle!),
-                              style: const TextStyle(
-                                  color: Colors.white, fontSize: 15),
+                              style: textTheme.titleMedium,
                             ),
                           ),
                           Align(
@@ -157,8 +163,7 @@ class FavoritesPage extends GetView<FavoritesPageController> {
                                   vertical: 2.0, horizontal: 6.0),
                               child: Text(
                                 '${comment.channelTitle} · ${Utils.formatDateOrNull(DateTime.parse(comment.videoPublishedAt!), 'dd/MM/yyyy')}',
-                                style: TextStyle(
-                                    fontSize: 12, color: Colors.grey[200]),
+                                style: textTheme.bodySmall,
                               ),
                             ),
                           ),
@@ -202,6 +207,8 @@ class FavoritesPage extends GetView<FavoritesPageController> {
   @override
   Widget build(BuildContext context) {
     const pageTitle = "Favorites";
+    final tabBarTheme = Theme.of(context).tabBarTheme;
+
     return DefaultTabController(
         length: 2,
         child: Scaffold(
@@ -209,11 +216,12 @@ class FavoritesPage extends GetView<FavoritesPageController> {
               automaticallyImplyLeading: false,
               title: const Text(pageTitle),
               centerTitle: true,
-              bottom: const TabBar(
-                  indicatorColor: Colors.yellow,
-                  labelColor: Colors.yellow,
-                  unselectedLabelColor: Colors.white,
-                  tabs: [
+              actions: const [ThemeModeButton()],
+              bottom: TabBar(
+                  indicatorColor: tabBarTheme.indicatorColor,
+                  labelColor: tabBarTheme.labelColor,
+                  unselectedLabelColor: tabBarTheme.unselectedLabelColor,
+                  tabs: const [
                     Tab(
                       text: "Comments",
                       icon: Icon(Icons.comment),

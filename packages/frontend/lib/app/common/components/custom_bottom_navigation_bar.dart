@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/app/common/controllers/common/bottom_navigation_bar_controller.dart';
-import 'package:frontend/app/common/themes/app_theme.dart';
 import 'package:get/get.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
@@ -9,18 +8,22 @@ class CustomBottomNavigationBar extends StatelessWidget {
   const CustomBottomNavigationBar({super.key});
 
   List<BottomNavigationBarItem> getBottomNavigationBarItemList(
-      List<Map<String, dynamic>> items) {
+      BuildContext context, List<Map<String, dynamic>> items) {
+    final navTheme = Theme.of(context).bottomNavigationBarTheme;
+
     return items
         .map((e) => BottomNavigationBarItem(
               icon: Icon(e["icon"]),
               label: e["label"],
-              backgroundColor: appBackgroungColorDarkTheme,
+              backgroundColor: navTheme.backgroundColor,
             ))
         .toList();
   }
 
   @override
   Widget build(BuildContext context) {
+    final navTheme = Theme.of(context).bottomNavigationBarTheme;
+
     return GetBuilder<BottomNavigationBarController>(builder: (controller) {
       var visibleItems = controller.getVisibleItems();
 
@@ -28,12 +31,12 @@ class CustomBottomNavigationBar extends StatelessWidget {
         type: visibleItems.length > 1
             ? BottomNavigationBarType.fixed
             : BottomNavigationBarType.shifting,
-        selectedItemColor: const Color(0xffFFF50A),
-        unselectedItemColor: Colors.white,
+        selectedItemColor: navTheme.selectedItemColor,
+        unselectedItemColor: navTheme.unselectedItemColor,
         currentIndex: controller.currentIndex.value,
         iconSize: iconSize,
         onTap: controller.setCurrentElement,
-        items: getBottomNavigationBarItemList(visibleItems),
+        items: getBottomNavigationBarItemList(context, visibleItems),
       );
     });
   }
