@@ -1,0 +1,31 @@
+Comparação: amostra 20k ALEATÓRIA vs. 20k BALANCEADA (~⅓ por classe)
+=====================================================================
+
+Dataset: amaanpoonawala/youtube-comments-sentiment-dataset (youtube_comments_cleaned.csv)
+Registros após remoção de nulos (VideoTitle, CommentText, Sentiment): 1,032,225
+
+Amostra A — aleatória simples: sample(n=20000, random_state=42)
+Distribuição (contagem por classe, rótulo lower): {'negative': 6668, 'neutral': 6619, 'positive': 6713}
+
+Amostra B — balanceada: 6667 + 6667 + 6666 = 20000 (ordem alfabética negative, neutral, positive)
+Distribuição: {'negative': 6667, 'neutral': 6667, 'positive': 6666}
+
+Para modelos TF-IDF: train/test 80/20 com stratify=y (igual ao comprehensive_model_comparison).
+
+RESULTADOS (Accuracy, F1-macro, Precision-macro)
+-------------------------------------------------
+
+Modelo                              Tipo                  Acc_A     F1_A   Prec_A |    Acc_B     F1_B   Prec_B |     ΔAcc
+------------------------------------------------------------------------------------------------------------------------
+VADER                               Rule-based           0.5323   0.5274   0.5434 |   0.5334   0.5292   0.5458 |  +0.0012
+TextBlob                            Rule-based           0.4916   0.4775   0.5184 |   0.4934   0.4791   0.5193 |  +0.0018
+TF-IDF + Logistic Regression        Traditional ML       0.5948   0.5961   0.6000 |   0.6115   0.6131   0.6176 |  +0.0168
+TF-IDF + SVM                        Traditional ML       0.5923   0.5941   0.6041 |   0.6100   0.6121   0.6231 |  +0.0177
+
+ΔAcc = Acc_B (balanceada) - Acc_A (aleatória), mesma linha de modelo.
+
+Notas:
+- VADER/TextBlob: métricas em todo o subconjunto de 20k.
+- TF-IDF+LR / TF-IDF+SVM: métricas no holdout 20% (~4k), após treino em 80%.
+- Pequenas diferenças são esperadas (outra composição da amostra + variância do split).
+

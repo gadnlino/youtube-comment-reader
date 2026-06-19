@@ -18,6 +18,9 @@ Esta pasta contém todos os scripts relacionados à análise, validação e aval
 
 - **`validate_model_distribution_vs_benchmark.py`**: Compara a distribuição de sentimento observada na validação com a distribuição do benchmark inicial.
 
+- **`evaluate_tfidf_logistic_on_youtube_comments_with_labeled.py`**: Avalia o modelo TF-IDF + Logistic Regression (pré-treinado) no dataset Kaggle “YouTube Comments with Labeled”, calcula métricas (accuracy, precisão/recall/F1 por classe e médias macro) e gera o gráfico “Métricas por Classe”.
+  - Outputs em `evaluation/model_analysis/results/`: CSV de métricas, CSV de predições e resumo `.txt` pronto para tese
+  - Output em `evaluation/model_analysis/graphs/`: PNG do gráfico de métricas por classe
 ### Análise de Idioma
 
 - **`language_impact_analysis.py`**: Analisa o impacto do idioma na classificação de sentimento, identificando viés linguístico.
@@ -27,6 +30,8 @@ Esta pasta contém todos os scripts relacionados à análise, validação e aval
 - **`analyze_video_language.py`**: Analisa o perfil de idioma dos vídeos.
 
 ### Geração de Visualizações
+
+- **`plot_tfidf_lr_selection_vs_kaggle_amitzala.py`**: Gera gráfico de barras comparando **acurácia**, **precisão macro** e **F1 macro** do TF-IDF + Regressão Logística na **seleção do modelo** (`comprehensive_model_comparison.txt`) com os valores da **avaliação no dataset Kaggle amitzala** (último CSV em `results/` ou `--metrics-csv`). Saída: PNG em `evaluation/model_analysis/graphs/`.
 
 - **`generate_confusion_matrix.py`**: Gera matriz de confusão do modelo.
 

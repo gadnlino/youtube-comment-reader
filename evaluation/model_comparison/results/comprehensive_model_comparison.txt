@@ -1,24 +1,88 @@
 Comprehensive Sentiment Analysis Model Comparison
 ============================================================
 
-Rule-based Models:
-VADER - Accuracy: 0.5180, F1-Macro: 0.5147
-TextBlob - Accuracy: 0.4800, F1-Macro: 0.4635
+METHODOLOGY SUMMARY
+--------------------
 
-Traditional ML Models:
-TF-IDF + Logistic Regression - Accuracy: 0.5350, F1-Macro: 0.5341
-TF-IDF + SVM - Accuracy: 0.5250, F1-Macro: 0.5181
+Dataset:
+  - Source: YouTube Comments Sentiment Dataset (Kaggle: amaanpoonawala/youtube-comments-sentiment-dataset)
+  - File: youtube_comments_cleaned.csv
+  - Content: YouTube comments with human/AI-annotated sentiment labels.
+  - Main columns: CommentID, CommentText (comment body), VideoID, VideoTitle, Sentiment (label),
+    AuthorChannelID, AuthorName, Likes, Replies, PublishedAt, CountryCode, CategoryID.
+  - Classification classes: positive, negative, neutral (three-way sentiment).
+  - Total records (after removing nulls in VideoTitle, CommentText, Sentiment): 1,032,225
+  - Sample used in this comparison: 20,000 comments (random sample, random_state=42)
 
-Transformer Models:
-DeBERTa-v3-small (CommentText) - Accuracy: 0.7300, F1-Macro: 0.7300
-DeBERTa-v3-small (CommentTextWithContext) - Accuracy: 0.7200, F1-Macro: 0.7200
-Twitter-XLM-RoBERTa (CommentText) - Accuracy: 0.7100, F1-Macro: 0.7100
-Twitter-XLM-RoBERTa (CommentTextWithContext) - Accuracy: 0.7100, F1-Macro: 0.7100
+Sentiment thresholds (aligned with app):
+  - Rule-based models use the same threshold as the application (packages/lambdas/sentiment_analysis):
+    score >= 0.05 -> positive, <= -0.05 -> negative, else neutral.
+
+Models — pre-trained vs. trained on this dataset:
+  - Rule-based (VADER, TextBlob): We use pre-trained models downloaded directly from the
+    libraries (NLTK VADER lexicon, TextBlob). There is no training phase; we only run
+    inference (prediction) on the data.
+  - Transformer models (DeBERTa, Twitter-XLM-RoBERTa): We use pre-trained models from
+    Hugging Face (e.g. microsoft/deberta-v3-small, cardiffnlp/twitter-xlm-roberta-base-sentiment).
+    No training phase on our dataset; we use the models as-is for inference. Results in this
+    report are taken from the Jupyter notebook evaluation (2,500 comments per round, 10 rounds).
+  - Traditional ML (TF-IDF + Logistic Regression, TF-IDF + SVM): These models are trained
+    on our dataset (we fit the TF-IDF vectorizer and the classifier on the training set).
+    They are not pre-trained for this task.
+
+Why no training is needed for rule-based and transformer models:
+  - Rule-based (VADER, TextBlob): These tools use fixed lexicons and rules built by the
+    library authors (e.g. word–sentiment scores in VADER, polarity in TextBlob). No
+    parameters are learned from our data; we only run the existing rules on each comment
+    to get a score and map it to a label (using the threshold above). So there is nothing
+    to 'train' on our dataset — we just apply the pre-defined model.
+  - Transformers: The weights of these neural networks were learned during pre-training
+    (and often sentiment fine-tuning) on large external corpora. We use those fixed
+    weights to run inference only. Training would mean updating the weights using our
+    dataset, which we do not do here; we only evaluate the pre-trained model as-is.
+
+Data division and evaluation:
+  - Rule-based models: The entire sample is used for evaluation: each of the
+    20,000 comments is classified and compared to the ground truth.
+  - Traditional ML: The sample is split into train and test sets:
+    80% train (16,000 comments) / 20% test (4,000 comments),
+    with random_state=42 and stratify=labels. Models are trained on the training
+    set and evaluated on the held-out test set.
+
+Training details (for Traditional ML only):
+  - Logistic Regression: max_iter=1,000 (maximum iterations for solver convergence).
+  - SVM: SVC with RBF kernel; no fixed epoch count (solver runs until convergence).
+
+Metrics reported: Accuracy, F1-Macro (macro-averaged F1), Precision-Macro (macro-averaged precision).
+
+Speed / Inference time (from model comparison runs and MODEL_COMPARISON_SUMMARY.md):
+  - Rule-based (VADER, TextBlob): ~0.0001 s per comment (very fast).
+  - Traditional ML (TF-IDF + Logistic Regression): ~0.0016 s per comment (e.g. 1.61 s for 1,000 comments).
+  - Traditional ML (TF-IDF + SVM): ~0.0002 s per comment (e.g. 0.19 s for 1,000 comments).
+  - Transformer models: ~0.1–0.2 s per comment (slow; not suitable for real-time at scale).
+  - Rule-based and traditional ML are orders of magnitude faster than transformers; TF-IDF + Logistic
+    Regression was selected for the application as the best trade-off between accuracy and inference
+    speed for real-time use.
+
+RESULTS
+-------
+
+| Model | Type | Accuracy | F1-Macro | Precision-Macro | Inference (s/comment) |
+|-------|------|----------|----------|-----------------|------------------------|
+| VADER | Rule-based | 0.5323 | 0.5274 | 0.5434 | ~0.0001 (Very Fast) |
+| TextBlob | Rule-based | 0.4916 | 0.4775 | 0.5184 | ~0.0001 (Very Fast) |
+| TF-IDF + Logistic Regression | Traditional ML | 0.5948 | 0.5961 | 0.6000 | ~0.0016 (Fast) |
+| TF-IDF + SVM | Traditional ML | 0.5923 | 0.5941 | 0.6041 | ~0.0002 (Fast) |
+| DeBERTa-v3-small (CommentText) | Transformer | 0.7300 | 0.7300 | 0.7032 | ~0.1-0.2 (Slow) |
+| DeBERTa-v3-small (CommentTextWithContext) | Transformer | 0.7200 | 0.7200 | 0.6990 | ~0.1-0.2 (Slow) |
+| Twitter-XLM-RoBERTa (CommentText) | Transformer | 0.7100 | 0.7100 | 0.7212 | ~0.1-0.2 (Slow) |
+| Twitter-XLM-RoBERTa (CommentTextWithContext) | Transformer | 0.7100 | 0.7100 | 0.7055 | ~0.1-0.2 (Slow) |
 
 Key Findings:
 - VADER performs better than TextBlob for this dataset
 - Traditional ML models provide competitive performance
 - SVM and Logistic Regression show similar performance
-- Transformer models significantly outperform all other models
-- Rule-based models are ~1000x faster than transformer models
-- Best overall: DeBERTa-v3-small with 73% accuracy
+- Transformer models significantly outperform all other models on accuracy
+- Rule-based and traditional ML are ~1000x faster than transformer models
+- Best accuracy: DeBERTa-v3-small with 73%
+- Best for real-time application: TF-IDF + Logistic Regression (good accuracy and fast inference)
