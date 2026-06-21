@@ -433,6 +433,8 @@ flutter devices
 
 4. **Documente resultados:** Para a monografia usando os relatórios em `docs/`
 
+**Tabela 4 (monografia):** PNG em [`evaluation/02_graphs/tables/`](../../../evaluation/02_graphs/MANIFEST.md), gerado por `evaluation/scripts/02_api_performance/generate_e2e_test_table.py` (não pelos testes Flutter).
+
 ## 📚 Documentação Adicional
 
 - **Como executar testes**: `docs/HOW_TO_RUN_TESTS.md`

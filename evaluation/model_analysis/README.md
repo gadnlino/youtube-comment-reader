@@ -33,3 +33,8 @@ model_analysis/
 ## Dependências
 
 `pandas`, `numpy`, `scikit-learn`, `matplotlib`, `seaborn`, `requests`, `scipy`, `kagglehub` (alguns scripts)
+
+## Figuras da monografia
+
+- **Figura 23:** [`evaluation/02_graphs/figures/`](../02_graphs/figures/) (script: `evaluate_tfidf_logistic_on_youtube_comments_with_labeled.py`)
+- **Demais PNGs** em `graphs/`: não estão no docx — ver [`evaluation/02_graphs/MANIFEST.md`](../02_graphs/MANIFEST.md)

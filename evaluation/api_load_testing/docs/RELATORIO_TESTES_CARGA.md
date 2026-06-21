@@ -480,7 +480,7 @@ Foram gerados gráficos comparativos consolidando todos os testes:
 - `consolidated_graphs_only.png` - Dashboard com 6 gráficos principais (sem tabela)
 - `consolidated_table_only.png` - Tabela resumo com métricas consolidadas (para referência)
 
-Estes gráficos consolidados estão disponíveis em `consolidated_graphs/` e fornecem uma visão comparativa completa de todos os testes realizados.
+**Regeneração (2026-06):** os PNGs consolidados originais em `consolidated_graphs/` foram arquivados. Para obter novas cópias, execute `evaluation/scripts/02_api_performance/generate_consolidated_graphs.py`. Figuras da monografia (Figura 25–26): [`evaluation/02_graphs/MANIFEST.md`](../../02_graphs/MANIFEST.md). Arquivo histórico: [`evaluation/06_archived/pruned_figures/2026-06/`](../../06_archived/pruned_figures/2026-06/).
 
 ### 7.3 Ferramentas Utilizadas
 

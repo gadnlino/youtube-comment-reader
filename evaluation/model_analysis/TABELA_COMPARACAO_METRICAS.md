@@ -36,5 +36,5 @@ Para uma validação mais robusta das métricas, seria necessário:
 
 ---
 
-**Figura:** `metrics_comparison_benchmark_20251122_143447.png` - Gráfico comparativo das métricas
+**Figura:** `metrics_comparison_benchmark_20251122_143447.png` — gráfico comparativo arquivado (não consta no docx da monografia). Cópia em [`../06_archived/pruned_figures/2026-06/`](../06_archived/pruned_figures/2026-06/). Figuras canônicas: [`../02_graphs/MANIFEST.md`](../02_graphs/MANIFEST.md).
 

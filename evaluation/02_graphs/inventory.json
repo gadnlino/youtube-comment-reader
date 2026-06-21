@@ -1,0 +1,995 @@
+{
+  "images": [
+    {
+      "path": "evaluation/06_archived/old_graphs/response_time_graph_20251025_132944.png",
+      "status": "already-archived",
+      "bytes": 156983
+    },
+    {
+      "path": "evaluation/06_archived/old_graphs/visao_geral_performance_pt.png",
+      "status": "already-archived",
+      "bytes": 620335
+    },
+    {
+      "path": "evaluation/06_archived/old_graphs/scalability_analysis.png",
+      "status": "already-archived",
+      "bytes": 580446
+    },
+    {
+      "path": "evaluation/06_archived/old_graphs/statistical_summary.png",
+      "status": "already-archived",
+      "bytes": 420775
+    },
+    {
+      "path": "evaluation/06_archived/old_graphs/batch_size_comparison_20251025_132803.png",
+      "status": "already-archived",
+      "bytes": 72465
+    },
+    {
+      "path": "evaluation/06_archived/old_graphs/extended_performance_graphs_20251025_141608.png",
+      "status": "already-archived",
+      "bytes": 473055
+    },
+    {
+      "path": "evaluation/06_archived/old_graphs/performance_heatmap.png",
+      "status": "already-archived",
+      "bytes": 148142
+    },
+    {
+      "path": "evaluation/06_archived/old_graphs/multi_video_comparison_20251026_212004.png",
+      "status": "already-archived",
+      "bytes": 547407
+    },
+    {
+      "path": "evaluation/06_archived/old_graphs/batch_size_comparison_20251025_132944.png",
+      "status": "already-archived",
+      "bytes": 70778
+    },
+    {
+      "path": "evaluation/06_archived/old_graphs/resumo_estatistico_pt.png",
+      "status": "already-archived",
+      "bytes": 452494
+    },
+    {
+      "path": "evaluation/06_archived/old_graphs/analise_escalabilidade_pt.png",
+      "status": "already-archived",
+      "bytes": 614150
+    },
+    {
+      "path": "evaluation/06_archived/old_graphs/mapa_calor_performance_pt.png",
+      "status": "already-archived",
+      "bytes": 177271
+    },
+    {
+      "path": "evaluation/06_archived/old_graphs/batch_size_analysis_20251026_214815.png",
+      "status": "already-archived",
+      "bytes": 527746
+    },
+    {
+      "path": "evaluation/06_archived/old_graphs/comprehensive_performance_overview.png",
+      "status": "already-archived",
+      "bytes": 572452
+    },
+    {
+      "path": "evaluation/06_archived/old_graphs/response_time_graph_20251025_132803.png",
+      "status": "already-archived",
+      "bytes": 78968
+    },
+    {
+      "path": "evaluation/api_load_testing/consolidated_graphs/success_rate_comparison.png",
+      "status": "prune",
+      "bytes": 185539
+    },
+    {
+      "path": "evaluation/api_load_testing/consolidated_graphs/consolidated_graphs_part1.png",
+      "status": "keep",
+      "bytes": 375145
+    },
+    {
+      "path": "evaluation/api_load_testing/consolidated_graphs/consolidated_graphs_part2.png",
+      "status": "keep",
+      "bytes": 302901
+    },
+    {
+      "path": "evaluation/api_load_testing/consolidated_graphs/endpoint_comparison.png",
+      "status": "prune",
+      "bytes": 178607
+    },
+    {
+      "path": "evaluation/api_load_testing/consolidated_graphs/tps_comparison.png",
+      "status": "prune",
+      "bytes": 202527
+    },
+    {
+      "path": "evaluation/api_load_testing/consolidated_graphs/consolidated_table_only.png",
+      "status": "prune",
+      "bytes": 223273
+    },
+    {
+      "path": "evaluation/api_load_testing/consolidated_graphs/response_time_comparison.png",
+      "status": "prune",
+      "bytes": 240879
+    },
+    {
+      "path": "evaluation/api_load_testing/graphs/comments_p95_comparison_20251122_171249.png",
+      "status": "prune",
+      "bytes": 152937
+    },
+    {
+      "path": "evaluation/api_load_testing/graphs/e2e_test_results_table_20251123_005342.png",
+      "status": "prune",
+      "bytes": 973624
+    },
+    {
+      "path": "evaluation/api_load_testing/graphs/stability_timeseries_20251122_173805.png",
+      "status": "prune",
+      "bytes": 384073
+    },
+    {
+      "path": "evaluation/api_load_testing/graphs/stability_timeseries_20251122_172249.png",
+      "status": "prune",
+      "bytes": 198984
+    },
+    {
+      "path": "evaluation/api_load_testing/graphs/e2e_test_results_table_20251123_005328.png",
+      "status": "prune",
+      "bytes": 923727
+    },
+    {
+      "path": "evaluation/api_load_testing/graphs/e2e_test_results_table_20251123_010532.png",
+      "status": "prune",
+      "bytes": 635414
+    },
+    {
+      "path": "evaluation/api_load_testing/graphs/comments_boxplot_20251122_171249.png",
+      "status": "prune",
+      "bytes": 159292
+    },
+    {
+      "path": "evaluation/api_load_testing/graphs/videos_mean_comparison_20251122_171031.png",
+      "status": "prune",
+      "bytes": 136532
+    },
+    {
+      "path": "evaluation/api_load_testing/graphs/e2e_test_results_table_20251123_011304.png",
+      "status": "prune",
+      "bytes": 638671
+    },
+    {
+      "path": "evaluation/api_load_testing/graphs/stability_timeseries_20251122_174913.png",
+      "status": "prune",
+      "bytes": 433402
+    },
+    {
+      "path": "evaluation/api_load_testing/graphs/comments_mean_comparison_20251122_171249.png",
+      "status": "prune",
+      "bytes": 153631
+    },
+    {
+      "path": "evaluation/api_load_testing/graphs/videos_boxplot_20251122_171031.png",
+      "status": "prune",
+      "bytes": 144361
+    },
+    {
+      "path": "evaluation/api_load_testing/graphs/videos_p95_comparison_20251122_171031.png",
+      "status": "prune",
+      "bytes": 136878
+    },
+    {
+      "path": "evaluation/api_load_testing/teste_1/graphs/tps_over_time_20251122_213449.png",
+      "status": "prune",
+      "bytes": 358202
+    },
+    {
+      "path": "evaluation/api_load_testing/teste_1/graphs/response_time_over_time_20251122_213516.png",
+      "status": "prune",
+      "bytes": 133948
+    },
+    {
+      "path": "evaluation/api_load_testing/teste_1/graphs/tps_over_time_20251122_213516.png",
+      "status": "prune",
+      "bytes": 358202
+    },
+    {
+      "path": "evaluation/api_load_testing/teste_1/graphs/response_time_over_time_20251122_213449.png",
+      "status": "prune",
+      "bytes": 133948
+    },
+    {
+      "path": "evaluation/api_load_testing/teste_1/graphs/failure_rate_over_time_20251122_213449.png",
+      "status": "prune",
+      "bytes": 145851
+    },
+    {
+      "path": "evaluation/api_load_testing/teste_1/graphs/failure_rate_over_time_20251122_213516.png",
+      "status": "prune",
+      "bytes": 145851
+    },
+    {
+      "path": "evaluation/api_load_testing/teste_1/graphs/dashboard_20251122_213516.png",
+      "status": "prune",
+      "bytes": 442100
+    },
+    {
+      "path": "evaluation/api_load_testing/teste_2/graphs/response_time_over_time_20251122_215203.png",
+      "status": "prune",
+      "bytes": 129298
+    },
+    {
+      "path": "evaluation/api_load_testing/teste_2/graphs/tps_over_time_20251122_215203.png",
+      "status": "prune",
+      "bytes": 337310
+    },
+    {
+      "path": "evaluation/api_load_testing/teste_2/graphs/failure_rate_over_time_20251122_215203.png",
+      "status": "prune",
+      "bytes": 152289
+    },
+    {
+      "path": "evaluation/api_load_testing/teste_2/graphs/dashboard_20251122_215203.png",
+      "status": "prune",
+      "bytes": 448448
+    },
+    {
+      "path": "evaluation/api_load_testing/teste_3/graphs/tps_over_time_20251122_221749.png",
+      "status": "prune",
+      "bytes": 303717
+    },
+    {
+      "path": "evaluation/api_load_testing/teste_3/graphs/response_time_over_time_20251122_221749.png",
+      "status": "prune",
+      "bytes": 121209
+    },
+    {
+      "path": "evaluation/api_load_testing/teste_3/graphs/failure_rate_over_time_20251122_221749.png",
+      "status": "prune",
+      "bytes": 150235
+    },
+    {
+      "path": "evaluation/api_load_testing/teste_3/graphs/dashboard_20251122_221749.png",
+      "status": "prune",
+      "bytes": 431679
+    },
+    {
+      "path": "evaluation/02_graphs/tables/tabela-4_e2e_test_results_table.png",
+      "status": "keep",
+      "bytes": 638671
+    },
+    {
+      "path": "evaluation/02_graphs/english/figure3_statistical_summary.png",
+      "status": "prune",
+      "bytes": 420775
+    },
+    {
+      "path": "evaluation/02_graphs/english/figure2_scalability_analysis.png",
+      "status": "prune",
+      "bytes": 580446
+    },
+    {
+      "path": "evaluation/02_graphs/english/multi_video_comparison.png",
+      "status": "prune",
+      "bytes": 547407
+    },
+    {
+      "path": "evaluation/02_graphs/english/figure4_performance_heatmap.png",
+      "status": "prune",
+      "bytes": 148142
+    },
+    {
+      "path": "evaluation/02_graphs/english/batch_size_analysis.png",
+      "status": "prune",
+      "bytes": 527746
+    },
+    {
+      "path": "evaluation/02_graphs/english/figure1_comprehensive_performance_overview.png",
+      "status": "prune",
+      "bytes": 572452
+    },
+    {
+      "path": "evaluation/02_graphs/portuguese/figura3_resumo_estatistico.png",
+      "status": "prune",
+      "bytes": 452494
+    },
+    {
+      "path": "evaluation/02_graphs/portuguese/figura2_analise_escalabilidade.png",
+      "status": "prune",
+      "bytes": 614150
+    },
+    {
+      "path": "evaluation/02_graphs/portuguese/figura4_mapa_calor_performance.png",
+      "status": "prune",
+      "bytes": 177271
+    },
+    {
+      "path": "evaluation/02_graphs/portuguese/figura1_visao_geral_performance.png",
+      "status": "prune",
+      "bytes": 620335
+    },
+    {
+      "path": "evaluation/02_graphs/figures/figura-26_consolidated_graphs_part2.png",
+      "status": "keep",
+      "bytes": 302901
+    },
+    {
+      "path": "evaluation/02_graphs/figures/figura-24_tfidf_lr_selection_vs_kaggle_amitzala.png",
+      "status": "keep",
+      "bytes": 161631
+    },
+    {
+      "path": "evaluation/02_graphs/figures/figura-23_metrics_per_class_youtube_comments_with_labeled.png",
+      "status": "keep",
+      "bytes": 198606
+    },
+    {
+      "path": "evaluation/02_graphs/figures/figura-25_consolidated_graphs_part1.png",
+      "status": "keep",
+      "bytes": 375145
+    },
+    {
+      "path": "evaluation/scripts/graphs/tfidf_lr_selection_vs_kaggle_amitzala_20260621_172335.png",
+      "status": "keep",
+      "bytes": 161631
+    },
+    {
+      "path": "evaluation/scripts/graphs/tfidf_lr_selection_vs_kaggle_amitzala_20260621_170846.png",
+      "status": "prune",
+      "bytes": 168492
+    },
+    {
+      "path": "evaluation/scripts/01_model_evaluation/confusion_matrix_tfidf_logistic_20260621_120707.png",
+      "status": "prune",
+      "bytes": 421505
+    },
+    {
+      "path": "evaluation/scripts/01_model_evaluation/confusion_matrix_tfidf_logistic_20260621_120809.png",
+      "status": "prune",
+      "bytes": 420739
+    },
+    {
+      "path": "evaluation/scripts/01_model_evaluation/confusion_matrix_tfidf_pt.png",
+      "status": "prune",
+      "bytes": 271356
+    },
+    {
+      "path": "evaluation/scripts/02_api_performance/graphs/e2e_test_results_table_20260621_174808.png",
+      "status": "prune",
+      "bytes": 638671
+    },
+    {
+      "path": "evaluation/scripts/02_api_performance/graphs/success_rate_comparison.png",
+      "status": "prune",
+      "bytes": 185539
+    },
+    {
+      "path": "evaluation/scripts/02_api_performance/graphs/consolidated_graphs_part1.png",
+      "status": "prune",
+      "bytes": 375145
+    },
+    {
+      "path": "evaluation/scripts/02_api_performance/graphs/consolidated_graphs_part2.png",
+      "status": "prune",
+      "bytes": 302901
+    },
+    {
+      "path": "evaluation/scripts/02_api_performance/graphs/endpoint_comparison.png",
+      "status": "prune",
+      "bytes": 178607
+    },
+    {
+      "path": "evaluation/scripts/02_api_performance/graphs/tps_comparison.png",
+      "status": "prune",
+      "bytes": 202527
+    },
+    {
+      "path": "evaluation/scripts/02_api_performance/graphs/consolidated_table_only.png",
+      "status": "prune",
+      "bytes": 223273
+    },
+    {
+      "path": "evaluation/scripts/02_api_performance/graphs/response_time_comparison.png",
+      "status": "prune",
+      "bytes": 240879
+    },
+    {
+      "path": "evaluation/scripts/01_model_evaluation/graphs/per_class_metrics_twitter_airline_20251123_205234.png",
+      "status": "prune",
+      "bytes": 179652
+    },
+    {
+      "path": "evaluation/scripts/01_model_evaluation/graphs/metrics_twitter_airline_20251123_191755.png",
+      "status": "prune",
+      "bytes": 119306
+    },
+    {
+      "path": "evaluation/scripts/01_model_evaluation/graphs/metrics_airespucrs_20251123_221424.png",
+      "status": "prune",
+      "bytes": 94686
+    },
+    {
+      "path": "evaluation/scripts/01_model_evaluation/graphs/confusion_matrix_normalized_tweets_pt_20251123_193917.png",
+      "status": "prune",
+      "bytes": 109071
+    },
+    {
+      "path": "evaluation/scripts/01_model_evaluation/graphs/confusion_matrix_airespucrs_20251123_221424.png",
+      "status": "prune",
+      "bytes": 96301
+    },
+    {
+      "path": "evaluation/scripts/01_model_evaluation/graphs/confusion_matrix_twitter_airline_20251123_191755.png",
+      "status": "prune",
+      "bytes": 165075
+    },
+    {
+      "path": "evaluation/scripts/01_model_evaluation/graphs/confusion_matrix_normalized_imdb_20251123_194230.png",
+      "status": "prune",
+      "bytes": 103617
+    },
+    {
+      "path": "evaluation/scripts/01_model_evaluation/graphs/confusion_matrix_normalized_twitter_airline_20251123_205234.png",
+      "status": "prune",
+      "bytes": 102355
+    },
+    {
+      "path": "evaluation/scripts/01_model_evaluation/graphs/metrics_imdb_20251123_194230.png",
+      "status": "prune",
+      "bytes": 96675
+    },
+    {
+      "path": "evaluation/scripts/01_model_evaluation/graphs/metrics_comparison_benchmark_20251122_151341.png",
+      "status": "prune",
+      "bytes": 147951
+    },
+    {
+      "path": "evaluation/scripts/01_model_evaluation/graphs/confusion_matrix_tweets_pt_20251123_193917.png",
+      "status": "prune",
+      "bytes": 103444
+    },
+    {
+      "path": "evaluation/scripts/01_model_evaluation/graphs/per_class_metrics_imdb_20251123_194230.png",
+      "status": "prune",
+      "bytes": 211824
+    },
+    {
+      "path": "evaluation/scripts/01_model_evaluation/graphs/confusion_matrix_reference.png",
+      "status": "prune",
+      "bytes": 271688
+    },
+    {
+      "path": "evaluation/scripts/01_model_evaluation/graphs/confusion_matrix_tfidf_pt.png",
+      "status": "prune",
+      "bytes": 271688
+    },
+    {
+      "path": "evaluation/scripts/01_model_evaluation/graphs/confusion_matrix_normalized_twitter_airline_20251123_191755.png",
+      "status": "prune",
+      "bytes": 141323
+    },
+    {
+      "path": "evaluation/scripts/01_model_evaluation/graphs/confusion_matrix_imdb_20251123_194230.png",
+      "status": "prune",
+      "bytes": 94852
+    },
+    {
+      "path": "evaluation/scripts/01_model_evaluation/graphs/confusion_matrix_twitter_airline_20251123_205234.png",
+      "status": "prune",
+      "bytes": 96332
+    },
+    {
+      "path": "evaluation/scripts/01_model_evaluation/graphs/per_class_metrics_airespucrs_20251123_221424.png",
+      "status": "prune",
+      "bytes": 205991
+    },
+    {
+      "path": "evaluation/scripts/01_model_evaluation/graphs/metrics_twitter_airline_20251123_205234.png",
+      "status": "prune",
+      "bytes": 95285
+    },
+    {
+      "path": "evaluation/scripts/01_model_evaluation/graphs/metrics_tweets_pt_20251123_193917.png",
+      "status": "prune",
+      "bytes": 106067
+    },
+    {
+      "path": "evaluation/scripts/01_model_evaluation/graphs/confusion_matrix_normalized_airespucrs_20251123_221424.png",
+      "status": "prune",
+      "bytes": 97776
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/confusion_matrix_tfidf_logistic_20251118_140136.png",
+      "status": "prune",
+      "bytes": 421504
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/confusion_matrix_tfidf_logistic_20251118_143601.png",
+      "status": "prune",
+      "bytes": 421504
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/metrics_per_class_tfidf_lr_amitzala_youtube-comments-with-labeled_20260317_230701.png",
+      "status": "keep",
+      "bytes": 198606
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/distribution_comparison_zUUHdx1oa0s.png",
+      "status": "prune",
+      "bytes": 189700
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/comparacao_sentimentos_multil\u00edngue_pt_20251102_142200.png",
+      "status": "prune",
+      "bytes": 406767
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/taxa_neutral_videos_individuais_pt_20251117_163816.png",
+      "status": "prune",
+      "bytes": 353318
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/distribution_comparison_AifbNF2n6mk.png",
+      "status": "prune",
+      "bytes": 181486
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/distribution_comparison_JarGs7pGbt8.png",
+      "status": "prune",
+      "bytes": 181942
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/distribution_comparison_-hV6aeyPHPA.png",
+      "status": "prune",
+      "bytes": 197822
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/multilingual_sentiment_comparison_20251102_124731.png",
+      "status": "prune",
+      "bytes": 201376
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/distribution_comparison_B4pc-6ZKBjg.png",
+      "status": "prune",
+      "bytes": 183230
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/multiple_sets_bias_by_set_20251118_113232.png",
+      "status": "prune",
+      "bytes": 173489
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/distribution_comparison_uo_kV9LDrro.png",
+      "status": "prune",
+      "bytes": 178125
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/distribution_comparison_7J2AvxhEMu0.png",
+      "status": "prune",
+      "bytes": 169917
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/metrics_per_class_tfidf_lr_amitzala_youtube-comments-with-labeled_20260317_222840.png",
+      "status": "prune",
+      "bytes": 169701
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/sentiment_distribution_heatmap_20251102_125322.png",
+      "status": "prune",
+      "bytes": 305380
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/consolidated_correlation_scatter.png",
+      "status": "prune",
+      "bytes": 453818
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/distribution_comparison_eIAVonz8ILw.png",
+      "status": "prune",
+      "bytes": 181592
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/multilingual_sentiment_comparison_20251117_165338.png",
+      "status": "prune",
+      "bytes": 319570
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/multiple_sets_bias_distribution_20251118_123011.png",
+      "status": "prune",
+      "bytes": 166687
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/boxplot_vi\u00e9s_linguistico_pt_20251117_163816.png",
+      "status": "prune",
+      "bytes": 167955
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/language_bias_boxplot_20251102_125322.png",
+      "status": "prune",
+      "bytes": 198518
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/distribution_comparison_TloMiwQv1x4.png",
+      "status": "prune",
+      "bytes": 178646
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/distribution_comparison_57QBueEV7Fo.png",
+      "status": "prune",
+      "bytes": 185029
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/heatmap_distribuicao_sentimentos_pt_20251117_163816.png",
+      "status": "prune",
+      "bytes": 390609
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/multiple_sets_overall_bias_ci95_20251118_113232.png",
+      "status": "prune",
+      "bytes": 278552
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/comparacao_sentimentos_multil\u00edngue_pt_20251117_165338.png",
+      "status": "prune",
+      "bytes": 396901
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/tfidf_lr_selection_vs_kaggle_amitzala_20260319_202934.png",
+      "status": "prune",
+      "bytes": 224765
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/consolidated_model_bias_boxplot.png",
+      "status": "prune",
+      "bytes": 188452
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/language_neutral_bias_comparison_20251102_125322.png",
+      "status": "prune",
+      "bytes": 157927
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/consolidated_avg_distribution_comparison.png",
+      "status": "prune",
+      "bytes": 156659
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/taxa_neutral_videos_individuais_pt_20251102_125322.png",
+      "status": "prune",
+      "bytes": 257505
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/metrics_per_class_tfidf_lr_amitzala_youtube-comments-with-labeled_20260317_221719.png",
+      "status": "prune",
+      "bytes": 162441
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/taxa_neutral_videos_individuais_pt_20251102_142541.png",
+      "status": "prune",
+      "bytes": 351620
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/heatmap_distribuicao_sentimentos_pt_20251102_125322.png",
+      "status": "prune",
+      "bytes": 312118
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/boxplot_vi\u00e9s_linguistico_pt_20251102_142541.png",
+      "status": "prune",
+      "bytes": 167473
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/heatmap_distribuicao_sentimentos_pt_20251102_142541.png",
+      "status": "prune",
+      "bytes": 392031
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/boxplot_vi\u00e9s_linguistico_pt_20251102_125322.png",
+      "status": "prune",
+      "bytes": 152671
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/multilingual_sentiment_comparison_20251117_164641.png",
+      "status": "prune",
+      "bytes": 318691
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/metrics_per_class_tfidf_lr_amitzala_youtube-comments-with-labeled_20260317_223109.png",
+      "status": "prune",
+      "bytes": 172459
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/distribution_comparison_57lQhU5-ZKQ.png",
+      "status": "prune",
+      "bytes": 178468
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/multilingual_sentiment_comparison_20251102_142200.png",
+      "status": "prune",
+      "bytes": 324868
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/distribution_comparison_ExxtLCx3SFo.png",
+      "status": "prune",
+      "bytes": 170478
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/distribution_comparison__A6S-zw_yEE.png",
+      "status": "prune",
+      "bytes": 194539
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/multiple_sets_bias_by_set_20251118_123011.png",
+      "status": "prune",
+      "bytes": 173046
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/boxplot_vi\u00e9s_linguistico_pt_20251102_142200.png",
+      "status": "prune",
+      "bytes": 166882
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/metrics_comparison_benchmark_20251122_151341.png",
+      "status": "prune",
+      "bytes": 147951
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/heatmap_distribuicao_sentimentos_pt_20251102_142200.png",
+      "status": "prune",
+      "bytes": 394719
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/tfidf_lr_selection_vs_kaggle_amitzala_20260319_202917.png",
+      "status": "prune",
+      "bytes": 224765
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/multilingual_sentiment_comparison_20251102_142541.png",
+      "status": "prune",
+      "bytes": 326234
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/distribution_comparison_2FwwlFkAdLk.png",
+      "status": "prune",
+      "bytes": 171103
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/distribution_comparison_0gASceRnltg.png",
+      "status": "prune",
+      "bytes": 179765
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/distribution_comparison_K0LjzVfQRys.png",
+      "status": "prune",
+      "bytes": 182752
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/confusion_matrix_tfidf_pt.png",
+      "status": "prune",
+      "bytes": 271688
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/multilingual_sentiment_comparison_20251102_125322.png",
+      "status": "prune",
+      "bytes": 272195
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/distribution_comparison_WRnNcFqK4wc.png",
+      "status": "prune",
+      "bytes": 175155
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/multiple_sets_bias_distribution_20251118_113232.png",
+      "status": "prune",
+      "bytes": 158940
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/multiple_sets_overall_bias_ci95_20251118_123011.png",
+      "status": "prune",
+      "bytes": 279167
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/individual_video_neutral_rates_20251102_125322.png",
+      "status": "prune",
+      "bytes": 254815
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/distribuicao_sentimento_por_idioma_20251122_153626.png",
+      "status": "prune",
+      "bytes": 210324
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/comparacao_sentimentos_multil\u00edngue_pt_20251117_163816.png",
+      "status": "prune",
+      "bytes": 401251
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/taxa_neutral_videos_individuais_pt_20251102_142200.png",
+      "status": "prune",
+      "bytes": 346088
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/multilingual_sentiment_comparison_20251102_124934.png",
+      "status": "prune",
+      "bytes": 233479
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/boxplot_vi\u00e9s_linguistico_pt_20251117_165338.png",
+      "status": "prune",
+      "bytes": 167247
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/multilingual_sentiment_comparison_20251117_163816.png",
+      "status": "prune",
+      "bytes": 324648
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/comparacao_tempo_medio_resposta_pt.png",
+      "status": "prune",
+      "bytes": 169847
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/distribution_comparison_DxmiTVV3GHY.png",
+      "status": "prune",
+      "bytes": 183772
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/heatmap_distribuicao_sentimentos_pt_20251117_165338.png",
+      "status": "prune",
+      "bytes": 386714
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/metrics_comparison_benchmark_20251122_151337.png",
+      "status": "prune",
+      "bytes": 147951
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/metrics_comparison_benchmark_20251122_143447.png",
+      "status": "prune",
+      "bytes": 229726
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/distribution_comparison_-GBqPXxsxek.png",
+      "status": "prune",
+      "bytes": 182737
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/distribution_comparison_pSuKqfXXR_E.png",
+      "status": "prune",
+      "bytes": 179251
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/distribuicao_sentimento_por_idioma_20251122_153509.png",
+      "status": "prune",
+      "bytes": 333571
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/comparacao_sentimentos_multil\u00edngue_pt_20251102_125322.png",
+      "status": "prune",
+      "bytes": 332165
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/distribution_comparison_Xg5TBryM9WI.png",
+      "status": "prune",
+      "bytes": 189364
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/comparacao_sentimentos_multil\u00edngue_pt_20251102_142541.png",
+      "status": "prune",
+      "bytes": 401654
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/distribution_comparison_JYHOBRh2f3k.png",
+      "status": "prune",
+      "bytes": 179259
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/metrics_comparison_benchmark_20251122_143737.png",
+      "status": "prune",
+      "bytes": 150400
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/distribution_comparison_Lzccd-ol1Ks.png",
+      "status": "prune",
+      "bytes": 180013
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/distribution_comparison_b_ThVKNF2co.png",
+      "status": "prune",
+      "bytes": 177278
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/metrics_comparison_benchmark_20251122_151332.png",
+      "status": "prune",
+      "bytes": 147951
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/distribution_comparison_FJGCFdVTFlA.png",
+      "status": "prune",
+      "bytes": 177840
+    },
+    {
+      "path": "evaluation/model_analysis/graphs/taxa_neutral_videos_individuais_pt_20251117_165338.png",
+      "status": "prune",
+      "bytes": 351619
+    }
+  ],
+  "backing": [
+    {
+      "path": "evaluation/model_comparison/results/comprehensive_model_comparison.txt",
+      "status": "keep-backing",
+      "exists": true
+    },
+    {
+      "path": "evaluation/model_comparison/scripts/comprehensive_model_comparison.py",
+      "status": "keep-backing",
+      "exists": true
+    },
+    {
+      "path": "evaluation/model_analysis/results/metrics_tfidf_lr_amitzala_youtube-comments-with-labeled_20260317_230701.csv",
+      "status": "keep-backing",
+      "exists": true
+    },
+    {
+      "path": "evaluation/model_analysis/results/metrics_summary_tfidf_lr_amitzala_youtube-comments-with-labeled_20260317_230701.txt",
+      "status": "keep-backing",
+      "exists": true
+    },
+    {
+      "path": "evaluation/scripts/01_model_evaluation/evaluate_tfidf_logistic_on_youtube_comments_with_labeled.py",
+      "status": "keep-backing",
+      "exists": true
+    },
+    {
+      "path": "evaluation/scripts/01_model_evaluation/plot_tfidf_lr_selection_vs_kaggle_amitzala.py",
+      "status": "keep-backing",
+      "exists": true
+    },
+    {
+      "path": "evaluation/scripts/02_api_performance/generate_consolidated_graphs.py",
+      "status": "keep-backing",
+      "exists": true
+    },
+    {
+      "path": "evaluation/scripts/02_api_performance/generate_e2e_test_table.py",
+      "status": "keep-backing",
+      "exists": true
+    },
+    {
+      "path": "evaluation/api_load_testing/consolidated_graphs/consolidated_table_only.png",
+      "status": "keep-backing",
+      "exists": false,
+      "archived_at": "evaluation/06_archived/pruned_figures/2026-06/api_load_testing/consolidated_graphs/consolidated_table_only.png",
+      "note": "Reference PNG for Tabela 3; regenerate via generate_consolidated_graphs.py"
+    }
+  ],
+  "generators": [
+    {
+      "docx": "tabela-1",
+      "path": "evaluation/model_comparison/scripts/comprehensive_model_comparison.py",
+      "exists": true
+    },
+    {
+      "docx": "tabela-3",
+      "path": "evaluation/scripts/02_api_performance/generate_consolidated_graphs.py",
+      "exists": true
+    },
+    {
+      "docx": "tabela-4",
+      "path": "evaluation/scripts/02_api_performance/generate_e2e_test_table.py",
+      "exists": true
+    },
+    {
+      "docx": "figura-23",
+      "path": "evaluation/scripts/01_model_evaluation/evaluate_tfidf_logistic_on_youtube_comments_with_labeled.py",
+      "exists": true
+    },
+    {
+      "docx": "figura-24",
+      "path": "evaluation/scripts/01_model_evaluation/plot_tfidf_lr_selection_vs_kaggle_amitzala.py",
+      "exists": true
+    },
+    {
+      "docx": "figura-25-26",
+      "path": "evaluation/scripts/02_api_performance/generate_consolidated_graphs.py",
+      "exists": true
+    }
+  ]
+}

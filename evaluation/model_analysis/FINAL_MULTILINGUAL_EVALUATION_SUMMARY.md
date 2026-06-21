@@ -1,5 +1,7 @@
 # 🎓 RESUMO COMPLETO - Avaliação Multilíngue de Viés Linguístico
 
+> **Nota (2026-06):** Os gráficos PNG citados neste resumo foram arquivados (não constam no docx da monografia). Caminhos canônicos: [`evaluation/02_graphs/MANIFEST.md`](../02_graphs/MANIFEST.md). Cópias antigas: [`evaluation/06_archived/pruned_figures/2026-06/`](../06_archived/pruned_figures/2026-06/).
+
 **Data**: 2 de Novembro de 2025  
 **Análise**: Impacto do Idioma na Classificação de Sentimento  
 **Sistema**: YouTube Comment Reader com TF-IDF + Logistic Regression

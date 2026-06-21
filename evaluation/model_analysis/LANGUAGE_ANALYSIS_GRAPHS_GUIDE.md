@@ -1,5 +1,7 @@
 # Gráficos de Análise Multilíngue - Guia de Inserção
 
+> **Arquivado (2026-06):** Os PNGs listados abaixo **não** fazem parte do conjunto canônico da monografia (docx). Foram movidos para [`evaluation/06_archived/pruned_figures/2026-06/`](../06_archived/pruned_figures/2026-06/). Figuras oficiais: [`evaluation/02_graphs/MANIFEST.md`](../02_graphs/MANIFEST.md). O script `generate_language_analysis_graphs.py` permanece executável; novas saídas não entram no keep-list.
+
 ## 📊 Gráficos Gerados para a Monografia
 
 Este documento lista todos os gráficos gerados pela análise multilíngue de viés linguístico no modelo de classificação de sentimento.

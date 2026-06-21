@@ -233,6 +233,10 @@ O teste de TPS máximo:
 
 **Veja `docs/README_MAX_TPS.md` para documentação completa.**
 
+## Figuras da monografia
+
+Figura 25–26 e referência para Tabela 3: executar `generate_consolidated_graphs.py` em `evaluation/scripts/02_api_performance/`. Cópias em [`evaluation/02_graphs/`](../02_graphs/MANIFEST.md).
+
 ## Notas Importantes
 
 - **Diretório de execução**: Todos os scripts Python devem ser executados a partir do diretório `scripts/` para que os imports funcionem corretamente

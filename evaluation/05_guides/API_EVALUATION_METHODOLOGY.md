@@ -914,24 +914,15 @@ python quick_test.py
 
 ### 6.3 Generating Graphs
 
-**Academic Graphs (English)**:
-```bash
-cd ../generators
-python generate_academic_graphs.py
+**Thesis figures (docx keep-list)** — canonical paths under `evaluation/02_graphs/`; see [`02_graphs/MANIFEST.md`](../02_graphs/MANIFEST.md):
 
-# Generates:
-# - 02_graphs/english/figure1_comprehensive_performance_overview.png
-# - 02_graphs/english/figure2_scalability_analysis.png
-# - 02_graphs/english/figure3_statistical_summary.png
-# - 02_graphs/english/figure4_performance_heatmap.png
+```bash
+cd evaluation/scripts/02_api_performance
+python generate_consolidated_graphs.py   # Figura 25–26, Tabela 3 reference
+python generate_e2e_test_table.py        # Tabela 4 PNG
 ```
 
-**Academic Graphs (Portuguese)**:
-```bash
-python generate_academic_graphs_pt.py
-
-# Generates Portuguese versions of all graphs
-```
+**Legacy academic graph folders (archived 2026-06):** `02_graphs/english/` and `02_graphs/portuguese/` were moved to `evaluation/06_archived/pruned_figures/2026-06/`. Scripts `generate_academic_graphs.py` / `generate_academic_graphs_pt.py` may still run but outputs are not on the docx keep-list.
 
 ---
 

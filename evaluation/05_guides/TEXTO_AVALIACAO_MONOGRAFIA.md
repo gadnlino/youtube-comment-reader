@@ -1,5 +1,7 @@
 # Texto para Seção de Avaliação - Monografia
 
+> **Figuras canônicas (docx, 2026-06):** Tabela 1–4 e Figura 23–26 estão em [`evaluation/02_graphs/MANIFEST.md`](../02_graphs/MANIFEST.md). Rascunhos citados abaixo (`multiple_sets_*`, gráficos PT de API, análise multilíngue) **não** fazem parte do docx e foram arquivados em [`evaluation/06_archived/pruned_figures/2026-06/`](../06_archived/pruned_figures/2026-06/). Tabela 4 / E2E: [`evaluation/02_graphs/tables/tabela-4_e2e_test_results_table.png`](../02_graphs/tables/tabela-4_e2e_test_results_table.png).
+
 ## ⚠️ TERMOS TÉCNICOS A VERIFICAR SE JÁ FORAM EXPLICADOS NO DOCUMENTO:
 
 **Pilar 1 - Modelo:**
@@ -116,7 +118,7 @@ O terceiro pilar da avaliação validou a **corretude da navegação end-to-end*
 
 A metodologia utilizou o framework `integration_test` do Flutter, executado em emulador Android conectado à API real em produção (AWS), sem uso de mocks ou simulações. Foram implementados **8 fluxos críticos de usuário** cobrindo as funcionalidades essenciais da aplicação, conforme detalhado na Tabela 1 abaixo:
 
-**[INSERIR FIGURA: e2e_test_results_table_20251102.png - Tabela 1: Resultados completos dos 8 testes end-to-end da aplicação mobile Flutter, incluindo fluxo testado, funcionalidade validada, resultado e tempo de execução]**
+**[INSERIR FIGURA: ../02_graphs/tables/tabela-4_e2e_test_results_table.png - Tabela 1: Resultados completos dos 8 testes end-to-end da aplicação mobile Flutter, incluindo fluxo testado, funcionalidade validada, resultado e tempo de execução]**
 
 A Tabela 1 mostra que todas as funcionalidades testadas operam corretamente, desde funcionalidades básicas (busca e visualização de vídeos) até funcionalidades avançadas (favoritos com persistência local, filtragem por sentimento, ordenação). Os 8 testes cobrem os principais fluxos de usuário da aplicação, incluindo visualização de lista de vídeos, busca customizada, ordenação por data, gerenciamento de favoritos, visualização e filtragem de comentários por sentimento, e navegação entre telas.
 
@@ -183,8 +185,7 @@ Em suma, a metodologia empregada—baseada em múltiplos cenários de teste com 
 
 ### Pilar 3 - Testes End-to-End (1 figura):
 
-7. **e2e_test_results_table_20251102.png**
-   - Tabela 1 com resultados dos 8 testes E2E
+7. **`evaluation/02_graphs/tables/tabela-4_e2e_test_results_table.png`** (canonical; replaces archived `e2e_test_results_table_20251102.png`)
    - Posição: Após introdução dos fluxos críticos
 
 ---
@@ -213,7 +214,7 @@ A avaliação do *YouTube Comment Reader* contemplou três dimensões: (i) perfo
 - `tendencias_por_video_pt.png` - Tendências temporais (português)
 
 **Pilar 3 - Testes E2E (1 imagem):**
-- `e2e_test_results_table_20251102.png` - Tabela de resultados dos 8 testes
+- `evaluation/02_graphs/tables/tabela-4_e2e_test_results_table.png` - Tabela de resultados dos 8 testes (canonical)
 
 ### Dados Brutos (Referência):
 - `multi_video_results_20251026_212004.csv` - 60 requisições individuais
