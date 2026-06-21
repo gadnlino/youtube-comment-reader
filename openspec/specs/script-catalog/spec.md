@@ -16,7 +16,7 @@ The repository SHALL include `evaluation/scripts/CATALOG.md` listing every runna
 #### Scenario: Contributor finds deployment scripts
 
 - **WHEN** they open `evaluation/scripts/CATALOG.md` or the root README layout section
-- **THEN** they SHALL find entries for `scripts/build-and-push-sentiment-image.sh` and `scripts/deploy-with-sentiment.sh` under a "Deployment" category separate from evaluation Python scripts
+- **THEN** they SHALL find an entry for `infra/deploy-with-sentiment.sh` under a "Deployment" category separate from evaluation Python scripts
 
 ### Requirement: Catalog is linked from evaluation entry point
 

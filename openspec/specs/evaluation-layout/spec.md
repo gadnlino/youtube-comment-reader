@@ -18,6 +18,20 @@ The repository SHALL organize all evaluation artifacts under `evaluation/` using
 - **WHEN** the organization change is complete
 - **THEN** no thesis or analysis markdown files (except `README.md`) SHALL remain directly under `evaluation/`; they SHALL live in `01_reports/`, `05_guides/`, or domain `reports/` subfolders
 
+#### Scenario: Researcher opens curated thesis figures
+
+- **WHEN** a contributor reads `evaluation/README.md` for the role of `02_graphs/`
+- **THEN** it SHALL describe `MANIFEST.md`, `figures/`, and `tables/` as the docx keep-list layout and SHALL NOT describe active `english/` or `portuguese/` subfolders as current locations
+
+### Requirement: Numbered evaluation subfolders document themselves
+
+Folders `evaluation/01_reports/`, `evaluation/02_graphs/`, `evaluation/03_data/`, and `evaluation/05_guides/` SHALL each include a `README.md` summarizing contents and pointing to key entry documents.
+
+#### Scenario: Researcher opens reports folder
+
+- **WHEN** they list `evaluation/01_reports/`
+- **THEN** they SHALL find a README naming `FINAL_EVALUATION_REPORT.md`, `INDEX.md`, and `TESTING_METHODOLOGY.md` as primary entry points
+
 ### Requirement: Single canonical location for runnable evaluation scripts
 
 All runnable Python evaluation scripts SHALL reside under `evaluation/scripts/`, categorized as `01_model_evaluation/`, `02_api_performance/`, or `03_api_e2e/`.
@@ -57,12 +71,12 @@ Superseded folders and duplicate script copies SHALL be moved to `evaluation/06_
 
 ### Requirement: Deployment scripts are distinct from evaluation scripts
 
-Root-level `/scripts/` SHALL contain only operational/deployment shell scripts and SHALL be referenced separately from evaluation scripts in repository documentation.
+Deployment shell scripts SHALL live under `infra/` and SHALL be referenced separately from evaluation Python scripts in repository documentation. Root `/scripts/` SHALL NOT remain the canonical deploy location.
 
 #### Scenario: New contributor distinguishes script folders
 
 - **WHEN** they read the root `README.md`
-- **THEN** they SHALL see a clear distinction between `/scripts/` (deploy/build) and `/evaluation/scripts/` (research and testing)
+- **THEN** they SHALL see a clear distinction between `infra/` (deploy/build) and `evaluation/scripts/` (research and testing)
 
 ### Requirement: Curated monography assets live under 02_graphs
 

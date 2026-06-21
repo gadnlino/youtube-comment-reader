@@ -1,5 +1,7 @@
 # Scripts de Avaliação - YouTube Comment Reader
 
+Índice pai: [`../README.md`](../README.md)
+
 > **Índice completo:** [`CATALOG.md`](CATALOG.md) — scripts, saídas e localizações anteriores.  
 > **Verificação:** [`VERIFICATION_STATUS.md`](VERIFICATION_STATUS.md) · [`VERIFICATION_BACKLOG.md`](VERIFICATION_BACKLOG.md)
 
@@ -246,7 +248,7 @@ VIDEOS = {
 Os scripts geram:
 - **Arquivos CSV**: Dados brutos dos testes (salvos em `../api_load_testing/results/`)
 - **Arquivos JSON**: Resumos estatísticos (salvos em `../api_load_testing/results/`)
-- **Gráficos PNG**: Visualizações (salvos em `../api_load_testing/graphs/` ou `../api_load_testing/consolidated_graphs/`)
+- **Gráficos PNG**: Visualizações (salvos em `../api_load_testing/graphs/`; figuras docx em [`../02_graphs/`](../02_graphs/MANIFEST.md))
 - **Relatórios HTML**: Relatórios do Locust (salvos em `../api_load_testing/results/`)
 
 **Resultados de Referência**: Esta pasta contém resultados e gráficos consolidados de referência em `results/` e `graphs/` para facilitar a validação. Todos os resultados históricos completos estão em `../../api_load_testing/`.

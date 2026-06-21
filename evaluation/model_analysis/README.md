@@ -1,40 +1,38 @@
-# Saídas da análise do modelo
+# Saídas da análise do modelo — `model_analysis/`
 
-Esta pasta contém **resultados, gráficos, dados e relatórios** das execuções de avaliação do modelo.
+Resultados, gráficos, dados e relatórios das execuções de avaliação do **Pilar 1 — Modelo**.
 
-**Scripts executáveis** foram movidos para a árvore canónica:
+## Propósito
 
-**`evaluation/scripts/01_model_evaluation/`** — ver [`../scripts/CATALOG.md`](../scripts/CATALOG.md)
+Destino das saídas dos scripts em [`../scripts/01_model_evaluation/`](../scripts/CATALOG.md). Não execute scripts duplicados em `scripts/` (redirect) — use a árvore canónica.
 
-Cópias arquivadas: [`../06_archived/2025-11_duplicate_scripts/model_analysis_scripts/`](../06_archived/2025-11_duplicate_scripts/model_analysis_scripts/)
+## Conteúdo
 
-## Estrutura
+| Subpasta | Finalidade |
+|----------|------------|
+| `data/` | JSON de entrada (working_videos, etc.) |
+| `results/` | CSV/JSON das análises |
+| `graphs/` | PNG gerados (maioria arquivada se não estiver no docx) |
+| `reports/` | Relatórios em texto |
+| `scripts/README.md` | Redirect para `../scripts/` |
 
+Documentos de apoio: `FINAL_MULTILINGUAL_EVALUATION_SUMMARY.md`, `LANGUAGE_ANALYSIS_GRAPHS_GUIDE.md`, `TABELA_COMPARACAO_METRICAS.md`.
+
+## Como usar
+
+```bash
+cd evaluation/scripts/01_model_evaluation
+python compare_metrics_vs_benchmark.py   # exemplo
+pip install -r ../../requirements.txt    # na raiz: evaluation/requirements.txt
 ```
-model_analysis/
-├── data/              # JSON de entrada (working_videos, etc.)
-├── results/           # Saídas JSON/CSV das análises
-├── graphs/            # Visualizações PNG geradas
-├── reports/           # Relatórios em texto
-└── scripts/README.md  # Apenas redirecionamento
-```
-
-## Scripts principais (executar a partir de `evaluation/scripts/01_model_evaluation/`)
-
-| Script | Saída |
-|--------|-------|
-| `compare_metrics_vs_benchmark.py` | `model_analysis/results/` |
-| `validate_model_accuracy_with_dataset.py` | `model_analysis/results/` |
-| `validate_model_distribution_multiple_sets.py` | `model_analysis/results/` |
-| `evaluate_tfidf_logistic_on_youtube_comments_with_labeled.py` | `results/`, `graphs/` |
-| `generate_confusion_matrix.py` | PNG (offline; matriz fixa) |
-| `language_impact_analysis.py` | `results/`, `graphs/` |
-
-## Dependências
-
-`pandas`, `numpy`, `scikit-learn`, `matplotlib`, `seaborn`, `requests`, `scipy`, `kagglehub` (alguns scripts)
 
 ## Figuras da monografia
 
-- **Figura 23:** [`evaluation/02_graphs/figures/`](../02_graphs/figures/) (script: `evaluate_tfidf_logistic_on_youtube_comments_with_labeled.py`)
-- **Demais PNGs** em `graphs/`: não estão no docx — ver [`evaluation/02_graphs/MANIFEST.md`](../02_graphs/MANIFEST.md)
+- **Figura 23:** [`../02_graphs/figures/`](../02_graphs/figures/)
+- **Figura 24:** [`../02_graphs/figures/`](../02_graphs/figures/) via `plot_tfidf_lr_selection_vs_kaggle_amitzala.py`
+- Outros PNG em `graphs/`: fora do keep-list docx — [`../02_graphs/MANIFEST.md`](../02_graphs/MANIFEST.md)
+
+## Ver também
+
+- [`../README.md`](../README.md) — índice da avaliação
+- [`../06_archived/2025-11_duplicate_scripts/model_analysis_scripts/`](../06_archived/2025-11_duplicate_scripts/model_analysis_scripts/) — cópias antigas

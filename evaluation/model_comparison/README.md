@@ -1,10 +1,10 @@
-# Comparação de Modelos de Análise de Sentimentos
+# Comparação de Modelos — `model_comparison/`
 
-> **⚠️ Ordem Cronológica**: Esta etapa foi executada **ANTES** da avaliação do modelo selecionado. Primeiro comparamos diferentes modelos para selecionar o melhor, depois avaliamos o modelo selecionado.
+Scripts e resultados da comparação de classificadores (**seleção do modelo** — Tabela 1 docx).
 
-Este diretório contém os scripts e resultados da comparação de diferentes modelos de análise de sentimento para seleção do modelo final utilizado no sistema.
+> **Ordem cronológica**: executado **antes** da avaliação do TF-IDF+LR selecionado. Ver [`../README.md`](../README.md).
 
----
+## Propósito
 
 ## 📁 Estrutura de Pastas
 
@@ -160,6 +160,11 @@ python svm_quick_test.py
 - **Análise VADER**: `README_VADER_ANALYSIS.md`
 - **Resultados Completos**: `results/comprehensive_model_comparison.txt`
 - **Notebook Jupyter**: `notebooks/youtube_comments_sentiment_analysis_comparison.ipynb`
+
+## Ver também
+
+- [`../README.md`](../README.md) — índice da avaliação
+- [`../02_graphs/MANIFEST.md`](../02_graphs/MANIFEST.md) — Tabela 1 (`comprehensive_model_comparison.txt`)
 
 ---
 

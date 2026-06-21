@@ -7,7 +7,7 @@
     "build": "tsc",
     "watch": "tsc -w",
     "cdk": "cdk",
-    "deploy:dev": "bash scripts/deploy-with-sentiment.sh"
+    "deploy:dev": "bash infra/deploy-with-sentiment.sh"
   },
   "author": {
     "name": "Aleksandar Simovic <alexander.simovic@gmail.com>",

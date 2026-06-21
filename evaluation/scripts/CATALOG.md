@@ -61,8 +61,9 @@ Estado da verificação: [`VERIFICATION_STATUS.md`](VERIFICATION_STATUS.md)
 | `textblob_classification_report.py` | comparacao-modelos | Relatório de classificação TextBlob | `evaluation/model_comparison/scripts/` | `model_comparison/results/` |
 | `tfidf_logistic_classification_report.py` | comparacao-modelos | Relatório TF-IDF + Regressão Logística | `evaluation/model_comparison/scripts/` | `model_comparison/results/` |
 | `vader_classification_report.py` | comparacao-modelos | Relatório de classificação VADER | `evaluation/model_comparison/scripts/` | `model_comparison/results/` |
-| `build-and-push-sentiment-image.sh` | implantacao | Build e push da imagem Docker de sentimento (ECR) | `scripts/` | `n/a` |
-| `deploy-with-sentiment.sh` | implantacao | Deploy completo do backend | `scripts/` | `n/a` |
+| `deploy-with-sentiment.sh` | implantacao | Deploy completo do backend (Docker + ECR + CDK) | `infra/` | `n/a` |
+
+Script arquivado (só build/push): `infra/archive/build-and-push-sentiment-image.sh` — use `deploy-with-sentiment.sh` ou `npm run deploy:dev`.
 
 ## Localizações anteriores
 

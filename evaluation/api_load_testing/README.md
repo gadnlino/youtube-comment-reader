@@ -1,24 +1,21 @@
-# Testes de Performance da API
+# Testes de Performance da API — `api_load_testing/`
 
-Este diretório contém scripts automatizados para avaliar o desempenho da API intermediária do aplicativo de comentários do YouTube.
+Saídas dos testes de carga e performance da API (**Pilar 2**). Scripts canónicos: [`../scripts/02_api_performance/`](../scripts/CATALOG.md).
+
+## Propósito
+
+Este diretório contém **resultados** (CSV, JSON, logs) e pastas de testes Locust (`teste_1`…`teste_4`). Os scripts Python executáveis foram centralizados em `evaluation/scripts/02_api_performance/`.
 
 ## Estrutura
 
 ```
 evaluation/api_load_testing/
-├── scripts/
-│   ├── common.py          # Funções utilitárias (HTTP, métricas, gráficos)
-│   ├── videos.py          # Testes de listagem de vídeos
-│   ├── comments.py        # Testes de listagem de comentários
-│   ├── stability.py       # Teste de estabilidade temporal
-│   ├── run_all.py         # Script principal (executa todos os testes)
-│   ├── locust_max_tps.py  # Teste de TPS máximo com Locust
-│   ├── run_max_tps_test.sh # Script bash para executar teste de TPS
-│   └── [outros scripts auxiliares]
 ├── results/               # Resultados dos testes (CSV, JSON)
-├── graphs/                # Gráficos gerados
+├── graphs/                # Gráficos gerados (execuções locais)
 ├── logs/                  # Logs de execução
 ├── docs/                  # Documentação adicional
+├── teste_1/ … teste_4/    # Dados de testes Locust por campanha
+├── scripts/README.md      # Redirect → ../scripts/02_api_performance/
 └── README.md              # Este arquivo
 ```
 
@@ -239,7 +236,7 @@ Figura 25–26 e referência para Tabela 3: executar `generate_consolidated_grap
 
 ## Notas Importantes
 
-- **Diretório de execução**: Todos os scripts Python devem ser executados a partir do diretório `scripts/` para que os imports funcionem corretamente
+- **Diretório de execução**: Scripts em `evaluation/scripts/02_api_performance/` (não `api_load_testing/scripts/`)
 - **Paths relativos**: Os scripts criam automaticamente os diretórios `results/`, `graphs/` e `logs/` no diretório pai (`evaluation/api_load_testing/`)
 - **Configuração**: Os scripts incluem marcadores `TODO` onde você precisa ajustar configurações (URLs, IDs de vídeos, etc.)
 - **Intervalos**: Os intervalos entre requisições podem ser ajustados nos scripts individuais (`DELAY_BETWEEN_REQUESTS`)
@@ -247,4 +244,9 @@ Figura 25–26 e referência para Tabela 3: executar `generate_consolidated_grap
 - **Timestamps**: Todos os arquivos são salvos com timestamp para evitar sobrescrita
 - **TPS**: TPS é calculado automaticamente nos testes de estabilidade
 - **Logs**: Todos os logs são salvos em `logs/perf_test.log` para acompanhamento em tempo real
+
+## Ver também
+
+- [`../README.md`](../README.md) — índice da avaliação
+- [`../scripts/CATALOG.md`](../scripts/CATALOG.md) — scripts canónicos
 

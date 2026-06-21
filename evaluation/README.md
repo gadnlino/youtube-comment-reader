@@ -1,57 +1,68 @@
 # Avaliação — YouTube Comment Reader
 
-Ponto de entrada para relatórios, dados, scripts e material arquivado da avaliação.
+Ponto de entrada para relatórios, dados, scripts e material da monografia (três pilares: **modelo**, **API**, **app mobile**).
+
+## Propósito
+
+Reproduzir e documentar a avaliação académica: métricas do classificador, testes de carga Locust, testes E2E Flutter e figuras/tabelas embebidas no docx.
 
 ## Estrutura
 
-| Pasta | Finalidade |
-|-------|------------|
-| `01_reports/` | Relatórios finais e de apoio |
-| `02_graphs/` | Figuras curadas para a monografia (english/ + portuguese/) |
-| `03_data/` | CSV/JSON canónicos de entrada e resumos |
-| `05_guides/` | Metodologia, rascunhos da monografia, navegação |
-| `06_archived/` | Scripts e guias substituídos (ver índice interno) |
-| `scripts/` | **Scripts Python canónicos** — comece em `scripts/CATALOG.md` |
-| `model_analysis/` | **Saídas** da avaliação do modelo (results/, graphs/, data/) |
-| `api_load_testing/` | **Saídas** dos testes de carga (results/, graphs/, teste_*/) |
-| `model_comparison/` | Comparação de modelos (scripts co-localizados com notebooks) |
+### Pastas numeradas (artefactos curados)
 
-## Links rápidos
+| Pasta | README | Finalidade |
+|-------|--------|------------|
+| `01_reports/` | [`README.md`](01_reports/README.md) | Relatórios finais e de apoio |
+| `02_graphs/` | [`README.md`](02_graphs/README.md) | Figuras/tabelas docx (MANIFEST) |
+| `03_data/` | [`README.md`](03_data/README.md) | CSV/JSON canónicos |
+| `05_guides/` | [`README.md`](05_guides/README.md) | Metodologia e texto da monografia |
+| `06_archived/` | [`README.md`](06_archived/README.md) | Material histórico e figuras removidas |
 
-- **Índice de scripts:** [`scripts/CATALOG.md`](scripts/CATALOG.md)
-- **Visão geral dos scripts:** [`scripts/README.md`](scripts/README.md)
-- **Relatório final:** [`01_reports/FINAL_EVALUATION_REPORT.md`](01_reports/FINAL_EVALUATION_REPORT.md)
-- **Metodologia:** [`01_reports/TESTING_METHODOLOGY.md`](01_reports/TESTING_METHODOLOGY.md)
-- **Guia de navegação:** [`05_guides/ONDE_ESTA_TUDO.md`](05_guides/ONDE_ESTA_TUDO.md)
-- **Texto da monografia:** [`05_guides/TEXTO_AVALIACAO_MONOGRAFIA.md`](05_guides/TEXTO_AVALIACAO_MONOGRAFIA.md)
+`04_scripts/` — apenas redirect; scripts arquivados em `06_archived/`.
+
+### Scripts vs saídas
+
+| Pasta | Scripts? | Saídas |
+|-------|----------|--------|
+| [`scripts/`](scripts/README.md) | ✅ Canónico (`CATALOG.md`) | alguns `graphs/` locais |
+| [`model_analysis/`](model_analysis/README.md) | redirect | `results/`, `graphs/`, `data/` |
+| [`api_load_testing/`](api_load_testing/README.md) | redirect | `results/`, `teste_1..4/` |
+| [`model_comparison/`](model_comparison/README.md) | scripts locais | `results/` (incl. Tabela 1 TXT) |
+
+### Três pilares
+
+| Pilar | Scripts | Saídas / figuras docx |
+|-------|---------|------------------------|
+| **1 — Modelo** | `scripts/01_model_evaluation/` | `model_analysis/` · Figura 23–24 · Tabela 1 |
+| **2 — API** | `scripts/02_api_performance/` | `api_load_testing/` · Figura 25–26 · Tabela 3 |
+| **3 — App** | `packages/frontend/integration_test/` | Tabela 4 PNG · [`02_graphs/tables/`](02_graphs/tables/) |
 
 ## Setup
 
-Python **3.10+** recommended. From the repository root:
+Python **3.10+**. Na raiz do repositório:
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate   # Windows: .venv\Scripts\activate
+python3 -m venv .venv && source .venv/bin/activate
 pip install -r evaluation/requirements.txt
-python -m nltk.downloader vader_lexicon   # model-comparison / VADER scripts
+python -m nltk.downloader vader_lexicon
 ```
 
-`torch` is included and may take several minutes to download. All evaluation scripts share this single requirements file.
-
-## Executar scripts
+## Como usar
 
 ```bash
-# Avaliação do modelo (exemplo)
+# Modelo (exemplo)
 cd evaluation/scripts/01_model_evaluation
-python generate_confusion_matrix.py
+python compare_metrics_vs_benchmark.py
 
-# Performance da API (exemplo)
+# Performance API
 cd evaluation/scripts/02_api_performance
 python run_all.py
 ```
 
-Scripts shell de implantação ficam na **raiz do repo** em `/scripts/` (não aqui). Ver `README.md` na raiz.
+Deploy do backend: [`../infra/README.md`](../infra/README.md) (não confundir com `evaluation/scripts/`).
 
-## Material arquivado
+## Ver também
 
-Duplicatas e guias antigos estão em `06_archived/` — ver [`06_archived/README.md`](06_archived/README.md).
+- [`scripts/CATALOG.md`](scripts/CATALOG.md) — índice de todos os scripts
+- [`02_graphs/MANIFEST.md`](02_graphs/MANIFEST.md) — keep-list docx
+- [`../README.md`](../README.md) — visão geral do repositório
