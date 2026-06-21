@@ -42,7 +42,7 @@ pip install requests matplotlib seaborn numpy
 # 2. Configurar (editar scripts/common.py, scripts/videos.py, scripts/comments.py conforme necessário)
 
 # 3. Executar todos os testes
-cd evaluation/api_load_testing/scripts
+cd evaluation/scripts/02_api_performance
 python3 run_all.py
 
 # 4. Ver resultados
@@ -106,19 +106,19 @@ DURATION_MINUTES = 10  # Duração do teste (padrão: 10 minutos)
 ### Executar Todos os Testes
 
 ```bash
-cd evaluation/api_load_testing/scripts
+cd evaluation/scripts/02_api_performance
 python3 run_all.py
 ```
 
 Ou a partir da raiz do projeto:
 ```bash
-cd evaluation/api_load_testing/scripts && python3 run_all.py
+cd evaluation/scripts/02_api_performance && python3 run_all.py
 ```
 
 ### Executar Testes Individuais
 
 ```bash
-cd evaluation/api_load_testing/scripts
+cd evaluation/scripts/02_api_performance
 
 # Apenas testes de vídeos
 python3 videos.py
@@ -220,7 +220,7 @@ Para encontrar o **TPS máximo** da API com aumento gradual de carga:
 pip install locust
 
 # Executar teste de TPS máximo (script automatizado)
-cd evaluation/api_load_testing/scripts
+cd evaluation/scripts/02_api_performance
 chmod +x run_max_tps_test.sh  # Dar permissão de execução (primeira vez)
 ./run_max_tps_test.sh
 

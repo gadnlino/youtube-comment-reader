@@ -1,23 +1,25 @@
 # Scripts de Avaliação - YouTube Comment Reader
 
-Este documento consolida toda a documentação dos scripts utilizados para as avaliações do sistema YouTube Comment Reader, organizados por categoria de avaliação.
+> **Índice completo:** [`CATALOG.md`](CATALOG.md) — scripts, saídas e localizações anteriores.  
+> **Verificação:** [`VERIFICATION_STATUS.md`](VERIFICATION_STATUS.md) · [`VERIFICATION_BACKLOG.md`](VERIFICATION_BACKLOG.md)
+
+Este documento consolida a documentação dos scripts de avaliação, organizados por categoria.
 
 ## 📁 Estrutura
 
 ```
 scripts/
-├── 01_model_evaluation/     # Avaliação do modelo de análise de sentimentos
-│   ├── results/             # Resultados de referência (JSON)
-│   ├── graphs/              # Gráficos de referência (PNG)
-│   └── *.py                 # Scripts de avaliação
-├── 02_api_performance/       # Testes de carga e performance da API
-│   ├── results/             # Resultados de referência (JSON)
-│   ├── graphs/              # Gráficos consolidados de referência (PNG)
-│   └── *.py                 # Scripts de testes
-└── README.md                # Este arquivo (documentação consolidada)
+├── _paths.py                # Constantes de caminho partilhadas
+├── CATALOG.md               # Índice de todos os scripts
+├── 01_model_evaluation/     # Avaliação do modelo
+├── 02_api_performance/      # Testes de carga e performance da API
+│   ├── generators/          # Gráficos académicos (EN/PT)
+│   └── benchmarks/          # Benchmarks estendidos (Oct 2025)
+├── 03_api_e2e/              # E2E Python (legado; Flutter é canónico)
+└── README.md
 
-# Testes E2E do frontend (na raiz do projeto)
-packages/frontend/integration_test/  # Testes Flutter
+packages/frontend/integration_test/  # Testes E2E Flutter (canónico)
+evaluation/model_comparison/scripts/ # Comparação de modelos (co-localizado)
 ```
 
 **Nota sobre Resultados**: Cada pasta de scripts contém subpastas `results/` e `graphs/` com **resultados de referência** para facilitar a validação e compreensão. Estes são exemplos dos resultados mais recentes/importantes. Todos os resultados históricos completos estão nas pastas originais:
@@ -253,16 +255,13 @@ Os scripts geram:
 
 ### Scripts Adicionais
 
-Existem scripts complementares em `../../04_scripts/tests/` que fornecem testes mais específicos:
+### Scripts Adicionais
 
-- **`extended_benchmark.py`**: Teste estendido com mais requisições (219 requisições)
-- **`heavy_load_test.py`**: Teste de carga pesada (10.600 comentários)
-- **`multi_video_benchmark.py`**: Benchmark com múltiplos vídeos
-- **`batch_size_analysis.py`**: Análise de impacto do tamanho do lote
-- **`performance_benchmark.py`**: Benchmark básico de performance
-- **`quick_test.py`**: Teste rápido de verificação
+Benchmarks estendidos (carga pesada, multi-vídeo, batch size) estão em `benchmarks/`:
 
-Esses scripts podem ser executados diretamente de `evaluation/04_scripts/tests/` ou copiados para esta pasta se necessário.
+- **`extended_benchmark.py`**, **`heavy_load_test.py`**, **`multi_video_benchmark.py`**, etc.
+
+Ver [`CATALOG.md`](CATALOG.md) para a lista completa.
 
 ---
 
@@ -361,9 +360,8 @@ flutter pub get
 
 - **Relatório Final de Avaliação**: `../01_reports/FINAL_EVALUATION_REPORT.md`
 - **Metodologia de Testes**: `../01_reports/TESTING_METHODOLOGY.md`
-- **Guia de Avaliação da API**: `../API_EVALUATION_GUIDE.md`
-- **Índice de Navegação**: `../01_reports/INDEX.md`
-- **Guia Completo de Scripts**: `../GUIA_SCRIPTS_AVALIACAO.md`
+- **Guia de Avaliação da API**: `../../05_guides/API_EVALUATION_METHODOLOGY.md`
+- **Índice de Scripts**: [`CATALOG.md`](CATALOG.md)
 
 ## 📚 Para a Monografia
 

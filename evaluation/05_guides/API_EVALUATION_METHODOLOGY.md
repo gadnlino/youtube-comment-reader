@@ -263,7 +263,7 @@ The API evaluation consists of **6 test types** covering different aspects:
 
 **Total Requests**: 219  
 **Expected Duration**: ~45 minutes  
-**Script**: `04_scripts/tests/extended_benchmark.py`
+**Script**: `evaluation/scripts/02_api_performance/benchmarks/extended_benchmark.py`
 
 ---
 
@@ -314,7 +314,7 @@ The API evaluation consists of **6 test types** covering different aspects:
 **Total Requests**: 106  
 **Total Comments**: 10,600  
 **Expected Duration**: ~3-4 minutes  
-**Script**: `04_scripts/tests/heavy_load_test.py`
+**Script**: `evaluation/scripts/02_api_performance/benchmarks/heavy_load_test.py`
 
 ---
 
@@ -358,7 +358,7 @@ for video in videos:
 **Total Requests**: 60 (20 per video)  
 **Total Comments**: 6,000  
 **Expected Duration**: ~1 minute  
-**Script**: `04_scripts/tests/multi_video_benchmark.py`
+**Script**: `evaluation/scripts/02_api_performance/benchmarks/multi_video_benchmark.py`
 
 ---
 
@@ -398,7 +398,7 @@ for size in batch_sizes:
 **Total Requests**: 90 (18 per batch size)  
 **Total Comments**: 9,000  
 **Expected Duration**: ~2 minutes  
-**Script**: `04_scripts/tests/batch_size_analysis.py`
+**Script**: `evaluation/scripts/02_api_performance/benchmarks/batch_size_analysis.py`
 
 ---
 
@@ -431,7 +431,7 @@ for i in range(10):
 
 **Total Requests**: 10  
 **Expected Duration**: ~10 seconds  
-**Script**: `04_scripts/tests/quick_test.py`
+**Script**: `evaluation/scripts/02_api_performance/benchmarks/quick_test.py`
 
 ---
 
@@ -477,7 +477,7 @@ locust -f locustfile.py --headless \
 - Concurrent user capacity
 
 **Expected Duration**: 10 minutes  
-**Script**: `04_scripts/tests/locustfile.py`
+**Script**: `evaluation/scripts/02_api_performance/benchmarks/locustfile.py`
 
 ---
 
@@ -845,7 +845,7 @@ plt.savefig('performance_heatmap.png', dpi=300)
 **Installation**:
 ```bash
 # Navigate to evaluation directory
-cd evaluation/04_scripts/tests
+cd evaluation/scripts/02_api_performance/benchmarks
 
 # Create virtual environment
 python3 -m venv venv

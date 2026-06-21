@@ -148,13 +148,13 @@ python svm_quick_test.py
 - A comparação de modelos (esta etapa) usa divisão ao nível de comentários para **comparar modelos entre si**
 - A validação de generalização (próxima etapa) usa vídeos diferentes para **validar que o modelo generaliza para novos vídeos**
 - Ambas as análises são válidas e complementares
-- Veja `evaluation/ARGUMENTO_GENERALIZACAO_MODELO_SELECIONADO.md` para argumentos detalhados sobre a relevância estatística
+- Veja `evaluation/01_reports/ARGUMENTO_GENERALIZACAO_MODELO_SELECIONADO.md` para argumentos detalhados sobre a relevância estatística
 
 ---
 
 ## 📚 Referências
 
-- **Guia Completo**: `evaluation/GUIA_COMPLETO_SCRIPTS_AVALIACAO.md` (Seção 0)
+- **Guia Completo**: `evaluation/scripts/CATALOG.md` (Seção 0)
 - **Resumo da Comparação**: `MODEL_COMPARISON_SUMMARY.md`
 - **Análise VADER**: `README_VADER_ANALYSIS.md`
 - **Resultados Completos**: `results/comprehensive_model_comparison.txt`

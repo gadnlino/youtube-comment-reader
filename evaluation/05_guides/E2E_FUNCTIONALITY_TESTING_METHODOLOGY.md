@@ -111,7 +111,7 @@ Region: us-east-1 (N. Virginia, USA)
   pytest==7.4.3        # Testing framework (optional)
   ```
 
-**Test Script**: `04_scripts/tests/e2e_functionality_test.py`
+**Test Script**: `evaluation/scripts/02_api_performance/benchmarks/e2e_functionality_test.py`
 
 ---
 
@@ -709,7 +709,7 @@ if __name__ == '__main__':
 **Command Line Execution**:
 ```bash
 # Navigate to test directory
-cd evaluation/04_scripts/tests
+cd evaluation/scripts/02_api_performance/benchmarks
 
 # Run tests
 python e2e_functionality_test.py
@@ -947,7 +947,7 @@ def verify_sentiment_distribution(items: List[Dict]) -> Dict[str, int]:
 **Installation**:
 ```bash
 # Navigate to test directory
-cd evaluation/04_scripts/tests
+cd evaluation/scripts/02_api_performance/benchmarks
 
 # (Optional) Create virtual environment
 python3 -m venv venv

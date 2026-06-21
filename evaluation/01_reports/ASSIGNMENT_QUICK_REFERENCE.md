@@ -121,7 +121,7 @@
 ---
 
 ### Section 2: API Performance Evaluation ✅
-**Location**: `evaluation/api_load_testing/` & `evaluation/API_PERFORMANCE_TEST_RESULTS.md`
+**Location**: `evaluation/api_load_testing/` & `evaluation/01_reports/API_PERFORMANCE_TEST_RESULTS.md`
 
 **Key Numbers**:
 - Average Response Time: **1,250ms**

@@ -10,7 +10,13 @@ import matplotlib.pyplot as plt
 import numpy as np
 from datetime import datetime
 import json
+import glob
+import sys
 import seaborn as sns
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from _paths import API_ROOT, DATA
 
 # Set publication-quality style
 plt.style.use('seaborn-v0_8-paper')
@@ -44,7 +50,7 @@ class AcademicGraphGenerator:
         # Load extended performance test data
         try:
             self.extended_data = pd.read_csv(
-                'evaluation/api_load_testing/extended_performance_results_20251025_141608.csv'
+                str(DATA / 'csv' / 'extended_performance_results.csv')
             )
             print(f"   ✅ Extended test: {len(self.extended_data)} requests")
         except Exception as e:
@@ -53,7 +59,7 @@ class AcademicGraphGenerator:
         # Load heavy load test data
         try:
             self.heavy_load_data = pd.read_csv(
-                'evaluation/api_load_testing/heavy_load_test_results_20251025_143255.csv'
+                str(DATA / 'csv' / 'heavy_load_test_results.csv')
             )
             print(f"   ✅ Heavy load test: {len(self.heavy_load_data)} requests")
         except Exception as e:
@@ -62,7 +68,7 @@ class AcademicGraphGenerator:
         # Load multi-video test data
         try:
             self.multi_video_data = pd.read_csv(
-                'evaluation/api_load_testing/multi_video_results_20251026_212004.csv'
+                str(DATA / 'csv' / 'multi_video_results.csv')
             )
             print(f"   ✅ Multi-video test: {len(self.multi_video_data)} requests")
         except Exception as e:
@@ -70,7 +76,7 @@ class AcademicGraphGenerator:
         
         # Load multi-video summary
         try:
-            with open('evaluation/api_load_testing/multi_video_summary_20251026_212004.json', 'r') as f:
+            with open(DATA / 'json' / 'multi_video_summary.json', 'r') as f:
                 self.multi_video_summary = json.load(f)
             print(f"   ✅ Multi-video summary loaded")
         except Exception as e:
@@ -80,7 +86,9 @@ class AcademicGraphGenerator:
         try:
             # Find the most recent batch size analysis file
             import glob
-            batch_files = glob.glob('evaluation/api_load_testing/batch_size_analysis_*.csv')
+            batch_files = glob.glob(str(DATA / 'csv' / 'batch_size_analysis.csv'))
+            if not batch_files:
+                batch_files = glob.glob(str(API_ROOT / 'batch_size_analysis_*.csv'))
             if batch_files:
                 latest_batch_file = max(batch_files)
                 self.batch_size_data = pd.read_csv(latest_batch_file)
@@ -245,7 +253,7 @@ class AcademicGraphGenerator:
         plt.suptitle('Comprehensive API Performance Analysis - All Tests', 
                     fontsize=16, fontweight='bold', y=0.995)
         
-        filename = 'evaluation/api_load_testing/comprehensive_performance_overview.png'
+        filename = str(API_ROOT / 'comprehensive_performance_overview.png')
         plt.savefig(filename, bbox_inches='tight', dpi=300)
         plt.close()
         
@@ -375,7 +383,7 @@ class AcademicGraphGenerator:
         
         plt.tight_layout()
         
-        filename = 'evaluation/api_load_testing/scalability_analysis.png'
+        filename = str(API_ROOT / 'scalability_analysis.png')
         plt.savefig(filename, bbox_inches='tight', dpi=300)
         plt.close()
         
@@ -511,7 +519,7 @@ class AcademicGraphGenerator:
         
         plt.tight_layout()
         
-        filename = 'evaluation/api_load_testing/statistical_summary.png'
+        filename = str(API_ROOT / 'statistical_summary.png')
         plt.savefig(filename, bbox_inches='tight', dpi=300)
         plt.close()
         
@@ -564,7 +572,7 @@ class AcademicGraphGenerator:
         
         plt.tight_layout()
         
-        filename = 'evaluation/api_load_testing/performance_heatmap.png'
+        filename = str(API_ROOT / 'performance_heatmap.png')
         plt.savefig(filename, bbox_inches='tight', dpi=300)
         plt.close()
         
@@ -591,7 +599,7 @@ class AcademicGraphGenerator:
         print("   2. scalability_analysis.png")
         print("   3. statistical_summary.png")
         print("   4. performance_heatmap.png")
-        print("\n📍 Location: evaluation/api_load_testing/")
+        print(f"\n📍 Location: {API_ROOT}/")
         print("\n🎓 All graphs are publication-quality (300 DPI)")
         print("   Ready for inclusion in your final assignment report!")
 

@@ -11,7 +11,13 @@ import matplotlib.pyplot as plt
 import numpy as np
 from datetime import datetime
 import json
+import glob
+import sys
 import seaborn as sns
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from _paths import API_ROOT, DATA
 
 # Configurar estilo de qualidade para publicação
 plt.style.use('seaborn-v0_8-paper')
@@ -46,7 +52,7 @@ class GeradorGraficosAcademicos:
         # Carregar dados de teste de performance estendido
         try:
             self.extended_data = pd.read_csv(
-                'evaluation/api_load_testing/extended_performance_results_20251025_141608.csv'
+                str(DATA / 'csv' / 'extended_performance_results.csv')
             )
             print(f"   ✅ Teste estendido: {len(self.extended_data)} requisições")
         except Exception as e:
@@ -55,7 +61,7 @@ class GeradorGraficosAcademicos:
         # Carregar dados de teste de carga pesada
         try:
             self.heavy_load_data = pd.read_csv(
-                'evaluation/api_load_testing/heavy_load_test_results_20251025_143255.csv'
+                str(DATA / 'csv' / 'heavy_load_test_results.csv')
             )
             print(f"   ✅ Teste de carga pesada: {len(self.heavy_load_data)} requisições")
         except Exception as e:
@@ -64,7 +70,7 @@ class GeradorGraficosAcademicos:
         # Carregar dados de teste multi-vídeo
         try:
             self.multi_video_data = pd.read_csv(
-                'evaluation/api_load_testing/multi_video_results_20251026_212004.csv'
+                str(DATA / 'csv' / 'multi_video_results.csv')
             )
             print(f"   ✅ Teste multi-vídeo: {len(self.multi_video_data)} requisições")
         except Exception as e:
@@ -72,7 +78,7 @@ class GeradorGraficosAcademicos:
         
         # Carregar resumo multi-vídeo
         try:
-            with open('evaluation/api_load_testing/multi_video_summary_20251026_212004.json', 'r') as f:
+            with open(DATA / 'json' / 'multi_video_summary.json', 'r') as f:
                 self.multi_video_summary = json.load(f)
             print(f"   ✅ Resumo multi-vídeo carregado")
         except Exception as e:
@@ -82,7 +88,9 @@ class GeradorGraficosAcademicos:
         try:
             # Encontrar o arquivo mais recente de análise de tamanho de lote
             import glob
-            batch_files = glob.glob('evaluation/api_load_testing/batch_size_analysis_*.csv')
+            batch_files = glob.glob(str(DATA / 'csv' / 'batch_size_analysis.csv'))
+            if not batch_files:
+                batch_files = glob.glob(str(API_ROOT / 'batch_size_analysis_*.csv'))
             if batch_files:
                 latest_batch_file = max(batch_files)
                 self.batch_size_data = pd.read_csv(latest_batch_file)
@@ -250,7 +258,7 @@ class GeradorGraficosAcademicos:
         plt.suptitle('Análise Abrangente de Performance da API - Todos os Testes', 
                     fontsize=16, fontweight='bold', y=0.995)
         
-        filename = 'evaluation/api_load_testing/visao_geral_performance_pt.png'
+        filename = str(API_ROOT / 'visao_geral_performance_pt.png')
         plt.savefig(filename, bbox_inches='tight', dpi=300)
         plt.close()
         
@@ -380,7 +388,7 @@ class GeradorGraficosAcademicos:
         
         plt.tight_layout()
         
-        filename = 'evaluation/api_load_testing/analise_escalabilidade_pt.png'
+        filename = str(API_ROOT / 'analise_escalabilidade_pt.png')
         plt.savefig(filename, bbox_inches='tight', dpi=300)
         plt.close()
         
@@ -518,7 +526,7 @@ class GeradorGraficosAcademicos:
         
         plt.tight_layout()
         
-        filename = 'evaluation/api_load_testing/resumo_estatistico_pt.png'
+        filename = str(API_ROOT / 'resumo_estatistico_pt.png')
         plt.savefig(filename, bbox_inches='tight', dpi=300)
         plt.close()
         
@@ -571,7 +579,7 @@ class GeradorGraficosAcademicos:
         
         plt.tight_layout()
         
-        filename = 'evaluation/api_load_testing/mapa_calor_performance_pt.png'
+        filename = str(API_ROOT / 'mapa_calor_performance_pt.png')
         plt.savefig(filename, bbox_inches='tight', dpi=300)
         plt.close()
         
@@ -598,7 +606,7 @@ class GeradorGraficosAcademicos:
         print("   2. analise_escalabilidade_pt.png")
         print("   3. resumo_estatistico_pt.png")
         print("   4. mapa_calor_performance_pt.png")
-        print("\n📍 Localização: evaluation/api_load_testing/")
+        print(f"\n📍 Localização: {API_ROOT}/")
         print("\n🎓 Todos os gráficos são de qualidade publicável (300 DPI)")
         print("   Prontos para inclusão no seu relatório final da disciplina!")
 

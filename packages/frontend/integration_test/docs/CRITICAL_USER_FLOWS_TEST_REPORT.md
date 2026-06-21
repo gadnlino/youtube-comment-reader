@@ -313,7 +313,7 @@ Each test:
 ## Comparison: API Tests vs UI Tests
 
 ### API Integration Tests (Python)
-**File**: `evaluation/04_scripts/tests/e2e_functionality_test.py`
+**File**: `evaluation/scripts/02_api_performance/benchmarks/e2e_functionality_test.py`
 
 **What they validate**:
 - ✅ API endpoint responses (HTTP 200/400/502)

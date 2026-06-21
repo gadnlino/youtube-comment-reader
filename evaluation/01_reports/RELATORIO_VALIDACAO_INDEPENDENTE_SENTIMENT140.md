@@ -569,12 +569,12 @@ No entanto, a validação com um dataset independente de domínio diferente já 
 - **Script de Validação - AiresPucrs (Português)**: `evaluation/scripts/01_model_evaluation/validate_with_airespucrs_pt.py`
 - **Script de Geração de Gráficos (Genérico)**: `evaluation/scripts/01_model_evaluation/generate_validation_graphs.py`
 - **Script de Geração de Gráficos - Twitter Airline**: `evaluation/scripts/01_model_evaluation/generate_twitter_airline_graphs.py`
-- **Documentação de Datasets**: `evaluation/DATASETS_VALIDACAO_INDEPENDENTE.md`
-- **Guia de Scripts**: `evaluation/GUIA_COMPLETO_SCRIPTS_AVALIACAO.md`
+- **Documentação de Datasets**: `evaluation/01_reports/DATASETS_VALIDACAO_INDEPENDENTE.md`
+- **Guia de Scripts**: `evaluation/scripts/CATALOG.md`
 
 ### 7.3 Documentação Relacionada
 
-- **Argumento de Generalização**: `evaluation/ARGUMENTO_GENERALIZACAO_MODELO_SELECIONADO.md`
+- **Argumento de Generalização**: `evaluation/01_reports/ARGUMENTO_GENERALIZACAO_MODELO_SELECIONADO.md`
 - **Comparação de Modelos**: `evaluation/model_comparison/README.md`
 
 ---

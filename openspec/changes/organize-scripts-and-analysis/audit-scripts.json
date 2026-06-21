@@ -1,0 +1,888 @@
+[
+  {
+    "file": "analyze_video_language.py",
+    "path": "evaluation/scripts/01_model_evaluation/analyze_video_language.py",
+    "folder": "evaluation/scripts/01_model_evaluation",
+    "lines": 193,
+    "size": 5597,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [],
+    "duplicate_of": null,
+    "verdict": "KEEP (canonical)"
+  },
+  {
+    "file": "analyze_video_language.py",
+    "path": "evaluation/model_analysis/scripts/analyze_video_language.py",
+    "folder": "evaluation/model_analysis/scripts",
+    "lines": 193,
+    "size": 5597,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [],
+    "duplicate_of": "evaluation/scripts/01_model_evaluation/analyze_video_language.py",
+    "verdict": "ARCHIVE duplicate of evaluation/scripts/01_model_evaluation/analyze_video_language.py"
+  },
+  {
+    "file": "batch_size_analysis.py",
+    "path": "evaluation/04_scripts/tests/batch_size_analysis.py",
+    "folder": "evaluation/04_scripts/tests",
+    "lines": 387,
+    "size": 16820,
+    "purpose": "",
+    "reads_writes": [
+      "evaluation/api_load_testing/batch_size_analysis_{timestamp}.csv",
+      "evaluation/api_load_testing/batch_size_analysis_{timestamp}.png",
+      "evaluation/api_load_testing/batch_size_summary_{timestamp}.json"
+    ],
+    "duplicate_of": null,
+    "verdict": "KEEP (unique)"
+  },
+  {
+    "file": "comments.py",
+    "path": "evaluation/scripts/02_api_performance/comments.py",
+    "folder": "evaluation/scripts/02_api_performance",
+    "lines": 216,
+    "size": 7354,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [],
+    "duplicate_of": null,
+    "verdict": "KEEP (canonical)"
+  },
+  {
+    "file": "comments.py",
+    "path": "evaluation/api_load_testing/scripts/comments.py",
+    "folder": "evaluation/api_load_testing/scripts",
+    "lines": 216,
+    "size": 7354,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [],
+    "duplicate_of": "evaluation/scripts/02_api_performance/comments.py",
+    "verdict": "ARCHIVE duplicate of evaluation/scripts/02_api_performance/comments.py"
+  },
+  {
+    "file": "common.py",
+    "path": "evaluation/scripts/02_api_performance/common.py",
+    "folder": "evaluation/scripts/02_api_performance",
+    "lines": 332,
+    "size": 10693,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [],
+    "duplicate_of": null,
+    "verdict": "KEEP (canonical)"
+  },
+  {
+    "file": "common.py",
+    "path": "evaluation/api_load_testing/scripts/common.py",
+    "folder": "evaluation/api_load_testing/scripts",
+    "lines": 332,
+    "size": 10693,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [],
+    "duplicate_of": "evaluation/scripts/02_api_performance/common.py",
+    "verdict": "ARCHIVE duplicate of evaluation/scripts/02_api_performance/common.py"
+  },
+  {
+    "file": "compare_metrics_vs_benchmark.py",
+    "path": "evaluation/scripts/01_model_evaluation/compare_metrics_vs_benchmark.py",
+    "folder": "evaluation/scripts/01_model_evaluation",
+    "lines": 529,
+    "size": 19990,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [
+      "../api_load_testing/working_videos_20251118_121130.json",
+      "../api_load_testing/youtube_comments_cleaned.csv"
+    ],
+    "duplicate_of": null,
+    "verdict": "KEEP (canonical)"
+  },
+  {
+    "file": "compare_metrics_vs_benchmark.py",
+    "path": "evaluation/model_analysis/scripts/compare_metrics_vs_benchmark.py",
+    "folder": "evaluation/model_analysis/scripts",
+    "lines": 529,
+    "size": 19990,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [
+      "../api_load_testing/working_videos_20251118_121130.json",
+      "../api_load_testing/youtube_comments_cleaned.csv"
+    ],
+    "duplicate_of": "evaluation/scripts/01_model_evaluation/compare_metrics_vs_benchmark.py",
+    "verdict": "ARCHIVE duplicate of evaluation/scripts/01_model_evaluation/compare_metrics_vs_benchmark.py"
+  },
+  {
+    "file": "comprehensive_model_comparison.py",
+    "path": "evaluation/model_comparison/scripts/comprehensive_model_comparison.py",
+    "folder": "evaluation/model_comparison/scripts",
+    "lines": 312,
+    "size": 14340,
+    "purpose": "",
+    "reads_writes": [],
+    "duplicate_of": null,
+    "verdict": "KEEP (unique)"
+  },
+  {
+    "file": "config_template.py",
+    "path": "evaluation/04_scripts/tests/config_template.py",
+    "folder": "evaluation/04_scripts/tests",
+    "lines": 19,
+    "size": 549,
+    "purpose": "Test Configuration",
+    "reads_writes": [],
+    "duplicate_of": null,
+    "verdict": "KEEP (unique)"
+  },
+  {
+    "file": "e2e_functionality_test.py",
+    "path": "evaluation/e2e_functionality_testing/e2e_functionality_test.py",
+    "folder": "evaluation/e2e_functionality_testing",
+    "lines": 611,
+    "size": 20914,
+    "purpose": "",
+    "reads_writes": [],
+    "duplicate_of": null,
+    "verdict": "KEEP (unique)"
+  },
+  {
+    "file": "evaluate_tfidf_logistic_on_youtube_comments_with_labeled.py",
+    "path": "evaluation/model_analysis/scripts/evaluate_tfidf_logistic_on_youtube_comments_with_labeled.py",
+    "folder": "evaluation/model_analysis/scripts",
+    "lines": 713,
+    "size": 22411,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [
+      "../../../",
+      "evaluation/model_comparison/results/comprehensive_model_comparison.txt"
+    ],
+    "duplicate_of": null,
+    "verdict": "KEEP (unique)"
+  },
+  {
+    "file": "extended_benchmark.py",
+    "path": "evaluation/04_scripts/tests/extended_benchmark.py",
+    "folder": "evaluation/04_scripts/tests",
+    "lines": 445,
+    "size": 16971,
+    "purpose": "",
+    "reads_writes": [],
+    "duplicate_of": null,
+    "verdict": "KEEP (unique)"
+  },
+  {
+    "file": "fix_nltk_ssl.py",
+    "path": "evaluation/model_comparison/scripts/fix_nltk_ssl.py",
+    "folder": "evaluation/model_comparison/scripts",
+    "lines": 70,
+    "size": 2242,
+    "purpose": "",
+    "reads_writes": [],
+    "duplicate_of": null,
+    "verdict": "KEEP (unique)"
+  },
+  {
+    "file": "generate_academic_graphs.py",
+    "path": "evaluation/04_scripts/generators/generate_academic_graphs.py",
+    "folder": "evaluation/04_scripts/generators",
+    "lines": 603,
+    "size": 26905,
+    "purpose": "",
+    "reads_writes": [
+      "evaluation/api_load_testing/batch_size_analysis_*.csv",
+      "evaluation/api_load_testing/comprehensive_performance_overview.png",
+      "evaluation/api_load_testing/extended_performance_results_20251025_141608.csv",
+      "evaluation/api_load_testing/heavy_load_test_results_20251025_143255.csv",
+      "evaluation/api_load_testing/multi_video_results_20251026_212004.csv",
+      "evaluation/api_load_testing/multi_video_summary_20251026_212004.json",
+      "evaluation/api_load_testing/performance_heatmap.png",
+      "evaluation/api_load_testing/scalability_analysis.png",
+      "evaluation/api_load_testing/statistical_summary.png"
+    ],
+    "duplicate_of": null,
+    "verdict": "KEEP (unique)"
+  },
+  {
+    "file": "generate_academic_graphs_pt.py",
+    "path": "evaluation/04_scripts/generators/generate_academic_graphs_pt.py",
+    "folder": "evaluation/04_scripts/generators",
+    "lines": 610,
+    "size": 28461,
+    "purpose": "",
+    "reads_writes": [
+      "evaluation/api_load_testing/analise_escalabilidade_pt.png",
+      "evaluation/api_load_testing/batch_size_analysis_*.csv",
+      "evaluation/api_load_testing/extended_performance_results_20251025_141608.csv",
+      "evaluation/api_load_testing/heavy_load_test_results_20251025_143255.csv",
+      "evaluation/api_load_testing/mapa_calor_performance_pt.png",
+      "evaluation/api_load_testing/multi_video_results_20251026_212004.csv",
+      "evaluation/api_load_testing/multi_video_summary_20251026_212004.json",
+      "evaluation/api_load_testing/resumo_estatistico_pt.png",
+      "evaluation/api_load_testing/visao_geral_performance_pt.png"
+    ],
+    "duplicate_of": null,
+    "verdict": "KEEP (unique)"
+  },
+  {
+    "file": "generate_confusion_matrix.py",
+    "path": "evaluation/scripts/01_model_evaluation/generate_confusion_matrix.py",
+    "folder": "evaluation/scripts/01_model_evaluation",
+    "lines": 189,
+    "size": 7406,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [],
+    "duplicate_of": null,
+    "verdict": "KEEP (canonical)"
+  },
+  {
+    "file": "generate_confusion_matrix.py",
+    "path": "evaluation/model_analysis/scripts/generate_confusion_matrix.py",
+    "folder": "evaluation/model_analysis/scripts",
+    "lines": 189,
+    "size": 7406,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [],
+    "duplicate_of": "evaluation/scripts/01_model_evaluation/generate_confusion_matrix.py",
+    "verdict": "ARCHIVE duplicate of evaluation/scripts/01_model_evaluation/generate_confusion_matrix.py"
+  },
+  {
+    "file": "generate_consolidated_distribution_analysis.py",
+    "path": "evaluation/model_analysis/scripts/generate_consolidated_distribution_analysis.py",
+    "folder": "evaluation/model_analysis/scripts",
+    "lines": 208,
+    "size": 8403,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [],
+    "duplicate_of": null,
+    "verdict": "KEEP (unique)"
+  },
+  {
+    "file": "generate_consolidated_graphs.py",
+    "path": "evaluation/scripts/02_api_performance/generate_consolidated_graphs.py",
+    "folder": "evaluation/scripts/02_api_performance",
+    "lines": 627,
+    "size": 25445,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [],
+    "duplicate_of": null,
+    "verdict": "KEEP (canonical)"
+  },
+  {
+    "file": "generate_consolidated_graphs.py",
+    "path": "evaluation/api_load_testing/scripts/generate_consolidated_graphs.py",
+    "folder": "evaluation/api_load_testing/scripts",
+    "lines": 627,
+    "size": 25445,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [],
+    "duplicate_of": "evaluation/scripts/02_api_performance/generate_consolidated_graphs.py",
+    "verdict": "ARCHIVE duplicate of evaluation/scripts/02_api_performance/generate_consolidated_graphs.py"
+  },
+  {
+    "file": "generate_e2e_test_table.py",
+    "path": "evaluation/scripts/02_api_performance/generate_e2e_test_table.py",
+    "folder": "evaluation/scripts/02_api_performance",
+    "lines": 217,
+    "size": 7142,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [],
+    "duplicate_of": null,
+    "verdict": "KEEP (canonical)"
+  },
+  {
+    "file": "generate_e2e_test_table.py",
+    "path": "evaluation/api_load_testing/scripts/generate_e2e_test_table.py",
+    "folder": "evaluation/api_load_testing/scripts",
+    "lines": 217,
+    "size": 7142,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [],
+    "duplicate_of": "evaluation/scripts/02_api_performance/generate_e2e_test_table.py",
+    "verdict": "ARCHIVE duplicate of evaluation/scripts/02_api_performance/generate_e2e_test_table.py"
+  },
+  {
+    "file": "generate_language_analysis_graphs.py",
+    "path": "evaluation/scripts/01_model_evaluation/generate_language_analysis_graphs.py",
+    "folder": "evaluation/scripts/01_model_evaluation",
+    "lines": 369,
+    "size": 13416,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [
+      "../api_load_testing/multilingual_sentiment_results_*.json",
+      "results/multilingual_sentiment_results_*.json"
+    ],
+    "duplicate_of": null,
+    "verdict": "KEEP (canonical)"
+  },
+  {
+    "file": "generate_language_analysis_graphs.py",
+    "path": "evaluation/model_analysis/scripts/generate_language_analysis_graphs.py",
+    "folder": "evaluation/model_analysis/scripts",
+    "lines": 369,
+    "size": 13416,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [
+      "../api_load_testing/multilingual_sentiment_results_*.json",
+      "results/multilingual_sentiment_results_*.json"
+    ],
+    "duplicate_of": "evaluation/scripts/01_model_evaluation/generate_language_analysis_graphs.py",
+    "verdict": "ARCHIVE duplicate of evaluation/scripts/01_model_evaluation/generate_language_analysis_graphs.py"
+  },
+  {
+    "file": "generate_language_analysis_graphs_pt.py",
+    "path": "evaluation/scripts/01_model_evaluation/generate_language_analysis_graphs_pt.py",
+    "folder": "evaluation/scripts/01_model_evaluation",
+    "lines": 458,
+    "size": 17846,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [
+      "../api_load_testing/multilingual_sentiment_results_*.json",
+      "results/multilingual_sentiment_results_*.json"
+    ],
+    "duplicate_of": null,
+    "verdict": "KEEP (canonical)"
+  },
+  {
+    "file": "generate_language_analysis_graphs_pt.py",
+    "path": "evaluation/model_analysis/scripts/generate_language_analysis_graphs_pt.py",
+    "folder": "evaluation/model_analysis/scripts",
+    "lines": 458,
+    "size": 17846,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [
+      "../api_load_testing/multilingual_sentiment_results_*.json",
+      "results/multilingual_sentiment_results_*.json"
+    ],
+    "duplicate_of": "evaluation/scripts/01_model_evaluation/generate_language_analysis_graphs_pt.py",
+    "verdict": "ARCHIVE duplicate of evaluation/scripts/01_model_evaluation/generate_language_analysis_graphs_pt.py"
+  },
+  {
+    "file": "generate_locust_graphs.py",
+    "path": "evaluation/scripts/02_api_performance/generate_locust_graphs.py",
+    "folder": "evaluation/scripts/02_api_performance",
+    "lines": 354,
+    "size": 14717,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [],
+    "duplicate_of": null,
+    "verdict": "KEEP (canonical)"
+  },
+  {
+    "file": "generate_locust_graphs.py",
+    "path": "evaluation/api_load_testing/scripts/generate_locust_graphs.py",
+    "folder": "evaluation/api_load_testing/scripts",
+    "lines": 354,
+    "size": 14717,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [],
+    "duplicate_of": "evaluation/scripts/02_api_performance/generate_locust_graphs.py",
+    "verdict": "ARCHIVE duplicate of evaluation/scripts/02_api_performance/generate_locust_graphs.py"
+  },
+  {
+    "file": "generate_metrics_comparison_table.py",
+    "path": "evaluation/scripts/01_model_evaluation/generate_metrics_comparison_table.py",
+    "folder": "evaluation/scripts/01_model_evaluation",
+    "lines": 127,
+    "size": 4590,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [
+      "../api_load_testing/metrics_comparison_benchmark_*.json",
+      "results/metrics_comparison_benchmark_*.json"
+    ],
+    "duplicate_of": null,
+    "verdict": "KEEP (canonical)"
+  },
+  {
+    "file": "generate_metrics_comparison_table.py",
+    "path": "evaluation/model_analysis/scripts/generate_metrics_comparison_table.py",
+    "folder": "evaluation/model_analysis/scripts",
+    "lines": 127,
+    "size": 4590,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [
+      "../api_load_testing/metrics_comparison_benchmark_*.json",
+      "results/metrics_comparison_benchmark_*.json"
+    ],
+    "duplicate_of": "evaluation/scripts/01_model_evaluation/generate_metrics_comparison_table.py",
+    "verdict": "ARCHIVE duplicate of evaluation/scripts/01_model_evaluation/generate_metrics_comparison_table.py"
+  },
+  {
+    "file": "generate_sentiment_distribution_by_language.py",
+    "path": "evaluation/scripts/01_model_evaluation/generate_sentiment_distribution_by_language.py",
+    "folder": "evaluation/scripts/01_model_evaluation",
+    "lines": 225,
+    "size": 8336,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [
+      "../api_load_testing/multilingual_sentiment_results_*.json",
+      "results/multilingual_sentiment_results_*.json"
+    ],
+    "duplicate_of": null,
+    "verdict": "KEEP (canonical)"
+  },
+  {
+    "file": "generate_sentiment_distribution_by_language.py",
+    "path": "evaluation/model_analysis/scripts/generate_sentiment_distribution_by_language.py",
+    "folder": "evaluation/model_analysis/scripts",
+    "lines": 225,
+    "size": 8336,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [
+      "../api_load_testing/multilingual_sentiment_results_*.json",
+      "results/multilingual_sentiment_results_*.json"
+    ],
+    "duplicate_of": "evaluation/scripts/01_model_evaluation/generate_sentiment_distribution_by_language.py",
+    "verdict": "ARCHIVE duplicate of evaluation/scripts/01_model_evaluation/generate_sentiment_distribution_by_language.py"
+  },
+  {
+    "file": "generate_twitter_airline_graphs.py",
+    "path": "evaluation/scripts/01_model_evaluation/generate_twitter_airline_graphs.py",
+    "folder": "evaluation/scripts/01_model_evaluation",
+    "lines": 251,
+    "size": 9165,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [
+      "results/validation_twitter_airline_*.json"
+    ],
+    "duplicate_of": null,
+    "verdict": "KEEP (unique)"
+  },
+  {
+    "file": "generate_validation_graphs.py",
+    "path": "evaluation/scripts/01_model_evaluation/generate_validation_graphs.py",
+    "folder": "evaluation/scripts/01_model_evaluation",
+    "lines": 319,
+    "size": 12439,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [],
+    "duplicate_of": null,
+    "verdict": "KEEP (unique)"
+  },
+  {
+    "file": "heavy_load_test.py",
+    "path": "evaluation/04_scripts/tests/heavy_load_test.py",
+    "folder": "evaluation/04_scripts/tests",
+    "lines": 433,
+    "size": 17095,
+    "purpose": "",
+    "reads_writes": [],
+    "duplicate_of": null,
+    "verdict": "KEEP (unique)"
+  },
+  {
+    "file": "language_impact_analysis.py",
+    "path": "evaluation/scripts/01_model_evaluation/language_impact_analysis.py",
+    "folder": "evaluation/scripts/01_model_evaluation",
+    "lines": 381,
+    "size": 15395,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [],
+    "duplicate_of": null,
+    "verdict": "KEEP (canonical)"
+  },
+  {
+    "file": "language_impact_analysis.py",
+    "path": "evaluation/model_analysis/scripts/language_impact_analysis.py",
+    "folder": "evaluation/model_analysis/scripts",
+    "lines": 381,
+    "size": 15395,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [],
+    "duplicate_of": "evaluation/scripts/01_model_evaluation/language_impact_analysis.py",
+    "verdict": "ARCHIVE duplicate of evaluation/scripts/01_model_evaluation/language_impact_analysis.py"
+  },
+  {
+    "file": "locust_max_tps.py",
+    "path": "evaluation/scripts/02_api_performance/locust_max_tps.py",
+    "folder": "evaluation/scripts/02_api_performance",
+    "lines": 272,
+    "size": 10693,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [],
+    "duplicate_of": null,
+    "verdict": "KEEP (canonical)"
+  },
+  {
+    "file": "locust_max_tps.py",
+    "path": "evaluation/api_load_testing/scripts/locust_max_tps.py",
+    "folder": "evaluation/api_load_testing/scripts",
+    "lines": 272,
+    "size": 10693,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [],
+    "duplicate_of": "evaluation/scripts/02_api_performance/locust_max_tps.py",
+    "verdict": "ARCHIVE duplicate of evaluation/scripts/02_api_performance/locust_max_tps.py"
+  },
+  {
+    "file": "locust_test.py",
+    "path": "evaluation/scripts/02_api_performance/locust_test.py",
+    "folder": "evaluation/scripts/02_api_performance",
+    "lines": 148,
+    "size": 4845,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [],
+    "duplicate_of": null,
+    "verdict": "KEEP (canonical)"
+  },
+  {
+    "file": "locust_test.py",
+    "path": "evaluation/api_load_testing/scripts/locust_test.py",
+    "folder": "evaluation/api_load_testing/scripts",
+    "lines": 148,
+    "size": 4845,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [],
+    "duplicate_of": "evaluation/scripts/02_api_performance/locust_test.py",
+    "verdict": "ARCHIVE duplicate of evaluation/scripts/02_api_performance/locust_test.py"
+  },
+  {
+    "file": "locustfile.py",
+    "path": "evaluation/04_scripts/tests/locustfile.py",
+    "folder": "evaluation/04_scripts/tests",
+    "lines": 303,
+    "size": 10739,
+    "purpose": "",
+    "reads_writes": [],
+    "duplicate_of": null,
+    "verdict": "KEEP (unique)"
+  },
+  {
+    "file": "multi_video_benchmark.py",
+    "path": "evaluation/04_scripts/tests/multi_video_benchmark.py",
+    "folder": "evaluation/04_scripts/tests",
+    "lines": 448,
+    "size": 20088,
+    "purpose": "",
+    "reads_writes": [
+      "evaluation/api_load_testing/multi_video_comparison_{timestamp}.png",
+      "evaluation/api_load_testing/multi_video_results_{timestamp}.csv",
+      "evaluation/api_load_testing/multi_video_summary_{timestamp}.json"
+    ],
+    "duplicate_of": null,
+    "verdict": "KEEP (unique)"
+  },
+  {
+    "file": "multilingual_sentiment_analysis.py",
+    "path": "evaluation/scripts/01_model_evaluation/multilingual_sentiment_analysis.py",
+    "folder": "evaluation/scripts/01_model_evaluation",
+    "lines": 582,
+    "size": 23534,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [],
+    "duplicate_of": null,
+    "verdict": "KEEP (canonical)"
+  },
+  {
+    "file": "multilingual_sentiment_analysis.py",
+    "path": "evaluation/model_analysis/scripts/multilingual_sentiment_analysis.py",
+    "folder": "evaluation/model_analysis/scripts",
+    "lines": 582,
+    "size": 23534,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [],
+    "duplicate_of": "evaluation/scripts/01_model_evaluation/multilingual_sentiment_analysis.py",
+    "verdict": "ARCHIVE duplicate of evaluation/scripts/01_model_evaluation/multilingual_sentiment_analysis.py"
+  },
+  {
+    "file": "nltk_setup.py",
+    "path": "evaluation/model_comparison/scripts/nltk_setup.py",
+    "folder": "evaluation/model_comparison/scripts",
+    "lines": 49,
+    "size": 1365,
+    "purpose": "",
+    "reads_writes": [],
+    "duplicate_of": null,
+    "verdict": "KEEP (unique)"
+  },
+  {
+    "file": "performance_benchmark.py",
+    "path": "evaluation/04_scripts/tests/performance_benchmark.py",
+    "folder": "evaluation/04_scripts/tests",
+    "lines": 482,
+    "size": 16983,
+    "purpose": "",
+    "reads_writes": [],
+    "duplicate_of": null,
+    "verdict": "KEEP (unique)"
+  },
+  {
+    "file": "plot_tfidf_lr_selection_vs_kaggle_amitzala.py",
+    "path": "evaluation/model_analysis/scripts/plot_tfidf_lr_selection_vs_kaggle_amitzala.py",
+    "folder": "evaluation/model_analysis/scripts",
+    "lines": 235,
+    "size": 6805,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [
+      "../../../",
+      "evaluation/model_comparison/results/comprehensive_model_comparison.txt"
+    ],
+    "duplicate_of": null,
+    "verdict": "KEEP (unique)"
+  },
+  {
+    "file": "pre_filter_working_videos.py",
+    "path": "evaluation/scripts/01_model_evaluation/pre_filter_working_videos.py",
+    "folder": "evaluation/scripts/01_model_evaluation",
+    "lines": 148,
+    "size": 4655,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [
+      "../api_load_testing/youtube_comments_cleaned.csv"
+    ],
+    "duplicate_of": null,
+    "verdict": "KEEP (canonical)"
+  },
+  {
+    "file": "pre_filter_working_videos.py",
+    "path": "evaluation/model_analysis/scripts/pre_filter_working_videos.py",
+    "folder": "evaluation/model_analysis/scripts",
+    "lines": 148,
+    "size": 4655,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [
+      "../api_load_testing/youtube_comments_cleaned.csv"
+    ],
+    "duplicate_of": "evaluation/scripts/01_model_evaluation/pre_filter_working_videos.py",
+    "verdict": "ARCHIVE duplicate of evaluation/scripts/01_model_evaluation/pre_filter_working_videos.py"
+  },
+  {
+    "file": "quick_test.py",
+    "path": "evaluation/04_scripts/tests/quick_test.py",
+    "folder": "evaluation/04_scripts/tests",
+    "lines": 174,
+    "size": 5735,
+    "purpose": "",
+    "reads_writes": [],
+    "duplicate_of": null,
+    "verdict": "KEEP (unique)"
+  },
+  {
+    "file": "run_all.py",
+    "path": "evaluation/scripts/02_api_performance/run_all.py",
+    "folder": "evaluation/scripts/02_api_performance",
+    "lines": 297,
+    "size": 12199,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [],
+    "duplicate_of": null,
+    "verdict": "KEEP (canonical)"
+  },
+  {
+    "file": "run_all.py",
+    "path": "evaluation/api_load_testing/scripts/run_all.py",
+    "folder": "evaluation/api_load_testing/scripts",
+    "lines": 297,
+    "size": 12199,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [],
+    "duplicate_of": "evaluation/scripts/02_api_performance/run_all.py",
+    "verdict": "ARCHIVE duplicate of evaluation/scripts/02_api_performance/run_all.py"
+  },
+  {
+    "file": "stability.py",
+    "path": "evaluation/scripts/02_api_performance/stability.py",
+    "folder": "evaluation/scripts/02_api_performance",
+    "lines": 176,
+    "size": 6792,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [],
+    "duplicate_of": null,
+    "verdict": "KEEP (canonical)"
+  },
+  {
+    "file": "stability.py",
+    "path": "evaluation/api_load_testing/scripts/stability.py",
+    "folder": "evaluation/api_load_testing/scripts",
+    "lines": 176,
+    "size": 6792,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [],
+    "duplicate_of": "evaluation/scripts/02_api_performance/stability.py",
+    "verdict": "ARCHIVE duplicate of evaluation/scripts/02_api_performance/stability.py"
+  },
+  {
+    "file": "svm_classification_report.py",
+    "path": "evaluation/model_comparison/scripts/svm_classification_report.py",
+    "folder": "evaluation/model_comparison/scripts",
+    "lines": 300,
+    "size": 10378,
+    "purpose": "",
+    "reads_writes": [],
+    "duplicate_of": null,
+    "verdict": "KEEP (unique)"
+  },
+  {
+    "file": "textblob_classification_report.py",
+    "path": "evaluation/model_comparison/scripts/textblob_classification_report.py",
+    "folder": "evaluation/model_comparison/scripts",
+    "lines": 211,
+    "size": 7620,
+    "purpose": "",
+    "reads_writes": [],
+    "duplicate_of": null,
+    "verdict": "KEEP (unique)"
+  },
+  {
+    "file": "tfidf_logistic_classification_report.py",
+    "path": "evaluation/model_comparison/scripts/tfidf_logistic_classification_report.py",
+    "folder": "evaluation/model_comparison/scripts",
+    "lines": 307,
+    "size": 10980,
+    "purpose": "",
+    "reads_writes": [
+      "../results"
+    ],
+    "duplicate_of": null,
+    "verdict": "KEEP (unique)"
+  },
+  {
+    "file": "vader_classification_report.py",
+    "path": "evaluation/model_comparison/scripts/vader_classification_report.py",
+    "folder": "evaluation/model_comparison/scripts",
+    "lines": 249,
+    "size": 8173,
+    "purpose": "",
+    "reads_writes": [],
+    "duplicate_of": null,
+    "verdict": "KEEP (unique)"
+  },
+  {
+    "file": "validate_model_accuracy_with_dataset.py",
+    "path": "evaluation/scripts/01_model_evaluation/validate_model_accuracy_with_dataset.py",
+    "folder": "evaluation/scripts/01_model_evaluation",
+    "lines": 252,
+    "size": 8193,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [],
+    "duplicate_of": null,
+    "verdict": "KEEP (canonical)"
+  },
+  {
+    "file": "validate_model_accuracy_with_dataset.py",
+    "path": "evaluation/model_analysis/scripts/validate_model_accuracy_with_dataset.py",
+    "folder": "evaluation/model_analysis/scripts",
+    "lines": 252,
+    "size": 8193,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [],
+    "duplicate_of": "evaluation/scripts/01_model_evaluation/validate_model_accuracy_with_dataset.py",
+    "verdict": "ARCHIVE duplicate of evaluation/scripts/01_model_evaluation/validate_model_accuracy_with_dataset.py"
+  },
+  {
+    "file": "validate_model_distribution.py",
+    "path": "evaluation/model_analysis/scripts/validate_model_distribution.py",
+    "folder": "evaluation/model_analysis/scripts",
+    "lines": 330,
+    "size": 11834,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [
+      "../api_load_testing/youtube_comments_cleaned.csv"
+    ],
+    "duplicate_of": null,
+    "verdict": "KEEP (unique)"
+  },
+  {
+    "file": "validate_model_distribution_multiple_sets.py",
+    "path": "evaluation/model_analysis/scripts/validate_model_distribution_multiple_sets.py",
+    "folder": "evaluation/model_analysis/scripts",
+    "lines": 653,
+    "size": 25543,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [
+      "../api_load_testing/working_videos_20251118_121130.json",
+      "../api_load_testing/youtube_comments_cleaned.csv"
+    ],
+    "duplicate_of": null,
+    "verdict": "KEEP (unique)"
+  },
+  {
+    "file": "validate_model_distribution_vs_benchmark.py",
+    "path": "evaluation/model_analysis/scripts/validate_model_distribution_vs_benchmark.py",
+    "folder": "evaluation/model_analysis/scripts",
+    "lines": 702,
+    "size": 29218,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [
+      "../api_load_testing/working_videos_20251118_121130.json",
+      "../api_load_testing/youtube_comments_cleaned.csv"
+    ],
+    "duplicate_of": null,
+    "verdict": "KEEP (unique)"
+  },
+  {
+    "file": "validate_with_airespucrs_pt.py",
+    "path": "evaluation/scripts/01_model_evaluation/validate_with_airespucrs_pt.py",
+    "folder": "evaluation/scripts/01_model_evaluation",
+    "lines": 376,
+    "size": 14564,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [],
+    "duplicate_of": null,
+    "verdict": "KEEP (unique)"
+  },
+  {
+    "file": "validate_with_app_reviews_pt.py",
+    "path": "evaluation/scripts/01_model_evaluation/validate_with_app_reviews_pt.py",
+    "folder": "evaluation/scripts/01_model_evaluation",
+    "lines": 437,
+    "size": 16187,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [
+      "../../data/app_reviews*.csv",
+      "../data/app_reviews*.csv"
+    ],
+    "duplicate_of": null,
+    "verdict": "KEEP (unique)"
+  },
+  {
+    "file": "validate_with_imdb_reviews.py",
+    "path": "evaluation/scripts/01_model_evaluation/validate_with_imdb_reviews.py",
+    "folder": "evaluation/scripts/01_model_evaluation",
+    "lines": 431,
+    "size": 14895,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [],
+    "duplicate_of": null,
+    "verdict": "KEEP (unique)"
+  },
+  {
+    "file": "validate_with_tweets_pt.py",
+    "path": "evaluation/scripts/01_model_evaluation/validate_with_tweets_pt.py",
+    "folder": "evaluation/scripts/01_model_evaluation",
+    "lines": 406,
+    "size": 14319,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [],
+    "duplicate_of": null,
+    "verdict": "KEEP (unique)"
+  },
+  {
+    "file": "validate_with_twitter_airline.py",
+    "path": "evaluation/scripts/01_model_evaluation/validate_with_twitter_airline.py",
+    "folder": "evaluation/scripts/01_model_evaluation",
+    "lines": 412,
+    "size": 14830,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [],
+    "duplicate_of": null,
+    "verdict": "KEEP (unique)"
+  },
+  {
+    "file": "videos.py",
+    "path": "evaluation/scripts/02_api_performance/videos.py",
+    "folder": "evaluation/scripts/02_api_performance",
+    "lines": 289,
+    "size": 9852,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [],
+    "duplicate_of": null,
+    "verdict": "KEEP (canonical)"
+  },
+  {
+    "file": "videos.py",
+    "path": "evaluation/api_load_testing/scripts/videos.py",
+    "folder": "evaluation/api_load_testing/scripts",
+    "lines": 289,
+    "size": 9852,
+    "purpose": "-*- coding: utf-8 -*-",
+    "reads_writes": [],
+    "duplicate_of": "evaluation/scripts/02_api_performance/videos.py",
+    "verdict": "ARCHIVE duplicate of evaluation/scripts/02_api_performance/videos.py"
+  }
+]
