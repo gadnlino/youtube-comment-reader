@@ -152,7 +152,7 @@ python e2e_functionality_test.py
 cd evaluation/e2e_functionality_testing
 
 # Python 3.x with requests library
-pip install requests
+pip install -r evaluation/requirements.txt
 ```
 
 ### Run Tests:

@@ -851,7 +851,7 @@ p99 = np.percentile(response_times, 99)
    cd evaluation/api_load_testing
    python3 -m venv venv
    source venv/bin/activate
-   pip install -r requirements.txt
+   pip install -r evaluation/requirements.txt
    ```
 
 2. **Run Performance Test**:

@@ -588,17 +588,17 @@ No entanto, a validação com um dataset independente de domínio diferente já 
    - **IMDB Movie Reviews**: Disponível no Kaggle - Baixado automaticamente via `kagglehub` ou manualmente
    - **AiresPucrs/sentiment-analysis-pt**: Baixado automaticamente via `datasets` do Hugging Face
 2. **URL da API**: Obter do output do CloudFormation/CDK (procurar por `SentimentAnalysisFunctionUrl`)
-3. **Python 3.8+**: Com bibliotecas: `pandas`, `numpy`, `requests`, `scikit-learn`, `matplotlib`, `seaborn`, `kagglehub`
-   - Para AiresPucrs: `pip install datasets`
+3. **Python 3.10+**: Install evaluation dependencies from the repository root:
+
+```bash
+pip install -r evaluation/requirements.txt
+```
 
 ### 8.2 Configuração
 
 ```bash
-# Instalar dependências básicas
-pip install pandas numpy requests scikit-learn matplotlib seaborn kagglehub
-
-# Para validação com AiresPucrs (português)
-pip install datasets
+# Instalar dependências (inclui datasets, kagglehub, scikit-learn, etc.)
+pip install -r evaluation/requirements.txt
 
 # Configurar variáveis de ambiente
 export SENTIMENT_ANALYSIS_API_URL='https://...'

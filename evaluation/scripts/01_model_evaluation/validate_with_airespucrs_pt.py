@@ -31,7 +31,7 @@ try:
     DATASETS_AVAILABLE = True
 except ImportError:
     DATASETS_AVAILABLE = False
-    print("⚠️  Biblioteca 'datasets' não instalada. Execute: pip install datasets")
+    print("⚠️  Biblioteca 'datasets' não instalada. Execute: pip install -r evaluation/requirements.txt")
 
 # Configuration
 SAMPLE_SIZE = None  # Usar dataset completo balanceado
@@ -49,7 +49,7 @@ def load_airespucrs_dataset(sample_size=None):
     print("📊 Carregando dataset AiresPucrs/sentiment-analysis-pt...")
     
     if not DATASETS_AVAILABLE:
-        raise ImportError("Biblioteca 'datasets' não está instalada. Execute: pip install datasets")
+        raise ImportError("Biblioteca 'datasets' não está instalada. Execute: pip install -r evaluation/requirements.txt")
     
     try:
         print("📥 Baixando dataset do Hugging Face...")

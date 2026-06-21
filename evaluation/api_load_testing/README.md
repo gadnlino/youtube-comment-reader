@@ -24,20 +24,16 @@ evaluation/api_load_testing/
 
 ## Pré-requisitos
 
-```bash
-pip install requests matplotlib seaborn numpy
-```
+From the repository root:
 
-Para testes de TPS máximo com Locust:
 ```bash
-pip install locust
+pip install -r evaluation/requirements.txt
 ```
 
 ## Início Rápido
 
 ```bash
-# 1. Instalar dependências
-pip install requests matplotlib seaborn numpy
+# 1. Instalar dependências (see above)
 
 # 2. Configurar (editar scripts/common.py, scripts/videos.py, scripts/comments.py conforme necessário)
 
@@ -216,10 +212,7 @@ Este resumo pode ser usado diretamente como base para a seção de avaliação d
 Para encontrar o **TPS máximo** da API com aumento gradual de carga:
 
 ```bash
-# Instalar Locust (se ainda não tiver)
-pip install locust
-
-# Executar teste de TPS máximo (script automatizado)
+# Executar teste de TPS máximo (Locust incluído em evaluation/requirements.txt)
 cd evaluation/scripts/02_api_performance
 chmod +x run_max_tps_test.sh  # Dar permissão de execução (primeira vez)
 ./run_max_tps_test.sh

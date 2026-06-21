@@ -31,7 +31,7 @@ try:
     DATASETS_AVAILABLE = True
 except ImportError:
     DATASETS_AVAILABLE = False
-    print("⚠️  Biblioteca 'datasets' não instalada. Execute: pip install datasets")
+    print("⚠️  Biblioteca 'datasets' não instalada. Execute: pip install -r evaluation/requirements.txt")
 
 # Configuration
 SAMPLE_SIZE = 10000  # Usando 10k tweets para validação
@@ -62,7 +62,7 @@ def load_tweets_pt_dataset(sample_size=None):
     print("📊 Carregando dataset Tweets em Português (Hugging Face)...")
     
     if not DATASETS_AVAILABLE:
-        raise ImportError("Biblioteca 'datasets' não está instalada. Execute: pip install datasets")
+        raise ImportError("Biblioteca 'datasets' não está instalada. Execute: pip install -r evaluation/requirements.txt")
     
     try:
         print("📥 Baixando dataset do Hugging Face...")

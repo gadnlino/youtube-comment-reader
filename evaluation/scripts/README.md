@@ -87,8 +87,11 @@ Avaliar e validar o modelo de classificação de sentimento (TF-IDF + Logistic R
 
 #### Pré-requisitos
 
+Install once from the repository root (see also [`../README.md`](../README.md#setup)):
+
 ```bash
-pip install pandas numpy scikit-learn matplotlib seaborn requests scipy
+pip install -r evaluation/requirements.txt
+python -m nltk.downloader vader_lexicon
 ```
 
 #### Executar um Script
@@ -170,8 +173,10 @@ Avaliar o desempenho, escalabilidade e capacidade de carga da API intermediária
 
 #### Pré-requisitos
 
+Same dependencies as model evaluation — install once from the repository root:
+
 ```bash
-pip install requests matplotlib seaborn numpy pandas locust
+pip install -r evaluation/requirements.txt
 ```
 
 #### Executar Todos os Testes
@@ -346,7 +351,7 @@ Os resultados das avaliações estão organizados em:
 ### Para Scripts Python (Modelo e API)
 
 ```bash
-pip install requests pandas numpy matplotlib seaborn scikit-learn scipy locust
+pip install -r evaluation/requirements.txt
 ```
 
 ### Para Testes do Frontend

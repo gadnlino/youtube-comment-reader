@@ -20,7 +20,7 @@ O teste usa **ramp-up gradual** de usuários simultâneos:
 ## Pré-requisitos
 
 ```bash
-pip install locust
+pip install -r evaluation/requirements.txt
 ```
 
 ## Execução Rápida
@@ -133,7 +133,7 @@ O relatório HTML do Locust inclui:
 
 ### Locust não encontrado
 ```bash
-pip install locust
+pip install -r evaluation/requirements.txt
 ```
 
 ### Muitas falhas desde o início

@@ -31,8 +31,10 @@ Os testes E2E da API validam:
 
 ### Pré-requisitos
 
+From the repository root:
+
 ```bash
-pip install requests
+pip install -r evaluation/requirements.txt
 ```
 
 ### Executar os Testes

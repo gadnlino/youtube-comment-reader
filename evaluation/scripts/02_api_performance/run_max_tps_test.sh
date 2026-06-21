@@ -14,7 +14,7 @@ echo ""
 # Verificar se Locust está instalado
 if ! command -v locust &> /dev/null; then
     echo "❌ Locust não encontrado!"
-    echo "   Instale com: pip install locust"
+    echo "   Instale com: pip install -r evaluation/requirements.txt"
     exit 1
 fi
 

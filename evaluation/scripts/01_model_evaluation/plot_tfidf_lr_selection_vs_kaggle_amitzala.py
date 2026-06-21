@@ -96,7 +96,6 @@ def load_kaggle_metrics_from_csv(csv_path: str) -> Dict[str, float]:
 def plot_comparison(
     selection: Dict[str, float],
     kaggle: Dict[str, float],
-    kaggle_csv_basename: str,
     output_png: str,
 ) -> None:
     plt.style.use("seaborn-v0_8-paper")
@@ -166,23 +165,7 @@ def plot_comparison(
                 fontweight="bold",
             )
 
-    note = (
-        "Seleção: métricas da tabela em comprehensive_model_comparison.txt "
-        "(TF-IDF+RL). Avaliação: inferência no CSV "
-        f"{kaggle_csv_basename} (sem retreinamento)."
-    )
-    plt.figtext(
-        0.5,
-        0.02,
-        note,
-        ha="center",
-        fontsize=9,
-        style="italic",
-        color="gray",
-        wrap=True,
-    )
-
-    plt.tight_layout(rect=[0, 0.06, 1, 1])
+    plt.tight_layout()
     os.makedirs(os.path.dirname(output_png), exist_ok=True)
     plt.savefig(output_png, bbox_inches="tight")
     plt.close(fig)
@@ -216,7 +199,6 @@ def main() -> int:
     plot_comparison(
         selection,
         kaggle,
-        os.path.basename(csv_path),
         out_png,
     )
 

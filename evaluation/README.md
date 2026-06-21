@@ -25,6 +25,19 @@ Ponto de entrada para relatórios, dados, scripts e material arquivado da avalia
 - **Guia de navegação:** [`05_guides/ONDE_ESTA_TUDO.md`](05_guides/ONDE_ESTA_TUDO.md)
 - **Texto da monografia:** [`05_guides/TEXTO_AVALIACAO_MONOGRAFIA.md`](05_guides/TEXTO_AVALIACAO_MONOGRAFIA.md)
 
+## Setup
+
+Python **3.10+** recommended. From the repository root:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate   # Windows: .venv\Scripts\activate
+pip install -r evaluation/requirements.txt
+python -m nltk.downloader vader_lexicon   # model-comparison / VADER scripts
+```
+
+`torch` is included and may take several minutes to download. All evaluation scripts share this single requirements file.
+
 ## Executar scripts
 
 ```bash

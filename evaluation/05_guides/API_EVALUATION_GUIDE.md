@@ -65,7 +65,7 @@ This document provides a structured evaluation framework for the YouTube Comment
 cd evaluation/api_load_testing
 python3 -m venv venv
 source venv/bin/activate
-pip install -r requirements.txt
+pip install -r evaluation/requirements.txt
 python quick_test.py
 ```
 

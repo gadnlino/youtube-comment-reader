@@ -13,3 +13,5 @@ Estes documentos foram substituídos por:
 | `ORGANIZACAO_ARQUIVOS.md` | `evaluation/README.md` |
 
 Ficheiros mantidos aqui para citações na monografia e referência histórica.
+
+> **Setup Python (atual):** use `pip install -r evaluation/requirements.txt` — ver `evaluation/README.md`.

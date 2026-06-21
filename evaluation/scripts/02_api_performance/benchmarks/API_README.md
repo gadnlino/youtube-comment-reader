@@ -35,7 +35,7 @@ python3 -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 # Install requirements
-pip install -r requirements.txt
+pip install -r evaluation/requirements.txt
 ```
 
 ### 2. Configure Test Parameters
@@ -267,7 +267,7 @@ Use these results for your assignment:
 ### Locust not starting
 **Fix**:
 ```bash
-pip install --upgrade locust requests
+pip install -r evaluation/requirements.txt
 ```
 
 ---

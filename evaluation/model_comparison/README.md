@@ -17,7 +17,7 @@ model_comparison/
 │   ├── svm_classification_report.py          # TF-IDF + SVM (52.5% accuracy)
 │   ├── fix_nltk_ssl.py                      # Utilitário NLTK
 │   ├── nltk_setup.py                        # Setup NLTK
-│   └── requirements.txt                     # Dependências Python
+│   └── requirements.txt                     # Pointer to evaluation/requirements.txt
 │
 ├── results/                          # Resultados das comparações
 │   ├── tfidf_logistic_results.txt           # Resultados TF-IDF + LR
@@ -50,9 +50,10 @@ Comparar diferentes modelos de análise de sentimento para selecionar o melhor m
 
 ### Pré-requisitos
 
+From the repository root:
+
 ```bash
-cd evaluation/model_comparison/scripts
-pip install -r requirements.txt
+pip install -r evaluation/requirements.txt
 ```
 
 **Configuração do NLTK (para VADER)**:

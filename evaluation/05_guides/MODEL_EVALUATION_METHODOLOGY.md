@@ -866,22 +866,18 @@ for idx, row in sample.iterrows():
 
 **Installation**:
 ```bash
-# Navigate to evaluation directory
-cd packages/containers/sentiment_analysis/evaluation/model_evaluation
-
-# Create virtual environment
-python3 -m venv venv
-
-# Activate
-source venv/bin/activate  # macOS/Linux
+# From repository root
+python3 -m venv .venv
+source .venv/bin/activate  # macOS/Linux
 # OR
-venv\Scripts\activate  # Windows
+.venv\Scripts\activate  # Windows
 
-# Install dependencies
-pip install -r requirements.txt
+pip install -r evaluation/requirements.txt
+python -m nltk.downloader vader_lexicon
 ```
 
-**requirements.txt**:
+**Dependencies** are defined in [`evaluation/requirements.txt`](../../requirements.txt). Historical pinned versions from the original evaluation environment:
+
 ```
 kagglehub==0.2.5
 pandas==2.2.0
@@ -891,7 +887,6 @@ nltk==3.8.1
 textblob==0.17.1
 matplotlib==3.8.2
 seaborn==0.13.2
-statsmodels==0.14.1
 ```
 
 ---

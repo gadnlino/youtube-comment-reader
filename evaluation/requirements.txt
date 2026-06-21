@@ -1,0 +1,33 @@
+# Python dependencies for evaluation and analysis scripts under evaluation/
+# Requires Python 3.10+
+#
+# Install from repository root:
+#   pip install -r evaluation/requirements.txt
+#
+# Note: torch is a large download (~2 GB CPU build). Install may take several minutes.
+# After install, download NLTK VADER data for model-comparison scripts:
+#   python -m nltk.downloader vader_lexicon
+
+# Core data / ML / visualization
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
+scipy
+
+# HTTP / API testing
+requests
+locust
+
+# NLP / sentiment
+langdetect
+kagglehub
+nltk
+textblob
+
+# Hugging Face / transformer experiments
+datasets
+transformers
+accelerate==0.28.0
+torch

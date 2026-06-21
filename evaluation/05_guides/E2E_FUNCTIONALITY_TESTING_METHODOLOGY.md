@@ -954,7 +954,7 @@ python3 -m venv venv
 source venv/bin/activate
 
 # Install dependencies
-pip install requests
+pip install -r evaluation/requirements.txt
 ```
 
 ---
