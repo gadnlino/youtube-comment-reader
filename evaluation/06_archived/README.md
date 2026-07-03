@@ -10,7 +10,7 @@ Histórico de reorganizações (out–nov 2025, jun 2026) sem apagar evidência 
 
 | Pasta / ficheiro | Conteúdo | Substituição canónica |
 |------------------|----------|----------------------|
-| `pruned_figures/2026-06/` | ~160 PNGs removidos (docx-only cleanup) | [`../02_graphs/MANIFEST.md`](../02_graphs/MANIFEST.md) |
+| `pruned_figures/2026-06/` | ~160 PNGs removidos (limpeza só activos do docx) | [`../02_graphs/MANIFEST.md`](../02_graphs/MANIFEST.md) |
 | `old_graphs/` | PNGs API pré-reorg (out 2025) | [`../02_graphs/`](../02_graphs/README.md) |
 | `2025-10_reorg_scripts/` | Antiga `04_scripts/` | [`../scripts/02_api_performance/`](../scripts/CATALOG.md) |
 | `2025-11_duplicate_scripts/` | Cópias duplicadas | [`../scripts/`](../scripts/CATALOG.md) |

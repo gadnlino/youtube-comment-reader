@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Gera tabela visual dos resultados dos testes E2E do Flutter.
+Gera tabela visual dos resultados dos testes E2E do Flutter (Tabela 4 da monografia).
 
 Cria uma tabela formatada com:
 - Número do teste
@@ -9,13 +9,31 @@ Cria uma tabela formatada com:
 - Funcionalidade validada (com descrição detalhada)
 - Resultado
 - Tempo de execução
+
+Uso (a partir da raiz do repositório):
+
+    # Cópia com timestamp em evaluation/api_load_testing/graphs/
+    python3 evaluation/scripts/02_api_performance/generate_e2e_test_table.py
+
+    # Regenera também o PNG canónico da monografia (Tabela 4)
+    python3 evaluation/scripts/02_api_performance/generate_e2e_test_table.py --thesis
+
+Os dados embutidos em TESTES reflectem a execução documentada na monografia.
+Para actualizar a tabela, edite TESTES (e o resumo em generate_e2e_test_table)
+e volte a correr com --thesis.
 """
 
-import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
-from matplotlib.patches import Rectangle
-import os
+from __future__ import annotations
+
+import argparse
+import sys
 from datetime import datetime
+from pathlib import Path
+
+import matplotlib.pyplot as plt
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from _paths import API_GRAPHS, GRAPHS
 
 # Dados dos testes baseados nos testes críticos do Flutter
 TESTES = [
@@ -77,18 +95,22 @@ TESTES = [
     }
 ]
 
-def generate_e2e_test_table():
-    """Gera tabela visual dos testes E2E."""
-    
+# Nome canónico do PNG embutido na monografia (Tabela 4)
+THESIS_TABLE_4 = GRAPHS / "tables" / "tabela-4_e2e_test_results_table.png"
+
+
+def generate_e2e_test_table(thesis: bool = False) -> list[Path]:
+    """Gera tabela visual dos testes E2E. Devolve caminhos dos ficheiros gravados."""
+
     # Criar figura para acomodar tabela
     fig = plt.figure(figsize=(22, 10))
     ax = fig.add_subplot(111)
     ax.axis('off')
-    
+
     # Preparar dados da tabela
     table_data = []
     headers = ['#', 'Fluxo Testado', 'Funcionalidade Validada', 'Resultado', 'Tempo']
-    
+
     for teste in TESTES:
         table_data.append([
             str(teste['numero']),
@@ -97,7 +119,7 @@ def generate_e2e_test_table():
             teste['resultado'],
             teste['tempo']
         ])
-    
+
     # Criar tabela
     table = ax.table(
         cellText=table_data,
@@ -106,28 +128,28 @@ def generate_e2e_test_table():
         loc='center',
         colWidths=[0.03, 0.18, 0.55, 0.14, 0.10]
     )
-    
+
     # Ajustar fonte e altura das células
     table.auto_set_font_size(False)
     table.set_fontsize(11)
     table.scale(1, 2.8)
-    
+
     # Colorir células de resultado (verde para PASSOU)
     for i in range(len(table_data)):
         # Coluna de resultado
         table[(i+1, 3)].set_facecolor('#d4edda')  # Verde claro
         table[(i+1, 3)].set_text_props(weight='bold', fontsize=10)
-        
+
         # Coluna de número
         table[(i+1, 0)].set_facecolor('#e9ecef')  # Cinza claro
         table[(i+1, 0)].set_text_props(weight='bold', fontsize=11)
-    
+
     # Estilizar cabeçalho
     for j in range(len(headers)):
         table[(0, j)].set_facecolor('#343a40')  # Cinza escuro
         table[(0, j)].set_text_props(weight='bold', color='white', fontsize=13)
         table[(0, j)].set_height(0.10)
-    
+
     # Ajustar fonte das colunas
     for i in range(len(table_data)):
         table[(i+1, 0)].set_text_props(fontsize=12, weight='bold')
@@ -135,17 +157,17 @@ def generate_e2e_test_table():
         table[(i+1, 2)].set_text_props(fontsize=10.5)
         table[(i+1, 3)].set_text_props(fontsize=11, weight='bold')
         table[(i+1, 4)].set_text_props(fontsize=11)
-    
+
     # Título
-    ax.set_title('Resultados dos Testes End-to-End - Aplicação Flutter', 
+    ax.set_title('Resultados dos Testes End-to-End - Aplicação Flutter',
                  fontsize=16, fontweight='bold', pad=20)
-    
+
     # Resumo da execução
     total_testes = len(TESTES)
     testes_aprovados = total_testes
     tempo_total = "2min 15s"
     tempo_medio = "16,9s/teste"
-    
+
     # Criar caixa de resumo
     summary_text = f"""Resumo da Execução:
 • Total de testes: {total_testes}
@@ -155,7 +177,7 @@ def generate_e2e_test_table():
 • Chamadas API: ~15 requisições
 • Interações UI: ~40 (taps, texto, navegação)
 • Operações Firebase: leitura/escrita favoritos"""
-    
+
     # Adicionar resumo no canto inferior esquerdo
     ax.text(0.02, 0.02, summary_text,
             transform=ax.transAxes,
@@ -163,7 +185,7 @@ def generate_e2e_test_table():
             verticalalignment='bottom',
             bbox=dict(boxstyle='round', facecolor='#d4edda', alpha=0.8, edgecolor='green', linewidth=2),
             family='monospace')
-    
+
     # Legenda
     legend_text = "Legenda: Todos os testes aprovados com sucesso"
     ax.text(0.98, 0.02, legend_text,
@@ -173,7 +195,7 @@ def generate_e2e_test_table():
             horizontalalignment='right',
             style='italic',
             bbox=dict(boxstyle='round', facecolor='#fff3cd', alpha=0.8, edgecolor='orange', linewidth=1))
-    
+
     # Framework info
     framework_text = "Framework: Flutter integration_test + WidgetTester | Binding: IntegrationTestWidgetsFlutterBinding"
     ax.text(0.5, 0.02, framework_text,
@@ -183,34 +205,65 @@ def generate_e2e_test_table():
             horizontalalignment='center',
             style='italic',
             color='gray')
-    
+
     plt.tight_layout()
-    
-    # Salvar
+
+    written: list[Path] = []
+
+    # Cópia com timestamp (histórico local)
     timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-    output_file = f'e2e_test_results_table_{timestamp}.png'
-    os.makedirs('graphs', exist_ok=True)
-    plt.savefig(f'graphs/{output_file}', dpi=300, bbox_inches='tight', pad_inches=0.5)
+    API_GRAPHS.mkdir(parents=True, exist_ok=True)
+    timestamped = API_GRAPHS / f'e2e_test_results_table_{timestamp}.png'
+    plt.savefig(timestamped, dpi=300, bbox_inches='tight', pad_inches=0.5)
+    written.append(timestamped)
+    print(f"✓ Tabela de testes E2E salva: {timestamped}")
+
+    # PNG canónico da monografia (Tabela 4)
+    if thesis:
+        THESIS_TABLE_4.parent.mkdir(parents=True, exist_ok=True)
+        plt.savefig(THESIS_TABLE_4, dpi=300, bbox_inches='tight', pad_inches=0.5)
+        written.append(THESIS_TABLE_4)
+        print(f"✓ Tabela 4 (monografia) actualizada: {THESIS_TABLE_4}")
+
     plt.close()
-    
-    print(f"✓ Tabela de testes E2E salva: graphs/{output_file}")
-    return output_file
+    return written
 
 
-if __name__ == "__main__":
-    print("="*80)
+def main() -> None:
+    parser = argparse.ArgumentParser(
+        description="Gera a tabela visual dos testes E2E (Tabela 4 da monografia)."
+    )
+    parser.add_argument(
+        "--thesis",
+        action="store_true",
+        help=(
+            "Também grava o PNG canónico em "
+            "evaluation/02_graphs/tables/tabela-4_e2e_test_results_table.png"
+        ),
+    )
+    args = parser.parse_args()
+
+    print("=" * 80)
     print("GERANDO TABELA DE TESTES E2E")
-    print("="*80)
+    print("=" * 80)
     print()
-    
-    output_file = generate_e2e_test_table()
-    
+
+    written = generate_e2e_test_table(thesis=args.thesis)
+
     print()
-    print("="*80)
+    print("=" * 80)
     print("✅ TABELA GERADA COM SUCESSO")
-    print("="*80)
-    print(f"Arquivo: graphs/{output_file}")
+    print("=" * 80)
+    for path in written:
+        print(f"Arquivo: {path}")
+    if not args.thesis:
+        print()
+        print("Dica: use --thesis para regenerar o PNG canónico da Tabela 4 na monografia.")
     print()
     print("A tabela inclui descrições detalhadas de cada teste,")
     print("explicando o que é testado e o que é validado.")
+    print("Para actualizar os dados, edite a lista TESTES neste script.")
 
+
+if __name__ == "__main__":
+    main()

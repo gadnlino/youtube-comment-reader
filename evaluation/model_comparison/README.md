@@ -6,6 +6,8 @@ Scripts e resultados da comparação de classificadores (**seleção do modelo**
 
 ## Propósito
 
+Comparar classificadores de sentimento e produzir a **Tabela 1** da monografia (`results/comprehensive_model_comparison.txt`). Os scripts desta pasta coexistem com as saídas (não foram movidos para `evaluation/scripts/`).
+
 ## 📁 Estrutura de Pastas
 
 ```
@@ -16,8 +18,8 @@ model_comparison/
 │   ├── textblob_classification_report.py     # TextBlob (48.8% accuracy)
 │   ├── svm_classification_report.py          # TF-IDF + SVM (52.5% accuracy)
 │   ├── fix_nltk_ssl.py                      # Utilitário NLTK
-│   ├── nltk_setup.py                        # Setup NLTK
-│   └── requirements.txt                     # Pointer to evaluation/requirements.txt
+│   ├── nltk_setup.py                        # Configuração NLTK
+│   └── requirements.txt                     # Aponta para evaluation/requirements.txt
 │
 ├── results/                          # Resultados das comparações
 │   ├── tfidf_logistic_results.txt           # Resultados TF-IDF + LR
@@ -41,7 +43,7 @@ Comparar diferentes modelos de análise de sentimento para selecionar o melhor m
 - Modelos baseados em regras (VADER, TextBlob)
 - Modelos de Machine Learning tradicional (TF-IDF + Logistic Regression, TF-IDF + SVM)
 - Modelos Transformer (DeBERTa, Twitter-XLM-RoBERTa)
-- Métricas de desempenho (Accuracy, F1-Score, tempo de processamento)
+- Métricas de desempenho (acurácia, F1-Score, tempo de processamento)
 - Seleção do modelo final baseado em desempenho e viabilidade
 
 ---
@@ -50,7 +52,7 @@ Comparar diferentes modelos de análise de sentimento para selecionar o melhor m
 
 ### Pré-requisitos
 
-From the repository root:
+Na raiz do repositório:
 
 ```bash
 pip install -r evaluation/requirements.txt
@@ -58,22 +60,22 @@ pip install -r evaluation/requirements.txt
 
 **Configuração do NLTK (para VADER)**:
 ```bash
-python fix_nltk_ssl.py
-python -c "import nltk; nltk.download('vader_lexicon')"
+python3 fix_nltk_ssl.py
+python3 -c "import nltk; nltk.download('vader_lexicon')"
 ```
 
 ### Executar Comparação Completa
 
 ```bash
 cd evaluation/model_comparison/scripts
-python comprehensive_model_comparison.py
+python3 comprehensive_model_comparison.py
 ```
 
 ### Executar Avaliação do Modelo Selecionado (Benchmark)
 
 ```bash
 cd evaluation/model_comparison/scripts
-python tfidf_logistic_classification_report.py
+python3 tfidf_logistic_classification_report.py
 ```
 
 **Nota**: Este script estabelece o **benchmark** do modelo selecionado que será usado posteriormente na validação (`scripts/01_model_evaluation/compare_metrics_vs_benchmark.py`).
@@ -84,15 +86,15 @@ python tfidf_logistic_classification_report.py
 cd evaluation/model_comparison/scripts
 
 # Testar cada modelo individualmente
-python vader_classification_report.py
-python textblob_classification_report.py
-python svm_classification_report.py
+python3 vader_classification_report.py
+python3 textblob_classification_report.py
+python3 svm_classification_report.py
 
 # Testes rápidos (amostra menor)
-python tfidf_logistic_quick_test.py
-python vader_quick_test.py
-python textblob_quick_test.py
-python svm_quick_test.py
+python3 tfidf_logistic_quick_test.py
+python3 vader_quick_test.py
+python3 textblob_quick_test.py
+python3 svm_quick_test.py
 ```
 
 ---
@@ -101,23 +103,23 @@ python svm_quick_test.py
 
 ### Modelo Selecionado: TF-IDF + Logistic Regression
 
-- **Accuracy**: 66.14%
+- **Acurácia**: 66.14%
 - **F1-Score (Macro)**: 66.28%
-- **Precision (Macro)**: 66.64%
-- **Recall (Macro)**: 66.14%
+- **Precisão (Macro)**: 66.64%
+- **Revocação (Macro)**: 66.14%
 - **Dataset Utilizado**: 1.032.225 comentários
 - **Divisão Train/Test**: 80/20 (ao nível de comentários, `random_state=42`)
 - **Tempo de Processamento**: ~100-200 segundos (dependendo do hardware)
 
 ### Comparação com Outros Modelos
 
-| Modelo | Accuracy | F1 (Macro) | Velocidade | Tipo |
+| Modelo | Acurácia | F1 (Macro) | Velocidade | Tipo |
 |--------|----------|------------|------------|------|
-| VADER | ~53% | ~53% | Muito Rápido | Rule-based |
-| TextBlob | ~50% | ~50% | Muito Rápido | Rule-based |
-| TF-IDF + LR | **66.14%** | **66.28%** | Rápido | Traditional ML |
-| TF-IDF + SVM | ~65% | ~65% | Médio | Traditional ML |
-| Transformers | ~71-73% | ~71-73% | Lento | Deep Learning |
+| VADER | ~53% | ~53% | Muito Rápido | Baseado em regras |
+| TextBlob | ~50% | ~50% | Muito Rápido | Baseado em regras |
+| TF-IDF + LR | **66.14%** | **66.28%** | Rápido | ML tradicional |
+| TF-IDF + SVM | ~65% | ~65% | Médio | ML tradicional |
+| Transformers | ~71-73% | ~71-73% | Lento | Aprendizagem profunda |
 
 **Decisão**: TF-IDF + Logistic Regression foi selecionado por oferecer o melhor equilíbrio entre desempenho, velocidade e viabilidade de deploy em produção.
 

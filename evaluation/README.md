@@ -37,14 +37,14 @@ Reproduzir e documentar a avaliação académica: métricas do classificador, te
 | **2 — API** | `scripts/02_api_performance/` | `api_load_testing/` · Figura 25–26 · Tabela 3 |
 | **3 — App** | `packages/frontend/integration_test/` | Tabela 4 PNG · [`02_graphs/tables/`](02_graphs/tables/) |
 
-## Setup
+## Configuração
 
 Python **3.10+**. Na raiz do repositório:
 
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r evaluation/requirements.txt
-python -m nltk.downloader vader_lexicon
+python3 -m nltk.downloader vader_lexicon
 ```
 
 ## Como usar
@@ -52,11 +52,11 @@ python -m nltk.downloader vader_lexicon
 ```bash
 # Modelo (exemplo)
 cd evaluation/scripts/01_model_evaluation
-python compare_metrics_vs_benchmark.py
+python3 compare_metrics_vs_benchmark.py
 
-# Performance API
+# Performance da API
 cd evaluation/scripts/02_api_performance
-python run_all.py
+python3 run_all.py
 ```
 
 Deploy do backend: [`../infra/README.md`](../infra/README.md) (não confundir com `evaluation/scripts/`).
@@ -64,5 +64,5 @@ Deploy do backend: [`../infra/README.md`](../infra/README.md) (não confundir co
 ## Ver também
 
 - [`scripts/CATALOG.md`](scripts/CATALOG.md) — índice de todos os scripts
-- [`02_graphs/MANIFEST.md`](02_graphs/MANIFEST.md) — keep-list docx
+- [`02_graphs/MANIFEST.md`](02_graphs/MANIFEST.md) — lista de figuras e tabelas do docx
 - [`../README.md`](../README.md) — visão geral do repositório

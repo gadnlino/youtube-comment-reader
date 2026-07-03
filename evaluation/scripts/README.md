@@ -42,8 +42,8 @@ Os scripts são **reproduzíveis** - ao executá-los, novos resultados serão ge
 ### Objetivo
 
 Avaliar e validar o modelo de classificação de sentimento (TF-IDF + Logistic Regression) utilizado no sistema, incluindo:
-- Acurácia do modelo comparado ao ground truth
-- Métricas de desempenho (Accuracy, Precision, Recall, F1-Score)
+- Acurácia do modelo comparado aos rótulos verdadeiros
+- Métricas de desempenho (acurácia, precisão, revocação, F1-Score)
 - Análise de impacto do idioma na classificação
 - Geração de visualizações (matriz de confusão, gráficos comparativos)
 
@@ -51,9 +51,9 @@ Avaliar e validar o modelo de classificação de sentimento (TF-IDF + Logistic R
 
 #### Validação de Métricas
 
-- **`compare_metrics_vs_benchmark.py`**: Compara as métricas básicas (Accuracy, Precision, Recall, F1-Score) da validação atual com o benchmark inicial. Valida se o modelo mantém o desempenho observado durante a seleção.
+- **`compare_metrics_vs_benchmark.py`**: Compara as métricas básicas (acurácia, precisão, revocação, F1-Score) da validação atual com o benchmark inicial. Valida se o modelo mantém o desempenho observado durante a seleção.
 
-- **`validate_model_accuracy_with_dataset.py`**: Valida a acurácia do modelo comparando predições da API com ground truth do dataset comentário por comentário.
+- **`validate_model_accuracy_with_dataset.py`**: Valida a acurácia do modelo comparando predições da API com os rótulos verdadeiros do dataset, comentário a comentário.
 
 #### Análise de Idioma
 
@@ -89,24 +89,24 @@ Avaliar e validar o modelo de classificação de sentimento (TF-IDF + Logistic R
 
 #### Pré-requisitos
 
-Install once from the repository root (see also [`../README.md`](../README.md#setup)):
+Instale uma vez a partir da raiz do repositório (ver também [`../README.md`](../README.md#configuração)):
 
 ```bash
 pip install -r evaluation/requirements.txt
-python -m nltk.downloader vader_lexicon
+python3 -m nltk.downloader vader_lexicon
 ```
 
 #### Executar um Script
 
 ```bash
 cd evaluation/scripts/01_model_evaluation
-python compare_metrics_vs_benchmark.py
+python3 compare_metrics_vs_benchmark.py
 ```
 
 ### Estrutura de Dados Necessários
 
 Os scripts esperam encontrar:
-- **Dataset com ground truth**: `youtube_comments_cleaned.csv` (geralmente em `../api_load_testing/` ou `../../03_data/csv/`)
+- **Dataset com rótulos verdadeiros**: `youtube_comments_cleaned.csv` (geralmente em `../api_load_testing/` ou `../../03_data/csv/`)
 - **Listas de vídeos**: Arquivos JSON em `../model_analysis/data/` ou `../../03_data/json/`
 
 ### Resultados
@@ -121,8 +121,8 @@ Os scripts geram:
 
 - **Acurácia do Modelo**: 66.14%
 - **F1-Score**: 66.28%
-- **Precision**: 66.64%
-- **Recall**: 66.14%
+- **Precisão**: 66.64%
+- **Revocação**: 66.14%
 - **Dataset**: 1.032.225 comentários
 
 ### Notas Importantes
@@ -147,7 +147,7 @@ Avaliar o desempenho, escalabilidade e capacidade de carga da API intermediária
 - Throughput (requisições por segundo)
 - Comportamento sob carga (múltiplos usuários simultâneos)
 - Estabilidade temporal
-- Comparação cold start vs warm Lambda
+- Comparação arranque a frio (cold start) vs Lambda aquecida
 
 ### Scripts Principais
 
@@ -175,7 +175,7 @@ Avaliar o desempenho, escalabilidade e capacidade de carga da API intermediária
 
 #### Pré-requisitos
 
-Same dependencies as model evaluation — install once from the repository root:
+As mesmas dependências da avaliação do modelo — instale uma vez a partir da raiz do repositório:
 
 ```bash
 pip install -r evaluation/requirements.txt
@@ -185,20 +185,20 @@ pip install -r evaluation/requirements.txt
 
 ```bash
 cd evaluation/scripts/02_api_performance
-python run_all.py
+python3 run_all.py
 ```
 
 #### Executar Testes Individuais
 
 ```bash
 # Testes de vídeos
-python videos.py
+python3 videos.py
 
 # Testes de comentários
-python comments.py
+python3 comments.py
 
 # Teste de estabilidade
-python stability.py
+python3 stability.py
 ```
 
 #### Testes de Carga com Locust
@@ -216,7 +216,7 @@ locust -f locust_max_tps.py --host=https://5jthpuzp9f.execute-api.us-east-1.amaz
 #### Gerar Gráficos Consolidados
 
 ```bash
-python generate_consolidated_graphs.py
+python3 generate_consolidated_graphs.py
 ```
 
 ### Configuração
@@ -262,9 +262,7 @@ Os scripts geram:
 
 ### Scripts Adicionais
 
-### Scripts Adicionais
-
-Benchmarks estendidos (carga pesada, multi-vídeo, batch size) estão em `benchmarks/`:
+Benchmarks estendidos (carga pesada, multi-vídeo, tamanho de lote) estão em `benchmarks/`:
 
 - **`extended_benchmark.py`**, **`heavy_load_test.py`**, **`multi_video_benchmark.py`**, etc.
 

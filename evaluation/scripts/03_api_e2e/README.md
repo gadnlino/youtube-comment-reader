@@ -31,7 +31,7 @@ Os testes E2E da API validam:
 
 ### Pré-requisitos
 
-From the repository root:
+Na raiz do repositório:
 
 ```bash
 pip install -r evaluation/requirements.txt
@@ -41,7 +41,7 @@ pip install -r evaluation/requirements.txt
 
 ```bash
 cd evaluation/scripts/03_api_e2e
-python e2e_functionality_test.py
+python3 e2e_functionality_test.py
 ```
 
 ### Configuração

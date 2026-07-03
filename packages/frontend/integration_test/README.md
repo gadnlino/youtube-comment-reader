@@ -105,7 +105,7 @@ flutter test integration_test/tests/complete_all_features_test.dart
 
 **Nota**: Este modo não renderiza a UI real, apenas testa a lógica.
 
-## 📊 Exemplo de Output Esperado
+## 📊 Exemplo de Saída Esperada
 
 ```
 📹 Test 1: Viewing video list...
@@ -433,7 +433,14 @@ flutter devices
 
 4. **Documente resultados:** Para a monografia usando os relatórios em `docs/`
 
-**Tabela 4 (monografia):** PNG em [`evaluation/02_graphs/tables/`](../../../evaluation/02_graphs/MANIFEST.md), gerado por `evaluation/scripts/02_api_performance/generate_e2e_test_table.py` (não pelos testes Flutter).
+**Tabela 4 (monografia):** o PNG canónico **não** é produzido pelos testes Flutter. Regenerar a partir dos resultados embutidos no gerador:
+
+```bash
+# Na raiz do repositório — grava também evaluation/02_graphs/tables/tabela-4_e2e_test_results_table.png
+python3 evaluation/scripts/02_api_performance/generate_e2e_test_table.py --thesis
+```
+
+Sem `--thesis`, só é criada uma cópia com timestamp em `evaluation/api_load_testing/graphs/`. Para alterar linhas da tabela, edite a lista `TESTES` em `generate_e2e_test_table.py`. Inventário: [`evaluation/02_graphs/MANIFEST.md`](../../../evaluation/02_graphs/MANIFEST.md).
 
 ## 📚 Documentação Adicional
 

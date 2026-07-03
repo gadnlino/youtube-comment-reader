@@ -30,9 +30,71 @@ pip install -r ../../requirements.txt    # na raiz: evaluation/requirements.txt
 
 - **Figura 23:** [`../02_graphs/figures/`](../02_graphs/figures/)
 - **Figura 24:** [`../02_graphs/figures/`](../02_graphs/figures/) via `plot_tfidf_lr_selection_vs_kaggle_amitzala.py`
-- Outros PNG em `graphs/`: fora do keep-list docx — [`../02_graphs/MANIFEST.md`](../02_graphs/MANIFEST.md)
+- Outros PNG em `graphs/`: fora da lista de activos do docx — [`../02_graphs/MANIFEST.md`](../02_graphs/MANIFEST.md)
+
+## Regenerar figuras e tabelas da monografia
+
+Inventário completo (Tabela 1–4, Figuras 23–26): [`../02_graphs/MANIFEST.md`](../02_graphs/MANIFEST.md).
+
+Pré-requisito (raiz do repositório):
+
+```bash
+pip install -r evaluation/requirements.txt
+```
+
+### Tabela 1 — Comparação dos modelos
+
+Texto de referência em [`../model_comparison/results/comprehensive_model_comparison.txt`](../model_comparison/results/comprehensive_model_comparison.txt).
+
+```bash
+python3 evaluation/model_comparison/scripts/comprehensive_model_comparison.py
+```
+
+Entradas: dados e resultados sob `evaluation/model_comparison/`.
+
+### Figura 23 — Métricas por classe (YouTube Comments with Labeled)
+
+Gera o gráfico de precisão/recall/F1 por classe e o CSV de métricas em `results/`.
+
+```bash
+python3 evaluation/scripts/01_model_evaluation/evaluate_tfidf_logistic_on_youtube_comments_with_labeled.py
+```
+
+Requisitos: dataset Kaggle *YouTube Comments with Labeled* e o modelo TF-IDF + Regressão Logística pré-treinado (caminhos no script).
+
+Cópia canónica na monografia:
+
+[`../02_graphs/figures/figura-23_metrics_per_class_youtube_comments_with_labeled.png`](../02_graphs/figures/figura-23_metrics_per_class_youtube_comments_with_labeled.png)
+
+CSV de referência já presente:
+
+[`results/metrics_tfidf_lr_amitzala_youtube-comments-with-labeled_20260317_230701.csv`](results/metrics_tfidf_lr_amitzala_youtube-comments-with-labeled_20260317_230701.csv)
+
+Após regenerar, copie o PNG novo para o caminho canónico acima (se o script gravar noutro sítio, por exemplo `graphs/`).
+
+### Figura 24 — Selecção vs avaliação no Kaggle AmitZala
+
+Compara acurácia, precisão macro e F1 macro da etapa de selecção (`comprehensive_model_comparison.txt`) com a avaliação no CSV AmitZala.
+
+```bash
+# Usa o último CSV de métricas em results/, ou indique um ficheiro:
+python3 evaluation/scripts/01_model_evaluation/plot_tfidf_lr_selection_vs_kaggle_amitzala.py \
+  --metrics-csv evaluation/model_analysis/results/metrics_tfidf_lr_amitzala_youtube-comments-with-labeled_20260317_230701.csv
+```
+
+Cópia canónica:
+
+[`../02_graphs/figures/figura-24_tfidf_lr_selection_vs_kaggle_amitzala.png`](../02_graphs/figures/figura-24_tfidf_lr_selection_vs_kaggle_amitzala.png)
+
+### Outros activos da monografia (fora deste directório)
+
+| Activo | Onde regenerar |
+|--------|----------------|
+| **Tabela 3**, **Figuras 25–26** | [`../api_load_testing/README.md`](../api_load_testing/README.md) — `generate_consolidated_graphs.py` |
+| **Tabela 4** (E2E Flutter) | `python3 evaluation/scripts/02_api_performance/generate_e2e_test_table.py --thesis` |
 
 ## Ver também
 
 - [`../README.md`](../README.md) — índice da avaliação
+- [`../scripts/CATALOG.md`](../scripts/CATALOG.md) — scripts canónicos
 - [`../06_archived/2025-11_duplicate_scripts/model_analysis_scripts/`](../06_archived/2025-11_duplicate_scripts/model_analysis_scripts/) — cópias antigas

@@ -14,4 +14,4 @@ Estes documentos foram substituídos por:
 
 Ficheiros mantidos aqui para citações na monografia e referência histórica.
 
-> **Setup Python (atual):** use `pip install -r evaluation/requirements.txt` — ver `evaluation/README.md`.
+> **Configuração Python (atual):** use `pip install -r evaluation/requirements.txt` — ver `evaluation/README.md`.
