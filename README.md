@@ -43,7 +43,7 @@ Requisitos: Docker, AWS CLI, modelo em `packages/lambdas/sentiment_analysis/mode
 ### Avaliação Python
 
 ```bash
-python3 -m venv .venv && source .venv/bin/ativate
+python3 -m venv .venv && source .venv/bin/activate
 pip install -r evaluation/requirements.txt
 python3 -m nltk.downloader vader_lexicon
 ```
