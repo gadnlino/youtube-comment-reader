@@ -8,16 +8,16 @@ Texto longo e orientação para redigir ou reproduzir a avaliação — compleme
 
 ## Conteúdo
 
-| Ficheiro | Finalidade |
+| Arquivo | Finalidade |
 |----------|------------|
-| [`TEXTO_AVALIACAO_MONOGRAFIA.md`](TEXTO_AVALIACAO_MONOGRAFIA.md) | Rascunho da secção de avaliação |
+| [`TEXTO_AVALIACAO_MONOGRAFIA.md`](TEXTO_AVALIACAO_MONOGRAFIA.md) | Rascunho da seção de avaliação |
 | [`API_EVALUATION_METHODOLOGY.md`](API_EVALUATION_METHODOLOGY.md) | Metodologia testes API |
 | [`MODEL_EVALUATION_METHODOLOGY.md`](MODEL_EVALUATION_METHODOLOGY.md) | Metodologia avaliação do modelo |
 | [`E2E_FUNCTIONALITY_TESTING_METHODOLOGY.md`](E2E_FUNCTIONALITY_TESTING_METHODOLOGY.md) | E2E (legado Python + Flutter) |
 | [`ONDE_ESTA_TUDO.md`](ONDE_ESTA_TUDO.md) | Guia de navegação (alguns paths históricos) |
 | [`API_EVALUATION_GUIDE.md`](API_EVALUATION_GUIDE.md) | Guia API |
 
-Figuras canónicas actuais: [`../02_graphs/MANIFEST.md`](../02_graphs/MANIFEST.md) (não os paths antigos em `ONDE_ESTA_TUDO.md`).
+Figuras canônicas atuais: [`../02_graphs/MANIFEST.md`](../02_graphs/MANIFEST.md) (não os paths antigos em `ONDE_ESTA_TUDO.md`).
 
 ## Como usar
 

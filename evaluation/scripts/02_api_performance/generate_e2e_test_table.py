@@ -15,12 +15,12 @@ Uso (a partir da raiz do repositório):
     # Cópia com timestamp em evaluation/api_load_testing/graphs/
     python3 evaluation/scripts/02_api_performance/generate_e2e_test_table.py
 
-    # Regenera também o PNG canónico da monografia (Tabela 4)
+    # Regenera também o PNG canônico da monografia (Tabela 4)
     python3 evaluation/scripts/02_api_performance/generate_e2e_test_table.py --thesis
 
-Os dados embutidos em TESTES reflectem a execução documentada na monografia.
-Para actualizar a tabela, edite TESTES (e o resumo em generate_e2e_test_table)
-e volte a correr com --thesis.
+Os dados embutidos em TESTES refletem a execução documentada na monografia.
+Para atualizar a tabela, edite TESTES (e o resumo em generate_e2e_test_table)
+e execute novamente com --thesis.
 """
 
 from __future__ import annotations
@@ -95,12 +95,12 @@ TESTES = [
     }
 ]
 
-# Nome canónico do PNG embutido na monografia (Tabela 4)
+# Nome canônico do PNG embutido na monografia (Tabela 4)
 THESIS_TABLE_4 = GRAPHS / "tables" / "tabela-4_e2e_test_results_table.png"
 
 
 def generate_e2e_test_table(thesis: bool = False) -> list[Path]:
-    """Gera tabela visual dos testes E2E. Devolve caminhos dos ficheiros gravados."""
+    """Gera tabela visual dos testes E2E. Retorna os caminhos dos arquivos gravados."""
 
     # Criar figura para acomodar tabela
     fig = plt.figure(figsize=(22, 10))
@@ -218,12 +218,12 @@ def generate_e2e_test_table(thesis: bool = False) -> list[Path]:
     written.append(timestamped)
     print(f"✓ Tabela de testes E2E salva: {timestamped}")
 
-    # PNG canónico da monografia (Tabela 4)
+    # PNG canônico da monografia (Tabela 4)
     if thesis:
         THESIS_TABLE_4.parent.mkdir(parents=True, exist_ok=True)
         plt.savefig(THESIS_TABLE_4, dpi=300, bbox_inches='tight', pad_inches=0.5)
         written.append(THESIS_TABLE_4)
-        print(f"✓ Tabela 4 (monografia) actualizada: {THESIS_TABLE_4}")
+        print(f"✓ Tabela 4 (monografia) atualizada: {THESIS_TABLE_4}")
 
     plt.close()
     return written
@@ -237,7 +237,7 @@ def main() -> None:
         "--thesis",
         action="store_true",
         help=(
-            "Também grava o PNG canónico em "
+            "Também grava o PNG canônico em "
             "evaluation/02_graphs/tables/tabela-4_e2e_test_results_table.png"
         ),
     )
@@ -258,11 +258,11 @@ def main() -> None:
         print(f"Arquivo: {path}")
     if not args.thesis:
         print()
-        print("Dica: use --thesis para regenerar o PNG canónico da Tabela 4 na monografia.")
+        print("Dica: use --thesis para regenerar o PNG canônico da Tabela 4 na monografia.")
     print()
     print("A tabela inclui descrições detalhadas de cada teste,")
     print("explicando o que é testado e o que é validado.")
-    print("Para actualizar os dados, edite a lista TESTES neste script.")
+    print("Para atualizar os dados, edite a lista TESTES neste script.")
 
 
 if __name__ == "__main__":

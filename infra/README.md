@@ -4,11 +4,11 @@ Scripts de implantação do backend (Docker + ECR + AWS CDK). Substitui a antiga
 
 ## Propósito
 
-Publicar a imagem Docker do classificador de sentimento e implantar a stack `YouTubeCommentReaderBackendStack` com o digest ECR correcto.
+Publicar a imagem Docker do classificador de sentimento e implantar a stack `YouTubeCommentReaderBackendStack` com o digest ECR correto.
 
 ## Conteúdo
 
-| Ficheiro | Finalidade |
+| Arquivo | Finalidade |
 |----------|------------|
 | `deploy-with-sentiment.sh` | Fluxo completo: pré-requisitos → build → push ECR → `cdk deploy` |
 | `archive/build-and-push-sentiment-image.sh` | **Arquivado** — apenas build/push (subconjunto do script acima) |
@@ -24,7 +24,7 @@ npm run deploy:dev
 
 Equivalente a `bash infra/deploy-with-sentiment.sh`.
 
-**Pré-requisitos:** Docker a correr, AWS CLI configurado, ficheiro `packages/lambdas/sentiment_analysis/models/tfidf_logistic_model.pkl`.
+**Pré-requisitos:** Docker em execução, AWS CLI configurado, arquivo `packages/lambdas/sentiment_analysis/models/tfidf_logistic_model.pkl`.
 
 Variáveis opcionais: `AWS_REGION`, `AWS_ACCOUNT_ID`, `IMAGE_TAG`.
 

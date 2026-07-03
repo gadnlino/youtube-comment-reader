@@ -4,7 +4,7 @@
 **Data**: 26 de Outubro de 2025 (atualizado 2026-06-21)  
 **Projeto**: YouTube Comment Reader - Avaliação Final  
 
-> **Atualização:** Scripts canónicos em `evaluation/scripts/` — ver [`../scripts/CATALOG.md`](../scripts/CATALOG.md). Relatórios em `01_reports/`.
+> **Atualização:** Scripts canônicos em `evaluation/scripts/` — ver [`../scripts/CATALOG.md`](../scripts/CATALOG.md). Relatórios em `01_reports/`.
 
 ---
 

@@ -8,7 +8,7 @@ Stack CDK que provisiona API Gateway, DynamoDB (cache), Lambdas TypeScript (`ycv
 
 ## Conteúdo
 
-| Ficheiro | Finalidade |
+| Arquivo | Finalidade |
 |----------|------------|
 | `YouTubeCommentReaderBackendStack.ts` | Stack principal (recursos e outputs) |
 | `../cdk.ts` | Entrada CDK (`ENV_NAME`, conta/região) |

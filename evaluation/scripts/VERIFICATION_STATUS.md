@@ -6,7 +6,7 @@ Gerado em: 2026-06-21 (organize-scripts-and-analysis)
 
 | Nível | Resultado |
 |-------|-----------|
-| L1 (py_compile) | 45/45 scripts canónicos OK |
+| L1 (py_compile) | 45/45 scripts canônicos OK |
 | L3 offline (verificação pontual) | `generate_confusion_matrix.py` OK |
 | Nomes duplicados fora de `06_archived/` | 0 |
 

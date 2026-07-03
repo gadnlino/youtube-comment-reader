@@ -1,6 +1,6 @@
 # Dados — `03_data/`
 
-CSV e JSON canónicos usados como entrada ou resumo nas avaliações.
+CSV e JSON canônicos usados como entrada ou resumo nas avaliações.
 
 ## Propósito
 
@@ -17,9 +17,9 @@ Muitos scripts também leem/escrevem em pastas de domínio; ver [`../scripts/CAT
 
 ## Como usar
 
-Consultar ficheiros directamente ou apontar scripts para estes paths (ver docstring de cada script em `../scripts/`).
+Consultar arquivos diretamente ou apontar scripts para estes paths (ver docstring de cada script em `../scripts/`).
 
 ## Ver também
 
 - [`../model_analysis/data/`](../model_analysis/README.md) — JSON de trabalho do modelo
-- [`../scripts/_paths.py`](../scripts/_paths.py) — constantes de caminho partilhadas
+- [`../scripts/_paths.py`](../scripts/_paths.py) — constantes de caminho compartilhadas

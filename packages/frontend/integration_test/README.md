@@ -433,7 +433,7 @@ flutter devices
 
 4. **Documente resultados:** Para a monografia usando os relatórios em `docs/`
 
-**Tabela 4 (monografia):** o PNG canónico **não** é produzido pelos testes Flutter. Regenerar a partir dos resultados embutidos no gerador:
+**Tabela 4 (monografia):** o PNG canônico **não** é produzido pelos testes Flutter. Regenerar a partir dos resultados embutidos no gerador:
 
 ```bash
 # Na raiz do repositório — grava também evaluation/02_graphs/tables/tabela-4_e2e_test_results_table.png

@@ -67,7 +67,7 @@ Script arquivado (só build/push): `infra/archive/build-and-push-sentiment-image
 
 ## Localizações anteriores
 
-| Caminho anterior | Caminho canónico |
+| Caminho anterior | Caminho canônico |
 |------------------|------------------|
 | `evaluation/model_analysis/scripts/` | `evaluation/scripts/01_model_evaluation/` |
 | `evaluation/api_load_testing/scripts/` | `evaluation/scripts/02_api_performance/` |

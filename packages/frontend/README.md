@@ -4,13 +4,13 @@ App mobile Flutter para pesquisar vídeos, ler comentários e filtrar por sentim
 
 ## Propósito
 
-Interface do utilizador: busca de vídeos, comentários com rótulos POSITIVE/NEGATIVE/NEUTRAL, favoritos locais, ordenação e filtros. Suporta tema claro e escuro.
+Interface do usuário: busca de vídeos, comentários com rótulos POSITIVE/NEGATIVE/NEUTRAL, favoritos locais, ordenação e filtros. Suporta tema claro e escuro.
 
 ## Conteúdo
 
 | Pasta | Finalidade |
 |-------|------------|
-| `lib/app/pages/` | Ecrãs: busca, comentários, favoritos |
+| `lib/app/pages/` | Telas: busca, comentários, favoritos |
 | `lib/app/common/api/` | Cliente HTTP (`youtube_comment_viewer_api.dart`) |
 | `lib/app/common/themes/` | Tema e tokens (`app_theme.dart`, `theme_tokens.dart`) |
 | `integration_test/` | Testes E2E reais (Flutter) |
@@ -24,7 +24,7 @@ flutter pub get
 flutter run
 ```
 
-Credenciais Firebase: ficheiro `.env` nesta pasta (ver [`integration_test/README.md`](integration_test/README.md)).
+Credenciais Firebase: arquivo `.env` nesta pasta (ver [`integration_test/README.md`](integration_test/README.md)).
 
 ## Testes E2E
 

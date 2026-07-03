@@ -2,7 +2,7 @@
 
 A pasta `04_scripts/` (outubro 2025) foi arquivada em 2026-06-21.
 
-**Localizações canónicas:**
+**Localizações canônicas:**
 - Benchmarks: `evaluation/scripts/02_api_performance/benchmarks/`
 - Geradores: `evaluation/scripts/02_api_performance/generators/`
 

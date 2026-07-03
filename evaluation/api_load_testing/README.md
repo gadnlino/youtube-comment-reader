@@ -1,6 +1,6 @@
 # Testes de Performance da API — `api_load_testing/`
 
-Saídas dos testes de carga e performance da API (**Pilar 2**). Scripts canónicos: [`../scripts/02_api_performance/`](../scripts/CATALOG.md).
+Saídas dos testes de carga e performance da API (**Pilar 2**). Scripts canônicos: [`../scripts/02_api_performance/`](../scripts/CATALOG.md).
 
 ## Propósito
 
@@ -29,7 +29,7 @@ pip install -r evaluation/requirements.txt
 
 ## Regenerar figuras e tabela da monografia (Tabela 3, Figuras 25–26)
 
-Os activos embutidos no docx usam dados Locust já gravados sob `evaluation/api_load_testing/` (pastas `teste_*` e `results/`). Inventário completo: [`../02_graphs/MANIFEST.md`](../02_graphs/MANIFEST.md).
+Os ativos embutidos no docx usam dados Locust já gravados sob `evaluation/api_load_testing/` (pastas `teste_*` e `results/`). Inventário completo: [`../02_graphs/MANIFEST.md`](../02_graphs/MANIFEST.md).
 
 Na raiz do repositório:
 
@@ -41,13 +41,13 @@ python3 evaluation/scripts/02_api_performance/generate_consolidated_graphs.py
 
 Saídas típicas:
 
-| Activo | Destino canónico |
+| Ativo | Destino canônico |
 |--------|------------------|
 | **Figura 25** | [`../02_graphs/figures/figura-25_consolidated_graphs_part1.png`](../02_graphs/figures/figura-25_consolidated_graphs_part1.png) |
 | **Figura 26** | [`../02_graphs/figures/figura-26_consolidated_graphs_part2.png`](../02_graphs/figures/figura-26_consolidated_graphs_part2.png) |
 | **Tabela 3** | Métricas Locust agregadas (texto/Word); o gerador produz os painéis e o resumo a partir dos CSV/JSON em `results/` e `teste_*/` |
 
-Se o gerador gravar PNGs noutro sítio (por exemplo `graphs/` ou `consolidated_graphs/`), copie-os para `evaluation/02_graphs/figures/` com os nomes canónicos acima.
+Se o gerador gravar PNGs em outro local (por exemplo `graphs/` ou `consolidated_graphs/`), copie-os para `evaluation/02_graphs/figures/` com os nomes canônicos acima.
 
 **Nota:** a **Tabela 4** (testes E2E Flutter) não é gerada aqui — ver [`packages/frontend/integration_test/README.md`](../../packages/frontend/integration_test/README.md) e:
 
@@ -60,7 +60,7 @@ python3 evaluation/scripts/02_api_performance/generate_e2e_test_table.py --thesi
 ```bash
 # 1. Instalar dependências (ver Pré-requisitos)
 
-# 2. Configurar (editar ficheiros em evaluation/scripts/02_api_performance/)
+# 2. Configurar (editar arquivos em evaluation/scripts/02_api_performance/)
 
 # 3. Executar todos os testes
 cd evaluation/scripts/02_api_performance
@@ -74,7 +74,7 @@ python3 run_all.py
 
 ## Configuração
 
-Antes de executar os testes, configure os ficheiros em **`evaluation/scripts/02_api_performance/`** (não em `api_load_testing/scripts/`).
+Antes de executar os testes, configure os arquivos em **`evaluation/scripts/02_api_performance/`** (não em `api_load_testing/scripts/`).
 
 ### 1. URLs e Endpoints
 
@@ -156,11 +156,11 @@ python3 comments.py
 python3 stability.py
 ```
 
-**Nota:** execute os scripts a partir de `evaluation/scripts/02_api_performance/` para que os imports locais funcionem correctamente.
+**Nota:** execute os scripts a partir de `evaluation/scripts/02_api_performance/` para que os imports locais funcionem corretamente.
 
 ## Saída
 
-Os scripts geram ficheiros nos seguintes directórios (criados automaticamente):
+Os scripts geram arquivos nos seguintes diretórios (criados automaticamente):
 
 1. **Arquivos CSV**: Dados brutos de cada requisição
    - `evaluation/api_load_testing/results/videos_test_YYYYMMDD_HHMMSS.csv`
@@ -236,7 +236,7 @@ O resumo gerado (`perf_summary_*.txt`) contém:
 - Análise de estabilidade (coeficiente de variação)
 - Conclusões gerais sobre a performance
 
-Este resumo pode ser usado directamente como base para a secção de avaliação de desempenho da monografia.
+Este resumo pode ser usado diretamente como base para a seção de avaliação de desempenho da monografia.
 
 ## Teste de TPS Máximo com Locust
 
@@ -267,12 +267,12 @@ O teste de TPS máximo:
 
 ## Notas Importantes
 
-- **Directório de execução**: scripts em `evaluation/scripts/02_api_performance/` (não `api_load_testing/scripts/`)
+- **Diretório de execução**: scripts em `evaluation/scripts/02_api_performance/` (não `api_load_testing/scripts/`)
 - **Paths relativos**: os scripts criam automaticamente `results/`, `graphs/` e `logs/` em `evaluation/api_load_testing/`
 - **Configuração**: os scripts incluem marcadores `TODO` onde é preciso ajustar URLs, IDs de vídeos, etc.
 - **Intervalos**: ajustáveis em cada script (`DELAY_BETWEEN_REQUESTS`)
 - **Estabilidade**: o teste de estabilidade pode demorar (~10 minutos)
-- **Timestamps**: os ficheiros de saída usam timestamp para evitar sobrescrita
+- **Timestamps**: os arquivos de saída usam timestamp para evitar sobrescrita
 - **TPS**: calculado automaticamente nos testes de estabilidade
 - **Logs**: `evaluation/api_load_testing/logs/perf_test.log`
 
@@ -280,4 +280,4 @@ O teste de TPS máximo:
 
 - [`../02_graphs/MANIFEST.md`](../02_graphs/MANIFEST.md) — inventário das figuras e tabelas da monografia
 - [`../README.md`](../README.md) — índice da avaliação
-- [`../scripts/CATALOG.md`](../scripts/CATALOG.md) — scripts canónicos
+- [`../scripts/CATALOG.md`](../scripts/CATALOG.md) — scripts canônicos

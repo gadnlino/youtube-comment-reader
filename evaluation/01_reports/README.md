@@ -8,7 +8,7 @@ Documentos longos prontos para citar na monografia ou revisão por pares interna
 
 ## Conteúdo
 
-| Ficheiro | Uso |
+| Arquivo | Uso |
 |----------|-----|
 | [`FINAL_EVALUATION_REPORT.md`](FINAL_EVALUATION_REPORT.md) | **Comece aqui** — resumo executivo |
 | [`INDEX.md`](INDEX.md) | Índice navegável de todos os relatórios |
@@ -19,7 +19,7 @@ Documentos longos prontos para citar na monografia ou revisão por pares interna
 
 ## Como usar
 
-Leitura directa — escolha o relatório pelo [`INDEX.md`](INDEX.md) ou pela secção relevante da monografia.
+Leitura direta — escolha o relatório pelo [`INDEX.md`](INDEX.md) ou pela seção relevante da monografia.
 
 ## Ver também
 

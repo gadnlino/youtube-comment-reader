@@ -1,6 +1,6 @@
 # Backlog de verificação
 
-Scripts que não foram totalmente reexecutados após a reorganização de 2026-06-21. L1 (sintaxe/compilação) passou em todos os scripts canónicos.
+Scripts que não foram totalmente reexecutados após a reorganização de 2026-06-21. L1 (sintaxe/compilação) passou em todos os scripts canônicos.
 
 | Script | Nível | Causa provável | Bloqueia monografia? | Prioridade |
 |--------|-------|----------------|----------------------|------------|

@@ -11,16 +11,16 @@ Este documento consolida a documentação dos scripts de avaliação, organizado
 
 ```
 scripts/
-├── _paths.py                # Constantes de caminho partilhadas
+├── _paths.py                # Constantes de caminho compartilhadas
 ├── CATALOG.md               # Índice de todos os scripts
 ├── 01_model_evaluation/     # Avaliação do modelo
 ├── 02_api_performance/      # Testes de carga e performance da API
 │   ├── generators/          # Gráficos académicos (EN/PT)
 │   └── benchmarks/          # Benchmarks estendidos (Oct 2025)
-├── 03_api_e2e/              # E2E Python (legado; Flutter é canónico)
+├── 03_api_e2e/              # E2E Python (legado; Flutter é canônico)
 └── README.md
 
-packages/frontend/integration_test/  # Testes E2E Flutter (canónico)
+packages/frontend/integration_test/  # Testes E2E Flutter (canônico)
 evaluation/model_comparison/scripts/ # Comparação de modelos (co-localizado)
 ```
 
