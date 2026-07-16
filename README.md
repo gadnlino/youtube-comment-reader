@@ -59,7 +59,7 @@ Ver [`evaluation/README.md`](evaluation/README.md).
 | [`stacks/`](stacks/README.md) | ✓ | Definição CDK (`YouTubeCommentReaderBackendStack`) |
 | [`evaluation/`](evaluation/README.md) | ✓ | Relatórios, dados, scripts e figuras da monografia |
 | [`openspec/`](openspec/changes/) | — | Propostas de mudança OpenSpec |
-| [`docs/`](docs/servicos-aws.md) | ✓ | Serviços da AWS/tecnologias e diagrama ER |
+| [`docs/`](docs/servicos-aws.md) | ✓ | Serviços da AWS/tecnologias, funções Lambda e diagrama ER |
 | `cdk.ts` | — | Entrada CDK na raiz |
 
 ## Documentação
@@ -67,6 +67,7 @@ Ver [`evaluation/README.md`](evaluation/README.md).
 | Tópico | Onde |
 |--------|------|
 | Serviços da AWS e tecnologias utilizados | [`docs/servicos-aws.md`](docs/servicos-aws.md) |
+| Funções Lambda da camada intermediária | [`docs/funcoes-lambda.md`](docs/funcoes-lambda.md) |
 | Índice da avaliação | [`evaluation/README.md`](evaluation/README.md) |
 | Scripts executáveis | [`evaluation/scripts/CATALOG.md`](evaluation/scripts/CATALOG.md) |
 | Figuras/tabelas docx | [`evaluation/02_graphs/MANIFEST.md`](evaluation/02_graphs/MANIFEST.md) |

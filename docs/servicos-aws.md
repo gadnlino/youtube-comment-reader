@@ -1,6 +1,6 @@
 # Serviços da AWS e tecnologias utilizados
 
-Este documento lista os serviços da AWS e as principais tecnologias empregados na camada intermediária (API *proxy*) da aplicação, com uma breve descrição da responsabilidade de cada um. Os componentes de execução também estão representados no diagrama de arquitetura física (Figura 22 da monografia).
+Este documento lista os serviços da AWS e as principais tecnologias empregados na camada intermediária (API *proxy*) da aplicação, com uma breve descrição da responsabilidade de cada um. Os componentes de execução também estão representados no diagrama de arquitetura física (Figura 21 da monografia).
 
 | Serviço / Tecnologia | Responsabilidade na aplicação | Documentação |
 |----------------------|-------------------------------|--------------|
